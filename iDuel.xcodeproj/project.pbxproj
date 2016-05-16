@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */; };
+		F0BBA0631CEA328C00AD16A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0621CEA328C00AD16A3 /* ViewController.swift */; };
+		F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0641CEA328C00AD16A3 /* Main.storyboard */; };
+		F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0671CEA328C00AD16A3 /* Assets.xcassets */; };
+		F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */; };
+		F0BBA0731CEA32D400AD16A3 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA0721CEA32D400AD16A3 /* Firebase.framework */; };
+		F0BBA0781CEA333E00AD16A3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA0771CEA333E00AD16A3 /* CFNetwork.framework */; };
+		F0BBA07A1CEA334700AD16A3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA0791CEA334700AD16A3 /* Security.framework */; };
+		F0BBA07C1CEA334F00AD16A3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA07B1CEA334F00AD16A3 /* libc++.tbd */; };
+		F0BBA07E1CEA335400AD16A3 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA07D1CEA335400AD16A3 /* libicucore.tbd */; };
+		F0BBA0801CEA336100AD16A3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA07F1CEA336100AD16A3 /* SystemConfiguration.framework */; };
+		F0BBA0821CEA338F00AD16A3 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0811CEA338F00AD16A3 /* FirebaseController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F0BBA05D1CEA328C00AD16A3 /* iDuel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0BBA0621CEA328C00AD16A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0BBA0651CEA328C00AD16A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0BBA0671CEA328C00AD16A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0BBA06A1CEA328C00AD16A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0BBA06C1CEA328C00AD16A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0BBA0721CEA32D400AD16A3 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		F0BBA0771CEA333E00AD16A3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F0BBA0791CEA334700AD16A3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F0BBA07B1CEA334F00AD16A3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		F0BBA07D1CEA335400AD16A3 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		F0BBA07F1CEA336100AD16A3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F0BBA0811CEA338F00AD16A3 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0BBA05A1CEA328C00AD16A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0BBA0801CEA336100AD16A3 /* SystemConfiguration.framework in Frameworks */,
+				F0BBA07E1CEA335400AD16A3 /* libicucore.tbd in Frameworks */,
+				F0BBA07C1CEA334F00AD16A3 /* libc++.tbd in Frameworks */,
+				F0BBA07A1CEA334700AD16A3 /* Security.framework in Frameworks */,
+				F0BBA0781CEA333E00AD16A3 /* CFNetwork.framework in Frameworks */,
+				F0BBA0731CEA32D400AD16A3 /* Firebase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0BBA0541CEA328C00AD16A3 = {
+			isa = PBXGroup;
+			children = (
+				F0BBA07F1CEA336100AD16A3 /* SystemConfiguration.framework */,
+				F0BBA07D1CEA335400AD16A3 /* libicucore.tbd */,
+				F0BBA07B1CEA334F00AD16A3 /* libc++.tbd */,
+				F0BBA0791CEA334700AD16A3 /* Security.framework */,
+				F0BBA0771CEA333E00AD16A3 /* CFNetwork.framework */,
+				F0BBA05F1CEA328C00AD16A3 /* iDuel */,
+				F0BBA05E1CEA328C00AD16A3 /* Products */,
+				F0BBA0721CEA32D400AD16A3 /* Firebase.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		F0BBA05E1CEA328C00AD16A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0BBA05D1CEA328C00AD16A3 /* iDuel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0BBA05F1CEA328C00AD16A3 /* iDuel */ = {
+			isa = PBXGroup;
+			children = (
+				F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */,
+				F0BBA0621CEA328C00AD16A3 /* ViewController.swift */,
+				F0BBA0811CEA338F00AD16A3 /* FirebaseController.swift */,
+				F0BBA0641CEA328C00AD16A3 /* Main.storyboard */,
+				F0BBA0671CEA328C00AD16A3 /* Assets.xcassets */,
+				F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */,
+				F0BBA06C1CEA328C00AD16A3 /* Info.plist */,
+			);
+			path = iDuel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0BBA05C1CEA328C00AD16A3 /* iDuel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0BBA06F1CEA328C00AD16A3 /* Build configuration list for PBXNativeTarget "iDuel" */;
+			buildPhases = (
+				F0BBA0591CEA328C00AD16A3 /* Sources */,
+				F0BBA05A1CEA328C00AD16A3 /* Frameworks */,
+				F0BBA05B1CEA328C00AD16A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iDuel;
+			productName = iDuel;
+			productReference = F0BBA05D1CEA328C00AD16A3 /* iDuel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0BBA0551CEA328C00AD16A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Gibson Smiley";
+				TargetAttributes = {
+					F0BBA05C1CEA328C00AD16A3 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = F0BBA0581CEA328C00AD16A3 /* Build configuration list for PBXProject "iDuel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0BBA0541CEA328C00AD16A3;
+			productRefGroup = F0BBA05E1CEA328C00AD16A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0BBA05C1CEA328C00AD16A3 /* iDuel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0BBA05B1CEA328C00AD16A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */,
+				F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */,
+				F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0BBA0591CEA328C00AD16A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0BBA0821CEA338F00AD16A3 /* FirebaseController.swift in Sources */,
+				F0BBA0631CEA328C00AD16A3 /* ViewController.swift in Sources */,
+				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F0BBA0641CEA328C00AD16A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0BBA0651CEA328C00AD16A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0BBA06A1CEA328C00AD16A3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0BBA06D1CEA328C00AD16A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F0BBA06E1CEA328C00AD16A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0BBA0701CEA328C00AD16A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = iDuel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gibsonsmiley.iDuel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F0BBA0711CEA328C00AD16A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = iDuel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gibsonsmiley.iDuel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0BBA0581CEA328C00AD16A3 /* Build configuration list for PBXProject "iDuel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0BBA06D1CEA328C00AD16A3 /* Debug */,
+				F0BBA06E1CEA328C00AD16A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0BBA06F1CEA328C00AD16A3 /* Build configuration list for PBXNativeTarget "iDuel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0BBA0701CEA328C00AD16A3 /* Debug */,
+				F0BBA0711CEA328C00AD16A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0BBA0551CEA328C00AD16A3 /* Project object */;
+}
