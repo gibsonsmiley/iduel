@@ -86,6 +86,7 @@
                                 <rect key="frame" x="523" y="550" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
+                                    <action selector="settingsButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="qDY-WW-c5u"/>
                                     <segue destination="LpM-aX-e9z" kind="presentation" id="sMX-YY-NyW"/>
                                 </connections>
                             </button>
@@ -93,6 +94,7 @@
                                 <rect key="frame" x="150" y="184" width="300" height="30"/>
                                 <state key="normal" title="Set Up Duel!"/>
                                 <connections>
+                                    <action selector="toSetUpButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="O78-tb-kxe"/>
                                     <segue destination="OKq-eY-Neg" kind="show" id="JuY-tV-JMN"/>
                                 </connections>
                             </button>
@@ -115,6 +117,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0xP-dL-1cT"/>
+                    <connections>
+                        <outlet property="disclaimerLabel" destination="ZZD-q2-sru" id="ycJ-4I-Lbe"/>
+                        <outlet property="nicknameTextField" destination="9sS-tQ-oit" id="oFP-XV-o5E"/>
+                        <outlet property="settingsButton" destination="44c-5f-3FR" id="v0L-EP-wBp"/>
+                        <outlet property="toSetUpButton" destination="EvE-u2-jVd" id="1C0-Ch-Ekx"/>
+                        <outlet property="welcomeTitleLabel" destination="jGn-GF-41Z" id="uma-Yl-PEo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,23 +145,31 @@
                                 <rect key="frame" x="20" y="84" width="560" height="30"/>
                                 <state key="normal" title="Calibrate Phone"/>
                                 <connections>
+                                    <action selector="calibratePhoneButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="V6w-on-vy0"/>
                                     <segue destination="4DM-pT-Dkw" kind="presentation" id="2T9-sj-hIS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fck-BG-A6V">
                                 <rect key="frame" x="20" y="134" width="560" height="30"/>
-                                <state key="normal" title="Choose / Find Opponent"/>
+                                <state key="normal" title="Select Opponent"/>
                                 <connections>
+                                    <action selector="selectOpponentButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="4hq-ZV-qte"/>
                                     <segue destination="FXw-fO-elf" kind="presentation" id="Y1x-rv-l08"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsE-Le-8ki">
                                 <rect key="frame" x="20" y="285" width="560" height="30"/>
                                 <state key="normal" title="Begin Duel!"/>
+                                <connections>
+                                    <action selector="beginDuelButton:" destination="OKq-eY-Neg" eventType="touchUpInside" id="oMT-sQ-h8Z"/>
+                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbP-2V-z2X">
                                 <rect key="frame" x="20" y="184" width="560" height="30"/>
                                 <state key="normal" title="Themes"/>
+                                <connections>
+                                    <action selector="themesButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="T9n-gS-bVn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,6 +196,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="beginDuelButton" destination="PsE-Le-8ki" id="gsg-fR-0HD"/>
+                        <outlet property="calibratePhoneButton" destination="RfQ-H9-4N6" id="01Y-mE-aQZ"/>
+                        <outlet property="selectOpponentButton" destination="fck-BG-A6V" id="Kuf-NB-fgP"/>
+                        <outlet property="themesButton" destination="hbP-2V-z2X" id="EFh-5p-sKg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5A-SL-x7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,6 +222,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-Yp-mid">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <state key="normal" title="Fire!"/>
+                                <connections>
+                                    <action selector="fireButtonTapped:" destination="Ndw-Ve-2Vz" eventType="touchUpInside" id="Ryq-RV-p2X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJN-Tn-h4M">
+                                <rect key="frame" x="276" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Ndw-Ve-2Vz" eventType="touchUpInside" id="NCV-z2-TyM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -207,9 +240,13 @@
                             <constraint firstAttribute="trailing" secondItem="Ya5-Yp-mid" secondAttribute="trailing" id="2sp-98-dEK"/>
                             <constraint firstItem="Ya5-Yp-mid" firstAttribute="leading" secondItem="QTt-hz-B0H" secondAttribute="leading" id="AKd-Mq-ogp"/>
                             <constraint firstItem="Ya5-Yp-mid" firstAttribute="top" secondItem="QTt-hz-B0H" secondAttribute="top" id="WVv-Ov-bEa"/>
+                            <constraint firstItem="aJN-Tn-h4M" firstAttribute="top" secondItem="QHo-jq-KYO" secondAttribute="bottom" id="bpq-6q-VH9"/>
+                            <constraint firstItem="aJN-Tn-h4M" firstAttribute="centerX" secondItem="Ya5-Yp-mid" secondAttribute="centerX" id="d31-fX-h9N"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="aJN-Tn-h4M" id="ENJ-yJ-38c"/>
+                        <outlet property="fireButton" destination="Ya5-Yp-mid" id="4j0-C4-DHA"/>
                         <segue destination="QlS-8e-AiX" kind="presentation" identifier="toVictoryScreen" id="0xL-sG-Fbo"/>
                     </connections>
                 </viewController>
@@ -235,13 +272,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
-                                <rect key="frame" x="20" y="454" width="560" height="30"/>
-                                <state key="normal" title="Play Again"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
                                 <rect key="frame" x="20" y="504" width="560" height="30"/>
                                 <state key="normal" title="Back To Set Up"/>
+                                <connections>
+                                    <action selector="exitGameButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="YWn-cx-5wI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
+                                <rect key="frame" x="20" y="454" width="560" height="30"/>
+                                <state key="normal" title="Play Again"/>
+                                <connections>
+                                    <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,6 +299,11 @@
                             <constraint firstItem="TiS-Gr-jtO" firstAttribute="top" secondItem="jfq-WW-CfD" secondAttribute="bottom" constant="66" id="wRG-Di-llm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="exitGameButton" destination="jfq-WW-CfD" id="VMb-bu-HUS"/>
+                        <outlet property="playAgainButton" destination="dtw-22-XRa" id="Mqz-Il-3wp"/>
+                        <outlet property="victoryLabel" destination="g5v-Uc-Z6R" id="bJQ-4B-xIs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-hS-jkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -335,13 +383,28 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="y8X-sf-UMa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5E7-SK-XX7"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5E7-SK-XX7">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="tqv-Dz-jFR" id="7LW-TG-2rL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="q9X-uf-Vga">
                             <connections>
+                                <action selector="nextButtonTapped:" destination="tqv-Dz-jFR" id="rQ5-Q5-p4q"/>
                                 <segue destination="Otk-tm-Ohe" kind="show" id="p5u-Mv-N2c"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calibrateDescriptionLabel" destination="14u-3C-af3" id="xYk-7e-r3d"/>
+                        <outlet property="calibrateTitleLabel" destination="dJ0-Br-GDb" id="S5K-k5-z3e"/>
+                        <outlet property="cancelButton" destination="5E7-SK-XX7" id="pn3-a3-czi"/>
+                        <outlet property="loweredDescriptionLabel" destination="bsr-aa-du7" id="BjK-Mm-clD"/>
+                        <outlet property="loweredTitleLabel" destination="pD7-LH-3Xy" id="dpF-k3-rnZ"/>
+                        <outlet property="nextButton" destination="q9X-uf-Vga" id="WGD-YN-Bm6"/>
+                        <outlet property="raisedDescriptionLabel" destination="2TB-TN-HNG" id="4cU-t6-FlG"/>
+                        <outlet property="raisedTitleLabel" destination="53b-cP-QSD" id="6NF-Gi-ovx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPQ-37-egz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,6 +443,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCn-Qt-h66">
                                 <rect key="frame" x="20" y="441" width="560" height="30"/>
                                 <state key="normal" title="Recalibrate"/>
+                                <connections>
+                                    <action selector="recalibrateButtonTapped:" destination="Otk-tm-Ohe" eventType="touchUpInside" id="RYY-qP-peD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -401,10 +467,18 @@
                     <navigationItem key="navigationItem" id="Q7L-UZ-XHv">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="BXG-Fg-LJ7">
                             <connections>
+                                <action selector="nextButtonTapped:" destination="Otk-tm-Ohe" id="eaz-tQ-dbq"/>
                                 <segue destination="Y63-UG-5vw" kind="show" id="f8q-hk-1hu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nextButton" destination="BXG-Fg-LJ7" id="UZk-G5-K8j"/>
+                        <outlet property="raisedDescriptionLabel" destination="qTf-BP-aVM" id="VO6-T8-mpb"/>
+                        <outlet property="raisedImageView" destination="FBo-y7-EOq" id="2Qx-mr-SNO"/>
+                        <outlet property="raisedTitleLabel" destination="wYy-1Q-mPC" id="eGl-IH-52S"/>
+                        <outlet property="recalibrateButton" destination="pCn-Qt-h66" id="67D-9t-Ffq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Op-xB-Fsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -434,16 +508,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-Eh-8go">
-                                <rect key="frame" x="20" y="441" width="560" height="30"/>
-                                <state key="normal" title="Recalibrate"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="holstered" translatesAutoresizingMaskIntoConstraints="NO" id="ibp-8i-X0U">
                                 <rect key="frame" x="150" y="133" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ibp-8i-X0U" secondAttribute="height" multiplier="1:1" id="RtT-XN-Pch"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-Eh-8go">
+                                <rect key="frame" x="20" y="441" width="560" height="30"/>
+                                <state key="normal" title="Recalibrate"/>
+                                <connections>
+                                    <action selector="recalibrateButtonTapped:" destination="Y63-UG-5vw" eventType="touchUpInside" id="MDW-OC-Gal"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -462,8 +539,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zL5-vq-eHG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iwd-Pv-dFX"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iwd-Pv-dFX">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="Y63-UG-5vw" id="S01-iu-dWN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="iwd-Pv-dFX" id="3Mw-ju-iIy"/>
+                        <outlet property="loweredDescriptionLabel" destination="XCQ-yM-6rY" id="Knu-QK-bVz"/>
+                        <outlet property="loweredImageView" destination="ibp-8i-X0U" id="Eyz-dH-hNm"/>
+                        <outlet property="loweredTitleLabel" destination="kfr-L4-fbS" id="wdz-6O-5EV"/>
+                        <outlet property="recalibrateButton" destination="dWJ-Eh-8go" id="kif-cY-arB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFY-dV-W8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -493,8 +581,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="lAk-Ld-Ltt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1jq-kz-h8S"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1jq-kz-h8S">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="E7c-NL-zWA" id="iYO-zX-jw9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="1jq-kz-h8S" id="bCg-uH-hun"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZn-GZ-Xsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -518,10 +613,10 @@
             </objects>
             <point key="canvasLocation" x="-587" y="651"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="5Gc-cw-1rO">
             <objects>
-                <viewController id="178-M2-vrF" sceneMemberID="viewController">
+                <viewController id="178-M2-vrF" customClass="SettingsViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cod-zK-4hY"/>
                         <viewControllerLayoutGuide type="bottom" id="pJ6-PW-PnI"/>

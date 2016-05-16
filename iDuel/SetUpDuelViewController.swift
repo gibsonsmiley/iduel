@@ -10,18 +10,36 @@ import UIKit
 
 class SetUpDuelViewController: UIViewController {
 
+    @IBOutlet weak var calibratePhoneButton: UIButton!
+    @IBOutlet weak var selectOpponentButton: UIButton!
+    @IBOutlet weak var themesButton: UIButton!
+    @IBOutlet weak var beginDuelButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func calibratePhoneButtonTapped(sender: AnyObject) {
+        // To calibrate views
+    }
+    
+    @IBAction func selectOpponentButtonTapped(sender: AnyObject) {
+        // To select opponent table view
+    }
+    
+    @IBAction func themesButtonTapped(sender: AnyObject) {
+        // Here just in case
+    }
 
+    @IBAction func beginDuelButton(sender: AnyObject) {
+        // Check if there's an opponent, current user, and phone is calibrated.
+        // If so, go to duel view and create a new duel
+    }
+    
     /*
     // MARK: - Navigation
 

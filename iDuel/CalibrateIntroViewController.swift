@@ -10,17 +10,30 @@ import UIKit
 
 class CalibrateIntroViewController: UIViewController {
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
+    @IBOutlet weak var calibrateTitleLabel: UILabel!
+    @IBOutlet weak var calibrateDescriptionLabel: UILabel!
+    @IBOutlet weak var raisedTitleLabel: UILabel!
+    @IBOutlet weak var raisedDescriptionLabel: UILabel!
+    @IBOutlet weak var loweredTitleLabel: UILabel!
+    @IBOutlet weak var loweredDescriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        // Move back to set up duel view
+    }
+    
+    @IBAction func nextButtonTapped(sender: AnyObject) {
+        // Move to raised phone view
+    }
 
     /*
     // MARK: - Navigation

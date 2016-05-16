@@ -1,5 +1,5 @@
 //
-//  CalibrateLoweredViewController.swift
+//  SettingsViewController.swift
 //  iDuel
 //
 //  Created by Gibson Smiley on 5/16/16.
@@ -8,29 +8,19 @@
 
 import UIKit
 
-class CalibrateLoweredViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var loweredTitleLabel: UILabel!
-    @IBOutlet weak var loweredDescriptionLabel: UILabel!
-    @IBOutlet weak var loweredImageView: UIImageView!
-    @IBOutlet weak var recalibrateButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func doneButtonTapped(sender: AnyObject) {
-        // Move to set up duel view, save all calibrations
-    }
-    
-    @IBAction func recalibrateButtonTapped(sender: AnyObject) {
-        // Start calibration or recalibration
-    }
 
     /*
     // MARK: - Navigation
