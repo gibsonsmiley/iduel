@@ -27,6 +27,8 @@ class Duel {
         self.duelStart = duelStart
         self.firedTime = firedTime
         self.score = score
+        
+    }
     
     
   required init?(json:[String: AnyObject]) {
@@ -39,6 +41,6 @@ class Duel {
         self.duelStart = duelStart
         self.firedTime = firedTime
         
-        }
+    
     }
 }

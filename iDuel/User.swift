@@ -31,7 +31,9 @@ class User {
         self.currentPosition = currentPosition
         self.calibrationLowered = calibrationLowered
         self.calibrationRaised = calibrationRaised
-     
+        
+    }
+    
     
     required init?(json: [String: AnyObject]) {
         guard let currentUser = json[kCurrentUser] as? String,
@@ -44,6 +46,6 @@ class User {
         self.calibrationRaised = calibrationRaised
     
         
-        }
+    
     }
 }
