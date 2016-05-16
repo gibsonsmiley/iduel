@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C38F1CEA5D0800F3DCA7 /* User.swift */; };
+		C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3911CEA5D1800F3DCA7 /* UserController.swift */; };
+		C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3931CEA5D2800F3DCA7 /* Duel.swift */; };
+		C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3951CEA5D3E00F3DCA7 /* DuelController.swift */; };
+		C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3971CEA5D5200F3DCA7 /* MotionController.swift */; };
 		F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */; };
 		F0BBA0631CEA328C00AD16A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0621CEA328C00AD16A3 /* ViewController.swift */; };
 		F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0641CEA328C00AD16A3 /* Main.storyboard */; };
@@ -22,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C349C38F1CEA5D0800F3DCA7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C349C3911CEA5D1800F3DCA7 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		C349C3931CEA5D2800F3DCA7 /* Duel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duel.swift; sourceTree = "<group>"; };
+		C349C3951CEA5D3E00F3DCA7 /* DuelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelController.swift; sourceTree = "<group>"; };
+		C349C3971CEA5D5200F3DCA7 /* MotionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionController.swift; sourceTree = "<group>"; };
 		F0BBA05D1CEA328C00AD16A3 /* iDuel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0BBA0621CEA328C00AD16A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,17 +65,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F0BBA0541CEA328C00AD16A3 = {
+		C349C38E1CEA5CDB00F3DCA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0BBA0721CEA32D400AD16A3 /* Firebase.framework */,
 				F0BBA07F1CEA336100AD16A3 /* SystemConfiguration.framework */,
 				F0BBA07D1CEA335400AD16A3 /* libicucore.tbd */,
 				F0BBA07B1CEA334F00AD16A3 /* libc++.tbd */,
 				F0BBA0791CEA334700AD16A3 /* Security.framework */,
 				F0BBA0771CEA333E00AD16A3 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C349C3991CEA5D6900F3DCA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C349C38F1CEA5D0800F3DCA7 /* User.swift */,
+				C349C3931CEA5D2800F3DCA7 /* Duel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C349C39A1CEA5D6F00F3DCA7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C349C3911CEA5D1800F3DCA7 /* UserController.swift */,
+				C349C3951CEA5D3E00F3DCA7 /* DuelController.swift */,
+				C349C3971CEA5D5200F3DCA7 /* MotionController.swift */,
+				F0BBA0811CEA338F00AD16A3 /* FirebaseController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F0BBA0541CEA328C00AD16A3 = {
+			isa = PBXGroup;
+			children = (
+				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 				F0BBA05F1CEA328C00AD16A3 /* iDuel */,
 				F0BBA05E1CEA328C00AD16A3 /* Products */,
-				F0BBA0721CEA32D400AD16A3 /* Firebase.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,7 +120,8 @@
 			children = (
 				F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */,
 				F0BBA0621CEA328C00AD16A3 /* ViewController.swift */,
-				F0BBA0811CEA338F00AD16A3 /* FirebaseController.swift */,
+				C349C3991CEA5D6900F3DCA7 /* Models */,
+				C349C39A1CEA5D6F00F3DCA7 /* Controllers */,
 				F0BBA0641CEA328C00AD16A3 /* Main.storyboard */,
 				F0BBA0671CEA328C00AD16A3 /* Assets.xcassets */,
 				F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */,
@@ -162,9 +201,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */,
 				F0BBA0821CEA338F00AD16A3 /* FirebaseController.swift in Sources */,
+				C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */,
+				C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */,
 				F0BBA0631CEA328C00AD16A3 /* ViewController.swift in Sources */,
 				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
+				C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */,
+				C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +368,7 @@
 				F0BBA0711CEA328C00AD16A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
