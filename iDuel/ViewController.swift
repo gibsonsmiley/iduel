@@ -15,15 +15,9 @@ class ViewController: UIViewController {
     
     var now = NSDate()
     var fireDate: NSDate? {
-        FirebaseController.base.childByAppendingPath("duel").observeEventType(.Value, withBlock: { (snapshot) in
-            if let interval = snapshot
-        })
-        FirebaseController.dataAtEndpoint("duel", completion: { (data) in
-            if let interval = data as? NSTimeInterval {
-            let finalDate = NSDate(timeIntervalSince1970: interval)
-            return finalDate
-            }
-        })
+        didSet {
+            prepareForDuel()
+        }
     }
     
     override func viewDidLoad() {
@@ -49,6 +43,19 @@ class ViewController: UIViewController {
         FirebaseController.base.childByAppendingPath("duel").setValue(fireDate.timeIntervalSince1970)
 
         
+    }
+    
+//    func setFireDate(date: NSDate) {
+//        FirebaseController.base.childByAppendingPath("duel").observeEventType(.Value, withBlock: { (snapshot) in
+//            <#code#>
+//        })
+//    }
+    
+    func prepareForDuel() {
+        guard let fireDate = fireDate else {return}
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC)*fireDate.timeIntervalSinceNow)), dispatch_get_main_queue()) {
+            // Anything in here will happen when the fireDate arrives
+        }
     }
     
 //    func check() {
