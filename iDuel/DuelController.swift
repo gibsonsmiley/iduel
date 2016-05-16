@@ -11,4 +11,29 @@ import Foundation
 class DuelController {
     
     
+    func createDuel(){
+        
+    }
+    
+    func checkStatus(){
+        
+    }
+    
+    func startDuel(){
+        
+    }
+    
+    func victory() {
+        
+    }
+    
+    func checkFire() {
+        
+    }
+    
+    func countDown() {
+        
+    }
+    
+    
 }
