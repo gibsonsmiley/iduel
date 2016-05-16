@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 class SetUpDuelViewController: UIViewController {
 
@@ -15,6 +16,11 @@ class SetUpDuelViewController: UIViewController {
     @IBOutlet weak var themesButton: UIButton!
     @IBOutlet weak var beginDuelButton: UIButton!
     
+    var opponent: User?
+    var calibrations: [CMGyroData]?
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,6 +28,12 @@ class SetUpDuelViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
     
     @IBAction func calibratePhoneButtonTapped(sender: AnyObject) {
         // To calibrate views
@@ -34,10 +46,13 @@ class SetUpDuelViewController: UIViewController {
     @IBAction func themesButtonTapped(sender: AnyObject) {
         // Here just in case
     }
-
+    
     @IBAction func beginDuelButton(sender: AnyObject) {
-        // Check if there's an opponent, current user, and phone is calibrated.
-        // If so, go to duel view and create a new duel
+        if self.opponent != nil && self.calibrations != nil {
+            // Move to duel view and create a new duel
+        } else {
+            // Display alert saying an opponent and calibrations are necessary to continue
+        }
     }
     
     /*

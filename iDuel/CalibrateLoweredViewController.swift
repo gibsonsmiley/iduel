@@ -16,6 +16,8 @@ class CalibrateLoweredViewController: UIViewController {
     @IBOutlet weak var loweredImageView: UIImageView!
     @IBOutlet weak var recalibrateButton: UIButton!
     
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,8 +26,15 @@ class CalibrateLoweredViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Methods
+    
+    
+    
+    // MARK - Actions
+    
     @IBAction func doneButtonTapped(sender: AnyObject) {
-        // Move to set up duel view, save all calibrations
+        // Save all calibrations
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func recalibrateButtonTapped(sender: AnyObject) {

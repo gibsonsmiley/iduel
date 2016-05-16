@@ -14,6 +14,8 @@ class VictoryViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var exitGameButton: UIButton!
     
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,6 +23,12 @@ class VictoryViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
         // Move back to duel view and create a new duel

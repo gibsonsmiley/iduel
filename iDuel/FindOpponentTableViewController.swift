@@ -12,26 +12,45 @@ class FindOpponentTableViewController: UITableViewController {
 
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
+    var allUsers: [User]?
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchAllUsers()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Methods
+    
+    func fetchAllUsers() {
+        
+    }
+
+    // MARK: - Actions
 
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        // Move back to set up duel view
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if allUsers?.count > 0 {
+            guard let allUsers = allUsers else { return 0 }
+            return allUsers.count
+        } else {
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
         
         return cell
     }

@@ -13,6 +13,8 @@ class DuelViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
     
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,6 +22,12 @@ class DuelViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: Methods
+    
+    
+    
+    // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         // Stop duel and move back to set up view

@@ -16,6 +16,8 @@ class CalibrateRaisedViewController: UIViewController {
     @IBOutlet weak var raisedImageView: UIImageView!
     @IBOutlet weak var recalibrateButton: UIButton! // This can be the "Start" button, and then once the user started at least once it'll become the recalibrate button
     
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,6 +25,12 @@ class CalibrateRaisedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
     
     @IBAction func nextButtonTapped(sender: AnyObject) {
         // Move to lowered phone view

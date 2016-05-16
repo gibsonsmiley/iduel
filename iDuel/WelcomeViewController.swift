@@ -16,6 +16,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var disclaimerLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,12 +26,23 @@ class WelcomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
+    
     @IBAction func toSetUpButtonTapped(sender: AnyObject) {
-        // If nickname field isn't empty, create new user
-        // Move to set up view
+        if nicknameTextField.text != nil {
+            // Create new temporary user
+            // Move to set up view
+        } else {
+            // Display a message saying a nickname is required
+        }
     }
     
     @IBAction func settingsButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("toSettings", sender: self)
         // Display settings
     }
 

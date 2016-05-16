@@ -19,6 +19,8 @@ class CalibrateIntroViewController: UIViewController {
     @IBOutlet weak var loweredTitleLabel: UILabel!
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
     
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,7 +29,14 @@ class CalibrateIntroViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
+    
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
         // Move back to set up duel view
     }
     
