@@ -40,5 +40,8 @@ class DuelController {
         
     }
     
-    
+    // recognizes user's button tap and sends a value to Firebase
+    static func fire() {
+        
+    }
 }
