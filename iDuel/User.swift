@@ -9,12 +9,8 @@
 import Foundation
 import CoreMotion
 
-class User {
+class User: Equatable, FirebaseType {
     
-    private let kUsername = "username"
-    private let kCurrentPosition = "currentPosition"
-    private let kCalibrationLowered = "calibrationLowered"
-    private let kCalibrationRaised = "calibrationRaised"
     
     let username: String
     var currentUser: String?
@@ -22,17 +18,39 @@ class User {
     var currentPosition: CMGyroData?
     var calibrationLowered: CMGyroData?
     var calibrationRaised: CMGyroData?
+    let duelId: [String]
+    var id: String?
+    var endpoint: String {
+        return "users"
+    }
     
-    init(username: String, currentUser: String, flick: CMGyroData?, currentPosition: CMGyroData?, calibrationLowered: CMGyroData?, calibrationRaised: CMGyroData?) {
+    
+    init(username: String, currentUser: String, flick: CMGyroData?, currentPosition: CMGyroData?, calibrationLowered: CMGyroData?, calibrationRaised: CMGyroData?, duelId:[String]) {
         self.username = username
         self.currentUser = currentUser
         self.flick = flick
         self.currentPosition = currentPosition
         self.calibrationLowered = calibrationLowered
         self.calibrationRaised = calibrationRaised
+        self.duelId = duelId
     }
     
-    required init?(json: [String: AnyObject], identifier: String) {
+    private let kUsername = "username"
+    private let kCurrentPosition = "currentPosition"
+    private let kCalibrationLowered = "calibrationLowered"
+    private let kCalibrationRaised = "calibrationRaised"
+    private let kDuelId = "duelId"
+    
+    
+    var jsonValue: [String : AnyObject]{
+        if let currentPosition = currentPosition, calibrationLowered = calibrationLowered, calibrationRaised = calibrationRaised {
+        return [kUsername: username, kCurrentPosition: currentPosition, kCalibrationLowered: calibrationLowered, kCalibrationRaised: calibrationRaised, kDuelId: duelId]
+        }
+        return self.jsonValue
+    }
+
+    
+    required init?(json: [String: AnyObject], id: String) {
         guard let username = json[kUsername] as? String,
             currentPosition = json[kCurrentPosition] as? CMGyroData,
             calibrationLowered = json[kCalibrationLowered] as? CMGyroData,
@@ -42,4 +60,8 @@ class User {
         self.calibrationLowered = calibrationLowered
         self.calibrationRaised = calibrationRaised
     }
+}
+
+func == (lhs: User, rhs: User) -> Bool {
+    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }

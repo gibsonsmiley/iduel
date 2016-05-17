@@ -8,38 +8,52 @@
 
 import Foundation
 
-class Duel {
-    
-    private let kPlayer1 = "player1"
-    private let kPlayer2 = "player2"
-    private let kDuelStart = "duelStart"
-    private let kFiredTime = "firedTime"
-    private let kScore = "score"
+class Duel: Equatable, FirebaseType {
     
     let player1: String
     let player2: String
     let score: (Int, Int)
-    let duelStart: NSDate
-    let firedTime: NSDate
+    let ready: NSDate
+    let shotsFired: NSTimeInterval?
+    var id: String?
+    var endpoint: String {
+        return "duel"
+    }
     
-    init(player1: String, player2: String, score:(Int, Int), duelStart: NSDate, firedTime: NSDate) {
+    init(player1: String, player2: String, score:(Int, Int), ready: NSDate, shotsFired: NSTimeInterval? ) {
         self.player1 = player1
         self.player2 = player2
-        self.duelStart = duelStart
-        self.firedTime = firedTime
+        self.ready = ready
+        self.shotsFired = shotsFired
         self.score = score
     }
     
-    required init?(json:[String: AnyObject]) {
+    private let kPlayer1 = "player1"
+    private let kPlayer2 = "player2"
+    private let kReady = "ready"
+    private let kShotsFired = "shotsFired"
+    private let kScore = "score"
+    
+    var jsonValue: [String : AnyObject] {
+        if let shotsFired = shotsFired {
+            return[kPlayer1: player1, kPlayer2: player2, kReady: ready, kShotsFired: shotsFired]
+        }
+    }
+    
+    required init?(json:[String: AnyObject], id: String) {
         guard let player1 = json[kPlayer1] as? String,
             player2 = json[kPlayer2] as? String,
-            duelStart = json[kDuelStart] as? NSDate,
-            firedTime = json[kFiredTime] as? NSDate,
+            ready = json[kReady] as? NSDate,
+            shotsFired = json[kShotsFired] as? NSTimeInterval?,
             score = json[kScore] as? (Int, Int) else {return nil }
         self.score = score
         self.player1 = player1
         self.player2 = player2
-        self.duelStart = duelStart
-        self.firedTime = firedTime
+        self.ready = ready
+        self.shotsFired = shotsFired
     }
+}
+
+func == (lhs: Duel, rhs: Duel) -> Bool {
+    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
