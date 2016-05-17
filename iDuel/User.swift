@@ -41,7 +41,7 @@ class User: Equatable, FirebaseType {
     private let kTimestamp = "timestamp"
     
     var jsonValue: [String : AnyObject] {
-        var json: [String: AnyObject] = [kNickname: nickname, kTimestamp: timestamp]
+        var json: [String: AnyObject] = [kNickname: nickname, kTimestamp: timestamp.timeIntervalSince1970]
         if let duelIDs = duelIDs {
             json.updateValue(duelIDs, forKey: kDuelIDs)
         }

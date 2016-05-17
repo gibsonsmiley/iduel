@@ -14,17 +14,18 @@ class UserController {
     let kUser = "user"
     
     static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
-        FirebaseController.base.createUser("", password: "") { (error, response) in
-            if let error = error {
+        FirebaseController.base.authAnonymouslyWithCompletionBlock { (error, authData) in
+        if let error = error {
                 print("\(error.localizedDescription)")
                 completion(success: false, user: nil)
             } else {
-                if let uid = response["uid"] as? String {
+                if let uid = authData.uid {
+                    print(authData.expires)
                     var user = User(nickname: nickname, duelIDs: [])
                     FirebaseController.base.childByAppendingPath("users").childByAppendingPath(uid).setValue(user.jsonValue)
-                        user.save()
-                        completion(success: true, user: user)
-                        self.currentUser = user
+                    user.save()
+                    completion(success: true, user: user)
+                    self.currentUser = user
                 }
             }
         }
@@ -49,13 +50,13 @@ class UserController {
         }
     }
     
-    static func fetchAllUsers(completion: (users: [User]) -> Void) {
+    static func fetchAllUsers(completion: (users: [User]?) -> Void) {
         FirebaseController.dataAtEndpoint("users") { (data) in
             if let json = data as? [String: AnyObject] {
                 let users = json.flatMap({User(json: $0.1 as! [String: AnyObject], id: $0.0)})
                 completion(users: users)
             } else {
-                completion(users: [])
+                completion(users: nil)
             }
         }
     }
