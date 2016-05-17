@@ -20,8 +20,8 @@ class UserController {
                 completion(success: false, user: nil)
             } else {
                 if let uid = response["uid"] as? String {
-                    var user = User(
-                        FirebaseController.base.childByAppendingPath("users").childByAppendingPath(uid).setValue(user.jsonValue)
+                    var user = User(username: username, duelIDs: [])
+                    FirebaseController.base.childByAppendingPath("users").childByAppendingPath(uid).setValue(user.jsonValue)
                         user.save()
                         completion(success: true, user: user)
                         self.currentUser = user
@@ -33,7 +33,7 @@ class UserController {
     static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         FirebaseController.dataAtEndpoint("users/\(identifier)") { (data) in
             if let json = data as? [String: AnyObject] {
-                let user = User(json: json, identifier: identifier)
+                let user = User(json: json, id: identifier)
                 completion(user: user)
             } else {
                 completion(user: nil)
@@ -44,7 +44,7 @@ class UserController {
     static func fetchAllUsers(completion: (users: [User]) -> Void) {
         FirebaseController.dataAtEndpoint("users") { (data) in
             if let json = data as? [String: AnyObject] {
-                let users = json.flatMap({User(json: $0.1 as! [String: AnyObject], identifier: $0.0)})
+                let users = json.flatMap({User(json: $0.1 as! [String: AnyObject], id: $0.0)})
                 completion(users: users)
             } else {
                 completion(users: [])
