@@ -32,7 +32,7 @@ class User {
         self.calibrationRaised = calibrationRaised
     }
     
-    required init?(json: [String: AnyObject]) {
+    required init?(json: [String: AnyObject], identifier: String) {
         guard let username = json[kUsername] as? String,
             currentPosition = json[kCurrentPosition] as? CMGyroData,
             calibrationLowered = json[kCalibrationLowered] as? CMGyroData,
