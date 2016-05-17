@@ -18,6 +18,7 @@ class SetUpDuelViewController: UIViewController {
     
     var opponent: User?
     var calibrations: [CMGyroData]?
+    var duel: Duel?
     
     // MARK: - View
     
@@ -61,7 +62,16 @@ class SetUpDuelViewController: UIViewController {
     
     @IBAction func beginDuelButton(sender: AnyObject) {
         if self.opponent != nil && self.calibrations != nil {
-            // Move to duel view and create a new duel
+            guard let opponent = opponent,
+            currentUser = UserController.currentUser else { return }
+            DuelController.createDuel(currentUser, player2: opponent, completion: { (success, duel) in
+                if success {
+                    
+                    // Move to duel view
+                } else {
+                    // Display error alert
+                }
+            })
         } else {
             // Display alert saying an opponent and calibrations are necessary to continue
         }
