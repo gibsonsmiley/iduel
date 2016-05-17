@@ -41,7 +41,7 @@ class SetUpDuelViewController: UIViewController {
             beginDuelButton.enabled = true
         }
         guard let opponent = opponent else { return }
-            selectOpponentButton.setTitle("\(opponent.username) (Tap to choose again)", forState: .Normal)
+            selectOpponentButton.setTitle("\(opponent.nickname) (Tap to choose again)", forState: .Normal)
         guard calibrations != nil else { return }
         calibratePhoneButton.setTitle("Calibrated!", forState: .Normal)
     }

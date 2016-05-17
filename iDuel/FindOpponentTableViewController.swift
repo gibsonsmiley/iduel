@@ -55,7 +55,7 @@ class FindOpponentTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
         guard let allUsers = allUsers else { return cell }
         let user = allUsers[indexPath.row]
-        cell.textLabel?.text = user.username
+        cell.textLabel?.text = user.nickname
         return cell
     }
     
