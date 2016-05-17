@@ -34,54 +34,16 @@ class WelcomeViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func toSetUpButtonTapped(sender: AnyObject) {
+        errorLabel.hidden = true
         if UserController.currentUser == nil {
-            errorLabel.hidden = true
             if nicknameTextField.text != "" {
                 guard let nickname = nicknameTextField.text else { return }
-                UserController.fetchAllUsers({ (users) in
-                    if users != nil {
-                        var sameNicknameUser: User?
-                        guard let users = users else { return }
-                        for user in users where user.nickname == "\(nickname)" {
-                            sameNicknameUser = user
-                            if sameNicknameUser == nil {
-                                UserController.createUser(nickname, completion: { (success, user) in
-                                    if success {
-                                        UserController.currentUser = user
-                                        self.performSegueWithIdentifier("toSetUpDuel", sender: self)
-                                    } else {
-                                        self.errorLabel.hidden = false
-                                        self.errorLabel.text = "It didn't work. Try again."
-                                    }
-                                })
-                            } else {
-                                guard let user = sameNicknameUser else { return }
-                                let timestamp = user.timestamp
-                                if timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
-                                    UserController.deleteUser(user, completion: { (success) in
-                                        if success {
-                                            UserController.createUser(nickname, completion: { (success, user) in
-                                                if success {
-                                                    UserController.currentUser = user
-                                                    self.performSegueWithIdentifier("toSetUpDuel", sender: self)
-                                                } else {
-                                                    self.errorLabel.hidden = false
-                                                    self.errorLabel.text = "It didn't work. Try again."
-                                                }
-                                            })
-                                        } else {
-                                            // Deleting didn't work. Just make user try a different nickname.
-                                            self.errorLabel.hidden = false
-                                            self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
-                                        }
-                                    })
-                                } else {
-                                    self.errorLabel.hidden = false
-                                    self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
-                                }
-                            }
-                        }
-                    } else {
+                
+                // Check if nickname already exists
+                FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(nickname)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    if snapshot.value == nil {
+                        
+                        // Nickname doesn't already exist, create new user
                         UserController.createUser(nickname, completion: { (success, user) in
                             if success {
                                 UserController.currentUser = user
@@ -91,15 +53,50 @@ class WelcomeViewController: UIViewController {
                                 self.errorLabel.text = "It didn't work. Try again."
                             }
                         })
+                    } else {
+                        
+                        // Nickname already exists, check timestamp
+                        guard let user = snapshot.value as? User else { return }
+                        let timestamp = user.timestamp
+                        if timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+                            
+                            // Nickname was created over 24 hours ago, delete it and create a new one with the username
+                            UserController.deleteUser(user, completion: { (success) in
+                                if success {
+                                    UserController.createUser(nickname, completion: { (success, user) in
+                                        if success {
+                                            UserController.currentUser = user
+                                            self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                                        } else {
+                                            self.errorLabel.hidden = false
+                                            self.errorLabel.text = "It didn't work. Try again."
+                                        }
+                                    })
+                                } else {
+                                    
+                                    // Deleting didn't work. Just make user try a different nickname.
+                                    self.errorLabel.hidden = false
+                                    self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
+                                }
+                            })
+                        } else {
+                            
+                            // Nickname was created within 24 hours, make user try another nickname
+                            self.errorLabel.hidden = false
+                            self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
+                        }
                     }
                 })
-                
             } else {
-                errorLabel.hidden = false
-                errorLabel.text = "You need to pick a nickname before continuing."
+                
+                // Text field is empty
+                self.errorLabel.hidden = false
+                self.errorLabel.text = "You need to pick a nickname before continuing."
             }
         } else {
+            
             // User is already logged in
+            self.performSegueWithIdentifier("toSetUpDuel", sender: self)
         }
     }
     

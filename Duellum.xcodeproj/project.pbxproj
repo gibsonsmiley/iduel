@@ -34,6 +34,7 @@
 		F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */; };
 		F0BBA0951CEA79BA00AD16A3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0941CEA79BA00AD16A3 /* SettingsViewController.swift */; };
 		F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */; };
+		F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E399F11CEBD0E800B8FB07 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindOpponentTableViewController.swift; sourceTree = "<group>"; };
 		F0BBA0941CEA79BA00AD16A3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopDownSegue.swift; sourceTree = "<group>"; };
+		F0E399F11CEBD0E800B8FB07 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				F0BBA0671CEA328C00AD16A3 /* Assets.xcassets */,
 				F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */,
 				F0BBA06C1CEA328C00AD16A3 /* Info.plist */,
+				F0E399F11CEBD0E800B8FB07 /* File.swift */,
 			);
 			name = Duellum;
 			path = iDuel;
@@ -257,6 +260,7 @@
 				F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */,
 				F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */,
 				F0BBA08D1CEA666700AD16A3 /* CalibrateIntroViewController.swift in Sources */,
+				F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */,
 				C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
