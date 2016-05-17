@@ -38,7 +38,9 @@ class CalibrateRaisedViewController: UIViewController {
 
     @IBAction func recalibrateButtonTapped(sender: AnyObject) {
         // Begin capturing CMGryoData
-
+        MotionController.beginMotionTracking { (averageCalibration) in
+            MotionController.saveCalibration(/*averageCalibraion*/)
+        }
         if recalibrateButton.titleLabel?.text == "Begin Calibration" {
             recalibrateButton.setTitle("Recalibrate", forState: .Normal)
         } else {

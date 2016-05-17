@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
-				F0BBA05F1CEA328C00AD16A3 /* iDuel */,
+				F0BBA05F1CEA328C00AD16A3 /* Duellum */,
 				F0BBA05E1CEA328C00AD16A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,7 +135,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F0BBA05F1CEA328C00AD16A3 /* iDuel */ = {
+		F0BBA05F1CEA328C00AD16A3 /* Duellum */ = {
 			isa = PBXGroup;
 			children = (
 				F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */,
@@ -149,6 +149,7 @@
 				F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */,
 				F0BBA06C1CEA328C00AD16A3 /* Info.plist */,
 			);
+			name = Duellum;
 			path = iDuel;
 			sourceTree = "<group>";
 		};

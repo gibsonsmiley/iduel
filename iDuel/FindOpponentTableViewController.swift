@@ -51,6 +51,7 @@ class FindOpponentTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
+        let destinationViewController = presentingViewController as? SetUpDuelViewController
         
         return cell
     }
