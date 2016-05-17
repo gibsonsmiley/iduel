@@ -29,7 +29,9 @@ class FindOpponentTableViewController: UITableViewController {
     // MARK: - Methods
     
     func fetchAllUsers() {
-        
+        UserController.fetchAllUsers { (users) in
+            self.allUsers = users
+        }
     }
 
     // MARK: - Actions

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 class CalibrateLoweredViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class CalibrateLoweredViewController: UIViewController {
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
     @IBOutlet weak var loweredImageView: UIImageView!
     @IBOutlet weak var recalibrateButton: UIButton!
+    
+    var calibrations: [CMGyroData]?
     
     // MARK: - View
     
@@ -34,6 +37,8 @@ class CalibrateLoweredViewController: UIViewController {
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
         // Save all calibrations
+        let destinationViewController = presentingViewController as? SetUpDuelViewController
+        destinationViewController?.calibrations = calibrations
         dismissViewControllerAnimated(true, completion: nil)
     }
     

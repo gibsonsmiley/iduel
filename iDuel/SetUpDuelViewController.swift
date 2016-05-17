@@ -23,6 +23,8 @@ class SetUpDuelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        displayWithInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +33,17 @@ class SetUpDuelViewController: UIViewController {
     
     // MARK: - Methods
     
-    
+    func displayWithInfo() {
+        if opponent == nil || calibrations == nil {
+            beginDuelButton.enabled = false
+        } else {
+            beginDuelButton.enabled = true
+        }
+        guard let opponent = opponent else { return }
+            selectOpponentButton.setTitle("\(opponent.username) (Tap to choose again)", forState: .Normal)
+        guard calibrations != nil else { return }
+        calibratePhoneButton.setTitle("Calibrated!", forState: .Normal)
+    }
     
     // MARK: - Actions
     

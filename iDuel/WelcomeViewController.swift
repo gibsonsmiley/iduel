@@ -15,6 +15,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var toSetUpButton: UIButton!
     @IBOutlet weak var disclaimerLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
     // MARK: - View
     
@@ -33,12 +34,14 @@ class WelcomeViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func toSetUpButtonTapped(sender: AnyObject) {
+        errorLabel.hidden = true
         if nicknameTextField.text != "" {
             performSegueWithIdentifier("toSetUpDuel", sender: self)
             // Create new temporary user
             // Move to set up view
         } else {
-            
+            errorLabel.hidden = false
+            errorLabel.text = "You need to pick a nickname before continuing."
             // Display a message saying a nickname is required
         }
     }
