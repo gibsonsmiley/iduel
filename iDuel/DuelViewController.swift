@@ -13,6 +13,8 @@ class DuelViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
     
+    var duel: Duel?
+    
     // MARK: - View
     
     override func viewDidLoad() {

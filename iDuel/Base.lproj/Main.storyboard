@@ -103,6 +103,12 @@
                                     <action selector="toSetUpButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="O78-tb-kxe"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
+                                <rect key="frame" x="150" y="225" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -113,18 +119,22 @@
                             <constraint firstItem="9sS-tQ-oit" firstAttribute="top" secondItem="jGn-GF-41Z" secondAttribute="bottom" constant="50" id="MKb-ec-Hpz"/>
                             <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="ZZD-q2-sru" secondAttribute="bottom" constant="20" id="MO8-n2-15W"/>
                             <constraint firstItem="9sS-tQ-oit" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="SQB-XL-eC0"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="width" secondItem="EvE-u2-jVd" secondAttribute="width" id="TgX-yG-GX8"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="width" secondItem="fDG-0o-Xoa" secondAttribute="width" multiplier="1/2" id="XaN-ha-sWZ"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="top" secondItem="EvE-u2-jVd" secondAttribute="bottom" constant="8" id="YK8-Qd-LhJ"/>
                             <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="44c-5f-3FR" secondAttribute="bottom" constant="20" id="Ygd-n6-ADi"/>
                             <constraint firstAttribute="trailing" secondItem="44c-5f-3FR" secondAttribute="trailing" constant="20" id="Yu7-RV-7bf"/>
                             <constraint firstItem="ZZD-q2-sru" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="fAj-Mp-tqL"/>
                             <constraint firstAttribute="trailing" secondItem="9sS-tQ-oit" secondAttribute="trailing" constant="20" id="kw3-G0-x7z"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="o8A-6c-fo9"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="vSF-xM-cnY"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="top" secondItem="9sS-tQ-oit" secondAttribute="bottom" constant="8" id="zUe-dc-xLO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0xP-dL-1cT"/>
                     <connections>
                         <outlet property="disclaimerLabel" destination="ZZD-q2-sru" id="ycJ-4I-Lbe"/>
+                        <outlet property="errorLabel" destination="7p8-JD-uDV" id="B1A-Gd-Vad"/>
                         <outlet property="nicknameTextField" destination="9sS-tQ-oit" id="oFP-XV-o5E"/>
                         <outlet property="settingsButton" destination="44c-5f-3FR" id="v0L-EP-wBp"/>
                         <outlet property="toSetUpButton" destination="EvE-u2-jVd" id="1C0-Ch-Ekx"/>
@@ -765,7 +775,7 @@
         <image name="pointing" width="414" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hjW-aq-90n"/>
+        <segue reference="yDl-X2-uXZ"/>
         <segue reference="2pr-Uz-GX8"/>
     </inferredMetricsTieBreakers>
 </document>

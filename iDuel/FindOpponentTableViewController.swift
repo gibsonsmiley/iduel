@@ -9,7 +9,7 @@
 import UIKit
 
 class FindOpponentTableViewController: UITableViewController {
-    
+
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     var allUsers: [User]?
@@ -21,7 +21,7 @@ class FindOpponentTableViewController: UITableViewController {
         
         fetchAllUsers()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -33,15 +33,15 @@ class FindOpponentTableViewController: UITableViewController {
             self.allUsers = users
         }
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Table view data source
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if allUsers?.count > 0 {
             guard let allUsers = allUsers else { return 0 }
@@ -50,7 +50,7 @@ class FindOpponentTableViewController: UITableViewController {
             return 0
         }
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
         guard let allUsers = allUsers else { return cell }
@@ -60,7 +60,6 @@ class FindOpponentTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-<<<<<<< HEAD
         guard let destinationViewController = presentingViewController as? SetUpDuelViewController else { return }
         guard let allUsers = allUsers else { return }
         destinationViewController.opponent = allUsers[indexPath.row]
@@ -74,19 +73,7 @@ class FindOpponentTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-=======
-        let destinationViewController = 
->>>>>>> 84a66020f64c0e95b5b42f0fe50ca8cf42c281b9
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    */
+
 }
