@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:iDuel.xcodeproj">
+      location = "self:/Users/Gibson/Desktop/Develop/iDuel/Duellum.xcodeproj">
    </FileRef>
 </Workspace>
