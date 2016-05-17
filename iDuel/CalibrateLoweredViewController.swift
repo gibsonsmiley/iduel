@@ -9,7 +9,7 @@
 import UIKit
 
 class CalibrateLoweredViewController: UIViewController {
-
+    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var loweredTitleLabel: UILabel!
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
@@ -21,7 +21,7 @@ class CalibrateLoweredViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -38,17 +38,23 @@ class CalibrateLoweredViewController: UIViewController {
     }
     
     @IBAction func recalibrateButtonTapped(sender: AnyObject) {
-        // Start calibration or recalibration
+        // Begin capturing CMGryoData
+        
+        if recalibrateButton.titleLabel?.text == "Begin Calibration" {
+            recalibrateButton.setTitle("Recalibrate", forState: .Normal)
+        } else {
+            // Delete whatever info was saved
+        }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

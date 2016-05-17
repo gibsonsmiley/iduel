@@ -37,7 +37,13 @@ class CalibrateRaisedViewController: UIViewController {
     }
 
     @IBAction func recalibrateButtonTapped(sender: AnyObject) {
-        // Delete whatever info was saved
+        // Begin capturing CMGryoData
+
+        if recalibrateButton.titleLabel?.text == "Begin Calibration" {
+            recalibrateButton.setTitle("Recalibrate", forState: .Normal)
+        } else {
+            // Delete whatever info was saved
+        }
     }
     
     /*

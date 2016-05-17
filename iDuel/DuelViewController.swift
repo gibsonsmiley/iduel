@@ -30,6 +30,7 @@ class DuelViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
         // Stop duel and move back to set up view
         // Possibly alert opponent that duel was cancelled
     }

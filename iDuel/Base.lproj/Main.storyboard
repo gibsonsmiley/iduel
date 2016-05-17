@@ -85,7 +85,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44c-5f-3FR">
                                 <rect key="frame" x="516" y="547" width="64" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Settings"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="settingsButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="qDY-WW-c5u"/>
                                     <segue destination="LpM-aX-e9z" kind="presentation" identifier="toSettings" id="sMX-YY-NyW"/>
@@ -94,10 +96,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
                                 <rect key="frame" x="150" y="184" width="300" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Set Up Duel!"/>
+                                <state key="normal" title="Set Up Duel!">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="toSetUpButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="O78-tb-kxe"/>
-                                    <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="JuY-tV-JMN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -126,6 +129,7 @@
                         <outlet property="settingsButton" destination="44c-5f-3FR" id="v0L-EP-wBp"/>
                         <outlet property="toSetUpButton" destination="EvE-u2-jVd" id="1C0-Ch-Ekx"/>
                         <outlet property="welcomeTitleLabel" destination="jGn-GF-41Z" id="uma-Yl-PEo"/>
+                        <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="hjW-aq-90n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,7 +151,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfQ-H9-4N6">
                                 <rect key="frame" x="20" y="84" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Calibrate Phone"/>
+                                <state key="normal" title="Calibrate iPhone">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="calibratePhoneButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="V6w-on-vy0"/>
                                     <segue destination="4DM-pT-Dkw" kind="presentation" identifier="toCalibration" id="2T9-sj-hIS"/>
@@ -156,7 +162,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fck-BG-A6V">
                                 <rect key="frame" x="20" y="137" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Select Opponent"/>
+                                <state key="normal" title="Select Opponent">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="selectOpponentButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="4hq-ZV-qte"/>
                                     <segue destination="FXw-fO-elf" kind="presentation" identifier="toSelectOpponent" id="Y1x-rv-l08"/>
@@ -165,7 +173,9 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbP-2V-z2X">
                                 <rect key="frame" x="20" y="190" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Themes"/>
+                                <state key="normal" title="Themes">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="themesButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="T9n-gS-bVn"/>
                                 </connections>
@@ -173,9 +183,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsE-Le-8ki">
                                 <rect key="frame" x="20" y="284" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Begin Duel!"/>
+                                <state key="normal" title="Begin Duel!">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="beginDuelButton:" destination="OKq-eY-Neg" eventType="touchUpInside" id="oMT-sQ-h8Z"/>
+                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="iDuel" customModuleProvider="target" id="2pr-Uz-GX8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -229,7 +242,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-Yp-mid">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Fire!"/>
+                                <state key="normal" title="Fire!">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="fireButtonTapped:" destination="Ndw-Ve-2Vz" eventType="touchUpInside" id="Ryq-RV-p2X"/>
                                 </connections>
@@ -237,7 +252,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJN-Tn-h4M">
                                 <rect key="frame" x="274" y="20" width="53" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="Ndw-Ve-2Vz" eventType="touchUpInside" id="NCV-z2-TyM"/>
                                 </connections>
@@ -284,17 +301,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
                                 <rect key="frame" x="20" y="501" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Back To Set Up"/>
+                                <state key="normal" title="Back To Set Up">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="exitGameButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="YWn-cx-5wI"/>
+                                    <segue destination="OKq-eY-Neg" kind="custom" identifier="toSetUpCustom" id="yDl-X2-uXZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
                                 <rect key="frame" x="20" y="448" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Play Again"/>
+                                <state key="normal" title="Play Again">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
+                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="victoryToDuelCustom" customClass="TopDownSegue" customModule="iDuel" customModuleProvider="target" id="7eV-OX-TqF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -318,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-hS-jkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="651"/>
+            <point key="canvasLocation" x="2289" y="651"/>
         </scene>
         <!--Calibrate Intro View Controller-->
         <scene sceneID="c6U-7h-PKg">
@@ -454,7 +477,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCn-Qt-h66">
                                 <rect key="frame" x="20" y="441" width="560" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Recalibrate"/>
+                                <state key="normal" title="Begin Calibration">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="recalibrateButtonTapped:" destination="Otk-tm-Ohe" eventType="touchUpInside" id="RYY-qP-peD"/>
                                 </connections>
@@ -529,7 +554,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-Eh-8go">
                                 <rect key="frame" x="20" y="441" width="560" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Recalibrate"/>
+                                <state key="normal" title="Begin Calibration">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="recalibrateButtonTapped:" destination="Y63-UG-5vw" eventType="touchUpInside" id="MDW-OC-Gal"/>
                                 </connections>
@@ -583,7 +610,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZQf-Dt-9Kt" id="7nF-pp-z49">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -616,6 +643,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qSW-ho-HPa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -668,6 +698,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u6v-tl-iuo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -686,6 +718,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3VD-v4-gpL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -704,6 +738,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Faw-BS-eci">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -719,4 +755,8 @@
         <image name="holstered" width="414" height="414"/>
         <image name="pointing" width="414" height="414"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hjW-aq-90n"/>
+        <segue reference="2pr-Uz-GX8"/>
+    </inferredMetricsTieBreakers>
 </document>

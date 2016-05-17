@@ -33,10 +33,12 @@ class WelcomeViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func toSetUpButtonTapped(sender: AnyObject) {
-        if nicknameTextField.text != nil {
+        if nicknameTextField.text != "" {
+            performSegueWithIdentifier("toSetUpDuel", sender: self)
             // Create new temporary user
             // Move to set up view
         } else {
+            
             // Display a message saying a nickname is required
         }
     }
