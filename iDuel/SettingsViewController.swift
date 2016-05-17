@@ -1,5 +1,5 @@
 //
-//  FindOpponentTableViewController.swift
+//  SettingsViewController.swift
 //  iDuel
 //
 //  Created by Gibson Smiley on 5/16/16.
@@ -8,18 +8,15 @@
 
 import UIKit
 
-class FindOpponentTableViewController: UITableViewController {
+class SettingsViewController: UIViewController {
 
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    
-    var allUsers: [User]?
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchAllUsers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,33 +25,18 @@ class FindOpponentTableViewController: UITableViewController {
     
     // MARK: - Methods
     
-    func fetchAllUsers() {
-        
-    }
-
-    // MARK: - Actions
-
+    
+    
+    // MARK - Actions
+    
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if allUsers?.count > 0 {
-            guard let allUsers = allUsers else { return 0 }
-            return allUsers.count
-        } else {
-            return 0
-        }
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        // Save settings
+        dismissViewControllerAnimated(true, completion: nil)
     }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
-        
-        return cell
-    }
-
     /*
     // MARK: - Navigation
 

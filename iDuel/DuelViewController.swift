@@ -10,18 +10,35 @@ import UIKit
 
 class DuelViewController: UIViewController {
 
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var fireButton: UIButton!
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Methods
+    
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+        // Stop duel and move back to set up view
+        // Possibly alert opponent that duel was cancelled
+    }
 
+    @IBAction func fireButtonTapped(sender: AnyObject) {
+        // FIRE!
+    }
+    
     /*
     // MARK: - Navigation
 

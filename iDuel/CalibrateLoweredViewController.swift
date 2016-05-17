@@ -9,27 +9,52 @@
 import UIKit
 
 class CalibrateLoweredViewController: UIViewController {
-
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var loweredTitleLabel: UILabel!
+    @IBOutlet weak var loweredDescriptionLabel: UILabel!
+    @IBOutlet weak var loweredImageView: UIImageView!
+    @IBOutlet weak var recalibrateButton: UIButton!
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-    */
-
+    
+    // MARK: - Methods
+    
+    
+    
+    // MARK - Actions
+    
+    @IBAction func doneButtonTapped(sender: AnyObject) {
+        // Save all calibrations
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func recalibrateButtonTapped(sender: AnyObject) {
+        // Begin capturing CMGryoData
+        
+        if recalibrateButton.titleLabel?.text == "Begin Calibration" {
+            recalibrateButton.setTitle("Recalibrate", forState: .Normal)
+        } else {
+            // Delete whatever info was saved
+        }
+    }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

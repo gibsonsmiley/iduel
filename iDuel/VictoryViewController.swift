@@ -10,17 +10,33 @@ import UIKit
 
 class VictoryViewController: UIViewController {
 
+    @IBOutlet weak var victoryLabel: UILabel!
+    @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var exitGameButton: UIButton!
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func playAgainButtonTapped(sender: AnyObject) {
+        // Move back to duel view and create a new duel
+    }
+    
+    @IBAction func exitGameButtonTapped(sender: AnyObject) {
+        // Move back to set up duel view
+    }
 
     /*
     // MARK: - Navigation

@@ -10,17 +10,43 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    @IBOutlet weak var welcomeTitleLabel: UILabel!
+    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var toSetUpButton: UIButton!
+    @IBOutlet weak var disclaimerLabel: UILabel!
+    @IBOutlet weak var settingsButton: UIButton!
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Methods
+    
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func toSetUpButtonTapped(sender: AnyObject) {
+        if nicknameTextField.text != "" {
+            performSegueWithIdentifier("toSetUpDuel", sender: self)
+            // Create new temporary user
+            // Move to set up view
+        } else {
+            
+            // Display a message saying a nickname is required
+        }
+    }
+    
+    @IBAction func settingsButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("toSettings", sender: self)
+        // Display settings
+    }
 
     /*
     // MARK: - Navigation
