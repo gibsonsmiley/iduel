@@ -9,7 +9,7 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
+    
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var toSetUpButton: UIButton!
@@ -22,7 +22,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -36,13 +36,52 @@ class WelcomeViewController: UIViewController {
     @IBAction func toSetUpButtonTapped(sender: AnyObject) {
         errorLabel.hidden = true
         if nicknameTextField.text != "" {
-            performSegueWithIdentifier("toSetUpDuel", sender: self)
-            // Create new temporary user
-            // Move to set up view
+            guard let nickname = nicknameTextField.text else { return }
+            UserController.fetchAllUsers({ (users) in
+                var sameNicknameUser: User?
+                for user in users where user.nickname == "\(nickname)" {
+                    sameNicknameUser = user
+                    if sameNicknameUser == nil {
+                        UserController.createUser(nickname, completion: { (success, user) in
+                            if success {
+                                UserController.currentUser = user
+                                self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                            } else {
+                                self.errorLabel.hidden = false
+                                self.errorLabel.text = "It didn't work. Try again."
+                            }
+                        })
+                    } else {
+                        guard let user = sameNicknameUser else { return }
+                        let timestamp = user.timestamp
+                        if timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+                            UserController.deleteUser(user, completion: { (success) in
+                                if success {
+                                    UserController.createUser(nickname, completion: { (success, user) in
+                                        if success {
+                                            UserController.currentUser = user
+                                            self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                                        } else {
+                                            self.errorLabel.hidden = false
+                                            self.errorLabel.text = "It didn't work. Try again."
+                                        }
+                                    })
+                                } else {
+                                    // Deleting didn't work. Just make user try a different nickname.
+                                    self.errorLabel.hidden = false
+                                    self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
+                                }
+                            })
+                        } else {
+                            self.errorLabel.hidden = false
+                            self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
+                        }
+                    }
+                }
+            })
         } else {
             errorLabel.hidden = false
             errorLabel.text = "You need to pick a nickname before continuing."
-            // Display a message saying a nickname is required
         }
     }
     
@@ -50,15 +89,15 @@ class WelcomeViewController: UIViewController {
         performSegueWithIdentifier("toSettings", sender: self)
         // Display settings
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

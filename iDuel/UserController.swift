@@ -13,20 +13,28 @@ class UserController {
     static var currentUser: User?
     let kUser = "user"
     
-    static func createUser(username: String, completion: (success: Bool, user: User?) -> Void) {
+    static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
         FirebaseController.base.createUser("", password: "") { (error, response) in
             if let error = error {
                 print("\(error.localizedDescription)")
                 completion(success: false, user: nil)
             } else {
                 if let uid = response["uid"] as? String {
-                    var user = User(username: username, duelIDs: [])
+                    var user = User(nickname: nickname, duelIDs: [])
                     FirebaseController.base.childByAppendingPath("users").childByAppendingPath(uid).setValue(user.jsonValue)
                         user.save()
                         completion(success: true, user: user)
                         self.currentUser = user
                 }
             }
+        }
+    }
+    
+    static func deleteUser(user: User, completion: (success: Bool) -> Void) {
+        user.delete()
+        guard let userID = user.id else { completion(success: false); return }
+        fetchUserForIdentifier(userID) { (user) in
+            completion(success: true)
         }
     }
     
@@ -50,5 +58,9 @@ class UserController {
                 completion(users: [])
             }
         }
+    }
+    
+    static func checkNicknameAvailability() {
+        // May fill this in later
     }
 }

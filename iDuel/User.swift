@@ -11,11 +11,11 @@ import CoreMotion
 
 class User: Equatable, FirebaseType {
     
-    let username: String
-    var flick: CMGyroData?
-    var currentPosition: CMGyroData?
-    var calibrationLowered: CMGyroData?
-    var calibrationRaised: CMGyroData?
+    let nickname: String
+    var flick: CMRotationRate?
+    var currentPosition: CMRotationRate?
+    var calibrationLowered: CMRotationRate?
+    var calibrationRaised: CMRotationRate?
     var duelIDs: [String]? = []
     let timestamp: NSDate
     var id: String?
@@ -23,8 +23,8 @@ class User: Equatable, FirebaseType {
         return "users"
     }
     
-    init(username: String, flick: CMGyroData? = nil, currentPosition: CMGyroData? = nil, calibrationLowered: CMGyroData? = nil, calibrationRaised: CMGyroData? = nil, duelIDs:[String]? = [], id: String? = nil, timestamp: NSDate = NSDate()) {
-        self.username = username
+    init(nickname: String, flick: CMRotationRate? = nil, currentPosition: CMRotationRate? = nil, calibrationLowered: CMRotationRate? = nil, calibrationRaised: CMRotationRate? = nil, duelIDs:[String]? = [], id: String? = nil, timestamp: NSDate = NSDate()) {
+        self.nickname = nickname
         self.flick = flick
         self.currentPosition = currentPosition
         self.calibrationLowered = calibrationLowered
@@ -33,7 +33,7 @@ class User: Equatable, FirebaseType {
         self.timestamp = timestamp
     }
     
-    private let kUsername = "username"
+    private let kNickname = "nickname"
     private let kCurrentPosition = "currentPosition"
     private let kCalibrationLowered = "calibrationLowered"
     private let kCalibrationRaised = "calibrationRaised"
@@ -41,7 +41,7 @@ class User: Equatable, FirebaseType {
     private let kTimestamp = "timestamp"
     
     var jsonValue: [String : AnyObject] {
-        var json: [String: AnyObject] = [kUsername: username, kTimestamp: timestamp]
+        var json: [String: AnyObject] = [kNickname: nickname, kTimestamp: timestamp]
         if let duelIDs = duelIDs {
             json.updateValue(duelIDs, forKey: kDuelIDs)
         }
@@ -49,13 +49,13 @@ class User: Equatable, FirebaseType {
     }
     
     required init?(json: [String: AnyObject], id: String) {
-        guard let username = json[kUsername] as? String,
+        guard let nickname = json[kNickname] as? String,
             timestamp = json[kTimestamp] as? NSTimeInterval else { return nil }
         self.id = id
-        self.username = username
-        self.currentPosition = json[kCurrentPosition] as? CMGyroData
-        self.calibrationLowered = json[kCalibrationLowered] as? CMGyroData
-        self.calibrationRaised = json[kCalibrationRaised] as? CMGyroData
+        self.nickname = nickname
+        self.currentPosition = json[kCurrentPosition] as? CMRotationRate
+        self.calibrationLowered = json[kCalibrationLowered] as? CMRotationRate
+        self.calibrationRaised = json[kCalibrationRaised] as? CMRotationRate
         self.timestamp = NSDate(timeIntervalSince1970: timestamp)
         if let duelIDs = json[kDuelIDs] as? [String] {
             self.duelIDs = duelIDs
