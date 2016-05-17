@@ -51,8 +51,17 @@ class FindOpponentTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
-        
+        guard let allUsers = allUsers else { return cell }
+        let user = allUsers[indexPath.row]
+        cell.textLabel?.text = user.username
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let destinationViewController = presentingViewController as? SetUpDuelViewController else { return }
+        guard let allUsers = allUsers else { return }
+        destinationViewController.opponent = allUsers[indexPath.row]
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     /*
