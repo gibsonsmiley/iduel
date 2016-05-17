@@ -11,11 +11,10 @@ import CoreMotion
 
 class User {
     
-    private let kCurrentUser = "currentUser"
+    private let kUsername = "username"
     private let kCurrentPosition = "currentPosition"
     private let kCalibrationLowered = "calibrationLowered"
     private let kCalibrationRaised = "calibrationRaised"
-    
     
     let username: String
     var currentUser: String?
@@ -31,21 +30,16 @@ class User {
         self.currentPosition = currentPosition
         self.calibrationLowered = calibrationLowered
         self.calibrationRaised = calibrationRaised
-        
     }
     
-    
     required init?(json: [String: AnyObject]) {
-        guard let currentUser = json[kCurrentUser] as? String,
+        guard let username = json[kUsername] as? String,
             currentPosition = json[kCurrentPosition] as? CMGyroData,
             calibrationLowered = json[kCalibrationLowered] as? CMGyroData,
             calibrationRaised = json[kCalibrationRaised] as? CMGyroData else {return nil}
-        self.currentUser = currentUser
+        self.username = username
         self.currentPosition = currentPosition
         self.calibrationLowered = calibrationLowered
         self.calibrationRaised = calibrationRaised
-    
-        
-    
     }
 }

@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -51,12 +51,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-595" y="-145"/>
+            <point key="canvasLocation" x="-587" y="-141"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="ij9-SL-PRv">
             <objects>
-                <viewController id="jhe-fb-eAy" customClass="WelcomeViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jhe-fb-eAy" customClass="WelcomeViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IVi-fO-QkJ"/>
                         <viewControllerLayoutGuide type="bottom" id="KCh-F4-RX1"/>
@@ -139,7 +139,7 @@
         <!--Set Up Duel View Controller-->
         <scene sceneID="q2w-Su-dPb">
             <objects>
-                <viewController id="OKq-eY-Neg" customClass="SetUpDuelViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OKq-eY-Neg" customClass="SetUpDuelViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fxP-CQ-g3j"/>
                         <viewControllerLayoutGuide type="bottom" id="0N3-el-oSV"/>
@@ -188,7 +188,7 @@
                                 </state>
                                 <connections>
                                     <action selector="beginDuelButton:" destination="OKq-eY-Neg" eventType="touchUpInside" id="oMT-sQ-h8Z"/>
-                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="iDuel" customModuleProvider="target" id="2pr-Uz-GX8"/>
+                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="2pr-Uz-GX8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -230,7 +230,7 @@
         <!--Duel View Controller-->
         <scene sceneID="8xj-bI-nUN">
             <objects>
-                <viewController id="Ndw-Ve-2Vz" customClass="DuelViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ndw-Ve-2Vz" customClass="DuelViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QHo-jq-KYO"/>
                         <viewControllerLayoutGuide type="bottom" id="gL9-NG-9T5"/>
@@ -283,7 +283,7 @@
         <!--Victory View Controller-->
         <scene sceneID="qc5-1D-PaR">
             <objects>
-                <viewController id="QlS-8e-AiX" customClass="VictoryViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QlS-8e-AiX" customClass="VictoryViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QU5-Xa-1Gw"/>
                         <viewControllerLayoutGuide type="bottom" id="TiS-Gr-jtO"/>
@@ -317,7 +317,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="victoryToDuelCustom" customClass="TopDownSegue" customModule="iDuel" customModuleProvider="target" id="7eV-OX-TqF"/>
+                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="victoryToDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="7eV-OX-TqF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -346,7 +346,7 @@
         <!--Calibrate Intro View Controller-->
         <scene sceneID="c6U-7h-PKg">
             <objects>
-                <viewController id="tqv-Dz-jFR" customClass="CalibrateIntroViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tqv-Dz-jFR" customClass="CalibrateIntroViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LNf-ag-r4z"/>
                         <viewControllerLayoutGuide type="bottom" id="qci-Ia-erF"/>
@@ -447,7 +447,7 @@
         <!--Calibrate Raised View Controller-->
         <scene sceneID="EsG-oC-VSR">
             <objects>
-                <viewController id="Otk-tm-Ohe" customClass="CalibrateRaisedViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Otk-tm-Ohe" customClass="CalibrateRaisedViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JAQ-aT-eEX"/>
                         <viewControllerLayoutGuide type="bottom" id="h66-PS-Z9J"/>
@@ -524,7 +524,7 @@
         <!--Calibrate Lowered View Controller-->
         <scene sceneID="vsr-rk-I3k">
             <objects>
-                <viewController id="Y63-UG-5vw" customClass="CalibrateLoweredViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y63-UG-5vw" customClass="CalibrateLoweredViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x3X-Qt-Kny"/>
                         <viewControllerLayoutGuide type="bottom" id="Tg4-mg-5Hb"/>
@@ -600,18 +600,27 @@
         <!--Find Opponent Table View Controller-->
         <scene sceneID="b7N-cv-zv5">
             <objects>
-                <tableViewController id="E7c-NL-zWA" customClass="FindOpponentTableViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="E7c-NL-zWA" customClass="FindOpponentTableViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkE-Wj-WOF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" id="ZQf-Dt-9Kt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="Tb1-S1-IaZ" style="IBUITableViewCellStyleDefault" id="ZQf-Dt-9Kt">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZQf-Dt-9Kt" id="7nF-pp-z49">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tb1-S1-IaZ">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -654,12 +663,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4h-YZ-v6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="651"/>
+            <point key="canvasLocation" x="-501" y="651"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="5Gc-cw-1rO">
             <objects>
-                <viewController id="178-M2-vrF" customClass="SettingsViewController" customModule="iDuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="178-M2-vrF" customClass="SettingsViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cod-zK-4hY"/>
                         <viewControllerLayoutGuide type="bottom" id="pJ6-PW-PnI"/>
