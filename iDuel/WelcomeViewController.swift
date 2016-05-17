@@ -56,7 +56,8 @@ class WelcomeViewController: UIViewController {
                     } else {
                         
                         // Nickname already exists, check timestamp
-                        guard let user = snapshot.value as? User else { return }
+                        guard let jsonDictionary = snapshot.value as? [String : [String : AnyObject]] else { return }
+                        guard let user = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)}).first else { return }
                         let timestamp = user.timestamp
                         if timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
                             

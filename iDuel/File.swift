@@ -10,6 +10,8 @@ import Foundation
 
 class TestFile {
     
+    // MARK: - This is the old way of picking a nickname if the new way doesn't work
+    
     //                UserController.fetchAllUsers({ (users) in
     //                    if users != nil {
     //                        var sameNicknameUser: User?
