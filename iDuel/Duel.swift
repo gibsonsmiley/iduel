@@ -14,6 +14,7 @@ class Duel {
     private let kPlayer2 = "player2"
     private let kDuelStart = "duelStart"
     private let kFiredTime = "firedTime"
+    private let kScore = "score"
     
     let player1: String
     let player2: String
@@ -27,20 +28,18 @@ class Duel {
         self.duelStart = duelStart
         self.firedTime = firedTime
         self.score = score
-        
     }
     
-    
-  required init?(json:[String: AnyObject]) {
+    required init?(json:[String: AnyObject]) {
         guard let player1 = json[kPlayer1] as? String,
             player2 = json[kPlayer2] as? String,
             duelStart = json[kDuelStart] as? NSDate,
-            firedTime = json[kFiredTime] as? NSDate else {return nil }
+            firedTime = json[kFiredTime] as? NSDate,
+            score = json[kScore] as? (Int, Int) else {return nil }
+        self.score = score
         self.player1 = player1
         self.player2 = player2
         self.duelStart = duelStart
         self.firedTime = firedTime
-        
-    
     }
 }
