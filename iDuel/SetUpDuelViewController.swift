@@ -66,7 +66,6 @@ class SetUpDuelViewController: UIViewController {
             currentUser = UserController.currentUser else { return }
             DuelController.createDuel(currentUser, player2: opponent, completion: { (success, duel) in
                 if success {
-                    
                     // Move to duel view
                 } else {
                     // Display error alert
@@ -77,14 +76,16 @@ class SetUpDuelViewController: UIViewController {
         }
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDuelCustom" {
+            guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
+            guard let duel = self.duel else { return }
+            destinationViewController.updateWithDuel(duel)
+            _ = destinationViewController.view
+        }
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
 
 }

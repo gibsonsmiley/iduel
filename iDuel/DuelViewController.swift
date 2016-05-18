@@ -27,7 +27,9 @@ class DuelViewController: UIViewController {
     
     // MARK: Methods
     
-    
+    func updateWithDuel(duel: Duel) {
+        self.duel = duel
+    }
     
     // MARK: - Actions
     
