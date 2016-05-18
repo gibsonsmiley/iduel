@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */; };
 		C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C38F1CEA5D0800F3DCA7 /* User.swift */; };
 		C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3911CEA5D1800F3DCA7 /* UserController.swift */; };
 		C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3931CEA5D2800F3DCA7 /* Duel.swift */; };
@@ -32,12 +33,12 @@
 		F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA08E1CEA667800AD16A3 /* CalibrateRaisedViewController.swift */; };
 		F0BBA0911CEA668300AD16A3 /* CalibrateLoweredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0901CEA668300AD16A3 /* CalibrateLoweredViewController.swift */; };
 		F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */; };
-		F0BBA0951CEA79BA00AD16A3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0941CEA79BA00AD16A3 /* SettingsViewController.swift */; };
 		F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */; };
 		F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E399F11CEBD0E800B8FB07 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C349C38F1CEA5D0800F3DCA7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C349C3911CEA5D1800F3DCA7 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C349C3931CEA5D2800F3DCA7 /* Duel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duel.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		F0BBA08E1CEA667800AD16A3 /* CalibrateRaisedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateRaisedViewController.swift; sourceTree = "<group>"; };
 		F0BBA0901CEA668300AD16A3 /* CalibrateLoweredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateLoweredViewController.swift; sourceTree = "<group>"; };
 		F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindOpponentTableViewController.swift; sourceTree = "<group>"; };
-		F0BBA0941CEA79BA00AD16A3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopDownSegue.swift; sourceTree = "<group>"; };
 		F0E399F11CEBD0E800B8FB07 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,7 +167,7 @@
 				F0BBA08E1CEA667800AD16A3 /* CalibrateRaisedViewController.swift */,
 				F0BBA0901CEA668300AD16A3 /* CalibrateLoweredViewController.swift */,
 				F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */,
-				F0BBA0941CEA79BA00AD16A3 /* SettingsViewController.swift */,
+				51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -256,9 +256,9 @@
 				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
 				C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */,
 				F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */,
-				F0BBA0951CEA79BA00AD16A3 /* SettingsViewController.swift in Sources */,
 				F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */,
 				F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */,
+				51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */,
 				F0BBA08D1CEA666700AD16A3 /* CalibrateIntroViewController.swift in Sources */,
 				F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */,
 				C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */,

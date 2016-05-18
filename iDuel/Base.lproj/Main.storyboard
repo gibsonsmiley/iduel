@@ -675,39 +675,157 @@
             </objects>
             <point key="canvasLocation" x="-501" y="651"/>
         </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="5Gc-cw-1rO">
+        <!--Settings-->
+        <scene sceneID="ljU-OW-ho0">
             <objects>
-                <viewController id="178-M2-vrF" customClass="SettingsViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cod-zK-4hY"/>
-                        <viewControllerLayoutGuide type="bottom" id="pJ6-PW-PnI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OaE-Po-XfU">
+                <tableViewController id="CAv-is-Xnq" customClass="SettingsTableViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MnU-r6-fjd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="JMo-6I-XYz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="x9G-iF-z06">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Sound and Vibration" id="dZx-Js-cRH">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jNT-SJ-UgF">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-HI-iKA">
+                                                    <rect key="frame" x="8" y="12" width="108" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPs-g1-FuE">
+                                                    <rect key="frame" x="543" y="7" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="soundEffectSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="Iqf-XQ-sdr"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HPs-g1-FuE" firstAttribute="trailing" secondItem="gL3-WE-ERt" secondAttribute="trailingMargin" id="Icq-b6-Jpl"/>
+                                                <constraint firstItem="VQ8-HI-iKA" firstAttribute="centerY" secondItem="HPs-g1-FuE" secondAttribute="centerY" id="QK5-PJ-jt9"/>
+                                                <constraint firstItem="VQ8-HI-iKA" firstAttribute="centerY" secondItem="gL3-WE-ERt" secondAttribute="centerY" id="vTA-HG-JJ2"/>
+                                                <constraint firstItem="VQ8-HI-iKA" firstAttribute="leading" secondItem="gL3-WE-ERt" secondAttribute="leadingMargin" id="ybY-Ir-7yQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0rc-pt-sw0">
+                                        <rect key="frame" x="0.0" y="158" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rc-pt-sw0" id="y5N-Aa-IT1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h89-mh-kNA">
+                                                    <rect key="frame" x="8" y="11" width="69" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-Fe-tOq">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="vibrationSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="dQS-hl-1ai"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GfM-Fe-tOq" firstAttribute="trailing" secondItem="y5N-Aa-IT1" secondAttribute="trailingMargin" id="YPc-ri-Ejc"/>
+                                                <constraint firstItem="h89-mh-kNA" firstAttribute="leading" secondItem="y5N-Aa-IT1" secondAttribute="leadingMargin" id="a9Y-iT-oMc"/>
+                                                <constraint firstItem="h89-mh-kNA" firstAttribute="centerY" secondItem="y5N-Aa-IT1" secondAttribute="centerY" id="bfM-lw-75G"/>
+                                                <constraint firstItem="h89-mh-kNA" firstAttribute="centerY" secondItem="GfM-Fe-tOq" secondAttribute="centerY" id="m87-RM-lK7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Left-Handed" id="OK3-rV-Pah">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gab-FX-UOT">
+                                        <rect key="frame" x="0.0" y="252" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="keN-MZ-DOJ">
+                                                    <rect key="frame" x="543" y="7" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="leftHandedSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="bIs-Hf-4HV"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left-Handed Gun" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1U-Cv-pan">
+                                                    <rect key="frame" x="8" y="12" width="133" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y1U-Cv-pan" firstAttribute="leading" secondItem="j0n-oF-UBc" secondAttribute="leadingMargin" id="XWt-OX-fMP"/>
+                                                <constraint firstItem="Y1U-Cv-pan" firstAttribute="centerY" secondItem="j0n-oF-UBc" secondAttribute="centerY" id="gWi-Lz-Y6t"/>
+                                                <constraint firstItem="Y1U-Cv-pan" firstAttribute="centerY" secondItem="keN-MZ-DOJ" secondAttribute="centerY" id="gnj-Vs-Y9c"/>
+                                                <constraint firstItem="keN-MZ-DOJ" firstAttribute="trailing" secondItem="j0n-oF-UBc" secondAttribute="trailingMargin" id="gpw-2l-Q4o"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="OFC-PJ-BwF">
+                                        <rect key="frame" x="0.0" y="346" width="600" height="227"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="227"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
+                                                    <rect key="frame" x="8" y="8" width="584" height="211"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or linaccessibility or use of the elements of this game application. for more information please visit, www.duellum.com</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="CAv-is-Xnq" id="HNP-PU-EoL"/>
+                            <outlet property="delegate" destination="CAv-is-Xnq" id="5jT-e2-juk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="Ba7-Fj-OeY">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Haf-Jk-pXb">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="178-M2-vrF" id="lSI-fX-L2H"/>
+                                <action selector="cancelButtonTapped:" destination="CAv-is-Xnq" id="TEv-c0-2D9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lhh-EW-hnw">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="hYU-ee-nxw">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="178-M2-vrF" id="pYy-bx-MoU"/>
+                                <action selector="saveButtonTapped:" destination="CAv-is-Xnq" id="hcC-77-0eP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="x9G-iF-z06" id="jug-JO-t1R"/>
-                        <outlet property="saveButton" destination="Lhh-EW-hnw" id="1Mm-e2-co9"/>
+                        <outlet property="cancelButton" destination="Haf-Jk-pXb" id="DGE-8H-ek8"/>
+                        <outlet property="leftHandedSwitch" destination="keN-MZ-DOJ" id="DT0-IS-EcK"/>
+                        <outlet property="saveButton" destination="hYU-ee-nxw" id="Pw2-tm-7hT"/>
+                        <outlet property="soundEffectSwitch" destination="HPs-g1-FuE" id="5jZ-rY-ef4"/>
+                        <outlet property="vibrationSwitch" destination="GfM-Fe-tOq" id="4FT-hB-NHz"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eSd-5m-zD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dv-bd-I7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="1378"/>
+            <point key="canvasLocation" x="-567" y="1378"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Chq-5k-3Sz">
@@ -762,7 +880,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="178-M2-vrF" kind="relationship" relationship="rootViewController" id="MKf-U2-e8n"/>
+                        <segue destination="CAv-is-Xnq" kind="show" id="d2J-1J-xyZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VW9-K5-xa1" userLabel="First Responder" sceneMemberID="firstResponder"/>
