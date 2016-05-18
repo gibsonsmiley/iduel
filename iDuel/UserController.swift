@@ -14,18 +14,6 @@ class UserController {
     static var currentUser: User?
     let kUser = "user"
     
-    var user: User {
-        let request = NSFetchRequest(entityName: "User")
-        
-        let moc = Stack.sharedStack.managedObjectContext
-        
-        do {
-         return try moc.executeRequest(request) as! User
-        } catch {
-            return []
-        }
-    }
-    
     static func createUser(username: String, completion: (success: Bool, user: User?) -> Void) {
         FirebaseController.base.createUser("", password: "") { (error, response) in
             if let error = error {
