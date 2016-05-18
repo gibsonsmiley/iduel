@@ -62,7 +62,7 @@ class DuelController {
     // Calls the wait for countdown method, then the check fire method, then the victory method
     static func startDuel(duel: Duel) {
         guard let duelID = duel.id else { return }
-        FirebaseController.dataAtEndpoint("duels/\(duelID)/countdown", completion: <#T##(data: AnyObject?) -> Void#>)
+        
     }
     
     // recognizes user's button tap and sends a value to Firebase
@@ -77,19 +77,15 @@ class DuelController {
         guard let duelID = duel.id else { return }
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired") { (data) in
             guard let shotsFired = data as? [String] else { return }
-            var users: [User]
             for ID in shotsFired {
                 UserController.fetchUserForIdentifier(ID, completion: { (user) in
+                    var users: [User] = []
                     guard let user = user else { return }
                     users.append(user)
+                    guard let winner = users.first else { return }
+                    guard let loser = users.last else { return }
+                    completion(winner: winner, loser: loser)
                 })
-            }
-            if users != [] {
-                guard let winner = users.first else { return }
-                guard let loser = users.last else { return }
-                completion(winner: winner, loser: loser)
-            } else {
-                // users is empty for in loop may not have initiated
             }
         }
     }
