@@ -41,22 +41,9 @@ class WelcomeViewController: UIViewController {
                 
                 // Check if nickname already exists
                 FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(nickname)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                    if snapshot.value == nil {
-                        
-                        // Nickname doesn't already exist, create new user
-                        UserController.createUser(nickname, completion: { (success, user) in
-                            if success {
-                                UserController.currentUser = user
-                                self.performSegueWithIdentifier("toSetUpDuel", sender: self)
-                            } else {
-                                self.errorLabel.hidden = false
-                                self.errorLabel.text = "It didn't work. Try again."
-                            }
-                        })
-                    } else {
+                    if let jsonDictionary = snapshot.value as? [String : [String : AnyObject]] {
                         
                         // Nickname already exists, check timestamp
-                        guard let jsonDictionary = snapshot.value as? [String : [String : AnyObject]] else { return }
                         guard let user = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)}).first else { return }
                         if user == UserController.currentUser {
                             self.performSegueWithIdentifier("toSetUpDuel", sender: self)
@@ -90,6 +77,18 @@ class WelcomeViewController: UIViewController {
                                 self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
                             }
                         }
+                    } else {
+                        
+                        // Nickname doesn't already exist, create new user
+                        UserController.createUser(nickname, completion: { (success, user) in
+                            if success {
+                                UserController.currentUser = user
+                                self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                            } else {
+                                self.errorLabel.hidden = false
+                                self.errorLabel.text = "It didn't work. Try again."
+                            }
+                        })
                     }
                 })
             } else {
