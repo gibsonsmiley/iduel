@@ -10,8 +10,10 @@ import Foundation
 
 class Duel: Equatable, FirebaseType {
     
-    let player1: String
-    let player2: String
+    // MARK: - "ready" and "shotsFired" properties aren't going to work
+    
+    let player1: User
+    let player2: User
     let score: (Int, Int)?
     let ready: NSDate?
     let shotsFired: NSTimeInterval?
@@ -20,7 +22,7 @@ class Duel: Equatable, FirebaseType {
         return "duel"
     }
     
-    init(player1: String, player2: String, score:(Int, Int)?, ready: NSDate?, shotsFired: NSTimeInterval? ) {
+    init(player1: User, player2: User, score:(Int, Int)?, ready: NSDate?, shotsFired: NSTimeInterval? ) {
         self.player1 = player1
         self.player2 = player2
         self.ready = ready
@@ -46,8 +48,8 @@ class Duel: Equatable, FirebaseType {
     }
     
     required init?(json:[String: AnyObject], id: String) {
-        guard let player1 = json[kPlayer1] as? String,
-            player2 = json[kPlayer2] as? String,
+        guard let player1 = json[kPlayer1] as? User,
+            player2 = json[kPlayer2] as? User,
             ready = json[kReady] as? NSDate,
             shotsFired = json[kShotsFired] as? NSTimeInterval?,
             score = json[kScore] as? (Int, Int) else {return nil }
