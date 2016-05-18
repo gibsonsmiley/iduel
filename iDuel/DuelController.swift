@@ -27,8 +27,7 @@ class DuelController {
     
     // Method to add player to duel's ready array, this is the gun cock
     // This is appending data to the firebase ready array under the user's id
-    static func playerReady(user: User, duel: Duel/*, usersCock: CMRotationRate?*/) {
-//        guard let usersCock = usersCock else { return } // I don't think this is actually necessary, motion controller should be dealing with all things motion
+    static func playerReady(user: User, duel: Duel) {
         guard let userID = user.id else { return }
         guard let duelID = duel.id else { return }
         FirebaseController.base.childByAppendingPath("duels/\(duelID)/status").setValue("\(userID)")
@@ -66,12 +65,36 @@ class DuelController {
         FirebaseController.dataAtEndpoint("duels/\(duelID)/countdown", completion: <#T##(data: AnyObject?) -> Void#>)
     }
     
-    // Determines who was the winner and loser and displays the appropriate response to both
-    static func victory(duel : Duel, firstShot: User, completion: (winner: User, loser: User) -> Void) {
-        
+    // recognizes user's button tap and sends a value to Firebase
+    static func fire(duel: Duel, user: User) {
+        guard let duelID = duel.id else { return }
+        guard let userID = user.id else { return }
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").setValue("\(userID)")
     }
     
-    // Observes firebase as the duel/\(id)/shotsFired, to observe who shot first
+    // Determines who was the winner and loser and displays the appropriate response to both
+    static func victory(duel : Duel, completion: (winner: User, loser: User) -> Void) {
+        guard let duelID = duel.id else { return }
+        FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired") { (data) in
+            guard let shotsFired = data as? [String] else { return }
+            var users: [User]
+            for ID in shotsFired {
+                UserController.fetchUserForIdentifier(ID, completion: { (user) in
+                    guard let user = user else { return }
+                    users.append(user)
+                })
+            }
+            if users != [] {
+                guard let winner = users.first else { return }
+                guard let loser = users.last else { return }
+                completion(winner: winner, loser: loser)
+            } else {
+                // users is empty for in loop may not have initiated
+            }
+        }
+    }
+    
+    // Observes firebase as the duel/\(id)/shotsFired, to observe who shot first // victory function seems to cover anything this function would need to do
     static func checkFire(completion: (firstShot: User) -> Void) {
         
     }
@@ -95,10 +118,5 @@ class DuelController {
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate)) // May need to exit or invalidate this: http://stackoverflow.com/a/25120393/3681880
             })
         }
-    }
-    
-    // recognizes user's button tap and sends a value to Firebase
-    static func fire(duel: Duel, user: User) {
-        
     }
 }
