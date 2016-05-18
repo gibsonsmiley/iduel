@@ -9,60 +9,37 @@
 import Foundation
 import CoreMotion
 
-class User: Equatable, FirebaseType {
+class User {
     
-    let nickname: String
+    private let kUsername = "username"
+    private let kCurrentPosition = "currentPosition"
+    private let kCalibrationLowered = "calibrationLowered"
+    private let kCalibrationRaised = "calibrationRaised"
+    
+    let username: String
+    var currentUser: String?
     var flick: CMRotationRate?
     var currentPosition: CMRotationRate?
     var calibrationLowered: CMRotationRate?
     var calibrationRaised: CMRotationRate?
-    var duelIDs: [String]? = []
-    let timestamp: NSDate
-    var id: String?
-    var endpoint: String {
-        return "users"
-    }
     
-    init(nickname: String, flick: CMRotationRate? = nil, currentPosition: CMRotationRate? = nil, calibrationLowered: CMRotationRate? = nil, calibrationRaised: CMRotationRate? = nil, duelIDs:[String]? = [], id: String? = nil, timestamp: NSDate = NSDate()) {
-        self.nickname = nickname
+    init(username: String, currentUser: String, flick: CMRotationRate?, currentPosition: CMRotationRate?, calibrationLowered: CMRotationRate?, calibrationRaised: CMRotationRate?) {
+        self.username = username
+        self.currentUser = currentUser
         self.flick = flick
         self.currentPosition = currentPosition
         self.calibrationLowered = calibrationLowered
         self.calibrationRaised = calibrationRaised
-        self.duelIDs = duelIDs
-        self.timestamp = timestamp
     }
     
-    private let kNickname = "nickname"
-    private let kCurrentPosition = "currentPosition"
-    private let kCalibrationLowered = "calibrationLowered"
-    private let kCalibrationRaised = "calibrationRaised"
-    private let kDuelIDs = "duelIDs"
-    private let kTimestamp = "timestamp"
-    
-    var jsonValue: [String : AnyObject] {
-        var json: [String: AnyObject] = [kNickname: nickname, kTimestamp: timestamp.timeIntervalSince1970]
-        if let duelIDs = duelIDs {
-            json.updateValue(duelIDs, forKey: kDuelIDs)
-        }
-        return json
+    required init?(json: [String: AnyObject], identifier: String) {
+        guard let username = json[kUsername] as? String,
+            currentPosition = json[kCurrentPosition] as? CMRotationRate,
+            calibrationLowered = json[kCalibrationLowered] as? CMRotationRate,
+            calibrationRaised = json[kCalibrationRaised] as? CMRotationRate else {return nil}
+        self.username = username
+        self.currentPosition = currentPosition
+        self.calibrationLowered = calibrationLowered
+        self.calibrationRaised = calibrationRaised
     }
-    
-    required init?(json: [String: AnyObject], id: String) {
-        guard let nickname = json[kNickname] as? String,
-            timestamp = json[kTimestamp] as? NSTimeInterval else { return nil }
-        self.id = id
-        self.nickname = nickname
-        self.currentPosition = json[kCurrentPosition] as? CMRotationRate
-        self.calibrationLowered = json[kCalibrationLowered] as? CMRotationRate
-        self.calibrationRaised = json[kCalibrationRaised] as? CMRotationRate
-        self.timestamp = NSDate(timeIntervalSince1970: timestamp)
-        if let duelIDs = json[kDuelIDs] as? [String] {
-            self.duelIDs = duelIDs
-        }
-    }
-}
-
-func == (lhs: User, rhs: User) -> Bool {
-    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
