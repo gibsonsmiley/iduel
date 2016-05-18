@@ -25,6 +25,12 @@ class SetUpDuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        displayWithInfo()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         displayWithInfo()
     }
 
@@ -35,7 +41,7 @@ class SetUpDuelViewController: UIViewController {
     // MARK: - Methods
     
     func displayWithInfo() {
-        if opponent == nil || calibrations == nil {
+        if opponent == nil && calibrations == nil {
             beginDuelButton.enabled = false
         } else {
             beginDuelButton.enabled = true
@@ -67,6 +73,7 @@ class SetUpDuelViewController: UIViewController {
             DuelController.createDuel(currentUser, player2: opponent, completion: { (success, duel) in
                 if success {
                     // Move to duel view
+                    
                 } else {
                     // Display error alert
                 }
@@ -85,7 +92,5 @@ class SetUpDuelViewController: UIViewController {
             destinationViewController.updateWithDuel(duel)
             _ = destinationViewController.view
         }
-        // Get the new view controller using segue.destinationViewController.
     }
-
 }

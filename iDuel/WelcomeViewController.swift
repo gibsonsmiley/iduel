@@ -49,7 +49,7 @@ class WelcomeViewController: UIViewController {
                             self.performSegueWithIdentifier("toSetUpDuel", sender: self)
                         } else {
                             let timestamp = user.timestamp
-                            if timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+                            if timestamp.timeIntervalSinceNow < 24 * 60 * 60 {
                                 
                                 // Nickname was created over 24 hours ago, delete it and create a new one with the username
                                 UserController.deleteUser(user, completion: { (success) in
