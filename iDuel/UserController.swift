@@ -54,6 +54,20 @@ class UserController {
         FirebaseController.dataAtEndpoint("users") { (data) in
             if let json = data as? [String: AnyObject] {
                 let users = json.flatMap({User(json: $0.1 as! [String: AnyObject], id: $0.0)})
+                
+                // An attempt to delete unnecessary users so the select opponent table view isn't filled with people who made an account once and never touched it again.
+//                var users: [User]?
+//                for user in allUsers {
+//                    if user.timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+//                        UserController.deleteUser(user, completion: { (success) in
+//                            if success {
+//                                
+//                            } else {
+//                                users?.append(user)
+//                            }
+//                        })
+//                    }
+//                }
                 completion(users: users)
             } else {
                 completion(users: nil)
