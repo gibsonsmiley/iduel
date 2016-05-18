@@ -56,9 +56,11 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func soundEffectSwitched(sender: AnyObject) {
         if soundEffectSwitch.on == true {
             defaults.setBool(true, forKey: "sounds")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            NSUserDefaults.standardUserDefaults().boolForKey("sounds")
         } else if soundEffectSwitch.on == false {
             defaults.setBool(false, forKey: "sounds")
+            NSUserDefaults.standardUserDefaults().boolForKey("sounds")
+
         }
         
     }
@@ -67,9 +69,10 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func vibrationSwitched(sender: AnyObject) {
         if vibrationSwitch.on == true {
             defaults.setBool(true, forKey: "vibrate")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            NSUserDefaults.standardUserDefaults().boolForKey("vibrate")
         } else if vibrationSwitch.on == false {
             defaults.setBool(false, forKey: "vibrate")
+            NSUserDefaults.standardUserDefaults().boolForKey("vibrate")
         }
         
     }
@@ -77,9 +80,10 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func leftHandedSwitched(sender: AnyObject) {
         if leftHandedSwitch.on == true {
             defaults.setBool(true, forKey: "leftHand")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            NSUserDefaults.standardUserDefaults().boolForKey("lefthand")
         } else if leftHandedSwitch.on == false {
             defaults.setBool(false, forKey: "leftHand")
+            NSUserDefaults.standardUserDefaults().boolForKey("lefthand")
             
         }
         
