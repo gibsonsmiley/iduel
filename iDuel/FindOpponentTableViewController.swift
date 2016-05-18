@@ -31,6 +31,7 @@ class FindOpponentTableViewController: UITableViewController {
     func fetchAllUsers() {
         UserController.fetchAllUsers { (users) in
             self.allUsers = users
+            self.tableView.reloadData()
         }
     }
 
@@ -60,9 +61,11 @@ class FindOpponentTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let destinationViewController = presentingViewController as? SetUpDuelViewController else { return }
+        guard let destinationVCNavController = presentingViewController as? UINavigationController,
+            destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
         guard let allUsers = allUsers else { return }
         destinationViewController.opponent = allUsers[indexPath.row]
+//        destinationViewController.loadView()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
