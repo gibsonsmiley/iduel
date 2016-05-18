@@ -24,6 +24,7 @@ class DuelController {
     }
     
     // Method to add player to duel's ready array, this is the gun cock
+    // This is appending data to the firebase ready array under the user's id
     static func playerReady() {
         
     }

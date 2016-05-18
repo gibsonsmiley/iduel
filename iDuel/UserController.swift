@@ -53,7 +53,19 @@ class UserController {
     static func fetchAllUsers(completion: (users: [User]?) -> Void) {
         FirebaseController.dataAtEndpoint("users") { (data) in
             if let json = data as? [String: AnyObject] {
-                let users = json.flatMap({User(json: $0.1 as! [String: AnyObject], id: $0.0)})
+                let allUsers = json.flatMap({User(json: $0.1 as! [String: AnyObject], id: $0.0)})
+                var users: [User]?
+                for user in allUsers {
+                    if user.timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+                        UserController.deleteUser(user, completion: { (success) in
+                            if success {
+                                
+                            } else {
+                                users?.append(user)
+                            }
+                        })
+                    }
+                }
                 completion(users: users)
             } else {
                 completion(users: nil)
