@@ -33,10 +33,36 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     // MARK: - Methods
     
     func fetchAllUsers() {
-        UserController.fetchAllUsers { (users) in
+        manageAllUsers({ (users) in
             guard let users = users else { return }
             self.allUsers = users
             self.tableView.reloadData()
+        })
+    }
+    
+    func manageAllUsers(completion: (users:[User]?) -> Void) {
+        UserController.fetchAllUsers { (users) in
+            guard let users = users else { completion(users: nil); return }
+            for user in users {
+                guard let userID = user.id else { return }
+                guard let currentUser = UserController.currentUser else { return }
+                if userID == currentUser.id {
+                } else {
+                    if user.timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+                        UserController.deleteUser(user, completion: { (success) in
+                            if success {
+                                // Successful deletion
+                            } else {
+                                // Deletion failed
+                            }
+                        })
+                    } else {
+                        // User is younger than 24 hours, keep them and return them in the completion
+                        self.allUsers.append(user)
+                    }
+                }
+            }
+            completion(users: self.allUsers)
         }
     }
     
@@ -46,7 +72,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         })
         tableView.reloadData()
     }
- 
+    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
@@ -67,8 +93,6 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         }
     }
     
-    
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
         
@@ -83,13 +107,11 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let destinationVCNavController = presentingViewController as? UINavigationController,
             destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-//        var opponent = destinationViewController.opponent
         destinationViewController.opponent = allUsers[indexPath.row]
-//        opponent = allUsers[indexPath.row]
         if filteredUsers.count > 0 {
             destinationViewController.opponent = filteredUsers[indexPath.row]
         }
-
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     

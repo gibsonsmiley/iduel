@@ -60,6 +60,7 @@ class SetUpDuelViewController: UIViewController {
     
     @IBAction func selectOpponentButtonTapped(sender: AnyObject) {
         // To select opponent table view
+        self.opponent = nil
     }
     
     @IBAction func themesButtonTapped(sender: AnyObject) {
