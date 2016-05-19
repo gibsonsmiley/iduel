@@ -32,6 +32,11 @@ class VictoryViewController: UIViewController {
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
         // Move back to duel view and create a new duel
+        DuelController.createDuel(<#T##player1: User##User#>, player2: <#T##User#>) { (success, duel) in
+            guard let duel = duel else { return }
+            let destinationViewController = self.presentingViewController as? DuelViewController
+            destinationViewController?.updateWithDuel(duel)
+        }
     }
     
     @IBAction func exitGameButtonTapped(sender: AnyObject) {
