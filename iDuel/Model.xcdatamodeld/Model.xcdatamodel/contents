@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Calibration" representedClassName="Calibration" syncable="YES">
-        <attribute name="raised" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="calibration" inverseEntity="User" syncable="YES"/>
-    </entity>
-    <entity name="User" representedClassName="User" syncable="YES">
-        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="calibration" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Calibration" inverseName="user" inverseEntity="Calibration" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Calibration" positionX="-441" positionY="-1341" width="128" height="118"/>
-        <element name="User" positionX="-191" positionY="-1288" width="128" height="73"/>
+        <element name="Calibration" positionX="-441" positionY="-1341" width="128" height="90"/>
     </elements>
 </model>

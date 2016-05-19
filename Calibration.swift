@@ -12,7 +12,7 @@ import CoreData
 @objc(Calibration)
 class Calibration: NSManagedObject {
 
-        convenience init(x: Double, y: Double, z: Double, raised: Bool, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
+        convenience init(x: Double, y: Double, z: Double, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         
         let entity = NSEntityDescription.entityForName("Calibration", inManagedObjectContext: context)!
         
@@ -21,7 +21,7 @@ class Calibration: NSManagedObject {
         self.x = x
         self.y = y
         self.z = z
-        self.raised = raised
+        
     }
 
 }

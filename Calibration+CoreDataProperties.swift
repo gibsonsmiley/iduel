@@ -18,6 +18,5 @@ extension Calibration {
     @NSManaged var x: NSNumber?
     @NSManaged var y: NSNumber?
     @NSManaged var z: NSNumber?
-    @NSManaged var user: User?
 
 }
