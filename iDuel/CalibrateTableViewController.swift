@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 class CalibrateTableViewController: UITableViewController {
 
@@ -21,6 +22,11 @@ class CalibrateTableViewController: UITableViewController {
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
     @IBOutlet weak var loweredCalibrateButton: UIButton!
     
+    var raisedCalibration: CMRotationRate?
+    var loweredCalibration: CMRotationRate?
+    
+    // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,17 +34,50 @@ class CalibrateTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Methods
 
+    
+    
+    // MARK: - Actions
+    
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
+        // Ensure calibrations are saved
+        dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
+        // Get calibration and save it
+        if raisedCalibrateButton.titleLabel?.text == "Begin Calibration" {
+            if raisedCalibration != nil {
+                raisedCalibrateButton.setTitle("Recalibrate", forState: .Normal)
+                raisedTitleLabel.text = "Phone Raised - Calibration Saved"
+            } else {
+                raisedTitleLabel.text = "Phone Raised"
+            }
+        } else {
+            raisedCalibrateButton.setTitle("Begin Calibration", forState: .Normal)
+        }
     }
     
     @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {
+        // Get calibration and save it
+        if loweredCalibrateButton.titleLabel?.text == "Begin Calibration" {
+            if loweredCalibration != nil {
+                loweredCalibrateButton.setTitle("Recalibrate", forState: .Normal)
+                loweredTitleLabel.text = "Phone Lowered - Calibration Saved"
+            } else {
+                loweredTitleLabel.text = "Phone Lowered"
+            }
+        } else {
+            loweredCalibrateButton.setTitle("Begin Calibration", forState: .Normal)
+        }
     }
+    
     /*
     // MARK: - Navigation
 
