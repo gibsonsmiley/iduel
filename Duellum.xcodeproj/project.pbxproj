@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51A1813A1CEE4E3500C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */; };
+		51A1813C1CEE4F4C00C62EED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA06C1CEA328C00AD16A3 /* Info.plist */; };
 		51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */; };
 		C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C38F1CEA5D0800F3DCA7 /* User.swift */; };
 		C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3911CEA5D1800F3DCA7 /* UserController.swift */; };
@@ -38,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trade Gothic LT Bold Condensed No. 20.ttf"; sourceTree = "<group>"; };
 		51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C349C38F1CEA5D0800F3DCA7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C349C3911CEA5D1800F3DCA7 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 				F0BBA05F1CEA328C00AD16A3 /* Duellum */,
 				F0BBA05E1CEA328C00AD16A3 /* Products */,
+				51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,8 +234,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A1813A1CEE4E3500C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */,
 				F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */,
 				F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */,
+				51A1813C1CEE4F4C00C62EED /* Info.plist in Resources */,
 				F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
