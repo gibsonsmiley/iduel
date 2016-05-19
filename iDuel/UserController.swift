@@ -22,7 +22,7 @@ class UserController {
                 completion(success: false, user: nil)
             } else {
                 if let uid = authData.uid {
-                    print(authData.expires)
+//                    print(authData.expires)
                     var user = User(nickname: nickname, duelIDs: [])
                     FirebaseController.base.childByAppendingPath("users").childByAppendingPath(uid).setValue(user.jsonValue)
                     user.save()
