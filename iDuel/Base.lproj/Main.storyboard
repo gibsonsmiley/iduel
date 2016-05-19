@@ -32,10 +32,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sS-tQ-oit">
-                                <rect key="frame" x="20" y="146" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a nickname" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="9sS-tQ-oit">
+                                <rect key="frame" x="20" y="146" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44c-5f-3FR">
                                 <rect key="frame" x="516" y="547" width="64" height="33"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
-                                <rect key="frame" x="150" y="184" width="300" height="33"/>
+                                <rect key="frame" x="150" y="175" width="300" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Set Up Duel!">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,13 +59,14 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
-                                <rect key="frame" x="150" y="225" width="300" height="21"/>
+                                <rect key="frame" x="150" y="216" width="300" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jGn-GF-41Z" firstAttribute="top" secondItem="IVi-fO-QkJ" secondAttribute="bottom" constant="8" id="9a5-xn-4jP"/>
                             <constraint firstItem="jGn-GF-41Z" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="F0l-1g-Ss4"/>
@@ -85,6 +86,9 @@
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="vSF-xM-cnY"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="top" secondItem="9sS-tQ-oit" secondAttribute="bottom" constant="8" id="zUe-dc-xLO"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HHS-Fl-hid" appends="YES" id="BGX-OO-FDW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0xP-dL-1cT"/>
                     <connections>
@@ -92,12 +96,18 @@
                         <outlet property="errorLabel" destination="7p8-JD-uDV" id="B1A-Gd-Vad"/>
                         <outlet property="nicknameTextField" destination="9sS-tQ-oit" id="oFP-XV-o5E"/>
                         <outlet property="settingsButton" destination="44c-5f-3FR" id="v0L-EP-wBp"/>
+                        <outlet property="tapGesture" destination="HHS-Fl-hid" id="am0-tO-A5L"/>
                         <outlet property="toSetUpButton" destination="EvE-u2-jVd" id="1C0-Ch-Ekx"/>
                         <outlet property="welcomeTitleLabel" destination="jGn-GF-41Z" id="uma-Yl-PEo"/>
                         <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="hjW-aq-90n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HHS-Fl-hid">
+                    <connections>
+                        <action selector="userTappedView:" destination="jhe-fb-eAy" id="bit-ob-Zzf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="225" y="651"/>
         </scene>
@@ -387,7 +397,7 @@
                                 <action selector="cancelButtonTapped:" destination="tqv-Dz-jFR" id="7LW-TG-2rL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="q9X-uf-Vga">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="q9X-uf-Vga">
                             <connections>
                                 <action selector="nextButtonTapped:" destination="tqv-Dz-jFR" id="rQ5-Q5-p4q"/>
                                 <segue destination="Otk-tm-Ohe" kind="show" id="p5u-Mv-N2c"/>
@@ -570,14 +580,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="hMp-Au-kGz">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search" showsCancelButton="YES" id="hMp-Au-kGz">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="Tb1-S1-IaZ" style="IBUITableViewCellStyleDefault" id="ZQf-Dt-9Kt">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZQf-Dt-9Kt" id="7nF-pp-z49">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -608,6 +618,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="1jq-kz-h8S" id="bCg-uH-hun"/>
+                        <outlet property="searchBar" destination="hMp-Au-kGz" id="szQ-ij-YgP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZn-GZ-Xsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -745,8 +756,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
-                                                    <rect key="frame" x="8" y="8" width="584" height="210"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
+                                                    <rect key="frame" x="8" y="8" width="584" height="211"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or linaccessibility or use of the elements of this game application. for more information please visit, www.duellum.com</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -859,7 +870,7 @@
         <image name="pointing" width="414" height="414"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yDl-X2-uXZ"/>
+        <segue reference="hjW-aq-90n"/>
         <segue reference="2pr-Uz-GX8"/>
     </inferredMetricsTieBreakers>
 </document>

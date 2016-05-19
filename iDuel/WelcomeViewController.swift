@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -16,11 +16,14 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var disclaimerLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nicknameTextField.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,7 +32,15 @@ class WelcomeViewController: UIViewController {
     
     // MARK: - Methods
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        toSetUpButtonTapped(self)
+        nicknameTextField.resignFirstResponder()
+        return true
+    }
     
+    @IBAction func userTappedView(sender: AnyObject) {
+        nicknameTextField.resignFirstResponder()
+    }
     
     // MARK: - Actions
     
