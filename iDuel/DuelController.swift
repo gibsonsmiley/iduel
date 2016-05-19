@@ -20,9 +20,9 @@ class DuelController {
         duel.save()
         completion(success: true, duel: duel)
         currentUser.duelIDs?.append(duelID)
-//        currentUser.save()
+        //        currentUser.save()
         player2.duelIDs?.append(duelID)
-//        player2.save()
+        //        player2.save()
     }
     
     // Method to add player to duel's ready array, this is the gun cock
@@ -61,8 +61,10 @@ class DuelController {
     // This method should only be called if the checkReadyStatus returns two "true" bools
     // Calls the wait for countdown method, then the check fire method, then the victory method
     static func startDuel(duel: Duel) {
-        guard let duelID = duel.id else { return }
-        
+//        guard let duelID = duel.id else { return }
+        countdown(duel, completion: { (countdown) in
+            waitForCountdown(duel)
+        })
     }
     
     // recognizes user's button tap and sends a value to Firebase
