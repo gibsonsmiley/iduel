@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+
 
 class UserController {
     
@@ -15,14 +17,14 @@ class UserController {
     
     static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
         FirebaseController.base.authAnonymouslyWithCompletionBlock { (error, authData) in
-        if let error = error {
+            if let error = error {
                 print("\(error.localizedDescription)")
                 completion(success: false, user: nil)
             } else {
                 if let uid = authData.uid {
 //                    print(authData.expires)
                     var user = User(nickname: nickname, duelIDs: [])
-                    FirebaseController.base.childByAppendingPath("users").childByAppendingPath(uid).setValue(user.jsonValue)
+                    user.id = uid
                     user.save()
                     completion(success: true, user: user)
                     self.currentUser = user

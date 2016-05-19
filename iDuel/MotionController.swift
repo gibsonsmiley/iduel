@@ -9,6 +9,7 @@
 import Foundation
 import CoreMotion
 import AudioToolbox
+import CoreData
 
 class MotionController {
     
@@ -16,8 +17,31 @@ class MotionController {
     var loweredMesaurements: CMGyroData?
     static var gyroDataArray: [CMGyroData] = []
     
-    static func saveCalibration() {
+    static func saveCalibration(userCalibration: Calibration) {
+        let moc = Stack.sharedStack.managedObjectContext
+        guard let calibrationEntity = NSEntityDescription.entityForName("Calibration", inManagedObjectContext: moc) else {return}
+        let calibration = NSManagedObject(entity: calibrationEntity, insertIntoManagedObjectContext: moc)
         
+        calibration.setValue(userCalibration.x, forKey: "x")
+        calibration.setValue(userCalibration.y, forKey: "y")
+        calibration.setValue(userCalibration.z, forKey: "z")
+        let _ = try? moc.save()
+        
+    }
+    
+    static func loadCalibration(completion:(calibration: Calibration?) -> Void) {
+        let request = NSFetchRequest(entityName: "Calibration")
+        let moc = Stack.sharedStack.managedObjectContext
+        if let calibrations = try? moc.executeFetchRequest(request),
+        calibration = calibrations.first {
+            guard let x = calibration.valueForKey("x") as? Double,
+                y = calibration.valueForKey("y") as? Double,
+                z = calibration.valueForKey("z") as? Double else { completion(calibration: nil); return}
+            let storedCalibration = Calibration(x: x, y: y, z: z)
+            completion(calibration: storedCalibration)
+        } else {
+            completion(calibration: nil)
+        }
         
     }
     
