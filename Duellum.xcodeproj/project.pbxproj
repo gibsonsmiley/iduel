@@ -15,6 +15,7 @@
 		C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3931CEA5D2800F3DCA7 /* Duel.swift */; };
 		C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3951CEA5D3E00F3DCA7 /* DuelController.swift */; };
 		C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3971CEA5D5200F3DCA7 /* MotionController.swift */; };
+		F051F93C1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051F93B1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift */; };
 		F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */; };
 		F0BBA0631CEA328C00AD16A3 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0621CEA328C00AD16A3 /* TestViewController.swift */; };
 		F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0641CEA328C00AD16A3 /* Main.storyboard */; };
@@ -31,9 +32,6 @@
 		F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0861CEA664800AD16A3 /* SetUpDuelViewController.swift */; };
 		F0BBA0891CEA665300AD16A3 /* DuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0881CEA665300AD16A3 /* DuelViewController.swift */; };
 		F0BBA08B1CEA665A00AD16A3 /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA08A1CEA665A00AD16A3 /* VictoryViewController.swift */; };
-		F0BBA08D1CEA666700AD16A3 /* CalibrateIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA08C1CEA666700AD16A3 /* CalibrateIntroViewController.swift */; };
-		F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA08E1CEA667800AD16A3 /* CalibrateRaisedViewController.swift */; };
-		F0BBA0911CEA668300AD16A3 /* CalibrateLoweredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0901CEA668300AD16A3 /* CalibrateLoweredViewController.swift */; };
 		F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */; };
 		F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */; };
 		F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E399F11CEBD0E800B8FB07 /* File.swift */; };
@@ -47,6 +45,7 @@
 		C349C3931CEA5D2800F3DCA7 /* Duel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duel.swift; sourceTree = "<group>"; };
 		C349C3951CEA5D3E00F3DCA7 /* DuelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelController.swift; sourceTree = "<group>"; };
 		C349C3971CEA5D5200F3DCA7 /* MotionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionController.swift; sourceTree = "<group>"; };
+		F051F93B1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateTableViewController.swift; sourceTree = "<group>"; };
 		F0BBA05D1CEA328C00AD16A3 /* Duellum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duellum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0BBA0621CEA328C00AD16A3 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -65,9 +64,6 @@
 		F0BBA0861CEA664800AD16A3 /* SetUpDuelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpDuelViewController.swift; sourceTree = "<group>"; };
 		F0BBA0881CEA665300AD16A3 /* DuelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuelViewController.swift; sourceTree = "<group>"; };
 		F0BBA08A1CEA665A00AD16A3 /* VictoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VictoryViewController.swift; sourceTree = "<group>"; };
-		F0BBA08C1CEA666700AD16A3 /* CalibrateIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateIntroViewController.swift; sourceTree = "<group>"; };
-		F0BBA08E1CEA667800AD16A3 /* CalibrateRaisedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateRaisedViewController.swift; sourceTree = "<group>"; };
-		F0BBA0901CEA668300AD16A3 /* CalibrateLoweredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateLoweredViewController.swift; sourceTree = "<group>"; };
 		F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindOpponentTableViewController.swift; sourceTree = "<group>"; };
 		F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopDownSegue.swift; sourceTree = "<group>"; };
 		F0E399F11CEBD0E800B8FB07 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -126,8 +122,8 @@
 		F0BBA0541CEA328C00AD16A3 = {
 			isa = PBXGroup;
 			children = (
-				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 				F0BBA05F1CEA328C00AD16A3 /* Duellum */,
+				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 				F0BBA05E1CEA328C00AD16A3 /* Products */,
 				51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */,
 			);
@@ -167,9 +163,7 @@
 				F0BBA0861CEA664800AD16A3 /* SetUpDuelViewController.swift */,
 				F0BBA0881CEA665300AD16A3 /* DuelViewController.swift */,
 				F0BBA08A1CEA665A00AD16A3 /* VictoryViewController.swift */,
-				F0BBA08C1CEA666700AD16A3 /* CalibrateIntroViewController.swift */,
-				F0BBA08E1CEA667800AD16A3 /* CalibrateRaisedViewController.swift */,
-				F0BBA0901CEA668300AD16A3 /* CalibrateLoweredViewController.swift */,
+				F051F93B1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift */,
 				F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */,
 				51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */,
 			);
@@ -252,8 +246,8 @@
 				F0BBA0841CEA663200AD16A3 /* WelcomeViewController.swift in Sources */,
 				F0BBA08B1CEA665A00AD16A3 /* VictoryViewController.swift in Sources */,
 				C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */,
+				F051F93C1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift in Sources */,
 				F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */,
-				F0BBA0911CEA668300AD16A3 /* CalibrateLoweredViewController.swift in Sources */,
 				F0BBA0821CEA338F00AD16A3 /* FirebaseController.swift in Sources */,
 				C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */,
 				C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */,
@@ -262,10 +256,8 @@
 				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
 				C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */,
 				F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */,
-				F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */,
 				F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */,
 				51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */,
-				F0BBA08D1CEA666700AD16A3 /* CalibrateIntroViewController.swift in Sources */,
 				F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */,
 				C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */,
 			);

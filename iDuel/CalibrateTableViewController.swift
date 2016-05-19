@@ -1,25 +1,25 @@
 //
-//  CalibrateIntroViewController.swift
-//  iDuel
+//  CalibrateTableViewController.swift
+//  Duellum
 //
-//  Created by Gibson Smiley on 5/16/16.
+//  Created by Gibson Smiley on 5/19/16.
 //  Copyright © 2016 Gibson Smiley. All rights reserved.
 //
 
 import UIKit
 
-class CalibrateIntroViewController: UIViewController {
+class CalibrateTableViewController: UITableViewController {
 
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var nextButton: UIBarButtonItem!
-    @IBOutlet weak var calibrateTitleLabel: UILabel!
-    @IBOutlet weak var calibrateDescriptionLabel: UILabel!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var viewTitleLabel: UILabel!
+    @IBOutlet weak var viewDescriptionLabel: UILabel!
     @IBOutlet weak var raisedTitleLabel: UILabel!
     @IBOutlet weak var raisedDescriptionLabel: UILabel!
+    @IBOutlet weak var raisedCalibrateButton: UIButton!
     @IBOutlet weak var loweredTitleLabel: UILabel!
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
-    
-    // MARK: - View
+    @IBOutlet weak var loweredCalibrateButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +28,17 @@ class CalibrateIntroViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    // MARK: - Methods
-    
-    
-    
-    // MARK: - Actions
-    
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-        // Move back to set up duel view
-    }
-    
-    @IBAction func nextButtonTapped(sender: AnyObject) {
-        // Move to raised phone view
-    }
 
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+    }
+    
+    @IBAction func doneButtonTapped(sender: AnyObject) {
+    }
+    @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
+    }
+    
+    @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 
