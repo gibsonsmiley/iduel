@@ -48,8 +48,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
-                                <rect key="frame" x="150" y="190" width="300" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="150" y="198" width="300" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Set Up Duel!">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -58,8 +58,8 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
-                                <rect key="frame" x="150" y="237" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="150" y="254" width="300" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -122,7 +122,7 @@
                             <constraint firstAttribute="trailing" secondItem="9sS-tQ-oit" secondAttribute="trailing" constant="20" id="kw3-G0-x7z"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="o8A-6c-fo9"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="vSF-xM-cnY"/>
-                            <constraint firstItem="EvE-u2-jVd" firstAttribute="top" secondItem="9sS-tQ-oit" secondAttribute="bottom" constant="8" id="zUe-dc-xLO"/>
+                            <constraint firstItem="EvE-u2-jVd" firstAttribute="top" secondItem="9sS-tQ-oit" secondAttribute="bottom" constant="16" id="zUe-dc-xLO"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="HHS-Fl-hid" appends="YES" id="BGX-OO-FDW"/>

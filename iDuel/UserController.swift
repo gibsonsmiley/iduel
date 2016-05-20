@@ -12,8 +12,23 @@ import CoreData
 
 class UserController {
     
-    static var currentUser: User?
-    let kUser = "user"
+    static let kUser = "user"
+    static var currentUser: User! {
+        get {
+            guard let uid = FirebaseController.base.authData?.uid, let userDictionary = NSUserDefaults.standardUserDefaults().valueForKey(kUser) as? [String: AnyObject] else { return nil }
+            return User(json: userDictionary, id: uid)
+        }
+        set {
+            if let newValue = newValue {
+                NSUserDefaults.standardUserDefaults().setValue(newValue.jsonValue, forKey: kUser)
+                NSUserDefaults.standardUserDefaults().synchronize()
+            } else {
+                NSUserDefaults.standardUserDefaults().removeObjectForKey(kUser)
+                NSUserDefaults.standardUserDefaults().synchronize()
+            }
+        }
+    }
+
     
     static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
         FirebaseController.base.authAnonymouslyWithCompletionBlock { (error, authData) in
