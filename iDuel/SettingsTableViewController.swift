@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import AudioToolbox
 
 
 class SettingsTableViewController: UITableViewController {
     
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var soundEffectSwitch: UISwitch!
     @IBOutlet weak var vibrationSwitch: UISwitch!
     @IBOutlet weak var leftHandedSwitch: UISwitch!
     
-    
     let defaults = NSUserDefaults.standardUserDefaults()
-    
+    let sounds = NSUserDefaults.standardUserDefaults().boolForKey("sounds")
+    let vibration = NSUserDefaults.standardUserDefaults().boolForKey("vibration")
+    let leftHand = NSUserDefaults.standardUserDefaults().boolForKey("leftHand")
+
     // MARK: - View
     
     override func viewDidLoad() {
@@ -27,54 +29,54 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+       super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: - Methods
+    
+    func updateWithPrefs() {
+        soundEffectSwitch.setOn(!sounds, animated: true) // Set as opposite to that it "defaults" to on
+        vibrationSwitch.setOn(!vibration, animated: true) // Set as opposite to that it "defaults" to on
+        leftHandedSwitch.setOn(leftHand, animated: true)
     }
     
     // MARK: - Actions
     
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
     
-    @IBAction func saveButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doneButtonTapped(sender: AnyObject) {
+            self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func soundEffectSwitched(sender: AnyObject) {
-        if soundEffectSwitch.on == true {
-            defaults.setBool(true, forKey: "sounds")
-            NSUserDefaults.standardUserDefaults().boolForKey("sounds")
-        } else if soundEffectSwitch.on == false {
+        if sounds == true {
             defaults.setBool(false, forKey: "sounds")
-            NSUserDefaults.standardUserDefaults().boolForKey("sounds")
+            defaults.synchronize()
+        } else {
+            defaults.setBool(true, forKey: "sounds")
+            defaults.synchronize()
         }
     }
     
     @IBAction func vibrationSwitched(sender: AnyObject) {
-        if vibrationSwitch.on == true {
-            defaults.setBool(true, forKey: "vibrate")
-            NSUserDefaults.standardUserDefaults().boolForKey("vibrate")
-        } else if vibrationSwitch.on == false {
+        if vibration == true {
             defaults.setBool(false, forKey: "vibrate")
-            NSUserDefaults.standardUserDefaults().boolForKey("vibrate")
+            defaults.synchronize()
+        } else {
+            defaults.setBool(true, forKey: "vibrate")
+            defaults.synchronize()
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }
     
     @IBAction func leftHandedSwitched(sender: AnyObject) {
-        if leftHandedSwitch.on == true {
-            defaults.setBool(true, forKey: "leftHand")
-            NSUserDefaults.standardUserDefaults().boolForKey("lefthand")
-        } else if leftHandedSwitch.on == false {
+        if leftHand == true {
             defaults.setBool(false, forKey: "leftHand")
-            NSUserDefaults.standardUserDefaults().boolForKey("lefthand")
+            defaults.synchronize()
+        } else {
+            defaults.setBool(true, forKey: "leftHand")
+            defaults.synchronize()
         }
     }
-    
-//    func vibrate() {
-//        if NSUserDefaults.standardUserDefaults().boolForKey("vibrate") == true {
-//            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-//        }
-//    }
     
     /*
      // MARK: - Navigation

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PYX-gO-Rmk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PYX-gO-Rmk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -63,23 +63,54 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ExN-cW-xcj">
+                                <rect key="frame" x="20" y="325" width="560" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="NTB-Qi-aNb" style="IBUITableViewCellStyleDefault" id="Hrh-dE-Ma1">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hrh-dE-Ma1" id="hJN-qA-HC8">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NTB-Qi-aNb">
+                                                    <rect key="frame" x="15" y="0.0" width="530" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jhe-fb-eAy" id="6Dm-er-Qwr"/>
+                                    <outlet property="delegate" destination="jhe-fb-eAy" id="RdA-ZL-GCa"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="ExN-cW-xcj" firstAttribute="centerY" secondItem="fDG-0o-Xoa" secondAttribute="centerY" constant="100" id="360-UC-4qf"/>
                             <constraint firstItem="jGn-GF-41Z" firstAttribute="top" secondItem="IVi-fO-QkJ" secondAttribute="bottom" constant="8" id="9a5-xn-4jP"/>
                             <constraint firstItem="jGn-GF-41Z" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="F0l-1g-Ss4"/>
                             <constraint firstAttribute="trailing" secondItem="jGn-GF-41Z" secondAttribute="trailing" constant="20" id="GOf-8C-t71"/>
                             <constraint firstItem="ZZD-q2-sru" firstAttribute="width" secondItem="fDG-0o-Xoa" secondAttribute="width" multiplier="1/2" id="Kg4-0W-esi"/>
                             <constraint firstItem="9sS-tQ-oit" firstAttribute="top" secondItem="jGn-GF-41Z" secondAttribute="bottom" constant="50" id="MKb-ec-Hpz"/>
                             <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="ZZD-q2-sru" secondAttribute="bottom" constant="20" id="MO8-n2-15W"/>
+                            <constraint firstItem="ExN-cW-xcj" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leadingMargin" id="QcT-td-squ"/>
                             <constraint firstItem="9sS-tQ-oit" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="SQB-XL-eC0"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="width" secondItem="EvE-u2-jVd" secondAttribute="width" id="TgX-yG-GX8"/>
+                            <constraint firstItem="ExN-cW-xcj" firstAttribute="height" secondItem="fDG-0o-Xoa" secondAttribute="height" multiplier="1/4" id="WpP-Kx-FmU"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="width" secondItem="fDG-0o-Xoa" secondAttribute="width" multiplier="1/2" id="XaN-ha-sWZ"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="top" secondItem="EvE-u2-jVd" secondAttribute="bottom" constant="8" id="YK8-Qd-LhJ"/>
                             <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="44c-5f-3FR" secondAttribute="bottom" constant="20" id="Ygd-n6-ADi"/>
                             <constraint firstAttribute="trailing" secondItem="44c-5f-3FR" secondAttribute="trailing" constant="20" id="Yu7-RV-7bf"/>
                             <constraint firstItem="ZZD-q2-sru" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="fAj-Mp-tqL"/>
+                            <constraint firstItem="ExN-cW-xcj" firstAttribute="trailing" secondItem="fDG-0o-Xoa" secondAttribute="trailingMargin" id="fvE-mz-See"/>
                             <constraint firstAttribute="trailing" secondItem="9sS-tQ-oit" secondAttribute="trailing" constant="20" id="kw3-G0-x7z"/>
                             <constraint firstItem="EvE-u2-jVd" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="o8A-6c-fo9"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="fDG-0o-Xoa" secondAttribute="centerX" id="vSF-xM-cnY"/>
@@ -92,6 +123,7 @@
                     <navigationItem key="navigationItem" id="0xP-dL-1cT"/>
                     <connections>
                         <outlet property="disclaimerLabel" destination="ZZD-q2-sru" id="ycJ-4I-Lbe"/>
+                        <outlet property="duelRequestTableView" destination="ExN-cW-xcj" id="98h-wq-HRS"/>
                         <outlet property="errorLabel" destination="7p8-JD-uDV" id="B1A-Gd-Vad"/>
                         <outlet property="nicknameTextField" destination="9sS-tQ-oit" id="oFP-XV-o5E"/>
                         <outlet property="settingsButton" destination="44c-5f-3FR" id="v0L-EP-wBp"/>
@@ -767,21 +799,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="Ba7-Fj-OeY">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Haf-Jk-pXb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hYU-ee-nxw">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="CAv-is-Xnq" id="TEv-c0-2D9"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="hYU-ee-nxw">
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="CAv-is-Xnq" id="hcC-77-0eP"/>
+                                <action selector="doneButtonTapped:" destination="CAv-is-Xnq" id="CrS-2d-vKj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="Haf-Jk-pXb" id="DGE-8H-ek8"/>
+                        <outlet property="doneButton" destination="hYU-ee-nxw" id="Sfb-ZM-29v"/>
                         <outlet property="leftHandedSwitch" destination="keN-MZ-DOJ" id="DT0-IS-EcK"/>
-                        <outlet property="saveButton" destination="hYU-ee-nxw" id="Pw2-tm-7hT"/>
                         <outlet property="soundEffectSwitch" destination="HPs-g1-FuE" id="5jZ-rY-ef4"/>
                         <outlet property="vibrationSwitch" destination="GfM-Fe-tOq" id="4FT-hB-NHz"/>
                     </connections>
@@ -853,6 +879,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hjW-aq-90n"/>
-        <segue reference="2pr-Uz-GX8"/>
+        <segue reference="7eV-OX-TqF"/>
     </inferredMetricsTieBreakers>
 </document>

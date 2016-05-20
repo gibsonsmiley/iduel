@@ -15,7 +15,6 @@
 		C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3971CEA5D5200F3DCA7 /* MotionController.swift */; };
 		C365C45E1CED11D000751061 /* Calibration+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365C45A1CED11D000751061 /* Calibration+CoreDataProperties.swift */; };
 		C365C45F1CED11D000751061 /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365C45B1CED11D000751061 /* Calibration.swift */; };
-		C365C4611CED11D000751061 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365C45D1CED11D000751061 /* User.swift */; };
 		C3E6311F1CEBB4420042441F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6311E1CEBB4420042441F /* Stack.swift */; };
 		C3E631221CEBB7510042441F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3E631201CEBB7510042441F /* Model.xcdatamodeld */; };
 		F051F93C1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051F93B1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift */; };
@@ -138,9 +137,9 @@
 			children = (
 				C365C4621CED11D600751061 /* CoreDataModels */,
 				C3E631201CEBB7510042441F /* Model.xcdatamodeld */,
-				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 				F0BBA05F1CEA328C00AD16A3 /* Duellum */,
 				F0BBA05E1CEA328C00AD16A3 /* Products */,
+				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,15 +269,11 @@
 				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
 				C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */,
 				F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */,
-				F0BBA0951CEA79BA00AD16A3 /* SettingsViewController.swift in Sources */,
 				C365C45E1CED11D000751061 /* Calibration+CoreDataProperties.swift in Sources */,
-				F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */,
 				F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */,
-				F0BBA08D1CEA666700AD16A3 /* CalibrateIntroViewController.swift in Sources */,
 				C3E6311F1CEBB4420042441F /* Stack.swift in Sources */,
 				C365C45F1CED11D000751061 /* Calibration.swift in Sources */,
 				51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */,
-				F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */,
 				C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
