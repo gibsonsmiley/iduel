@@ -22,6 +22,9 @@ class CalibrateTableViewController: UITableViewController {
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
     @IBOutlet weak var loweredCalibrateButton: UIButton!
     
+    let raisedCalibrationKey = "raisedCalibration"
+    let loweredCalibrationKey = "loweredCalibration"
+    
     var raisedCalibration: Calibration?
     var loweredCalibration: Calibration?
     
@@ -52,16 +55,21 @@ class CalibrateTableViewController: UITableViewController {
     
     @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
         // Get calibration and save it
-        if raisedCalibrateButton.titleLabel?.text == "Begin Calibration" {
-            if raisedCalibration != nil {
-                raisedCalibrateButton.setTitle("Recalibrate", forState: .Normal)
-                raisedTitleLabel.text = "Phone Raised - Calibration Saved"
-            } else {
-                raisedTitleLabel.text = "Phone Raised"
-            }
-        } else {
-            raisedCalibrateButton.setTitle("Begin Calibration", forState: .Normal)
+        MotionController.beginMotionTracking { (averageCalibration) in
+            
         }
+        
+//        if raisedCalibrateButton.titleLabel?.text == "Begin Calibration" {
+//            // Capture calibration
+//            if raisedCalibration != nil {
+//                raisedCalibrateButton.setTitle("Recalibrate", forState: .Normal)
+//                raisedTitleLabel.text = "Phone Raised - Calibration Saved"
+//            } else {
+//                raisedTitleLabel.text = "Phone Raised"
+//            }
+//        } else {
+//            raisedCalibrateButton.setTitle("Begin Calibration", forState: .Normal)
+//        }
     }
     
     @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {

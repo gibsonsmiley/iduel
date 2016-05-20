@@ -16,6 +16,11 @@ class VictoryViewController: UIViewController {
     
     var duel: Duel?
     
+    enum victory {
+        case Winner
+        case Loser
+    }
+    
     // MARK: - View
     
     override func viewDidLoad() {

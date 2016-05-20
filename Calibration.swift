@@ -18,9 +18,9 @@ class Calibration: NSManagedObject {
         
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
-        self.x = x
-        self.y = y
-        self.z = z
+        self.x = x as? Double
+        self.y = y as? Double
+        self.z = z as? Double
         
     }
 
