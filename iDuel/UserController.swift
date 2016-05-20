@@ -63,6 +63,10 @@ class UserController {
         }
     }
     
+    static func observeDuelsForUser() {
+        
+    }
+    
     static func checkNicknameAvailability() {
         // May fill this in later
     }

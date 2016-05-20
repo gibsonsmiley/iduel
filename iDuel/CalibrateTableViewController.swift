@@ -22,8 +22,8 @@ class CalibrateTableViewController: UITableViewController {
     @IBOutlet weak var loweredDescriptionLabel: UILabel!
     @IBOutlet weak var loweredCalibrateButton: UIButton!
     
-    var raisedCalibration: CMRotationRate?
-    var loweredCalibration: CMRotationRate?
+    var raisedCalibration: Calibration?
+    var loweredCalibration: Calibration?
     
     // MARK: - View
     

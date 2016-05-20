@@ -17,15 +17,13 @@ class SetUpDuelViewController: UIViewController {
     @IBOutlet weak var beginDuelButton: UIButton!
     
     var opponent: User?
-    var calibrations: [CMGyroData]?
+    var calibrations: [Calibration]?
     var duel: Duel?
     
     // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        displayWithInfo()
     }
     
     override func viewWillAppear(animated: Bool) {

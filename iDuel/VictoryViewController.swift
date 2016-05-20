@@ -14,6 +14,8 @@ class VictoryViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var exitGameButton: UIButton!
     
+    var duel: Duel?
+    
     // MARK: - View
     
     override func viewDidLoad() {
@@ -26,17 +28,20 @@ class VictoryViewController: UIViewController {
     
     // MARK: - Methods
     
-    
+    func updateWithDuel(duel: Duel) {
+        self.duel = duel
+        
+    }
     
     // MARK: - Actions
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
         // Move back to duel view and create a new duel
-        DuelController.createDuel(<#T##player1: User##User#>, player2: <#T##User#>) { (success, duel) in
-            guard let duel = duel else { return }
-            let destinationViewController = self.presentingViewController as? DuelViewController
-            destinationViewController?.updateWithDuel(duel)
-        }
+//        DuelController.createDuel(<#T##player1: User##User#>, player2: <#T##User#>) { (success, duel) in
+//            guard let duel = duel else { return }
+//            let destinationViewController = self.presentingViewController as? DuelViewController
+//            destinationViewController?.updateWithDuel(duel)
+//        }
     }
     
     @IBAction func exitGameButtonTapped(sender: AnyObject) {
