@@ -22,7 +22,6 @@ class UserController {
                 completion(success: false, user: nil)
             } else {
                 if let uid = authData.uid {
-//                    print(authData.expires)
                     var user = User(nickname: nickname, duelIDs: [])
                     user.id = uid
                     user.save()
@@ -63,8 +62,19 @@ class UserController {
         }
     }
     
-    static func observeDuelsForUser() {
-        
+    static func observeDuelsForUser(user: User, completion: (duels: [Duel]?) -> Void) {
+        guard let userID = user.id else { completion(duels: nil); return }
+        FirebaseController.base.childByAppendingPath("users/\(userID)/duelIDs").observeEventType(.Value, withBlock: { (snapshot) in
+            guard let duelIDsArray = snapshot.value as? [String] else { return }
+            var duels: [Duel] = []
+            for duelID in duelIDsArray {
+                DuelController.fetchDuelForID(duelID, completion: { (duel) in
+                    guard let duel = duel else { return }
+                    duels.append(duel)
+                })
+            }
+            completion(duels: duels)
+        })
     }
     
     static func checkNicknameAvailability() {
