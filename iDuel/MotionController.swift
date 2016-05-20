@@ -87,12 +87,11 @@ class MotionController {
         }
     }
     
-    static func checkCalibration(calibratedAverage: CMRotationRate, currentMeasurements: CMRotationRate, completion: (success: Bool) -> Void) {
-        if (currentMeasurements.x < (calibratedAverage.x + 1.0) && currentMeasurements.x > (calibratedAverage.x - 1.0)) && (currentMeasurements.y < (calibratedAverage.y + 1.0) && currentMeasurements.y > (calibratedAverage.y - 1.0)) && (currentMeasurements.z < (calibratedAverage.z + 1.0) && currentMeasurements.z > (calibratedAverage.z - 1.0)) {
+    static func checkCalibration(calibratedAverage: Calibration, currentMeasurements: Calibration, completion: (success: Bool) -> Void) {
+        if (Double(currentMeasurements.x!) < (Double(calibratedAverage.x!) + 1.0) && Double(currentMeasurements.x!) > (Double(calibratedAverage.x!) - 1.0)) && (Double(currentMeasurements.y!) < (Double(calibratedAverage.y!) + 1.0) && Double(currentMeasurements.y!) > (Double(calibratedAverage.y!) - 1.0)) && (Double(currentMeasurements.z!) < (Double(calibratedAverage.z!) + 1.0) && Double(currentMeasurements.z!) > (Double(calibratedAverage.z!) - 1.0)) {
             completion(success: true)
         } else {
             completion(success: false)
         }
     }
-    
 }
