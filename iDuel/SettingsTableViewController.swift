@@ -70,11 +70,8 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-<<<<<<< HEAD
     
-//    
-=======
->>>>>>> f9dc104ae0627f3e61b8ec6144a26839a02fad24
+//
 //    func vibrate() {
 //        if NSUserDefaults.standardUserDefaults().boolForKey("vibrate") == true {
 //            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))

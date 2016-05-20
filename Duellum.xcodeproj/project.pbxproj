@@ -10,6 +10,10 @@
 		51A1813A1CEE4E3500C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */; };
 		51A1813C1CEE4F4C00C62EED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA06C1CEA328C00AD16A3 /* Info.plist */; };
 		51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */; };
+		51F4BFA61CEF643800B05D35 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4BFA51CEF643800B05D35 /* SoundController.swift */; };
+		51F4BFAC1CEF68AF00B05D35 /* 1gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFA91CEF68AF00B05D35 /* 1gunshot.mp3 */; };
+		51F4BFAD1CEF68AF00B05D35 /* 2gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFAA1CEF68AF00B05D35 /* 2gunshot.mp3 */; };
+		51F4BFAE1CEF68AF00B05D35 /* GunCocking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFAB1CEF68AF00B05D35 /* GunCocking.mp3 */; };
 		C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C38F1CEA5D0800F3DCA7 /* User.swift */; };
 		C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3911CEA5D1800F3DCA7 /* UserController.swift */; };
 		C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3931CEA5D2800F3DCA7 /* Duel.swift */; };
@@ -17,7 +21,6 @@
 		C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3971CEA5D5200F3DCA7 /* MotionController.swift */; };
 		C365C45E1CED11D000751061 /* Calibration+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365C45A1CED11D000751061 /* Calibration+CoreDataProperties.swift */; };
 		C365C45F1CED11D000751061 /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365C45B1CED11D000751061 /* Calibration.swift */; };
-		C365C4611CED11D000751061 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365C45D1CED11D000751061 /* User.swift */; };
 		C3E6311F1CEBB4420042441F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6311E1CEBB4420042441F /* Stack.swift */; };
 		C3E631221CEBB7510042441F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3E631201CEBB7510042441F /* Model.xcdatamodeld */; };
 		F051F93C1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051F93B1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift */; };
@@ -44,6 +47,10 @@
 /* Begin PBXFileReference section */
 		51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trade Gothic LT Bold Condensed No. 20.ttf"; sourceTree = "<group>"; };
 		51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		51F4BFA51CEF643800B05D35 /* SoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
+		51F4BFA91CEF68AF00B05D35 /* 1gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1gunshot.mp3; sourceTree = "<group>"; };
+		51F4BFAA1CEF68AF00B05D35 /* 2gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2gunshot.mp3; sourceTree = "<group>"; };
+		51F4BFAB1CEF68AF00B05D35 /* GunCocking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GunCocking.mp3; sourceTree = "<group>"; };
 		C349C38F1CEA5D0800F3DCA7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C349C3911CEA5D1800F3DCA7 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C349C3931CEA5D2800F3DCA7 /* Duel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duel.swift; sourceTree = "<group>"; };
@@ -94,6 +101,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51F4BFA71CEF679500B05D35 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */,
+			);
+			name = Design;
+			sourceTree = "<group>";
+		};
+		51F4BFA81CEF67B300B05D35 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				51F4BFA91CEF68AF00B05D35 /* 1gunshot.mp3 */,
+				51F4BFAA1CEF68AF00B05D35 /* 2gunshot.mp3 */,
+				51F4BFAB1CEF68AF00B05D35 /* GunCocking.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		C349C38E1CEA5CDB00F3DCA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +146,7 @@
 			children = (
 				C349C3911CEA5D1800F3DCA7 /* UserController.swift */,
 				C349C3951CEA5D3E00F3DCA7 /* DuelController.swift */,
+				51F4BFA51CEF643800B05D35 /* SoundController.swift */,
 				C349C3971CEA5D5200F3DCA7 /* MotionController.swift */,
 				F0BBA0811CEA338F00AD16A3 /* FirebaseController.swift */,
 			);
@@ -144,7 +170,8 @@
 				C349C38E1CEA5CDB00F3DCA7 /* Frameworks */,
 				F0BBA05F1CEA328C00AD16A3 /* Duellum */,
 				F0BBA05E1CEA328C00AD16A3 /* Products */,
-				51A181391CEE4DD100C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf */,
+				51F4BFA71CEF679500B05D35 /* Design */,
+				51F4BFA81CEF67B300B05D35 /* Sounds */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,10 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				51A1813A1CEE4E3500C62EED /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */,
+				51F4BFAC1CEF68AF00B05D35 /* 1gunshot.mp3 in Resources */,
 				F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */,
 				F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */,
+				51F4BFAE1CEF68AF00B05D35 /* GunCocking.mp3 in Resources */,
 				51A1813C1CEE4F4C00C62EED /* Info.plist in Resources */,
 				F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */,
+				51F4BFAD1CEF68AF00B05D35 /* 2gunshot.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +296,7 @@
 				F0BBA08B1CEA665A00AD16A3 /* VictoryViewController.swift in Sources */,
 				C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */,
 				F051F93C1CEE2BD300FD1DA8 /* CalibrateTableViewController.swift in Sources */,
+				51F4BFA61CEF643800B05D35 /* SoundController.swift in Sources */,
 				F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */,
 				F0BBA0821CEA338F00AD16A3 /* FirebaseController.swift in Sources */,
 				C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */,
@@ -276,15 +307,11 @@
 				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
 				C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */,
 				F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */,
-				F0BBA0951CEA79BA00AD16A3 /* SettingsViewController.swift in Sources */,
 				C365C45E1CED11D000751061 /* Calibration+CoreDataProperties.swift in Sources */,
-				F0BBA08F1CEA667800AD16A3 /* CalibrateRaisedViewController.swift in Sources */,
 				F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */,
-				F0BBA08D1CEA666700AD16A3 /* CalibrateIntroViewController.swift in Sources */,
 				C3E6311F1CEBB4420042441F /* Stack.swift in Sources */,
 				C365C45F1CED11D000751061 /* Calibration.swift in Sources */,
 				51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */,
-				F0E399F21CEBD0E800B8FB07 /* File.swift in Sources */,
 				C349C3961CEA5D3E00F3DCA7 /* DuelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
