@@ -12,8 +12,23 @@ import CoreData
 
 class UserController {
     
-    static var currentUser: User?
-    let kUser = "user"
+    static let kUser = "user"
+    static var currentUser: User! {
+        get {
+            guard let uid = FirebaseController.base.authData?.uid, let userDictionary = NSUserDefaults.standardUserDefaults().valueForKey(kUser) as? [String: AnyObject] else { return nil }
+            return User(json: userDictionary, id: uid)
+        }
+        set {
+            if let newValue = newValue {
+                NSUserDefaults.standardUserDefaults().setValue(newValue.jsonValue, forKey: kUser)
+                NSUserDefaults.standardUserDefaults().synchronize()
+            } else {
+                NSUserDefaults.standardUserDefaults().removeObjectForKey(kUser)
+                NSUserDefaults.standardUserDefaults().synchronize()
+            }
+        }
+    }
+
     
     static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
         FirebaseController.base.authAnonymouslyWithCompletionBlock { (error, authData) in
@@ -22,7 +37,6 @@ class UserController {
                 completion(success: false, user: nil)
             } else {
                 if let uid = authData.uid {
-//                    print(authData.expires)
                     var user = User(nickname: nickname, duelIDs: [])
                     user.id = uid
                     user.save()
@@ -63,8 +77,19 @@ class UserController {
         }
     }
     
-    static func observeDuelsForUser() {
-        
+    static func observeDuelsForUser(user: User, completion: (duels: [Duel]?) -> Void) {
+        guard let userID = user.id else { completion(duels: nil); return }
+        FirebaseController.base.childByAppendingPath("users/\(userID)/duelIDs").observeEventType(.Value, withBlock: { (snapshot) in
+            guard let duelIDsArray = snapshot.value as? [String] else { return }
+            var duels: [Duel] = []
+            for duelID in duelIDsArray {
+                DuelController.fetchDuelForID(duelID, completion: { (duel) in
+                    guard let duel = duel else { return }
+                    duels.append(duel)
+                })
+            }
+            completion(duels: duels)
+        })
     }
     
     static func checkNicknameAvailability() {

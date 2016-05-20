@@ -25,6 +25,10 @@ class DuelController {
         //        player2.save()
     }
     
+    static func fetchDuelForID(id: String, completion: (duel: Duel?) -> Void) {
+        
+    }
+    
     // Method to add player to duel's ready array, this is the gun cock
     // This is appending data to the firebase ready array under the user's id
     static func playerReady(user: User, duel: Duel) {
