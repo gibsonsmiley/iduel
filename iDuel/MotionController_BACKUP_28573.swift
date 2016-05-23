@@ -33,12 +33,21 @@ class MotionController {
      func saveCalibration(position: String, userCalibration: Calibration) {
         let moc = Stack.sharedStack.managedObjectContext
         if position == "raised" {
+<<<<<<< HEAD
+            guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
+            let calibration = NSManagedObject(entity: raisedCalibrationEntity, insertIntoManagedObjectContext: moc)
+            calibration.setValue(userCalibration.x, forKey: "x")
+            calibration.setValue(userCalibration.y, forKey: "y")
+            calibration.setValue(userCalibration.z, forKey: "z")
+            let _ = try? moc.save()
+=======
         guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
         let calibration = NSManagedObject(entity: raisedCalibrationEntity, insertIntoManagedObjectContext: moc)
         calibration.setValue(userCalibration.pitch, forKey: "pitch")
         calibration.setValue(userCalibration.roll, forKey: "roll")
         calibration.setValue(userCalibration.yaw, forKey: "yaw")
         let _ = try? moc.save()
+>>>>>>> 36a0958f29b3960526506ade3b90575b4e9e2ab5
         } else if position == "lowered" {
             guard let loweredCalibrationEntity = NSEntityDescription.entityForName("loweredCalibration", inManagedObjectContext: moc) else {return}
             let calibration = NSManagedObject(entity: loweredCalibrationEntity, insertIntoManagedObjectContext: moc)
@@ -51,8 +60,13 @@ class MotionController {
         }
     }
     
+<<<<<<< HEAD
+    static func loadCalibration(position: String, completion:(calibration: Calibration?) -> Void) {
+        let request = NSFetchRequest(entityName: "\(position)Calibration")
+=======
      func loadCalibration(position: String, completion:(calibration: Calibration?) -> Void) {
         let request = NSFetchRequest(entityName: "\(position)calibration")
+>>>>>>> 36a0958f29b3960526506ade3b90575b4e9e2ab5
         let moc = Stack.sharedStack.managedObjectContext
         if let calibrations = try? moc.executeFetchRequest(request),
             calibration = calibrations.first {
@@ -127,6 +141,16 @@ class MotionController {
             let backgroundQueue = dispatch_queue_create("", nil)
             dispatch_async(backgroundQueue, {
                 NSThread.sleepForTimeInterval(5.0)
+<<<<<<< HEAD
+                motionManager.stopGyroUpdates()
+                //                print(self.gyroDataArray[0].rotationRate.x)
+                //                print(self.gyroDataArray[0])
+                let x = (self.gyroDataArray[0].rotationRate.x + self.gyroDataArray[1].rotationRate.x + self.gyroDataArray[2].rotationRate.x + self.gyroDataArray[3].rotationRate.x + self.gyroDataArray[4].rotationRate.x) / 5
+                let y = (self.gyroDataArray[0].rotationRate.y + self.gyroDataArray[1].rotationRate.y + self.gyroDataArray[2].rotationRate.y + self.gyroDataArray[3].rotationRate.y + self.gyroDataArray[4].rotationRate.y) / 5
+                let z = (self.gyroDataArray[0].rotationRate.z + self.gyroDataArray[1].rotationRate.z + self.gyroDataArray[2].rotationRate.z + self.gyroDataArray[3].rotationRate.z + self.gyroDataArray[4].rotationRate.z) / 5
+                let average = Calibration(x: x, y: y, z: z)
+                print("Average: \(average)")
+=======
                 self.motionManager.stopDeviceMotionUpdates()
                 print(self.PitchRollYawArray[0])
                 print(self.PitchRollYawArray[0])
@@ -134,6 +158,7 @@ class MotionController {
                 let roll = (self.PitchRollYawArray[0].attitude.roll + self.PitchRollYawArray[1].attitude.roll + self.PitchRollYawArray[2].attitude.roll + self.PitchRollYawArray[3].attitude.roll + self.PitchRollYawArray[4].attitude.roll) / 5
                 let yaw = (self.PitchRollYawArray[0].attitude.yaw + self.PitchRollYawArray[1].attitude.yaw + self.PitchRollYawArray[2].attitude.yaw + self.PitchRollYawArray[3].attitude.yaw + self.PitchRollYawArray[4].attitude.yaw) / 5
                 let average = Calibration(pitch: pitch, roll: roll, yaw: yaw)
+>>>>>>> 36a0958f29b3960526506ade3b90575b4e9e2ab5
                 completion(averageCalibration: average)
             })
         } else {
