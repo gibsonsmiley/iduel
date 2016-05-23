@@ -45,7 +45,7 @@ class SetUpDuelViewController: UIViewController {
             beginDuelButton.enabled = true
         }
         guard let opponent = opponent else { return }
-            selectOpponentButton.setTitle("\(opponent.nickname) (Tap to choose again)", forState: .Normal)
+        selectOpponentButton.setTitle("\(opponent.nickname) (Tap to choose again)", forState: .Normal)
         guard calibrations != nil else { return }
         calibratePhoneButton.setTitle("Calibrated!", forState: .Normal)
     }
@@ -79,6 +79,8 @@ class SetUpDuelViewController: UIViewController {
             })
         } else {
             // Display alert saying an opponent and calibrations are necessary to continue
+            self.selectOpponentButton.setTitle("Select Opponent (Required)", forState: .Normal)
+            self.calibratePhoneButton.setTitle("Calibrate iPhone (Required)", forState: .Normal)
         }
     }
     

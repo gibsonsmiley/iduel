@@ -17,20 +17,29 @@ class MotionController {
     var loweredMesaurements: CMGyroData?
     static var gyroDataArray: [CMGyroData] = []
     
-    static func saveCalibration(userCalibration: Calibration) {
+    static func saveCalibration(position: String, userCalibration: Calibration) {
         let moc = Stack.sharedStack.managedObjectContext
-        guard let calibrationEntity = NSEntityDescription.entityForName("Calibration", inManagedObjectContext: moc) else {return}
-        let calibration = NSManagedObject(entity: calibrationEntity, insertIntoManagedObjectContext: moc)
-        
+        if position == "raised" {
+        guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
+        let calibration = NSManagedObject(entity: raisedCalibrationEntity, insertIntoManagedObjectContext: moc)
         calibration.setValue(userCalibration.x, forKey: "x")
         calibration.setValue(userCalibration.y, forKey: "y")
         calibration.setValue(userCalibration.z, forKey: "z")
         let _ = try? moc.save()
-        
+        } else if position == "lowered" {
+            guard let loweredCalibrationEntity = NSEntityDescription.entityForName("loweredCalibration", inManagedObjectContext: moc) else {return}
+            let calibration = NSManagedObject(entity: loweredCalibrationEntity, insertIntoManagedObjectContext: moc)
+            calibration.setValue(userCalibration.x, forKey: "x")
+            calibration.setValue(userCalibration.y, forKey: "y")
+            calibration.setValue(userCalibration.z, forKey: "z")
+            let _ = try? moc.save()
+        } else {
+            // Position entered does not exist
+        }
     }
     
-    static func loadCalibration(completion:(calibration: Calibration?) -> Void) {
-        let request = NSFetchRequest(entityName: "Calibration")
+    static func loadCalibration(position: String, completion:(calibration: Calibration?) -> Void) {
+        let request = NSFetchRequest(entityName: "\(position)calibration")
         let moc = Stack.sharedStack.managedObjectContext
         if let calibrations = try? moc.executeFetchRequest(request),
             calibration = calibrations.first {
@@ -67,6 +76,18 @@ class MotionController {
                 })
             })
         }
+    }
+    
+    static func playerReady(player: User, duel: Duel, currentPosition: Calibration, savedCalibration: Calibration, completion: (success: Bool) -> Void) {
+        if currentPosition != savedCalibration {
+            // Phone moved out of the average area of the calibration
+            DuelController.playerReady(player, duel: duel)
+            completion(success: true)
+        } else {
+            // Phone is still in average area of calibration, nothing happens
+            completion(success: false)
+        }
+        
     }
     
     static func beginMotionTracking(completion:(averageCalibration: Calibration?) -> Void) {

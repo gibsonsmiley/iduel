@@ -61,7 +61,7 @@ class CalibrateTableViewController: UITableViewController {
     @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
         MotionController.beginMotionTracking { (averageCalibration) in
             guard let calibration = averageCalibration else { return }
-            MotionController.saveCalibration(calibration)
+            MotionController.saveCalibration("raised", userCalibration: calibration)
             self.raisedCalibration = calibration
             self.raisedTitleLabel.text = "Calibration Saved - Tap To Recalibrate"
         }
@@ -70,7 +70,7 @@ class CalibrateTableViewController: UITableViewController {
     @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {
         MotionController.beginMotionTracking { (averageCalibration) in
             guard let calibration = averageCalibration else { return }
-            MotionController.saveCalibration(calibration)
+            MotionController.saveCalibration("lowered", userCalibration: calibration)
             self.loweredCalibration = calibration
             self.loweredTitleLabel.text = "Calibration Saved - Tap To Recalibrate"
         }
