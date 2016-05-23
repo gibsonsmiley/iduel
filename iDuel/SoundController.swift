@@ -38,6 +38,8 @@ extension SystemSoundID {
         
     }
     
+    // Credit for the tracks "Kenny MacConnachie aka evony"
+    
     // Example on how to call this anywhere in the app. 1. import AudioToolbox 2. Then write this SystemSoundId.playGunShot1("1gunshot")
 
 }
@@ -47,9 +49,9 @@ extension SystemSoundID {
 var duelBackGroundMusic = AVAudioPlayer()
 
 func playDuelBackGroundMusic(filename: String){
-    let url = NSBundle.mainBundle().URLForResource("______", withExtension: "mp3")
+    let url = NSBundle.mainBundle().URLForResource("DuelTrack", withExtension: "mp3")
     guard let newURL = url else {
-        print("could not find file: \("")")
+        print("could not find file: \("DuelTrack")")
         return
     }
     do {
@@ -66,9 +68,9 @@ func playDuelBackGroundMusic(filename: String){
 var MainThemeBackGroundMusic = AVAudioPlayer()
 
 func playMainThemeBackGroundMusic(filename: String){
-    let url = NSBundle.mainBundle().URLForResource("bensound-epic", withExtension: "mp3")
+    let url = NSBundle.mainBundle().URLForResource("DuelMenuTrack", withExtension: "mp3")
     guard let newURL = url else {
-        print("could not find file: \("bensound-epic")")
+        print("could not find file: \("DuelMenuTrack")")
         return
     }
     do {

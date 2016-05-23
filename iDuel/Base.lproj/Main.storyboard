@@ -203,7 +203,6 @@
                                 </state>
                                 <connections>
                                     <action selector="beginDuelButton:" destination="OKq-eY-Neg" eventType="touchUpInside" id="oMT-sQ-h8Z"/>
-                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="2pr-Uz-GX8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -237,6 +236,7 @@
                         <outlet property="calibratePhoneButton" destination="RfQ-H9-4N6" id="01Y-mE-aQZ"/>
                         <outlet property="selectOpponentButton" destination="fck-BG-A6V" id="Kuf-NB-fgP"/>
                         <outlet property="themesButton" destination="hbP-2V-z2X" id="EFh-5p-sKg"/>
+                        <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="MeC-6T-Py4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5A-SL-x7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -398,7 +398,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14u-3C-af3">
-                                                    <rect key="frame" x="8" y="10" width="584" height="41"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="46"/>
                                                     <string key="text">On the next couple of screens we're going to go over what position is most comfortable for you while you're holding your phone and dueling.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -407,8 +407,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="14u-3C-af3" firstAttribute="centerX" secondItem="boL-Yy-CJI" secondAttribute="centerX" id="CWl-Oc-2fn"/>
+                                                <constraint firstAttribute="bottom" secondItem="14u-3C-af3" secondAttribute="bottom" constant="8" id="LJi-lW-67H"/>
                                                 <constraint firstAttribute="trailing" secondItem="14u-3C-af3" secondAttribute="trailing" constant="8" id="QWr-IO-N8w"/>
                                                 <constraint firstItem="14u-3C-af3" firstAttribute="centerY" secondItem="boL-Yy-CJI" secondAttribute="centerY" id="e34-hS-wHE"/>
+                                                <constraint firstItem="14u-3C-af3" firstAttribute="top" secondItem="boL-Yy-CJI" secondAttribute="top" constant="8" id="nho-YT-LBy"/>
                                                 <constraint firstItem="14u-3C-af3" firstAttribute="leading" secondItem="boL-Yy-CJI" secondAttribute="leading" constant="8" id="tOn-bM-UdA"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -449,7 +451,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TB-TN-HNG">
-                                                    <rect key="frame" x="8" y="15" width="584" height="41"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="56"/>
                                                     <string key="text">Raise your phone as if you were going to fire at your opponet to calibrate your position. This is were you will need to raise your phone for the battle.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -457,10 +459,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="2TB-TN-HNG" secondAttribute="bottom" constant="8" id="6cu-Se-vC6"/>
                                                 <constraint firstItem="2TB-TN-HNG" firstAttribute="centerX" secondItem="rFI-iG-Xp5" secondAttribute="centerX" id="QvQ-z5-Kax"/>
                                                 <constraint firstAttribute="trailing" secondItem="2TB-TN-HNG" secondAttribute="trailing" constant="8" id="fcH-Wf-Nqz"/>
                                                 <constraint firstItem="2TB-TN-HNG" firstAttribute="leading" secondItem="rFI-iG-Xp5" secondAttribute="leading" constant="8" id="gAn-2L-e8J"/>
                                                 <constraint firstItem="2TB-TN-HNG" firstAttribute="centerY" secondItem="rFI-iG-Xp5" secondAttribute="centerY" id="iRV-8J-Fu0"/>
+                                                <constraint firstItem="2TB-TN-HNG" firstAttribute="top" secondItem="rFI-iG-Xp5" secondAttribute="top" constant="8" id="mgh-Y7-l8E"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -472,7 +476,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCn-Qt-h66">
-                                                    <rect key="frame" x="216" y="3" width="168" height="39"/>
+                                                    <rect key="frame" x="8" y="3" width="584" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="Begin Calibration">
                                                         <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -483,7 +487,9 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="pCn-Qt-h66" firstAttribute="leading" secondItem="Q0r-7D-4ia" secondAttribute="leading" constant="8" id="4eh-xW-zHR"/>
                                                 <constraint firstItem="pCn-Qt-h66" firstAttribute="centerX" secondItem="Q0r-7D-4ia" secondAttribute="centerX" id="JVW-u5-zfn"/>
+                                                <constraint firstAttribute="trailing" secondItem="pCn-Qt-h66" secondAttribute="trailing" constant="8" id="kvQ-Ky-Ya2"/>
                                                 <constraint firstItem="pCn-Qt-h66" firstAttribute="centerY" secondItem="Q0r-7D-4ia" secondAttribute="centerY" id="oC5-68-FQZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -503,8 +509,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone Lowered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD7-LH-3Xy">
-                                                    <rect key="frame" x="228" y="10" width="146" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Lowered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD7-LH-3Xy">
+                                                    <rect key="frame" x="227" y="10" width="146" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -524,14 +530,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The next position to calibrate is how you're holding your phone when it's lowered, or &quot;holstered,&quot; by your side." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsr-aa-du7">
-                                                    <rect key="frame" x="8" y="14" width="584" height="41"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="bsr-aa-du7" secondAttribute="bottom" constant="8" id="3gj-tR-jw3"/>
                                                 <constraint firstItem="bsr-aa-du7" firstAttribute="centerX" secondItem="VK8-rg-sz1" secondAttribute="centerX" id="5Es-S6-dpA"/>
+                                                <constraint firstItem="bsr-aa-du7" firstAttribute="top" secondItem="VK8-rg-sz1" secondAttribute="top" constant="8" id="Ais-N9-sCS"/>
                                                 <constraint firstAttribute="trailing" secondItem="bsr-aa-du7" secondAttribute="trailing" constant="8" id="PD5-r2-spL"/>
                                                 <constraint firstItem="bsr-aa-du7" firstAttribute="leading" secondItem="VK8-rg-sz1" secondAttribute="leading" constant="8" id="Sdl-nn-2Kw"/>
                                                 <constraint firstItem="bsr-aa-du7" firstAttribute="centerY" secondItem="VK8-rg-sz1" secondAttribute="centerY" id="Ucm-QJ-E52"/>
@@ -546,7 +554,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-Eh-8go">
-                                                    <rect key="frame" x="216" y="3" width="168" height="39"/>
+                                                    <rect key="frame" x="8" y="3" width="584" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="Begin Calibration">
                                                         <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -558,6 +566,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dWJ-Eh-8go" firstAttribute="centerY" secondItem="Q4J-oB-hgS" secondAttribute="centerY" id="F5z-jl-Fxz"/>
+                                                <constraint firstAttribute="trailing" secondItem="dWJ-Eh-8go" secondAttribute="trailing" constant="8" id="H0c-ZC-ojW"/>
+                                                <constraint firstItem="dWJ-Eh-8go" firstAttribute="leading" secondItem="Q4J-oB-hgS" secondAttribute="leading" constant="8" id="JFO-G3-b11"/>
                                                 <constraint firstItem="dWJ-Eh-8go" firstAttribute="centerX" secondItem="Q4J-oB-hgS" secondAttribute="centerX" id="g5d-eq-FAb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -887,7 +897,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="MeC-6T-Py4"/>
         <segue reference="hjW-aq-90n"/>
-        <segue reference="7eV-OX-TqF"/>
     </inferredMetricsTieBreakers>
 </document>

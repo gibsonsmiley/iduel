@@ -25,6 +25,8 @@ class CalibrateTableViewController: UITableViewController {
     let raisedCalibrationKey = "raisedCalibration"
     let loweredCalibrationKey = "loweredCalibration"
     
+
+    
     var raisedCalibration: Calibration?
     var loweredCalibration: Calibration?
     
@@ -32,6 +34,8 @@ class CalibrateTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        displayInfo()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +44,18 @@ class CalibrateTableViewController: UITableViewController {
     
     // MARK: - Methods
     
-    
+    func displayInfo() {
+        let raisedKey = NSUserDefaults.standardUserDefaults().valueForKey(raisedCalibrationKey)
+        let loweredKey = NSUserDefaults.standardUserDefaults().valueForKey(loweredCalibrationKey)
+        
+        if raisedKey != nil {
+            raisedCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
+        }
+        
+        if loweredKey != nil {
+            loweredCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
+        }
+    }
     
     // MARK: - Actions
     
@@ -49,30 +64,34 @@ class CalibrateTableViewController: UITableViewController {
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
-        // Ensure calibrations are saved
-        guard let raisedCalibration = raisedCalibration else { return }
-        guard let loweredCalibration = loweredCalibration else { return }
-        let destinationViewController = presentingViewController as? SetUpDuelViewController
-        destinationViewController?.calibrations?.append(raisedCalibration)
-        destinationViewController?.calibrations?.append(loweredCalibration)
-        dismissViewControllerAnimated(true, completion: nil)
+//        guard let destinationVCNavController = presentingViewController as? UINavigationController,
+//        destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
+//        guard let raisedCalibration = self.raisedCalibration else { return }
+//        guard let loweredCalibration = self.loweredCalibration else { return }
+//        let raised = Calibration(x: Double(raisedCalibration.x!), y: Double(raisedCalibration.y!), z: Double(raisedCalibration.z!))
+//        let lowered = Calibration(x: Double(loweredCalibration.x!), y: Double(loweredCalibration.y!), z: Double(loweredCalibration.z!))
+//        destinationViewController.getCalibrations(raised, lowered: lowered)
+//        print("\(destinationViewController.calibrations)")
+//        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
-        MotionController.beginMotionTracking { (averageCalibration) in
+        self.raisedCalibrateButton.setTitle("Calibrating...", forState: .Normal)
+        MotionController.sharedController.beginMotionTracking { (averageCalibration) in
             guard let calibration = averageCalibration else { return }
-            MotionController.saveCalibration("raised", userCalibration: calibration)
+            MotionController.sharedController.saveCalibration("raised", userCalibration: calibration)
             self.raisedCalibration = calibration
-            self.raisedTitleLabel.text = "Calibration Saved - Tap To Recalibrate"
+            self.raisedCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
         }
     }
     
     @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {
-        MotionController.beginMotionTracking { (averageCalibration) in
+        self.loweredCalibrateButton.setTitle("Calibrating...", forState: .Normal)
+        MotionController.sharedController.beginMotionTracking { (averageCalibration) in
             guard let calibration = averageCalibration else { return }
-            MotionController.saveCalibration("lowered", userCalibration: calibration)
+            MotionController.sharedController.saveCalibration("lowered", userCalibration: calibration)
             self.loweredCalibration = calibration
-            self.loweredTitleLabel.text = "Calibration Saved - Tap To Recalibrate"
+            self.loweredCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
         }
     }
     
