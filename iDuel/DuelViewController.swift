@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreMotion
 
 class DuelViewController: UIViewController {
-
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
     
@@ -19,8 +20,10 @@ class DuelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        duelStart()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -31,6 +34,52 @@ class DuelViewController: UIViewController {
         self.duel = duel
     }
     
+    func duelStart() {
+        MotionController.trackMotionForDuel { (currentPosition) in
+            guard let currentPosition = currentPosition else { return }
+            MotionController.loadCalibration("lowered", completion: { (calibration) in
+                guard let loweredPosition = calibration else { return }
+                MotionController.checkCalibration(loweredPosition, currentMeasurements: currentPosition, completion: { (success) in
+                    if success {
+                        guard let duel = self.duel else { return }
+                        MotionController.playerReady(UserController.currentUser, duel: duel, currentPosition: currentPosition, savedCalibration: <#T##Calibration#>, completion: <#T##(success: Bool) -> Void#>)
+                    } else {
+                        // Current position is not aligned with calibrated average
+                    }
+                })
+            })
+        }
+        
+        
+//        MotionController.loadCalibration { (calibration) in
+//            if let calibration = calibration {
+//                MotionController.trackMotionForDuel({ (currentPosition) in
+//                    if let currentPosition = currentPosition {
+//                        MotionController.checkCalibration(calibration, currentMeasurements: currentPosition, completion: { (success) in
+//                            if success {
+//                                // If current position is algined with the lowered position calibrated average {
+//                                    // Watch for "cock" action THIS NEEDS A FUCKING METHOD {
+//                                        // Once "cock" action is detected play sound and call DuelController.playerReady function {
+//                                        // Need to figure out where to call the DuelController.checkReadyStatus function, maybe here?
+//                                            // Once checkReadyStatus returns two true bools call DuelController.startDuel
+//                                            // Call DuelController.victory
+//                                                // If winner { perform segue and updateWith(winner)
+//                                                // If loser { perform segue and updateWith(loser)
+//                            } else {
+//                                // Current position is not aligned with calibrated average
+//                            }
+//                        })
+//                    } else {
+//                        // No current position detected
+//                        
+//                    }
+//                })
+//            } else {
+//                // No calibration detected
+//            }
+//        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -38,19 +87,16 @@ class DuelViewController: UIViewController {
         // Stop duel and move back to set up view
         // Possibly alert opponent that duel was cancelled
     }
-
+    
     @IBAction func fireButtonTapped(sender: AnyObject) {
         // FIRE!
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    /* // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     } */
 }
