@@ -33,7 +33,7 @@ class MotionController {
         let request = NSFetchRequest(entityName: "Calibration")
         let moc = Stack.sharedStack.managedObjectContext
         if let calibrations = try? moc.executeFetchRequest(request),
-        calibration = calibrations.first {
+            calibration = calibrations.first {
             guard let x = calibration.valueForKey("x") as? Double,
                 y = calibration.valueForKey("y") as? Double,
                 z = calibration.valueForKey("z") as? Double else { completion(calibration: nil); return}
@@ -42,7 +42,31 @@ class MotionController {
         } else {
             completion(calibration: nil)
         }
-        
+    }
+    
+    static func trackMotionForDuel(completion: (currentPosition: Calibration?) -> Void) {
+        let motionManager = CMMotionManager()
+        if motionManager.gyroAvailable {
+            motionManager.startGyroUpdates()
+            motionManager.gyroUpdateInterval = 0.1
+            let queue = NSOperationQueue.mainQueue()
+            let motionQueue = dispatch_queue_create("duelTracking", nil)
+            dispatch_async(motionQueue, {
+                motionManager.startGyroUpdatesToQueue(queue, withHandler: { (data, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        completion(currentPosition: nil)
+                    } else {
+                        guard let data = data else { completion(currentPosition: nil); return }
+                        let xPosition = data.rotationRate.x
+                        let yPosition = data.rotationRate.y
+                        let zPosition = data.rotationRate.z
+                        let currentPosition = Calibration(x: xPosition, y: yPosition, z: zPosition)
+                        completion(currentPosition: currentPosition)
+                    }
+                })
+            })
+        }
     }
     
     static func beginMotionTracking(completion:(averageCalibration: CMRotationRate?) -> Void) {
@@ -57,14 +81,12 @@ class MotionController {
             dispatch_async(motionQueue, {
                 motionManager.startGyroUpdatesToQueue(queue, withHandler: { (data, error) in
                     if error != nil {
-                        print(error)
+                        print(error?.localizedDescription)
                         completion(averageCalibration: nil)
-                    }
-                    if let data = data {
+                    } else {
+                        guard let data = data else { completion(averageCalibration: nil); return }
                         self.gyroDataArray.append(data)
                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    } else {
-                        completion(averageCalibration: nil)
                     }
                 })
             })
