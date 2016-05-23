@@ -51,10 +51,14 @@ class CalibrateTableViewController: UITableViewController {
     @IBAction func doneButtonTapped(sender: AnyObject) {
         guard let destinationVCNavController = presentingViewController as? UINavigationController,
         destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-        guard let raisedCalibration = raisedCalibration else { return }
-        guard let loweredCalibration = loweredCalibration else { return }
-        destinationViewController.calibrations?.append(raisedCalibration)
-        destinationViewController.calibrations?.append(loweredCalibration)
+        guard let raisedCalibration = self.raisedCalibration else { return }
+        guard let loweredCalibration = self.loweredCalibration else { return }
+//        destinationViewController.calibrations?.append(raisedCalibration)
+//        destinationViewController.calibrations?.append(loweredCalibration)
+        let raised = Calibration(x: Double(raisedCalibration.x!), y: Double(raisedCalibration.y!), z: Double(raisedCalibration.z!))
+        let lowered = Calibration(x: Double(loweredCalibration.x!), y: Double(loweredCalibration.y!), z: Double(loweredCalibration.z!))
+        destinationViewController.getCalibrations(raised, lowered: lowered)
+        print("\(destinationViewController.calibrations)")
         dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -203,7 +203,6 @@
                                 </state>
                                 <connections>
                                     <action selector="beginDuelButton:" destination="OKq-eY-Neg" eventType="touchUpInside" id="oMT-sQ-h8Z"/>
-                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="2pr-Uz-GX8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -237,6 +236,7 @@
                         <outlet property="calibratePhoneButton" destination="RfQ-H9-4N6" id="01Y-mE-aQZ"/>
                         <outlet property="selectOpponentButton" destination="fck-BG-A6V" id="Kuf-NB-fgP"/>
                         <outlet property="themesButton" destination="hbP-2V-z2X" id="EFh-5p-sKg"/>
+                        <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="MeC-6T-Py4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5A-SL-x7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -897,7 +897,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="MeC-6T-Py4"/>
         <segue reference="hjW-aq-90n"/>
-        <segue reference="7eV-OX-TqF"/>
     </inferredMetricsTieBreakers>
 </document>
