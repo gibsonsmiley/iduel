@@ -13,11 +13,24 @@ import CoreData
 
 class MotionController {
     
+    static let sharedController = MotionController()
+    
     static var temporaryMeasurements: CMGyroData?
     var loweredMesaurements: CMGyroData?
-    static var gyroDataArray: [CMGyroData] = []
     
-    static func saveCalibration(position: String, userCalibration: Calibration) {
+    // pitch = rotation around the x axis
+    // roll = rotation around the y axis
+    // yaw = rotation around the z axis
+    var PitchRollYawArray: [CMDeviceMotion] = []
+
+    var motionManager: CMMotionManager!
+    
+    init() {
+        self.motionManager = CMMotionManager()
+    }
+    
+    
+     func saveCalibration(position: String, userCalibration: Calibration) {
         let moc = Stack.sharedStack.managedObjectContext
         if position == "raised" {
         guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
@@ -38,7 +51,7 @@ class MotionController {
         }
     }
     
-    static func loadCalibration(position: String, completion:(calibration: Calibration?) -> Void) {
+     func loadCalibration(position: String, completion:(calibration: Calibration?) -> Void) {
         let request = NSFetchRequest(entityName: "\(position)calibration")
         let moc = Stack.sharedStack.managedObjectContext
         if let calibrations = try? moc.executeFetchRequest(request),
@@ -53,8 +66,7 @@ class MotionController {
         }
     }
     
-    static func trackMotionForDuel(completion: (currentPosition: Calibration?) -> Void) {
-        let motionManager = CMMotionManager()
+     func trackMotionForDuel(completion: (currentPosition: Calibration?) -> Void) {
         if motionManager.gyroAvailable {
             motionManager.startGyroUpdates()
             motionManager.gyroUpdateInterval = 0.1
@@ -78,7 +90,7 @@ class MotionController {
         }
     }
     
-    static func playerReady(player: User, duel: Duel, currentPosition: Calibration, savedCalibration: Calibration, completion: (success: Bool) -> Void) {
+     func playerReady(player: User, duel: Duel, currentPosition: Calibration, savedCalibration: Calibration, completion: (success: Bool) -> Void) {
         if currentPosition != savedCalibration {
             // Phone moved out of the average area of the calibration
             DuelController.playerReady(player, duel: duel)
@@ -90,23 +102,23 @@ class MotionController {
         
     }
     
-    static func beginMotionTracking(completion:(averageCalibration: Calibration?) -> Void) {
-        let motionManager = CMMotionManager()
-        if motionManager.gyroAvailable {
-            motionManager.startGyroUpdates()
+     func beginMotionTracking(completion:(averageCalibration: Calibration?) -> Void) {
+
+        if motionManager.deviceMotionAvailable {
+            motionManager.startDeviceMotionUpdates()
             motionManager.gyroUpdateInterval = 1.0
             let queue = NSOperationQueue.mainQueue()
             let motionQueue = dispatch_queue_create("", nil)
             
             //gathers CMGyroData every second
             dispatch_async(motionQueue, {
-                motionManager.startGyroUpdatesToQueue(queue, withHandler: { (data, error) in
+                self.motionManager.startDeviceMotionUpdatesToQueue(queue, withHandler: { (data, error) in
                     if error != nil {
                         print(error?.localizedDescription)
                         completion(averageCalibration: nil)
                     } else {
                         guard let data = data else { completion(averageCalibration: nil); return }
-                        self.gyroDataArray.append(data)
+                        self.PitchRollYawArray.append(data)
                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                     }
                 })
@@ -116,12 +128,12 @@ class MotionController {
             let backgroundQueue = dispatch_queue_create("", nil)
             dispatch_async(backgroundQueue, {
                 NSThread.sleepForTimeInterval(5.0)
-                motionManager.stopGyroUpdates()
-                print(self.gyroDataArray[0].rotationRate.x)
-                print(self.gyroDataArray[0])
-                let x = (self.gyroDataArray[0].rotationRate.x + self.gyroDataArray[1].rotationRate.x + self.gyroDataArray[2].rotationRate.x + self.gyroDataArray[3].rotationRate.x + self.gyroDataArray[4].rotationRate.x) / 5
-                let y = (self.gyroDataArray[0].rotationRate.y + self.gyroDataArray[1].rotationRate.y + self.gyroDataArray[2].rotationRate.y + self.gyroDataArray[3].rotationRate.y + self.gyroDataArray[4].rotationRate.y) / 5
-                let z = (self.gyroDataArray[0].rotationRate.z + self.gyroDataArray[1].rotationRate.z + self.gyroDataArray[2].rotationRate.z + self.gyroDataArray[3].rotationRate.z + self.gyroDataArray[4].rotationRate.z) / 5
+                self.motionManager.stopGyroUpdates()
+                print(self.PitchRollYawArray[0])
+                print(self.PitchRollYawArray[0])
+                let x = (self.PitchRollYawArray[0].attitude.pitch + self.PitchRollYawArray[1].attitude.pitch + self.PitchRollYawArray[2].attitude.pitch + self.PitchRollYawArray[3].attitude.pitch + self.PitchRollYawArray[4].attitude.pitch) / 5
+                let y = (self.PitchRollYawArray[0].attitude.roll + self.PitchRollYawArray[1].attitude.roll + self.PitchRollYawArray[2].attitude.roll + self.PitchRollYawArray[3].attitude.roll + self.PitchRollYawArray[4].attitude.roll) / 5
+                let z = (self.PitchRollYawArray[0].attitude.yaw + self.PitchRollYawArray[1].attitude.yaw + self.PitchRollYawArray[2].attitude.yaw + self.PitchRollYawArray[3].attitude.yaw + self.PitchRollYawArray[4].attitude.yaw) / 5
                 let average = Calibration(x: x, y: y, z: z)
                 completion(averageCalibration: average)
             })
@@ -130,7 +142,7 @@ class MotionController {
         }
     }
     
-    static func checkCalibration(calibratedAverage: Calibration, currentMeasurements: Calibration, completion: (success: Bool) -> Void) {
+     func checkCalibration(calibratedAverage: Calibration, currentMeasurements: Calibration, completion: (success: Bool) -> Void) {
         if (Double(currentMeasurements.x!) < (Double(calibratedAverage.x!) + 1.0) && Double(currentMeasurements.x!) > (Double(calibratedAverage.x!) - 1.0)) && (Double(currentMeasurements.y!) < (Double(calibratedAverage.y!) + 1.0) && Double(currentMeasurements.y!) > (Double(calibratedAverage.y!) - 1.0)) && (Double(currentMeasurements.z!) < (Double(calibratedAverage.z!) + 1.0) && Double(currentMeasurements.z!) > (Double(calibratedAverage.z!) - 1.0)) {
             completion(success: true)
         } else {
