@@ -20,12 +20,12 @@ class MotionController {
     static func saveCalibration(position: String, userCalibration: Calibration) {
         let moc = Stack.sharedStack.managedObjectContext
         if position == "raised" {
-        guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
-        let calibration = NSManagedObject(entity: raisedCalibrationEntity, insertIntoManagedObjectContext: moc)
-        calibration.setValue(userCalibration.x, forKey: "x")
-        calibration.setValue(userCalibration.y, forKey: "y")
-        calibration.setValue(userCalibration.z, forKey: "z")
-        let _ = try? moc.save()
+            guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
+            let calibration = NSManagedObject(entity: raisedCalibrationEntity, insertIntoManagedObjectContext: moc)
+            calibration.setValue(userCalibration.x, forKey: "x")
+            calibration.setValue(userCalibration.y, forKey: "y")
+            calibration.setValue(userCalibration.z, forKey: "z")
+            let _ = try? moc.save()
         } else if position == "lowered" {
             guard let loweredCalibrationEntity = NSEntityDescription.entityForName("loweredCalibration", inManagedObjectContext: moc) else {return}
             let calibration = NSManagedObject(entity: loweredCalibrationEntity, insertIntoManagedObjectContext: moc)
@@ -39,7 +39,7 @@ class MotionController {
     }
     
     static func loadCalibration(position: String, completion:(calibration: Calibration?) -> Void) {
-        let request = NSFetchRequest(entityName: "\(position)calibration")
+        let request = NSFetchRequest(entityName: "\(position)Calibration")
         let moc = Stack.sharedStack.managedObjectContext
         if let calibrations = try? moc.executeFetchRequest(request),
             calibration = calibrations.first {
@@ -117,8 +117,8 @@ class MotionController {
             dispatch_async(backgroundQueue, {
                 NSThread.sleepForTimeInterval(5.0)
                 motionManager.stopGyroUpdates()
-//                print(self.gyroDataArray[0].rotationRate.x)
-//                print(self.gyroDataArray[0])
+                //                print(self.gyroDataArray[0].rotationRate.x)
+                //                print(self.gyroDataArray[0])
                 let x = (self.gyroDataArray[0].rotationRate.x + self.gyroDataArray[1].rotationRate.x + self.gyroDataArray[2].rotationRate.x + self.gyroDataArray[3].rotationRate.x + self.gyroDataArray[4].rotationRate.x) / 5
                 let y = (self.gyroDataArray[0].rotationRate.y + self.gyroDataArray[1].rotationRate.y + self.gyroDataArray[2].rotationRate.y + self.gyroDataArray[3].rotationRate.y + self.gyroDataArray[4].rotationRate.y) / 5
                 let z = (self.gyroDataArray[0].rotationRate.z + self.gyroDataArray[1].rotationRate.z + self.gyroDataArray[2].rotationRate.z + self.gyroDataArray[3].rotationRate.z + self.gyroDataArray[4].rotationRate.z) / 5

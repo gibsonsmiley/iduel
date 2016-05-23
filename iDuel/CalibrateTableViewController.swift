@@ -25,6 +25,8 @@ class CalibrateTableViewController: UITableViewController {
     let raisedCalibrationKey = "raisedCalibration"
     let loweredCalibrationKey = "loweredCalibration"
     
+
+    
     var raisedCalibration: Calibration?
     var loweredCalibration: Calibration?
     
@@ -32,6 +34,8 @@ class CalibrateTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        displayInfo()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +44,18 @@ class CalibrateTableViewController: UITableViewController {
     
     // MARK: - Methods
     
-    
+    func displayInfo() {
+        let raisedKey = NSUserDefaults.standardUserDefaults().valueForKey(raisedCalibrationKey)
+        let loweredKey = NSUserDefaults.standardUserDefaults().valueForKey(loweredCalibrationKey)
+        
+        if raisedKey != nil {
+            raisedCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
+        }
+        
+        if loweredKey != nil {
+            loweredCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
+        }
+    }
     
     // MARK: - Actions
     
