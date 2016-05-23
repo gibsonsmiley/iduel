@@ -38,6 +38,8 @@ extension SystemSoundID {
         
     }
     
+    // Credit for the tracks "Kenny MacConnachie aka evony"
+    
     // Example on how to call this anywhere in the app. 1. import AudioToolbox 2. Then write this SystemSoundId.playGunShot1("1gunshot")
 
 }
