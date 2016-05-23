@@ -117,12 +117,13 @@ class MotionController {
             dispatch_async(backgroundQueue, {
                 NSThread.sleepForTimeInterval(5.0)
                 motionManager.stopGyroUpdates()
-                print(self.gyroDataArray[0].rotationRate.x)
-                print(self.gyroDataArray[0])
+//                print(self.gyroDataArray[0].rotationRate.x)
+//                print(self.gyroDataArray[0])
                 let x = (self.gyroDataArray[0].rotationRate.x + self.gyroDataArray[1].rotationRate.x + self.gyroDataArray[2].rotationRate.x + self.gyroDataArray[3].rotationRate.x + self.gyroDataArray[4].rotationRate.x) / 5
                 let y = (self.gyroDataArray[0].rotationRate.y + self.gyroDataArray[1].rotationRate.y + self.gyroDataArray[2].rotationRate.y + self.gyroDataArray[3].rotationRate.y + self.gyroDataArray[4].rotationRate.y) / 5
                 let z = (self.gyroDataArray[0].rotationRate.z + self.gyroDataArray[1].rotationRate.z + self.gyroDataArray[2].rotationRate.z + self.gyroDataArray[3].rotationRate.z + self.gyroDataArray[4].rotationRate.z) / 5
                 let average = Calibration(x: x, y: y, z: z)
+                print("Average: \(average)")
                 completion(averageCalibration: average)
             })
         } else {

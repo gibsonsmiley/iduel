@@ -33,23 +33,30 @@ class VictoryViewController: UIViewController {
     
     // MARK: - Methods
     
-    func updateWithDuel(duel: Duel) {
+    func updateWithDuel(duel: Duel, victory: String) {
         self.duel = duel
-        
+    
+        if victory == "winner" {
+            self.victoryLabel.text = "You Won!"
+        } else if victory == "loser" {
+            self.victoryLabel.text = "You Lost!"
+        }
     }
     
     // MARK: - Actions
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
-        // Move back to duel view and create a new duel
-//        DuelController.createDuel(<#T##player1: User##User#>, player2: <#T##User#>) { (success, duel) in
-//            guard let duel = duel else { return }
-//            let destinationViewController = self.presentingViewController as? DuelViewController
-//            destinationViewController?.updateWithDuel(duel)
-//        }
+        // Need to delete the current duel somehow
+        guard let duel = duel else { return }
+        DuelController.createDuel(duel.player1, player2: duel.player2) { (success, duel) in
+            guard let duel = duel else { return }
+            let destinationViewController = self.presentingViewController as? DuelViewController
+            destinationViewController?.updateWithDuel(duel)
+        }
     }
     
     @IBAction func exitGameButtonTapped(sender: AnyObject) {
+        // Delete current duel
         // Move back to set up duel view
     }
 
