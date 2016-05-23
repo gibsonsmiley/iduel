@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 
 class CalibrateTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var viewTitleLabel: UILabel!
@@ -33,13 +33,13 @@ class CalibrateTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     // MARK: - Methods
-
+    
     
     
     // MARK: - Actions
@@ -50,50 +50,37 @@ class CalibrateTableViewController: UITableViewController {
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
         // Ensure calibrations are saved
+        guard let raisedCalibration = raisedCalibration else { return }
+        guard let loweredCalibration = loweredCalibration else { return }
+        let destinationViewController = presentingViewController as? SetUpDuelViewController
+        destinationViewController?.calibrations?.append(raisedCalibration)
+        destinationViewController?.calibrations?.append(loweredCalibration)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
-        // Get calibration and save it
         MotionController.beginMotionTracking { (averageCalibration) in
-            
+            guard let calibration = averageCalibration else { return }
+            MotionController.saveCalibration(calibration)
+            self.raisedCalibration = calibration
+            self.raisedTitleLabel.text = "Calibration Saved - Tap To Recalibrate"
         }
-        
-//        if raisedCalibrateButton.titleLabel?.text == "Begin Calibration" {
-//            // Capture calibration
-//            if raisedCalibration != nil {
-//                raisedCalibrateButton.setTitle("Recalibrate", forState: .Normal)
-//                raisedTitleLabel.text = "Phone Raised - Calibration Saved"
-//            } else {
-//                raisedTitleLabel.text = "Phone Raised"
-//            }
-//        } else {
-//            raisedCalibrateButton.setTitle("Begin Calibration", forState: .Normal)
-//        }
     }
     
     @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {
-        // Get calibration and save it
-        if loweredCalibrateButton.titleLabel?.text == "Begin Calibration" {
-            if loweredCalibration != nil {
-                loweredCalibrateButton.setTitle("Recalibrate", forState: .Normal)
-                loweredTitleLabel.text = "Phone Lowered - Calibration Saved"
-            } else {
-                loweredTitleLabel.text = "Phone Lowered"
-            }
-        } else {
-            loweredCalibrateButton.setTitle("Begin Calibration", forState: .Normal)
+        MotionController.beginMotionTracking { (averageCalibration) in
+            guard let calibration = averageCalibration else { return }
+            MotionController.saveCalibration(calibration)
+            self.loweredCalibration = calibration
+            self.loweredTitleLabel.text = "Calibration Saved - Tap To Recalibrate"
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    /* // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     } */
 }

@@ -69,7 +69,7 @@ class MotionController {
         }
     }
     
-    static func beginMotionTracking(completion:(averageCalibration: CMRotationRate?) -> Void) {
+    static func beginMotionTracking(completion:(averageCalibration: Calibration?) -> Void) {
         let motionManager = CMMotionManager()
         if motionManager.gyroAvailable {
             motionManager.startGyroUpdates()
@@ -101,7 +101,7 @@ class MotionController {
                 let x = (self.gyroDataArray[0].rotationRate.x + self.gyroDataArray[1].rotationRate.x + self.gyroDataArray[2].rotationRate.x + self.gyroDataArray[3].rotationRate.x + self.gyroDataArray[4].rotationRate.x) / 5
                 let y = (self.gyroDataArray[0].rotationRate.y + self.gyroDataArray[1].rotationRate.y + self.gyroDataArray[2].rotationRate.y + self.gyroDataArray[3].rotationRate.y + self.gyroDataArray[4].rotationRate.y) / 5
                 let z = (self.gyroDataArray[0].rotationRate.z + self.gyroDataArray[1].rotationRate.z + self.gyroDataArray[2].rotationRate.z + self.gyroDataArray[3].rotationRate.z + self.gyroDataArray[4].rotationRate.z) / 5
-                let average = CMRotationRate(x: x, y: y, z: z)
+                let average = Calibration(x: x, y: y, z: z)
                 completion(averageCalibration: average)
             })
         } else {
