@@ -127,7 +127,7 @@ class MotionController {
             let backgroundQueue = dispatch_queue_create("", nil)
             dispatch_async(backgroundQueue, {
                 NSThread.sleepForTimeInterval(5.0)
-                self.motionManager.stopGyroUpdates()
+                self.motionManager.stopDeviceMotionUpdates()
                 print(self.PitchRollYawArray[0])
                 print(self.PitchRollYawArray[0])
                 let pitch = (self.PitchRollYawArray[0].attitude.pitch + self.PitchRollYawArray[1].attitude.pitch + self.PitchRollYawArray[2].attitude.pitch + self.PitchRollYawArray[3].attitude.pitch + self.PitchRollYawArray[4].attitude.pitch) / 5
