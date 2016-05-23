@@ -17,38 +17,6 @@
             endingLineNumber = "79"
             landmarkName = "beginDuelButton(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Duellum.SetUpDuelViewController.beginDuelButton (Swift.AnyObject) -&gt; ()"
-                  moduleName = "Duellum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gibson/Desktop/Develop/iDuel/iDuel/SetUpDuelViewController.swift"
-                  timestampString = "485732864.475385"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Duellum.SetUpDuelViewController.beginDuelButton (Swift.AnyObject) -&gt; ()"
-                  moduleName = "Duellum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gibson/Desktop/Develop/iDuel/iDuel/SetUpDuelViewController.swift"
-                  timestampString = "485732864.475656"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "384">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -65,70 +33,6 @@
             endingLineNumber = "51"
             landmarkName = "displayWithInfo()"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iDuel/CalibrateTableViewController.swift"
-            timestampString = "485732311.11008"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "doneButtonTapped(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iDuel/CalibrateTableViewController.swift"
-            timestampString = "485732311.11008"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "doneButtonTapped(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Duellum.CalibrateTableViewController.doneButtonTapped (Swift.AnyObject) -&gt; ()"
-                  moduleName = "Duellum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gibson/Desktop/Develop/iDuel/iDuel/CalibrateTableViewController.swift"
-                  timestampString = "485732864.487315"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Duellum.CalibrateTableViewController.doneButtonTapped (Swift.AnyObject) -&gt; ()"
-                  moduleName = "Duellum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gibson/Desktop/Develop/iDuel/iDuel/CalibrateTableViewController.swift"
-                  timestampString = "485732864.487427"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "248">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iDuel/CalibrateTableViewController.swift"
-            timestampString = "485732353.570074"
+            timestampString = "485737084.750869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "loweredCalibrateButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>

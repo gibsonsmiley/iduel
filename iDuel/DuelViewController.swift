@@ -37,14 +37,14 @@ class DuelViewController: UIViewController {
     }
     
     func duelStart() {
-        MotionController.trackMotionForDuel { (currentPosition) in
+        MotionController.sharedController.trackMotionForDuel { (currentPosition) in
             guard let currentPosition = currentPosition else { return }
-            MotionController.loadCalibration("lowered", completion: { (calibration) in
+            MotionController.sharedController.loadCalibration("lowered", completion: { (calibration) in
                 guard let loweredPosition = calibration else { return }
-                MotionController.checkCalibration(loweredPosition, currentMeasurements: currentPosition, completion: { (success) in
+                MotionController.sharedController.checkCalibration(loweredPosition, currentMeasurements: currentPosition, completion: { (success) in
                     if success {
                         guard let duel = self.duel else { return }
-                        MotionController.playerReady(UserController.currentUser, duel: duel, currentPosition: currentPosition, savedCalibration: loweredPosition, completion: { (success) in
+                        MotionController.sharedController.playerReady(UserController.currentUser, duel: duel, currentPosition: currentPosition, savedCalibration: loweredPosition, completion: { (success) in
                             if success {
                                 // Play gun cock sound
                                 DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: { (player1Ready, player2Ready) in

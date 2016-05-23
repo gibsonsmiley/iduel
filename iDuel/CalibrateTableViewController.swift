@@ -64,24 +64,22 @@ class CalibrateTableViewController: UITableViewController {
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
-        guard let destinationVCNavController = presentingViewController as? UINavigationController,
-        destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-        guard let raisedCalibration = self.raisedCalibration else { return }
-        guard let loweredCalibration = self.loweredCalibration else { return }
-//        destinationViewController.calibrations?.append(raisedCalibration)
-//        destinationViewController.calibrations?.append(loweredCalibration)
-        let raised = Calibration(x: Double(raisedCalibration.x!), y: Double(raisedCalibration.y!), z: Double(raisedCalibration.z!))
-        let lowered = Calibration(x: Double(loweredCalibration.x!), y: Double(loweredCalibration.y!), z: Double(loweredCalibration.z!))
-        destinationViewController.getCalibrations(raised, lowered: lowered)
-        print("\(destinationViewController.calibrations)")
-        dismissViewControllerAnimated(true, completion: nil)
+//        guard let destinationVCNavController = presentingViewController as? UINavigationController,
+//        destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
+//        guard let raisedCalibration = self.raisedCalibration else { return }
+//        guard let loweredCalibration = self.loweredCalibration else { return }
+//        let raised = Calibration(x: Double(raisedCalibration.x!), y: Double(raisedCalibration.y!), z: Double(raisedCalibration.z!))
+//        let lowered = Calibration(x: Double(loweredCalibration.x!), y: Double(loweredCalibration.y!), z: Double(loweredCalibration.z!))
+//        destinationViewController.getCalibrations(raised, lowered: lowered)
+//        print("\(destinationViewController.calibrations)")
+//        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func raisedCalibrateButtonTapped(sender: AnyObject) {
         self.raisedCalibrateButton.setTitle("Calibrating...", forState: .Normal)
-        MotionController.beginMotionTracking { (averageCalibration) in
+        MotionController.sharedController.beginMotionTracking { (averageCalibration) in
             guard let calibration = averageCalibration else { return }
-            MotionController.saveCalibration("raised", userCalibration: calibration)
+            MotionController.sharedController.saveCalibration("raised", userCalibration: calibration)
             self.raisedCalibration = calibration
             self.raisedCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
         }
@@ -89,9 +87,9 @@ class CalibrateTableViewController: UITableViewController {
     
     @IBAction func loweredCalibrateButtonTapped(sender: AnyObject) {
         self.loweredCalibrateButton.setTitle("Calibrating...", forState: .Normal)
-        MotionController.beginMotionTracking { (averageCalibration) in
+        MotionController.sharedController.beginMotionTracking { (averageCalibration) in
             guard let calibration = averageCalibration else { return }
-            MotionController.saveCalibration("lowered", userCalibration: calibration)
+            MotionController.sharedController.saveCalibration("lowered", userCalibration: calibration)
             self.loweredCalibration = calibration
             self.loweredCalibrateButton.setTitle("Calibration Saved - Tap To Redo", forState: .Normal)
         }
