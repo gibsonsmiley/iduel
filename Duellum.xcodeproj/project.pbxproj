@@ -12,7 +12,6 @@
 		51F4BFDA1CEF788E00B05D35 /* 1gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */; };
 		51F4BFDB1CEF788E00B05D35 /* 2gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFD81CEF788E00B05D35 /* 2gunshot.mp3 */; };
 		51F4BFDC1CEF788E00B05D35 /* GunCocking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFD91CEF788E00B05D35 /* GunCocking.mp3 */; };
-		51F4BFE11CEFBB3D00B05D35 /* bensound-epic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFE01CEFBB3D00B05D35 /* bensound-epic.mp3 */; };
 		C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C38F1CEA5D0800F3DCA7 /* User.swift */; };
 		C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3911CEA5D1800F3DCA7 /* UserController.swift */; };
 		C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3931CEA5D2800F3DCA7 /* Duel.swift */; };
@@ -49,7 +48,6 @@
 		51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 1gunshot.mp3; path = ../1gunshot.mp3; sourceTree = "<group>"; };
 		51F4BFD81CEF788E00B05D35 /* 2gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 2gunshot.mp3; path = ../2gunshot.mp3; sourceTree = "<group>"; };
 		51F4BFD91CEF788E00B05D35 /* GunCocking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GunCocking.mp3; path = ../GunCocking.mp3; sourceTree = "<group>"; };
-		51F4BFE01CEFBB3D00B05D35 /* bensound-epic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-epic.mp3"; sourceTree = "<group>"; };
 		C349C38F1CEA5D0800F3DCA7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C349C3911CEA5D1800F3DCA7 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C349C3931CEA5D2800F3DCA7 /* Duel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duel.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */,
 				51F4BFD81CEF788E00B05D35 /* 2gunshot.mp3 */,
 				51F4BFD91CEF788E00B05D35 /* GunCocking.mp3 */,
-				51F4BFE01CEFBB3D00B05D35 /* bensound-epic.mp3 */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -267,7 +264,6 @@
 			files = (
 				F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */,
 				F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */,
-				51F4BFE11CEFBB3D00B05D35 /* bensound-epic.mp3 in Resources */,
 				51F4BFDB1CEF788E00B05D35 /* 2gunshot.mp3 in Resources */,
 				F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */,
 				51F4BFDC1CEF788E00B05D35 /* GunCocking.mp3 in Resources */,
