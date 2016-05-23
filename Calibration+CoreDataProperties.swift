@@ -14,8 +14,8 @@ import CoreData
 
 extension Calibration {
 
-    @NSManaged var x: NSNumber?
-    @NSManaged var y: NSNumber?
-    @NSManaged var z: NSNumber?
+    @NSManaged var pitch: NSNumber?
+    @NSManaged var roll: NSNumber?
+    @NSManaged var yaw: NSNumber?
 
 }

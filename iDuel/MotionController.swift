@@ -35,16 +35,16 @@ class MotionController {
         if position == "raised" {
         guard let raisedCalibrationEntity = NSEntityDescription.entityForName("raisedCalibration", inManagedObjectContext: moc) else {return}
         let calibration = NSManagedObject(entity: raisedCalibrationEntity, insertIntoManagedObjectContext: moc)
-        calibration.setValue(userCalibration.x, forKey: "x")
-        calibration.setValue(userCalibration.y, forKey: "y")
-        calibration.setValue(userCalibration.z, forKey: "z")
+        calibration.setValue(userCalibration.pitch, forKey: "pitch")
+        calibration.setValue(userCalibration.roll, forKey: "roll")
+        calibration.setValue(userCalibration.yaw, forKey: "yaw")
         let _ = try? moc.save()
         } else if position == "lowered" {
             guard let loweredCalibrationEntity = NSEntityDescription.entityForName("loweredCalibration", inManagedObjectContext: moc) else {return}
             let calibration = NSManagedObject(entity: loweredCalibrationEntity, insertIntoManagedObjectContext: moc)
-            calibration.setValue(userCalibration.x, forKey: "x")
-            calibration.setValue(userCalibration.y, forKey: "y")
-            calibration.setValue(userCalibration.z, forKey: "z")
+            calibration.setValue(userCalibration.pitch, forKey: "pitch")
+            calibration.setValue(userCalibration.roll, forKey: "roll")
+            calibration.setValue(userCalibration.yaw, forKey: "yaw")
             let _ = try? moc.save()
         } else {
             // Position entered does not exist
@@ -56,10 +56,10 @@ class MotionController {
         let moc = Stack.sharedStack.managedObjectContext
         if let calibrations = try? moc.executeFetchRequest(request),
             calibration = calibrations.first {
-            guard let x = calibration.valueForKey("x") as? Double,
-                y = calibration.valueForKey("y") as? Double,
-                z = calibration.valueForKey("z") as? Double else { completion(calibration: nil); return}
-            let storedCalibration = Calibration(x: x, y: y, z: z)
+            guard let pitch = calibration.valueForKey("pitch") as? Double,
+                roll = calibration.valueForKey("roll") as? Double,
+                yaw = calibration.valueForKey("yaw") as? Double else { completion(calibration: nil); return}
+            let storedCalibration = Calibration(pitch: pitch, roll: roll, yaw: yaw)
             completion(calibration: storedCalibration)
         } else {
             completion(calibration: nil)
@@ -67,22 +67,21 @@ class MotionController {
     }
     
      func trackMotionForDuel(completion: (currentPosition: Calibration?) -> Void) {
-        if motionManager.gyroAvailable {
-            motionManager.startGyroUpdates()
-            motionManager.gyroUpdateInterval = 0.1
+        if motionManager.deviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.1
             let queue = NSOperationQueue.mainQueue()
             let motionQueue = dispatch_queue_create("duelTracking", nil)
             dispatch_async(motionQueue, {
-                motionManager.startGyroUpdatesToQueue(queue, withHandler: { (data, error) in
+                self.motionManager.startDeviceMotionUpdatesToQueue(queue, withHandler: { (data, error) in
                     if let error = error {
                         print(error.localizedDescription)
                         completion(currentPosition: nil)
                     } else {
                         guard let data = data else { completion(currentPosition: nil); return }
-                        let xPosition = data.rotationRate.x
-                        let yPosition = data.rotationRate.y
-                        let zPosition = data.rotationRate.z
-                        let currentPosition = Calibration(x: xPosition, y: yPosition, z: zPosition)
+                        let pitch = data.attitude.pitch
+                        let roll = data.attitude.roll
+                        let yaw = data.attitude.yaw
+                        let currentPosition = Calibration(pitch: pitch, roll: roll, yaw: yaw)
                         completion(currentPosition: currentPosition)
                     }
                 })
@@ -131,10 +130,10 @@ class MotionController {
                 self.motionManager.stopGyroUpdates()
                 print(self.PitchRollYawArray[0])
                 print(self.PitchRollYawArray[0])
-                let x = (self.PitchRollYawArray[0].attitude.pitch + self.PitchRollYawArray[1].attitude.pitch + self.PitchRollYawArray[2].attitude.pitch + self.PitchRollYawArray[3].attitude.pitch + self.PitchRollYawArray[4].attitude.pitch) / 5
-                let y = (self.PitchRollYawArray[0].attitude.roll + self.PitchRollYawArray[1].attitude.roll + self.PitchRollYawArray[2].attitude.roll + self.PitchRollYawArray[3].attitude.roll + self.PitchRollYawArray[4].attitude.roll) / 5
-                let z = (self.PitchRollYawArray[0].attitude.yaw + self.PitchRollYawArray[1].attitude.yaw + self.PitchRollYawArray[2].attitude.yaw + self.PitchRollYawArray[3].attitude.yaw + self.PitchRollYawArray[4].attitude.yaw) / 5
-                let average = Calibration(x: x, y: y, z: z)
+                let pitch = (self.PitchRollYawArray[0].attitude.pitch + self.PitchRollYawArray[1].attitude.pitch + self.PitchRollYawArray[2].attitude.pitch + self.PitchRollYawArray[3].attitude.pitch + self.PitchRollYawArray[4].attitude.pitch) / 5
+                let roll = (self.PitchRollYawArray[0].attitude.roll + self.PitchRollYawArray[1].attitude.roll + self.PitchRollYawArray[2].attitude.roll + self.PitchRollYawArray[3].attitude.roll + self.PitchRollYawArray[4].attitude.roll) / 5
+                let yaw = (self.PitchRollYawArray[0].attitude.yaw + self.PitchRollYawArray[1].attitude.yaw + self.PitchRollYawArray[2].attitude.yaw + self.PitchRollYawArray[3].attitude.yaw + self.PitchRollYawArray[4].attitude.yaw) / 5
+                let average = Calibration(pitch: pitch, roll: roll, yaw: yaw)
                 completion(averageCalibration: average)
             })
         } else {
@@ -143,7 +142,7 @@ class MotionController {
     }
     
      func checkCalibration(calibratedAverage: Calibration, currentMeasurements: Calibration, completion: (success: Bool) -> Void) {
-        if (Double(currentMeasurements.x!) < (Double(calibratedAverage.x!) + 1.0) && Double(currentMeasurements.x!) > (Double(calibratedAverage.x!) - 1.0)) && (Double(currentMeasurements.y!) < (Double(calibratedAverage.y!) + 1.0) && Double(currentMeasurements.y!) > (Double(calibratedAverage.y!) - 1.0)) && (Double(currentMeasurements.z!) < (Double(calibratedAverage.z!) + 1.0) && Double(currentMeasurements.z!) > (Double(calibratedAverage.z!) - 1.0)) {
+        if (Double(currentMeasurements.pitch!) < (Double(calibratedAverage.pitch!) + 1.0) && Double(currentMeasurements.pitch!) > (Double(calibratedAverage.pitch!) - 1.0)) && (Double(currentMeasurements.roll!) < (Double(calibratedAverage.roll!) + 1.0) && Double(currentMeasurements.roll!) > (Double(calibratedAverage.roll!) - 1.0)) && (Double(currentMeasurements.yaw!) < (Double(calibratedAverage.yaw!) + 1.0) && Double(currentMeasurements.yaw!) > (Double(calibratedAverage.yaw!) - 1.0)) {
             completion(success: true)
         } else {
             completion(success: false)
