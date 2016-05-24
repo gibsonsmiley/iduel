@@ -49,12 +49,11 @@
                                 </state>
                                 <connections>
                                     <action selector="joinDuelButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="mMz-J8-l1Q"/>
-                                    <action selector="toSetUpButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="lOY-eO-OKo"/>
-                                    <segue destination="FXw-fO-elf" kind="presentation" identifier="toduels" id="ABR-lU-Lb4"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
                                 <rect key="frame" x="33" y="322" width="309" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="lBw-fU-rCm"/>
                                 </constraints>
@@ -75,10 +74,11 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
                                 <rect key="frame" x="33" y="284" width="309" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PHY-gb-eHM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="26"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-2h-pjr">
@@ -138,6 +138,7 @@
                         <outlet property="settingsButton" destination="b6Z-00-AMk" id="WAd-ii-NZr"/>
                         <outlet property="tapGesture" destination="HHS-Fl-hid" id="am0-tO-A5L"/>
                         <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="hjW-aq-90n"/>
+                        <segue destination="FXw-fO-elf" kind="presentation" identifier="toDuels" id="xY1-xS-O0k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>

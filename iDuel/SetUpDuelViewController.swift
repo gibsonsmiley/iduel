@@ -53,7 +53,7 @@ class SetUpDuelViewController: UIViewController {
                 guard let duelID = duel.id else { return }
                 for user in users where ((user.duelIDs?.contains(duelID)) != nil) {
                     if self.duel?.player2 == nil {
-                        user = self.duel?.player2
+                        //user = self.duel?.player2
                     }
                 }
 //                guard let duelID = duel.id else { return }

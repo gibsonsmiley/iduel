@@ -26,6 +26,8 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateWithPrefs()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,7 +38,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Methods
     
     func updateWithPrefs() {
-        soundEffectSwitch.setOn(!sounds, animated: true) // Set as opposite to that it "defaults" to on
+        soundEffectSwitch.setOn(!sounds, animated: true) // Set as opposite so that it "defaults" to on
         vibrationSwitch.setOn(!vibration, animated: true) // Set as opposite to that it "defaults" to on
         leftHandedSwitch.setOn(leftHand, animated: true)
     }
