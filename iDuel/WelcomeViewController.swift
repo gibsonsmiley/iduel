@@ -10,7 +10,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var welcomeTitleLabel: UILabel!
+  
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var joinDuelButton: UIButton!
     @IBOutlet weak var createDuelButton: UIButton!
@@ -53,11 +53,10 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     func titleState() {
         if UserController.currentUser == nil {
-            self.welcomeTitleLabel.text = "Welcome to Duellum! \nChoose a nickname to get started."
+           
         } else {
             guard let user = UserController.currentUser else { return }
-            self.welcomeTitleLabel.text = "Welcome back \(user.nickname)!"
-            self.nicknameTextField.placeholder = "Change your nickname?"
+                nicknameTextField.placeholder = "Change your nickname"
         }
     }
     
