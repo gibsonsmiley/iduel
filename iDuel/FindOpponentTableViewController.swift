@@ -68,41 +68,6 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         }
     }
     
-    
-    //    func fetchAllUsers() {
-    //        manageAllUsers({ (users) in
-    //            guard let users = users else { return }
-    //            self.allUsers = users
-    //            self.tableView.reloadData()
-    //        })
-    //    }
-    
-    //    func manageAllUsers(completion: (users:[User]?) -> Void) {
-    //        UserController.fetchAllUsers { (users) in
-    //            guard let users = users else { completion(users: nil); return }
-    //            for user in users {
-    //                guard let userID = user.id else { return }
-    //                guard let currentUser = UserController.currentUser else { return }
-    //                if userID == currentUser.id {
-    //                } else {
-    //                    if user.timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
-    //                        UserController.deleteUser(user, completion: { (success) in
-    //                            if success {
-    //                                // Successful deletion
-    //                            } else {
-    //                                // Deletion failed
-    //                            }
-    //                        })
-    //                    } else {
-    //                        // User is younger than 24 hours, keep them and return them in the completion
-    //                        self.allUsers.append(user)
-    //                    }
-    //                }
-    //            }
-    //            completion(users: self.allUsers)
-    //        }
-    //    }
-    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredDuels = allDuels.filter({
             ($0.player1?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
@@ -144,11 +109,10 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let destinationVCNavController = presentingViewController as? UINavigationController,
             destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-        destinationViewController.opponent = allUsers[indexPath.row]
-        if filteredUsers.count > 0 {
-            destinationViewController.opponent = filteredUsers[indexPath.row]
+        destinationViewController.duel = allDuels[indexPath.row]
+        if filteredDuels.count > 0 {
+            destinationViewController.duel = filteredDuels[indexPath.row]
         }
-        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -163,3 +127,42 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
      */
     
 }
+
+
+
+
+
+
+//    func fetchAllUsers() {
+//        manageAllUsers({ (users) in
+//            guard let users = users else { return }
+//            self.allUsers = users
+//            self.tableView.reloadData()
+//        })
+//    }
+
+//    func manageAllUsers(completion: (users:[User]?) -> Void) {
+//        UserController.fetchAllUsers { (users) in
+//            guard let users = users else { completion(users: nil); return }
+//            for user in users {
+//                guard let userID = user.id else { return }
+//                guard let currentUser = UserController.currentUser else { return }
+//                if userID == currentUser.id {
+//                } else {
+//                    if user.timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
+//                        UserController.deleteUser(user, completion: { (success) in
+//                            if success {
+//                                // Successful deletion
+//                            } else {
+//                                // Deletion failed
+//                            }
+//                        })
+//                    } else {
+//                        // User is younger than 24 hours, keep them and return them in the completion
+//                        self.allUsers.append(user)
+//                    }
+//                }
+//            }
+//            completion(users: self.allUsers)
+//        }
+//    }
