@@ -37,6 +37,20 @@ class DuelViewController: UIViewController {
     }
     
     func duelStart() {
+        MotionController.sharedController.checkRange(false) { (success) in
+            if success {
+                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                MotionController.sharedController.checkFlick({ (success) in
+                    if success {
+                        if let duel = self.duel {
+                            DuelController.playerReady(UserController.currentUser, duel: duel)
+                            DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: <#T##(player1Ready: Bool, player2Ready: Bool) -> Void#>)
+                        }
+                        
+                    }
+                })
+            }
+        }
         
         
         //        MotionController.sharedController.trackMotionForDuel { (currentPosition) in
