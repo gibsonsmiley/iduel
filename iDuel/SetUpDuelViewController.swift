@@ -45,6 +45,15 @@ class SetUpDuelViewController: UIViewController {
         }
     }
     
+    func watchForPlayers() {
+        guard let duel = self.duel else { return }
+        // DuelController.observePlayersForDuel(self.duel)
+    }
+    
+    func updateWithDuel(duel: Duel) {
+        self.duel = duel
+    }
+    
     // MARK: - Actions
     
     @IBAction func beginDuelButton(sender: AnyObject) {
@@ -58,7 +67,7 @@ class SetUpDuelViewController: UIViewController {
             guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
             guard let duel = self.duel else { return }
             destinationViewController.updateWithDuel(duel)
-            _ = destinationViewController.view
+            _ = destinationViewController.view // Don't know why this is needed
         }
     }
 }

@@ -18,6 +18,8 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     
+    var duel: Duel?
+    
     // MARK: - View
     
     override func viewDidLoad() {
@@ -51,11 +53,11 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     func titleState() {
         if UserController.currentUser == nil {
-            welcomeTitleLabel.text = "Welcome to Duellum! \nChoose a nickname to get started."
+            self.welcomeTitleLabel.text = "Welcome to Duellum! \nChoose a nickname to get started."
         } else {
             guard let user = UserController.currentUser else { return }
-            welcomeTitleLabel.text = "Welcome back \(user.nickname)!"
-            nicknameTextField.placeholder = "Change your nickname?"
+            self.welcomeTitleLabel.text = "Welcome back \(user.nickname)!"
+            self.nicknameTextField.placeholder = "Change your nickname?"
         }
     }
     
@@ -116,8 +118,16 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
                 guard let nickname = nicknameTextField.text else { return }
                 UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                     if success == true {
-                        //// CREATE DUEL
-                        self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                        guard let currentUser = UserController.currentUser else { return }
+                        DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                            if success == true {
+                                self.duel = duel
+                                self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                            } else {
+                                // Failed to create duel
+                                self.errorManager("Couldn't create a new duel. Try again.")
+                            }
+                        })
                     } else {
                         // Function returned false
                         guard let error = error else { return }
@@ -132,16 +142,32 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
             // There is a current user
             if nicknameTextField.text == "" {
                 // Field is empty - move to next view
-                //// CREATE DUEL
-                self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                guard let currentUser = UserController.currentUser else { return }
+                DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                    if success == true {
+                        self.duel = duel
+                        self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                    } else {
+                        // Failed to create duel
+                        self.errorManager("Couldn't create a new duel. Try again.")
+                    }
+                })
             } else {
                 if nicknameTextField.text != UserController.currentUser.nickname {
                     // User wants to change nickname
                     guard let nickname = nicknameTextField.text else { return }
                     UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                         if success == true {
-                            //// CREATE DUEL
-                            self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                            guard let currentUser = UserController.currentUser else { return }
+                            DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                                if success == true {
+                                    self.duel = duel
+                                    self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                                } else {
+                                    // Failed to create duel
+                                    self.errorManager("Couldn't create a new duel. Try again.")
+                                }
+                            })
                         } else {
                             // Function returned false
                             guard let error = error else { return }
@@ -149,13 +175,41 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
                         }
                     })
                 } else {
-                    //// CREATE DUEL
-                    self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                    guard let currentUser = UserController.currentUser else { return }
+                    DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                        if success == true {
+                            self.duel = duel
+                            self.performSegueWithIdentifier("toSetUpDuel", sender: self)
+                        } else {
+                            // Failed to create duel
+                            self.errorManager("Couldn't create a new duel. Try again.")
+                        }
+                    })
                 }
             }
         }
     }
     
+    
+    
+    @IBAction func settingsButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("toSettings", sender: self)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toSetUpDuel" {
+            guard let destinationViewController = segue.sourceViewController as? SetUpDuelViewController else { return }
+            guard let duel = self.duel else { return }
+            destinationViewController.updateWithDuel(duel)
+        }
+    }
+}
+
+
+
+
 //    @IBAction func toSetUpButtonTapped(sender: AnyObject) { // Need some dispatch action all up in here, currently too slow
 //        errorLabel.hidden = true
 ////        if UserController.currentUser == nil {
@@ -231,20 +285,3 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
 ////            self.errorLabel.text = "That nickname is taken, try another. (Nicknames last for 24 hours.)"
 ////        }
 //    }
-    
-    @IBAction func settingsButtonTapped(sender: AnyObject) {
-        performSegueWithIdentifier("toSettings", sender: self)
-        // Display settings
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
