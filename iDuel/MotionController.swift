@@ -141,6 +141,28 @@ class MotionController {
         }
     }
     
+    func checkFlick(completion:(success: Bool) -> Void) {
+        motionManager = CMMotionManager()
+        if self.motionManager.deviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.25
+            motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (motion, error) in
+                if error != nil {
+                    completion(success: false)
+                } else {
+                    
+                    if let motion = motion {
+                        if motion.userAcceleration.x > 0.069 {
+                            completion(success: true)
+                        } else {
+                            completion(success: false)
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+    
      func checkCalibration(calibratedAverage: Calibration, currentMeasurements: Calibration, completion: (success: Bool) -> Void) {
         if (Double(currentMeasurements.pitch!) < (Double(calibratedAverage.pitch!) + 1.0) && Double(currentMeasurements.pitch!) > (Double(calibratedAverage.pitch!) - 1.0)) && (Double(currentMeasurements.roll!) < (Double(calibratedAverage.roll!) + 1.0) && Double(currentMeasurements.roll!) > (Double(calibratedAverage.roll!) - 1.0)) && (Double(currentMeasurements.yaw!) < (Double(calibratedAverage.yaw!) + 1.0) && Double(currentMeasurements.yaw!) > (Double(calibratedAverage.yaw!) - 1.0)) {
             completion(success: true)
