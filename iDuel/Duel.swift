@@ -17,24 +17,27 @@ class Duel: Equatable, FirebaseType {
     let ready: NSDate?
     let shotsFired: NSTimeInterval?
     var id: String?
+    var timestamp: NSDate
     var endpoint: String {
         return "duels"
     }
     
-    init(player1: User?, player2: User?, ready: NSDate?, shotsFired: NSTimeInterval? ) {
+    init(player1: User?, player2: User?, ready: NSDate?, shotsFired: NSTimeInterval?, timestamp: NSDate = NSDate()) {
         self.player1 = player1
         self.player2 = player2
         self.ready = ready
         self.shotsFired = shotsFired
+        self.timestamp = timestamp
     }
     
     private let kPlayer1 = "player1"
     private let kPlayer2 = "player2"
     private let kReady = "ready"
     private let kShotsFired = "shotsFired"
+    private let kTimestamp = "timestamp"
     
     var jsonValue: [String : AnyObject] {
-        var json: [String: AnyObject] = [:]
+        var json: [String: AnyObject] = [kTimestamp: timestamp.timeIntervalSince1970]
         if let player1 = player1 {
             json.updateValue(player1, forKey: kPlayer1)
         }
@@ -52,7 +55,7 @@ class Duel: Equatable, FirebaseType {
     }
     
     required init?(json:[String: AnyObject], id: String) {
-//        guard let
+        guard let timestamp = json[kTimestamp] as? NSTimeInterval else { return nil }
             self.player1 = json[kPlayer1] as? User
             self.player2 = json[kPlayer2] as? User
 //            ready = json[kReady] as? NSDate,
@@ -62,6 +65,7 @@ class Duel: Equatable, FirebaseType {
 //        self.player2 = player2
         self.ready = json[kReady] as? NSDate
         self.shotsFired = json[kShotsFired] as? NSTimeInterval
+        self.timestamp = NSDate(timeIntervalSince1970: timestamp)
     }
 }
 

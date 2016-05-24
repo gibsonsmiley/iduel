@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jhe-fb-eAy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jhe-fb-eAy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -431,7 +431,7 @@
                             <tableViewSection headerTitle="Left-Handed" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="252" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="253" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -463,7 +463,7 @@
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="346" width="375" height="227"/>
+                                        <rect key="frame" x="0.0" y="348" width="375" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
@@ -563,7 +563,7 @@
         <image name="Welcome View " width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yDl-X2-uXZ"/>
+        <segue reference="hjW-aq-90n"/>
         <segue reference="MeC-6T-Py4"/>
     </inferredMetricsTieBreakers>
 </document>

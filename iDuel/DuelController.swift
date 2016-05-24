@@ -26,8 +26,32 @@ class DuelController {
         //        player2.save()
     }
     
+    static func deleteDuel(duel: Duel, completion: (success: Bool) -> Void) {
+        duel.delete()
+        guard let duelID = duel.id else { completion(success: false); return }
+        fetchDuelForID(duelID) { (duel) in
+            completion(success: true)
+        }
+    }
+    
     static func fetchDuelForID(id: String, completion: (duel: Duel?) -> Void) {
-        
+        FirebaseController.dataAtEndpoint("duels/\(id)") { (data) in
+            guard let json = data as? [String: AnyObject] else { completion(duel: nil); return }
+            let duel = Duel(json: json, id: id)
+            completion(duel: duel)
+        }
+    }
+    
+    static func fetchAllDuels(completion: (duels: [Duel]?) -> Void) {
+        FirebaseController.dataAtEndpoint("duels") { (data) in
+            guard let json = data as? [String: AnyObject] else { completion(duels: nil); return }
+            let duels = json.flatMap({Duel(json: $0.1 as! [String: AnyObject], id: $0.0)})
+            completion(duels: duels)
+        }
+    }
+    
+    static func observePlayersForDuel(duel: Duel, completion: (players: [User]?) -> Void) {
+        // May use this
     }
     
     // Method to add player to duel's ready array, this is the gun cock

@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "init(player1:player2:ready:shotsFired:)"
+            landmarkName = "init(player1:player2:ready:shotsFired:timestamp:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "init(player1:player2:ready:shotsFired:)"
+            landmarkName = "init(player1:player2:ready:shotsFired:timestamp:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
