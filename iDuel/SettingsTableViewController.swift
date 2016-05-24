@@ -30,6 +30,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
        super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: - Methods
@@ -41,7 +42,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     // MARK: - Actions
-    
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
             self.dismissViewControllerAnimated(true, completion: nil)

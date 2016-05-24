@@ -10,7 +10,6 @@ import UIKit
 import CoreMotion
 
 class SetUpDuelViewController: UIViewController {
-    
 
     @IBOutlet weak var opponentLabel: UILabel!
     @IBOutlet weak var challengerLabel: UILabel!
@@ -33,56 +32,32 @@ class SetUpDuelViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: - Methods
     
     func displayWithInfo() {
-        if opponent == nil {
-            beginDuelButton.enabled = false
+        if self.opponent == nil {
+            self.beginDuelButton.enabled = false
         } else {
-            beginDuelButton.enabled = true
+            self.beginDuelButton.enabled = true
         }
-        
-        guard let opponent = opponent else { return }
-        
-        print(opponent)
+    }
+    
+    func watchForPlayers() {
+        guard let duel = self.duel else { return }
+        // DuelController.observePlayersForDuel(self.duel)
+    }
+    
+    func updateWithDuel(duel: Duel) {
+        self.duel = duel
     }
     
     // MARK: - Actions
     
-    @IBAction func calibratePhoneButtonTapped(sender: AnyObject) {
-        // To calibrate views
-    }
-    
-    @IBAction func selectOpponentButtonTapped(sender: AnyObject) {
-        // To select opponent table view
-        self.opponent = nil
-    }
-    
-    @IBAction func themesButtonTapped(sender: AnyObject) {
-        // Here just in case
-    }
-    
     @IBAction func beginDuelButton(sender: AnyObject) {
-        if self.opponent != nil {
-            guard let opponent = opponent,
-                currentUser = UserController.currentUser else { return }
-            print(opponent)
-            DuelController.createDuel(currentUser, player2: opponent, completion: { (success, duel) in
-                print(success)
-                if success {
-                    // Move to duel view
-                    self.performSegueWithIdentifier("toDuelCustom", sender: self)
-                } else {
-                    // Display error alert
-                }
-            })
-        } else {
-            // Display alert saying an opponent and calibrations are necessary to continue
-            if opponent == nil {
-            }
-        }
+        // If both players are present
     }
     
     // MARK: - Navigation
@@ -92,7 +67,7 @@ class SetUpDuelViewController: UIViewController {
             guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
             guard let duel = self.duel else { return }
             destinationViewController.updateWithDuel(duel)
-            _ = destinationViewController.view
+            _ = destinationViewController.view // Don't know why this is needed
         }
     }
 }

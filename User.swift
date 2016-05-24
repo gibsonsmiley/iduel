@@ -48,7 +48,6 @@ class User: Equatable, FirebaseType {
             
         }
         return json
-        
     }
     
     required init?(json: [String: AnyObject], id: String) {

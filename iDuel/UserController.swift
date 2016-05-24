@@ -92,7 +92,44 @@ class UserController {
         })
     }
     
-    static func checkNicknameAvailability() {
-        // May fill this in later
+    static func checkNicknameAvailability(nickname: String, completion: (success: Bool, error: String?) -> Void) {
+        FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(nickname)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {
+                // Nickname does exist - check timestamp
+                guard let user = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)}).first else { return }
+                let timestamp = user.timestamp
+                if timestamp.timeIntervalSinceNow < 24 * 60 * 60 {
+                    // Nickname created over 24 hours ago - delete it and create a new one
+                    UserController.deleteUser(user, completion: { (success) in
+                        if success == true {
+                            UserController.createUser(nickname, completion: { (success, user) in
+                                if success == true {
+                                    UserController.currentUser = user
+                                    completion(success: true, error: "")
+                                } else {
+                                    completion(success: false, error: "Couldn't create new user. Try again.")
+                                }
+                            })
+                        } else {
+                            // Deleting old user didn't work
+                            completion(success: false, error: "Couldn't create new user. Try again.")
+                        }
+                    })
+                } else {
+                    // Nickname was created within last 24 hours.
+                    completion(success: false, error: "That nickname is taken, try another. (Nicknames last for 24 hours.)")
+                }
+            } else {
+                // Nickname does not exist - create new user
+                UserController.createUser(nickname, completion: { (success, user) in
+                    if success == true {
+                        UserController.currentUser = user
+                        completion(success: success, error: "")
+                    } else {
+                        completion(success: false, error: "Couldn't create new user. Try again.")
+                    }
+                })
+            }
+        })
     }
 }

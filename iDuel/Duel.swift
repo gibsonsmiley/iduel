@@ -12,32 +12,39 @@ class Duel: Equatable, FirebaseType {
     
     // MARK: - "ready" and "shotsFired" properties aren't going to work
     
-    let player1: User
-    let player2: User
-    let score: (Int, Int)?
+    let player1: User?
+    let player2: User?
     let ready: NSDate?
     let shotsFired: NSTimeInterval?
     var id: String?
+    var timestamp: NSDate
     var endpoint: String {
-        return "duel"
+        return "duels"
     }
     
-    init(player1: User, player2: User, score:(Int, Int)?, ready: NSDate?, shotsFired: NSTimeInterval? ) {
+    init(player1: User?, player2: User?, ready: NSDate?, shotsFired: NSTimeInterval?, timestamp: NSDate = NSDate()) {
         self.player1 = player1
         self.player2 = player2
         self.ready = ready
         self.shotsFired = shotsFired
-        self.score = score
+        self.timestamp = timestamp
     }
     
     private let kPlayer1 = "player1"
     private let kPlayer2 = "player2"
     private let kReady = "ready"
     private let kShotsFired = "shotsFired"
-    private let kScore = "score"
+    private let kTimestamp = "timestamp"
     
     var jsonValue: [String : AnyObject] {
-        var json: [String: AnyObject] = [kPlayer1: player1, kPlayer2: player2]
+        var json: [String: AnyObject] = [kTimestamp: timestamp.timeIntervalSince1970]
+        if let player1 = player1 {
+            json.updateValue(player1, forKey: kPlayer1)
+        }
+        if let player2 = player2 {
+            json.updateValue(player2, forKey: kPlayer2)
+        }
+
         if let shotsFired = shotsFired {
             json.updateValue(shotsFired, forKey: kShotsFired)
         }
@@ -48,17 +55,17 @@ class Duel: Equatable, FirebaseType {
     }
     
     required init?(json:[String: AnyObject], id: String) {
-        guard let player1 = json[kPlayer1] as? User,
-            player2 = json[kPlayer2] as? User,
-            ready = json[kReady] as? NSDate,
-            shotsFired = json[kShotsFired] as? NSTimeInterval?,
-            score = json[kScore] as? (Int, Int) else {return nil }
+        guard let timestamp = json[kTimestamp] as? NSTimeInterval else { return nil }
+            self.player1 = json[kPlayer1] as? User
+            self.player2 = json[kPlayer2] as? User
+//            ready = json[kReady] as? NSDate,
+//            shotsFired = json[kShotsFired] as? NSTimeInterval? else {return nil }
         self.id = id
-        self.score = score
-        self.player1 = player1
-        self.player2 = player2
-        self.ready = ready
-        self.shotsFired = shotsFired
+//        self.player1 = player1
+//        self.player2 = player2
+        self.ready = json[kReady] as? NSDate
+        self.shotsFired = json[kShotsFired] as? NSTimeInterval
+        self.timestamp = NSDate(timeIntervalSince1970: timestamp)
     }
 }
 

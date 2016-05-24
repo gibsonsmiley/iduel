@@ -13,20 +13,45 @@ import AudioToolbox
 class DuelController {
     
     // Self explanitory
-    static func createDuel(player1: User, player2: User, completion: (success: Bool, duel: Duel?) -> Void) {
+    static func createDuel(player1: User?, player2: User?, completion: (success: Bool, duel: Duel?) -> Void) {
         guard let currentUser = UserController.currentUser else { completion(success: false, duel: nil); return }
-        var duel = Duel(player1: currentUser, player2: player2, score: nil, ready: nil, shotsFired: nil)
+        guard let player1 = player1 else { return }
+        var duel = Duel(player1: player1, player2: player2, ready: nil, shotsFired: nil)
         guard let duelID = duel.id else { completion(success: false, duel: nil); return }
         duel.save()
         completion(success: true, duel: duel)
         currentUser.duelIDs?.append(duelID)
         //        currentUser.save()
-        player2.duelIDs?.append(duelID)
+//        player2.duelIDs?.append(duelID)
         //        player2.save()
     }
     
+    static func deleteDuel(duel: Duel, completion: (success: Bool) -> Void) {
+        duel.delete()
+        guard let duelID = duel.id else { completion(success: false); return }
+        fetchDuelForID(duelID) { (duel) in
+            completion(success: true)
+        }
+    }
+    
     static func fetchDuelForID(id: String, completion: (duel: Duel?) -> Void) {
-        
+        FirebaseController.dataAtEndpoint("duels/\(id)") { (data) in
+            guard let json = data as? [String: AnyObject] else { completion(duel: nil); return }
+            let duel = Duel(json: json, id: id)
+            completion(duel: duel)
+        }
+    }
+    
+    static func fetchAllDuels(completion: (duels: [Duel]?) -> Void) {
+        FirebaseController.dataAtEndpoint("duels") { (data) in
+            guard let json = data as? [String: AnyObject] else { completion(duels: nil); return }
+            let duels = json.flatMap({Duel(json: $0.1 as! [String: AnyObject], id: $0.0)})
+            completion(duels: duels)
+        }
+    }
+    
+    static func observePlayersForDuel(duel: Duel, completion: (players: [User]?) -> Void) {
+        // May use this
     }
     
     // Method to add player to duel's ready array, this is the gun cock
