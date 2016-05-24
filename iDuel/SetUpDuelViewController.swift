@@ -11,9 +11,9 @@ import CoreMotion
 
 class SetUpDuelViewController: UIViewController {
     
-    @IBOutlet weak var calibratePhoneButton: UIButton!
-    @IBOutlet weak var selectOpponentButton: UIButton!
-    @IBOutlet weak var themesButton: UIButton!
+
+    @IBOutlet weak var opponentLabel: UILabel!
+    @IBOutlet weak var challengerLabel: UILabel!
     @IBOutlet weak var beginDuelButton: UIButton!
     
     var opponent: User?
@@ -45,7 +45,6 @@ class SetUpDuelViewController: UIViewController {
         }
         
         guard let opponent = opponent else { return }
-        selectOpponentButton.setTitle("\(opponent.nickname) (Tap to choose again)", forState: .Normal)
         
         print(opponent)
     }
@@ -82,7 +81,6 @@ class SetUpDuelViewController: UIViewController {
         } else {
             // Display alert saying an opponent and calibrations are necessary to continue
             if opponent == nil {
-                self.selectOpponentButton.setTitle("Select Opponent (Required)", forState: .Normal)
             }
         }
     }

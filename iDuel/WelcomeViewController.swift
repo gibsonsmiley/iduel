@@ -12,13 +12,11 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
-    @IBOutlet weak var toSetUpButton: UIButton!
-    @IBOutlet weak var disclaimerLabel: UILabel!
+    @IBOutlet weak var joinDuelButton: UIButton!
+    @IBOutlet weak var createDuelButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
-    @IBOutlet weak var duelRequestTableView: UITableView!
-    @IBOutlet weak var duelRequestsTitleLabel: UILabel!
     
     var duelRequests: [Duel] = []
     
@@ -28,8 +26,6 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         super.viewDidLoad()
         
         nicknameTextField.delegate = self
-        duelRequestTableView.delegate = self
-        duelRequestTableView.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -73,14 +69,16 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
             nicknameTextField.placeholder = "Change your nickname"
         }
         
-        if self.duelRequests.count == 0 {
-            duelRequestsTitleLabel.text = ""
-        } else {
-            duelRequestsTitleLabel.text = "Duel Requests (\(duelRequests.count)):"
-        }
+
     }
     
     // MARK: - Actions
+    
+    @IBAction func joinDuelButtonTapped(sender: AnyObject) {
+    }
+    
+    @IBAction func createDuelButtonTapped(sender: AnyObject) {
+    }
     
     @IBAction func toSetUpButtonTapped(sender: AnyObject) { // Need some dispatch action all up in here, currently too slow
         errorLabel.hidden = true
