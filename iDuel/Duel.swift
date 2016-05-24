@@ -14,7 +14,6 @@ class Duel: Equatable, FirebaseType {
     
     let player1: User
     let player2: User
-    let score: (Int, Int)?
     let ready: NSDate?
     let shotsFired: NSTimeInterval?
     var id: String?
@@ -22,19 +21,21 @@ class Duel: Equatable, FirebaseType {
         return "duel"
     }
     
-    init(player1: User, player2: User, score:(Int, Int)?, ready: NSDate?, shotsFired: NSTimeInterval? ) {
-        self.player1 = player1
-        self.player2 = player2
+    init(player1: User?, player2: User?, ready: NSDate?, shotsFired: NSTimeInterval? ) {
+        if let player1 = player1 {
+            self.player1 = player1
+        }
+        if let player2 = player2 {
+            self.player2 = player2
+        }
         self.ready = ready
         self.shotsFired = shotsFired
-        self.score = score
     }
     
     private let kPlayer1 = "player1"
     private let kPlayer2 = "player2"
     private let kReady = "ready"
     private let kShotsFired = "shotsFired"
-    private let kScore = "score"
     
     var jsonValue: [String : AnyObject] {
         var json: [String: AnyObject] = [kPlayer1: player1, kPlayer2: player2]
@@ -51,10 +52,8 @@ class Duel: Equatable, FirebaseType {
         guard let player1 = json[kPlayer1] as? User,
             player2 = json[kPlayer2] as? User,
             ready = json[kReady] as? NSDate,
-            shotsFired = json[kShotsFired] as? NSTimeInterval?,
-            score = json[kScore] as? (Int, Int) else {return nil }
+            shotsFired = json[kShotsFired] as? NSTimeInterval? else {return nil }
         self.id = id
-        self.score = score
         self.player1 = player1
         self.player2 = player2
         self.ready = ready

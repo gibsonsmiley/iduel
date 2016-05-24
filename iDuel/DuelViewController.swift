@@ -28,6 +28,7 @@ class DuelViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: Methods

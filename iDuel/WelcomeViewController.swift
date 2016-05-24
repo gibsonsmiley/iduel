@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -17,8 +17,6 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
-    
-    var duelRequests: [Duel] = []
     
     // MARK: - View
     
@@ -31,13 +29,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchDuelRequests()
         titleState()
         self.errorLabel.hidden = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: - Methods
@@ -51,21 +49,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         nicknameTextField.resignFirstResponder()
     }
     
-    func fetchDuelRequests() {
-        guard let currentUser = UserController.currentUser else { return }
-        UserController.observeDuelsForUser(currentUser) { (duels) in
-            guard let duels = duels else { return }
-            self.duelRequests = duels
-        }
-    }
-    
     func titleState() {
         if UserController.currentUser == nil {
             welcomeTitleLabel.text = "Welcome to Duellum! \nChoose a nickname to get started."
         } else {
             guard let user = UserController.currentUser else { return }
             welcomeTitleLabel.text = "Welcome back \(user.nickname)!"
-            nicknameTextField.placeholder = "Change your nickname"
+            nicknameTextField.placeholder = "Change your nickname?"
         }
     }
     
@@ -83,7 +73,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 guard let nickname = nicknameTextField.text else { return }
                 UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                     if success == true {
-                        self.performSegueWithIdentifier(/*Choose duel*/, sender: self)
+                        self.performSegueWithIdentifier("toDuels", sender: self)
                     } else {
                         // Function returned false
                         guard let error = error else { return }
@@ -98,14 +88,14 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
             // There is a current user
             if nicknameTextField.text == "" {
                 // Field is empty - move to next view
-                self.performSegueWithIdentifier(/*Choose duel*/, sender: self)
+                self.performSegueWithIdentifier("toDuels", sender: self)
             } else {
                 if nicknameTextField.text != UserController.currentUser.nickname {
                     // User wants to change nickname
                     guard let nickname = nicknameTextField.text else { return }
                     UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                         if success == true {
-                            self.performSegueWithIdentifier(/*Choose duel*/, sender: self)
+                            self.performSegueWithIdentifier("toDuels", sender: self)
                         } else {
                             // Function returned false
                             guard let error = error else { return }
@@ -113,7 +103,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
                         }
                     })
                 } else {
-                    self.performSegueWithIdentifier(/*Choose duel*/, sender: self)
+                    self.performSegueWithIdentifier("toDuels", sender: self)
                 }
             }
         }
@@ -126,6 +116,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 guard let nickname = nicknameTextField.text else { return }
                 UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                     if success == true {
+                        //// CREATE DUEL
                         self.performSegueWithIdentifier("toSetUpDuel", sender: self)
                     } else {
                         // Function returned false
@@ -141,6 +132,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
             // There is a current user
             if nicknameTextField.text == "" {
                 // Field is empty - move to next view
+                //// CREATE DUEL
                 self.performSegueWithIdentifier("toSetUpDuel", sender: self)
             } else {
                 if nicknameTextField.text != UserController.currentUser.nickname {
@@ -148,6 +140,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
                     guard let nickname = nicknameTextField.text else { return }
                     UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                         if success == true {
+                            //// CREATE DUEL
                             self.performSegueWithIdentifier("toSetUpDuel", sender: self)
                         } else {
                             // Function returned false
@@ -156,6 +149,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
                         }
                     })
                 } else {
+                    //// CREATE DUEL
                     self.performSegueWithIdentifier("toSetUpDuel", sender: self)
                 }
             }
@@ -242,24 +236,6 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         performSegueWithIdentifier("toSettings", sender: self)
         // Display settings
     }
-    
-    // MARK: - TableView
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return duelRequests.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("requestCell", forIndexPath: indexPath)
-        let duel = duelRequests[indexPath.row]
-        if duel.player1 != UserController.currentUser {
-            cell.textLabel?.text = duel.player1.nickname
-        } else {
-            cell.textLabel?.text = duel.player2.nickname
-        }
-        return cell
-    }
-    
     
     /*
      // MARK: - Navigation

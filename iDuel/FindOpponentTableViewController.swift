@@ -28,6 +28,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: - Methods
