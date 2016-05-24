@@ -17,7 +17,6 @@ class SetUpDuelViewController: UIViewController {
     @IBOutlet weak var beginDuelButton: UIButton!
     
     var opponent: User?
-    var calibrations: [Calibration?]?
     var duel: Duel?
     
     // MARK: - View
@@ -39,7 +38,7 @@ class SetUpDuelViewController: UIViewController {
     // MARK: - Methods
     
     func displayWithInfo() {
-        if opponent == nil && calibrations == nil {
+        if opponent == nil {
             beginDuelButton.enabled = false
         } else {
             beginDuelButton.enabled = true
@@ -47,16 +46,8 @@ class SetUpDuelViewController: UIViewController {
         
         guard let opponent = opponent else { return }
         selectOpponentButton.setTitle("\(opponent.nickname) (Tap to choose again)", forState: .Normal)
-        guard calibrations != nil else { return }
-        calibratePhoneButton.setTitle("Calibrated!", forState: .Normal)
         
-        print(calibrations)
         print(opponent)
-    }
-    
-    func getCalibrations(raised: Calibration, lowered: Calibration) {
-        self.calibrations?.append(raised)
-        self.calibrations?.append(lowered)
     }
     
     // MARK: - Actions
@@ -75,7 +66,7 @@ class SetUpDuelViewController: UIViewController {
     }
     
     @IBAction func beginDuelButton(sender: AnyObject) {
-        if self.opponent != nil && self.calibrations != nil {
+        if self.opponent != nil {
             guard let opponent = opponent,
                 currentUser = UserController.currentUser else { return }
             print(opponent)
@@ -92,9 +83,6 @@ class SetUpDuelViewController: UIViewController {
             // Display alert saying an opponent and calibrations are necessary to continue
             if opponent == nil {
                 self.selectOpponentButton.setTitle("Select Opponent (Required)", forState: .Normal)
-            }
-            if calibrations == nil {
-                self.calibratePhoneButton.setTitle("Calibrate iPhone (Required)", forState: .Normal)
             }
         }
     }
