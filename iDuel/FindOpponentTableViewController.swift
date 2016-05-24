@@ -94,8 +94,8 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "FindOpponentScreen"))
         let cell = tableView.dequeueReusableCellWithIdentifier("userCell", forIndexPath: indexPath)
-        
         var user = allUsers[indexPath.row]
         if filteredUsers.count > 0 {
             user = filteredUsers[indexPath.row]

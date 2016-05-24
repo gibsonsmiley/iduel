@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		515E5C941CF378A80030335E /* DuelTrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5C931CF378A80030335E /* DuelTrack.mp3 */; };
 		515E5C961CF378B20030335E /* DuelMenuTrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5C951CF378B20030335E /* DuelMenuTrack.mp3 */; };
+		515E5C9A1CF4FE760030335E /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 515E5C991CF4FE680030335E /* Trade Gothic LT Bold Condensed No. 20.ttf */; };
 		51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */; };
 		51F4BFD61CEF77C600B05D35 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4BFD51CEF77C600B05D35 /* SoundController.swift */; };
 		51F4BFDA1CEF788E00B05D35 /* 1gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		515E5C931CF378A80030335E /* DuelTrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DuelTrack.mp3; sourceTree = "<group>"; };
 		515E5C951CF378B20030335E /* DuelMenuTrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DuelMenuTrack.mp3; sourceTree = "<group>"; };
+		515E5C991CF4FE680030335E /* Trade Gothic LT Bold Condensed No. 20.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trade Gothic LT Bold Condensed No. 20.ttf"; sourceTree = "<group>"; };
 		51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		51F4BFD51CEF77C600B05D35 /* SoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
 		51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 1gunshot.mp3; path = ../1gunshot.mp3; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */,
+				515E5C991CF4FE680030335E /* Trade Gothic LT Bold Condensed No. 20.ttf */,
 				51F4BFDD1CEF78A100B05D35 /* Sounds */,
 			);
 			name = Misc;
@@ -273,6 +276,7 @@
 			files = (
 				515E5C941CF378A80030335E /* DuelTrack.mp3 in Resources */,
 				F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */,
+				515E5C9A1CF4FE760030335E /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */,
 				F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */,
 				515E5C961CF378B20030335E /* DuelMenuTrack.mp3 in Resources */,
 				51F4BFDB1CEF788E00B05D35 /* 2gunshot.mp3 in Resources */,
