@@ -26,22 +26,24 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateWithPrefs()
     }
     
     override func didReceiveMemoryWarning() {
        super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: - Methods
     
     func updateWithPrefs() {
-        soundEffectSwitch.setOn(!sounds, animated: true) // Set as opposite to that it "defaults" to on
+        soundEffectSwitch.setOn(!sounds, animated: true) // Set as opposite so that it "defaults" to on
         vibrationSwitch.setOn(!vibration, animated: true) // Set as opposite to that it "defaults" to on
         leftHandedSwitch.setOn(leftHand, animated: true)
     }
     
     // MARK: - Actions
-    
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
             self.dismissViewControllerAnimated(true, completion: nil)

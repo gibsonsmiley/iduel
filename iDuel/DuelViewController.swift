@@ -28,6 +28,7 @@ class DuelViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: Methods
@@ -37,6 +38,19 @@ class DuelViewController: UIViewController {
     }
     
     func duelStart() {
+        MotionController.sharedController.checkRange(false) { (success) in
+            if success {
+                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                MotionController.sharedController.checkFlick({ (success) in
+                    if success {
+                        if let duel = self.duel {
+                            
+                        }
+                        
+                    }
+                })
+            }
+        }
         
         
         //        MotionController.sharedController.trackMotionForDuel { (currentPosition) in
