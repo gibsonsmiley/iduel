@@ -29,7 +29,6 @@ class UserController {
             }
         }
     }
-
     
     static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
         if self.sharedController.currentUser != nil {

@@ -13,11 +13,9 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var allUsers: [User] = []
-    var filteredUsers: [User] = []
-    
     var allDuels: [Duel] = []
     var filteredDuels: [Duel] = []
+    var selectedDuel: Duel?
     
     // MARK: - View
     
@@ -71,9 +69,9 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         // Need to capture the user that is associated with the nickname being typed in
         
-//        filteredDuels = allDuels.filter({
-//            ($0.challengerID?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
-//        })
+        //        filteredDuels = allDuels.filter({
+        //            ($0.challengerID?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
+        //        })
         tableView.reloadData()
     }
     
@@ -104,38 +102,43 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         if filteredDuels.count > 0 {
             duel = filteredDuels[indexPath.row]
         }
-        // Need to get the user associated with the challengerID of the duel
-        
-//        cell.textLabel?.text = duel.chan?.nickname
+        if let duelID = duel.id {
+            DuelController.fetchDuelForID(duelID, completion: { (duel) in
+                if let challengerID = duel?.challengerID {
+                    UserController.fetchUserForIdentifier(challengerID, completion: { (user) in
+                        if user != UserController.sharedController.currentUser {
+                        cell.textLabel?.text = user?.nickname
+                        }
+                    })
+                }
+            })
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        guard let destinationVCNavController = presentingViewController as? UINavigationController,
-//            destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-//        destinationViewController.duel = allDuels[indexPath.row]
-        guard let currentUser = UserController.sharedController.currentUser else { return }
-        guard let selectedDuelID = allDuels[indexPath.row].id else { return }
-        currentUser.duelIDs?.append(selectedDuelID)
         if filteredDuels.count > 0 {
-            guard let filteredDuelID = filteredDuels[indexPath.row].id else { return }
-            currentUser.duelIDs?.append(filteredDuelID)
-//            destinationViewController.duel = filteredDuels[indexPath.row]
+            self.selectedDuel = filteredDuels[indexPath.row]
+            self.selectedDuel?.opponentID = UserController.sharedController.currentUser.id
+            self.selectedDuel?.save()
+//            self.performSegueWithIdentifier("toDuelSetup", sender: self)
+        } else {
+            self.selectedDuel = allDuels[indexPath.row]
+            self.selectedDuel?.opponentID = UserController.sharedController.currentUser.id
+            self.selectedDuel?.save()
+//            self.performSegueWithIdentifier("toDuelSetup", sender: self)
         }
-        self.performSegueWithIdentifier("toDuelSetup", sender: self)
-//        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDuelSetup" {
+            guard let destinationViewController = segue.destinationViewController as? SetUpDuelViewController else { return }
+            guard let duel = self.selectedDuel else { return }
+            destinationViewController.updateWithDuel(duel)
+        }
+    }
 }
 
 

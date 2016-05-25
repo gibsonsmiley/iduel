@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jhe-fb-eAy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jhe-fb-eAy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Trade Gothic LT Bold Condensed No. 20.ttf">
@@ -32,48 +33,29 @@
                         <viewControllerLayoutGuide type="bottom" id="KCh-F4-RX1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fDG-0o-Xoa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Welcome View " translatesAutoresizingMaskIntoConstraints="NO" id="3XD-KE-1rd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-IT-e7B">
-                                <rect key="frame" x="139" y="393" width="97" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="fr8-5I-bHv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
-                                <state key="normal" title="Join Duel">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinDuelButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="mMz-J8-l1Q"/>
-                                </connections>
-                            </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
-                                <rect key="frame" x="33" y="322" width="309" height="24"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
+                                <rect key="frame" x="104" y="357" width="206" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="lBw-fU-rCm"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6Z-00-AMk">
-                                <rect key="frame" x="283" y="580" width="59" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="59" id="gEd-LS-AEE"/>
-                                </constraints>
-                                <state key="normal" title="Settings" image="SettingsButton"/>
+                                <rect key="frame" x="334" y="654" width="51" height="50"/>
+                                <state key="normal" image="SettingsButton"/>
                                 <connections>
                                     <action selector="settingsButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="gvf-pG-xwe"/>
                                     <segue destination="LpM-aX-e9z" kind="presentation" identifier="toSettings" id="Hg1-eX-bYb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
-                                <rect key="frame" x="123" y="354" width="129" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
+                                <rect key="frame" x="143" y="409" width="129" height="48"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
                                 <state key="normal" title="Create Duel">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,54 +64,64 @@
                                     <action selector="createDuelButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="afc-Ju-DO8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-2h-pjr">
-                                <rect key="frame" x="93" y="255" width="189" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Vrf-D5-vA8"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-2h-pjr">
+                                <rect key="frame" x="113" y="267" width="189" height="36"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
-                                <rect key="frame" x="33" y="284" width="309" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
+                                <rect key="frame" x="20" y="319" width="374" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PHY-gb-eHM"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="26"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-IT-e7B">
+                                <rect key="frame" x="159" y="465" width="97" height="48"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
+                                <state key="normal" title="Join Duel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinDuelButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="mMz-J8-l1Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="cb3-2h-pjr" firstAttribute="centerX" secondItem="VUB-uf-J5t" secondAttribute="centerX" id="4bb-dB-hNU"/>
-                            <constraint firstItem="EvE-u2-jVd" firstAttribute="top" secondItem="7p8-JD-uDV" secondAttribute="bottom" constant="8" id="IhD-Zy-EdE"/>
-                            <constraint firstItem="VUB-uf-J5t" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leadingMargin" constant="17" id="JYv-X8-zjs"/>
-                            <constraint firstItem="EvE-u2-jVd" firstAttribute="centerX" secondItem="Dv9-IT-e7B" secondAttribute="centerX" id="Kev-Pv-tCy"/>
-                            <constraint firstItem="cb3-2h-pjr" firstAttribute="top" secondItem="IVi-fO-QkJ" secondAttribute="bottom" constant="235" id="Lih-27-kEc"/>
+                            <constraint firstItem="3XD-KE-1rd" firstAttribute="top" secondItem="fDG-0o-Xoa" secondAttribute="top" id="8HK-x5-brB"/>
+                            <constraint firstItem="3XD-KE-1rd" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" id="9N0-cg-7kW"/>
+                            <constraint firstItem="EvE-u2-jVd" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="AEg-IN-zJ6"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="width" secondItem="3XD-KE-1rd" secondAttribute="width" multiplier="1/2" id="DGA-rv-N25"/>
+                            <constraint firstAttribute="trailing" secondItem="VUB-uf-J5t" secondAttribute="trailing" constant="20" id="Dqs-iv-vb5"/>
+                            <constraint firstItem="EvE-u2-jVd" firstAttribute="top" secondItem="VUB-uf-J5t" secondAttribute="bottom" constant="60" id="Fy1-6y-IBU"/>
+                            <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="b6Z-00-AMk" secondAttribute="bottom" constant="32" id="GqP-32-Sq7"/>
+                            <constraint firstItem="Dv9-IT-e7B" firstAttribute="top" secondItem="EvE-u2-jVd" secondAttribute="bottom" constant="8" id="IGr-bv-OEL"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="trailing" secondItem="b6Z-00-AMk" secondAttribute="trailing" id="McT-bm-sHW"/>
-                            <constraint firstItem="3XD-KE-1rd" firstAttribute="bottom" secondItem="KCh-F4-RX1" secondAttribute="top" id="UN2-NO-Lao"/>
-                            <constraint firstItem="3XD-KE-1rd" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" id="XMk-ae-UhG"/>
-                            <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="Dv9-IT-e7B" secondAttribute="bottom" constant="246" id="aCy-7B-shg"/>
-                            <constraint firstItem="VUB-uf-J5t" firstAttribute="leading" secondItem="7p8-JD-uDV" secondAttribute="leading" id="ewi-YH-HUY"/>
-                            <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="EvE-u2-jVd" secondAttribute="centerX" id="fqC-AT-QyB"/>
-                            <constraint firstAttribute="trailing" secondItem="3XD-KE-1rd" secondAttribute="trailing" id="iCX-17-9QR"/>
-                            <constraint firstItem="7p8-JD-uDV" firstAttribute="top" secondItem="VUB-uf-J5t" secondAttribute="bottom" constant="8" id="mUy-qh-rFe"/>
-                            <constraint firstItem="3XD-KE-1rd" firstAttribute="top" secondItem="fDG-0o-Xoa" secondAttribute="top" id="oPg-9x-c2D"/>
-                            <constraint firstItem="VUB-uf-J5t" firstAttribute="top" secondItem="cb3-2h-pjr" secondAttribute="bottom" constant="8" symbolic="YES" id="ory-fH-Tif"/>
-                            <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="b6Z-00-AMk" secondAttribute="bottom" constant="37" id="qlp-a7-UdB"/>
-                            <constraint firstItem="3XD-KE-1rd" firstAttribute="centerX" secondItem="cb3-2h-pjr" secondAttribute="centerX" id="vSX-nj-sle"/>
-                            <constraint firstItem="Dv9-IT-e7B" firstAttribute="top" secondItem="EvE-u2-jVd" secondAttribute="bottom" constant="8" symbolic="YES" id="wG8-32-y5z"/>
-                            <constraint firstItem="VUB-uf-J5t" firstAttribute="trailing" secondItem="7p8-JD-uDV" secondAttribute="trailing" id="zNQ-dY-oHt"/>
+                            <constraint firstItem="VUB-uf-J5t" firstAttribute="top" secondItem="cb3-2h-pjr" secondAttribute="bottom" constant="16" id="O1Q-Km-Cu0"/>
+                            <constraint firstAttribute="trailing" secondItem="3XD-KE-1rd" secondAttribute="trailing" id="bBZ-Zn-SSz"/>
+                            <constraint firstItem="cb3-2h-pjr" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="gZg-KE-dPf"/>
+                            <constraint firstItem="Dv9-IT-e7B" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="inV-Ko-xHJ"/>
+                            <constraint firstItem="VUB-uf-J5t" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="jE7-qE-Hpw"/>
+                            <constraint firstAttribute="trailing" secondItem="b6Z-00-AMk" secondAttribute="trailing" constant="29" id="qQz-RU-Dev"/>
+                            <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="3XD-KE-1rd" secondAttribute="bottom" id="qds-yB-zoI"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="centerY" secondItem="3XD-KE-1rd" secondAttribute="centerY" id="si1-VM-1KO"/>
+                            <constraint firstItem="VUB-uf-J5t" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="vIP-Nb-sac"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="top" secondItem="VUB-uf-J5t" secondAttribute="bottom" constant="8" id="yaR-oa-Flx"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="zgv-X5-Hlh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="McT-bm-sHW"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="HHS-Fl-hid" appends="YES" id="BGX-OO-FDW"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0xP-dL-1cT"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="createDuelButton" destination="EvE-u2-jVd" id="cId-Kt-a7o"/>
                         <outlet property="errorLabel" destination="7p8-JD-uDV" id="B1A-Gd-Vad"/>
@@ -166,11 +158,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcV-7M-eBb">
-                                <rect key="frame" x="275" y="319" width="84" height="21"/>
+                                <rect key="frame" x="275" y="319" width="84" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="Q9c-fl-MSc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -179,8 +171,8 @@
                                 <state key="normal" title="DuelButton" image="DuelButton"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-l3-x0F">
-                                <rect key="frame" x="58" y="319" width="67" height="21"/>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
+                                <rect key="frame" x="58" y="319" width="87" height="27"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -202,6 +194,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="beginDuelButton" destination="k8h-rd-1j4" id="9Fu-26-ztd"/>
                         <outlet property="challengerLabel" destination="hNk-l3-x0F" id="g8J-IA-cWj"/>
                         <outlet property="opponentLabel" destination="hcV-7M-eBb" id="AQk-4N-z8w"/>
                         <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="MeC-6T-Py4"/>
@@ -276,21 +269,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
-                                <rect key="frame" x="-1" y="571" width="194" height="44"/>
-                                <state key="normal" image="RematchButton">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="victoryToDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="7eV-OX-TqF"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
-                                <rect key="frame" x="186" y="571" width="188" height="44"/>
+                                <rect key="frame" x="211" y="548" width="156" height="44"/>
                                 <state key="normal" image="NewDuelButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -299,19 +282,30 @@
                                     <segue destination="OKq-eY-Neg" kind="custom" identifier="toSetUpCustom" id="yDl-X2-uXZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
+                                <rect key="frame" x="8" y="548" width="156" height="44"/>
+                                <state key="normal" image="RematchButton">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
+                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="victoryToDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="7eV-OX-TqF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dtw-22-XRa" firstAttribute="leading" secondItem="fWh-Lf-WEg" secondAttribute="leading" constant="-1" id="2v3-jD-kNS"/>
-                            <constraint firstItem="Yaj-Gn-GiT" firstAttribute="top" secondItem="fWh-Lf-WEg" secondAttribute="top" id="57Y-K8-CMa"/>
-                            <constraint firstItem="jfq-WW-CfD" firstAttribute="top" secondItem="dtw-22-XRa" secondAttribute="bottom" constant="-44" id="DNq-5Q-jHx"/>
-                            <constraint firstItem="Yaj-Gn-GiT" firstAttribute="centerX" secondItem="dtw-22-XRa" secondAttribute="centerX" constant="91.5" id="DtM-d5-zaX"/>
-                            <constraint firstItem="Yaj-Gn-GiT" firstAttribute="bottom" secondItem="TiS-Gr-jtO" secondAttribute="top" id="YPk-bC-Cxb"/>
-                            <constraint firstItem="jfq-WW-CfD" firstAttribute="leading" secondItem="fWh-Lf-WEg" secondAttribute="leading" constant="186" id="gbp-R0-Wnf"/>
-                            <constraint firstAttribute="trailing" secondItem="jfq-WW-CfD" secondAttribute="trailing" constant="1" id="jql-oK-rOi"/>
-                            <constraint firstAttribute="trailing" secondItem="dtw-22-XRa" secondAttribute="trailing" constant="182" id="s9v-gU-O3V"/>
-                            <constraint firstItem="Yaj-Gn-GiT" firstAttribute="leading" secondItem="fWh-Lf-WEg" secondAttribute="leading" id="tHE-Vo-Gfs"/>
-                            <constraint firstItem="TiS-Gr-jtO" firstAttribute="top" secondItem="jfq-WW-CfD" secondAttribute="bottom" constant="52" id="wRG-Di-llm"/>
+                            <constraint firstItem="dtw-22-XRa" firstAttribute="height" secondItem="jfq-WW-CfD" secondAttribute="height" id="EWu-mI-jOD"/>
+                            <constraint firstAttribute="trailing" secondItem="Yaj-Gn-GiT" secondAttribute="trailing" id="F8f-Im-Swc"/>
+                            <constraint firstItem="dtw-22-XRa" firstAttribute="leading" secondItem="fWh-Lf-WEg" secondAttribute="leading" constant="8" id="FdF-T8-Rtr"/>
+                            <constraint firstItem="dtw-22-XRa" firstAttribute="centerY" secondItem="jfq-WW-CfD" secondAttribute="centerY" id="Wg7-dA-teh"/>
+                            <constraint firstItem="Yaj-Gn-GiT" firstAttribute="leading" secondItem="fWh-Lf-WEg" secondAttribute="leading" id="hB9-eL-beQ"/>
+                            <constraint firstItem="TiS-Gr-jtO" firstAttribute="top" secondItem="Yaj-Gn-GiT" secondAttribute="bottom" id="jwR-cb-6c8"/>
+                            <constraint firstAttribute="trailing" secondItem="jfq-WW-CfD" secondAttribute="trailing" constant="8" id="nGZ-co-3gU"/>
+                            <constraint firstItem="dtw-22-XRa" firstAttribute="width" secondItem="jfq-WW-CfD" secondAttribute="width" id="r6b-LI-LZD"/>
+                            <constraint firstItem="TiS-Gr-jtO" firstAttribute="top" secondItem="dtw-22-XRa" secondAttribute="bottom" constant="75" id="sRX-9n-RM6"/>
+                            <constraint firstItem="dtw-22-XRa" firstAttribute="width" secondItem="Yaj-Gn-GiT" secondAttribute="width" multiplier="1/2" constant="-32" id="tV6-fy-dgI"/>
+                            <constraint firstItem="Yaj-Gn-GiT" firstAttribute="top" secondItem="fWh-Lf-WEg" secondAttribute="top" id="tre-4l-TMc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -327,32 +321,36 @@
         <scene sceneID="b7N-cv-zv5">
             <objects>
                 <tableViewController id="E7c-NL-zWA" customClass="FindOpponentTableViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkE-Wj-WOF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkE-Wj-WOF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search" showsCancelButton="YES" id="hMp-Au-kGz">
-                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search" translucent="NO" id="hMp-Au-kGz">
+                            <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="Tb1-S1-IaZ" style="IBUITableViewCellStyleDefault" id="ZQf-Dt-9Kt">
-                                <rect key="frame" x="0.0" y="136" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="userCell" textLabel="Tb1-S1-IaZ" rowHeight="85" style="IBUITableViewCellStyleDefault" id="ZQf-Dt-9Kt">
+                                <rect key="frame" x="0.0" y="136" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZQf-Dt-9Kt" id="7nF-pp-z49">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tb1-S1-IaZ">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="44"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tb1-S1-IaZ">
+                                            <rect key="frame" x="15" y="0.0" width="364" height="85"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="24"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="42"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -370,29 +368,29 @@
                     <connections>
                         <outlet property="cancelButton" destination="1jq-kz-h8S" id="bCg-uH-hun"/>
                         <outlet property="searchBar" destination="hMp-Au-kGz" id="szQ-ij-YgP"/>
-                        <segue destination="OKq-eY-Neg" kind="custom" identifier="toDuelSetup" customClass="TopDownSegue" id="zH8-ZE-Otl"/>
+                        <segue destination="OKq-eY-Neg" kind="modal" identifier="toDuelSetup" customClass="TopDownSegue" id="zH8-ZE-Otl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZn-GZ-Xsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735.5" y="-109.5"/>
+            <point key="canvasLocation" x="727.5" y="-315.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ljU-OW-ho0">
             <objects>
                 <tableViewController id="CAv-is-Xnq" customClass="SettingsTableViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MnU-r6-fjd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="Sound and Vibration" id="dZx-Js-cRH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jNT-SJ-UgF">
-                                        <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-HI-iKA">
@@ -401,7 +399,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPs-g1-FuE">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPs-g1-FuE">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="soundEffectSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="Iqf-XQ-sdr"/>
@@ -417,10 +415,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0rc-pt-sw0">
-                                        <rect key="frame" x="0.0" y="157.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="158" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rc-pt-sw0" id="y5N-Aa-IT1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h89-mh-kNA">
@@ -429,7 +427,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-Fe-tOq">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-Fe-tOq">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="vibrationSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="dQS-hl-1ai"/>
@@ -449,13 +447,13 @@
                             <tableViewSection headerTitle="Left-Handed" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="251.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="253" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="keN-MZ-DOJ">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="keN-MZ-DOJ">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="leftHandedSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="bIs-Hf-4HV"/>
@@ -481,13 +479,13 @@
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="345.5" width="375" height="227"/>
+                                        <rect key="frame" x="0.0" y="348" width="414" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
                                                     <rect key="frame" x="8" y="8" width="359" height="211"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or linaccessibility or use of the elements of this game application. Music track: Kenny MacConnachie aka "Evony". For more information please visit, www.duellum.com</string>
@@ -527,7 +525,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dv-bd-I7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209.5" y="1407.5"/>
+            <point key="canvasLocation" x="209" y="1505"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zcy-Wu-yAS">
@@ -547,7 +545,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fs2-mO-Tjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209.5" y="-109.5"/>
+            <point key="canvasLocation" x="201.5" y="-315.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v1n-8g-Ae6">
@@ -567,7 +565,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VW9-K5-xa1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-247.5" y="1407.5"/>
+            <point key="canvasLocation" x="-248" y="1505"/>
         </scene>
     </scenes>
     <resources>
@@ -581,7 +579,7 @@
         <image name="Welcome View " width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7eV-OX-TqF"/>
-        <segue reference="yDl-X2-uXZ"/>
+        <segue reference="hjW-aq-90n"/>
+        <segue reference="MeC-6T-Py4"/>
     </inferredMetricsTieBreakers>
 </document>

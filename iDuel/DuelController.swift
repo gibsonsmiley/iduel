@@ -12,7 +12,6 @@ import AudioToolbox
 
 class DuelController {
     
-    // Self explanitory
     static func createDuel(challengerID: String = UserController.sharedController.currentUser.id!, opponentID: String?, completion: (success: Bool, duel: Duel?) -> Void) {
 //        guard let currentUser = UserController.currentUser else { completion(success: false, duel: nil); return }
         var duel = Duel(challengerID: challengerID, opponentID: opponentID, statuses: nil, shotsFired: nil)

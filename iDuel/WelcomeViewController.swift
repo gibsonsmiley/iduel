@@ -197,7 +197,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toSetUpDuel" {
-            guard let destinationViewController = segue.sourceViewController as? SetUpDuelViewController else { return }
+            guard let destinationViewController = segue.destinationViewController as? SetUpDuelViewController else { return }
             guard let duel = self.duel else { return }
             destinationViewController.updateWithDuel(duel)
         }

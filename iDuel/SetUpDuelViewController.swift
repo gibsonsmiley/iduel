@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 
 class SetUpDuelViewController: UIViewController {
-
+    
     @IBOutlet weak var opponentLabel: UILabel!
     @IBOutlet weak var challengerLabel: UILabel!
     @IBOutlet weak var beginDuelButton: UIButton!
@@ -22,10 +22,12 @@ class SetUpDuelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViewWithInfo()
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)        
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +36,8 @@ class SetUpDuelViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    
     
     
     func watchForPlayers() {
@@ -47,14 +51,23 @@ class SetUpDuelViewController: UIViewController {
                         //user = self.duel?.player2
                     }
                 }
-//                guard let duelID = duel.id else { return }
-//                guard let duel = Duel(json: jsonDictionary, id: duelID) else { return }
+                //                guard let duelID = duel.id else { return }
+                //                guard let duel = Duel(json: jsonDictionary, id: duelID) else { return }
                 
             } else {
                 // No data returned?
             }
         })
         // DuelController.observePlayersForDuel(self.duel)
+    }
+    
+    func updateViewWithInfo() {
+        guard let challengerID = self.duel?.challengerID else { return }
+        UserController.fetchUserForIdentifier(challengerID) { (user) in
+            guard let user = user else { return }
+            self.challengerLabel.text = user.nickname
+        }
+        
     }
     
     func updateWithDuel(duel: Duel) {

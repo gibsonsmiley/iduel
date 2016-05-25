@@ -10,8 +10,13 @@ import Foundation
 
 class DuelController2 {
     
-    static func createDuel() {
-        
+    static func createDuel(challengerID: String = UserController.sharedController.currentUser.id!, opponentID: String?, completion: (success: Bool, duel: Duel?) -> Void) {
+        var duel = Duel(challengerID: challengerID, opponentID: opponentID, statuses: nil, shotsFired: nil)
+        duel.challengerID = challengerID
+        duel.save()
+        guard let duelID = duel.id else { completion(success: false, duel: nil); return }
+        UserController.sharedController.currentUser.duelIDs?.append(duelID)
+        completion(success: true, duel: duel)
     }
     
     static func joinDuel(duel: Duel, opponentID: String = UserController.sharedController.currentUser.id!, completion: (success: Bool) -> Void) {
