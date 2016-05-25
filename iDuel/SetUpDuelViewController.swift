@@ -24,6 +24,7 @@ class SetUpDuelViewController: UIViewController {
         super.viewDidLoad()
         
         updateViewWithInfo()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -67,7 +68,10 @@ class SetUpDuelViewController: UIViewController {
             guard let user = user else { return }
             self.challengerLabel.text = user.nickname
         }
-        
+        guard let opponentID = self.duel?.opponentID else { return }
+        UserController.fetchUserForIdentifier(opponentID) { (user) in
+            self.opponentLabel.text = user?.nickname
+        }
     }
     
     func updateWithDuel(duel: Duel) {

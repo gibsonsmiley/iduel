@@ -39,8 +39,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Welcome View " translatesAutoresizingMaskIntoConstraints="NO" id="3XD-KE-1rd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
-                                <rect key="frame" x="104" y="357" width="206" height="24"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
+                                <rect key="frame" x="104" y="356" width="207" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,8 +54,8 @@
                                     <segue destination="LpM-aX-e9z" kind="presentation" identifier="toSettings" id="Hg1-eX-bYb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
-                                <rect key="frame" x="143" y="409" width="129" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
+                                <rect key="frame" x="143" y="408" width="129" height="48"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
                                 <state key="normal" title="Create Duel">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,20 +64,20 @@
                                     <action selector="createDuelButtonTapped:" destination="jhe-fb-eAy" eventType="touchUpInside" id="afc-Ju-DO8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-2h-pjr">
-                                <rect key="frame" x="113" y="267" width="189" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-2h-pjr">
+                                <rect key="frame" x="113" y="266" width="189" height="36"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
-                                <rect key="frame" x="20" y="319" width="374" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
+                                <rect key="frame" x="20" y="318" width="374" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="26"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-IT-e7B">
-                                <rect key="frame" x="159" y="465" width="97" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-IT-e7B">
+                                <rect key="frame" x="159" y="464" width="97" height="48"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
                                 <state key="normal" title="Join Duel">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -157,21 +157,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DuelViewMen" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-Ro-meo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcV-7M-eBb">
-                                <rect key="frame" x="275" y="319" width="84" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="84" id="Q9c-fl-MSc"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-rd-1j4">
+                                <rect key="frame" x="34" y="637" width="346" height="74"/>
+                                <state key="normal" image="DuelButton"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-l3-x0F">
+                                <rect key="frame" x="69" y="311" width="87" height="27"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-rd-1j4">
-                                <rect key="frame" x="24" y="637" width="379" height="74"/>
-                                <state key="normal" title="DuelButton" image="DuelButton"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-l3-x0F">
-                                <rect key="frame" x="58" y="319" width="87" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcV-7M-eBb">
+                                <rect key="frame" x="269" y="311" width="76" height="27"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -179,18 +176,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QNd-Ro-meo" firstAttribute="top" secondItem="Ne4-xs-p7s" secondAttribute="top" id="5u6-yL-wLy"/>
-                            <constraint firstItem="hNk-l3-x0F" firstAttribute="top" secondItem="fxP-CQ-g3j" secondAttribute="bottom" constant="299" id="930-Vn-V1k"/>
-                            <constraint firstItem="QNd-Ro-meo" firstAttribute="bottom" secondItem="0N3-el-oSV" secondAttribute="top" id="BRG-ah-Ne6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="k8h-rd-1j4" secondAttribute="trailing" constant="-9" id="GHZ-gn-yVo"/>
-                            <constraint firstItem="k8h-rd-1j4" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leadingMargin" constant="4" id="IG2-QN-HS4"/>
-                            <constraint firstAttribute="trailing" secondItem="QNd-Ro-meo" secondAttribute="trailing" id="Jks-WH-vlx"/>
+                            <constraint firstItem="0N3-el-oSV" firstAttribute="top" secondItem="k8h-rd-1j4" secondAttribute="bottom" constant="25" id="Aav-hs-6rz"/>
+                            <constraint firstItem="hNk-l3-x0F" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leading" constant="69" id="FmW-rC-Sna"/>
                             <constraint firstItem="hNk-l3-x0F" firstAttribute="baseline" secondItem="hcV-7M-eBb" secondAttribute="baseline" id="RNW-UK-FO7"/>
-                            <constraint firstItem="0N3-el-oSV" firstAttribute="top" secondItem="k8h-rd-1j4" secondAttribute="bottom" constant="25" id="WDI-FP-SyP"/>
-                            <constraint firstItem="QNd-Ro-meo" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leading" id="bgz-4X-lOR"/>
-                            <constraint firstItem="hNk-l3-x0F" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leadingMargin" constant="38" id="cdq-1X-OSA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hcV-7M-eBb" secondAttribute="trailing" constant="35" id="sb2-hI-VaH"/>
+                            <constraint firstItem="hNk-l3-x0F" firstAttribute="top" secondItem="fxP-CQ-g3j" secondAttribute="bottom" constant="291" id="V4K-Zq-WW8"/>
+                            <constraint firstItem="QNd-Ro-meo" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leading" id="WDh-aU-Wdl"/>
+                            <constraint firstAttribute="trailing" secondItem="hcV-7M-eBb" secondAttribute="trailing" constant="69" id="c7g-fU-Xgx"/>
+                            <constraint firstItem="QNd-Ro-meo" firstAttribute="top" secondItem="Ne4-xs-p7s" secondAttribute="top" id="jvL-GR-TNb"/>
+                            <constraint firstItem="hcV-7M-eBb" firstAttribute="centerY" secondItem="hNk-l3-x0F" secondAttribute="centerY" id="k6e-Ho-PEd"/>
+                            <constraint firstItem="0N3-el-oSV" firstAttribute="top" secondItem="QNd-Ro-meo" secondAttribute="bottom" id="tAc-Qz-jX2"/>
+                            <constraint firstItem="hcV-7M-eBb" firstAttribute="centerX" secondItem="hNk-l3-x0F" secondAttribute="centerX" id="tnC-qd-vhy"/>
+                            <constraint firstAttribute="trailing" secondItem="QNd-Ro-meo" secondAttribute="trailing" id="vpw-fl-jOI"/>
+                            <constraint firstItem="k8h-rd-1j4" firstAttribute="centerX" secondItem="QNd-Ro-meo" secondAttribute="centerX" id="w5Z-GR-GUy"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tnC-qd-vhy"/>
+                                <exclude reference="RNW-UK-FO7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -368,7 +372,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="1jq-kz-h8S" id="bCg-uH-hun"/>
                         <outlet property="searchBar" destination="hMp-Au-kGz" id="szQ-ij-YgP"/>
-                        <segue destination="OKq-eY-Neg" kind="modal" identifier="toDuelSetup" customClass="TopDownSegue" id="zH8-ZE-Otl"/>
+                        <segue destination="OKq-eY-Neg" kind="presentation" identifier="toDuelSetup" modalTransitionStyle="flipHorizontal" id="e5R-19-Byv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZn-GZ-Xsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -399,8 +403,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPs-g1-FuE">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPs-g1-FuE">
+                                                    <rect key="frame" x="357" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="soundEffectSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="Iqf-XQ-sdr"/>
                                                     </connections>
@@ -427,8 +431,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-Fe-tOq">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-Fe-tOq">
+                                                    <rect key="frame" x="357" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="vibrationSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="dQS-hl-1ai"/>
                                                     </connections>
@@ -453,8 +457,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="keN-MZ-DOJ">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="keN-MZ-DOJ">
+                                                    <rect key="frame" x="357" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="leftHandedSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="bIs-Hf-4HV"/>
                                                     </connections>
@@ -485,8 +489,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
-                                                    <rect key="frame" x="8" y="8" width="359" height="211"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
+                                                    <rect key="frame" x="8" y="8" width="398" height="211"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or linaccessibility or use of the elements of this game application. Music track: Kenny MacConnachie aka "Evony". For more information please visit, www.duellum.com</string>
                                                     <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="14"/>
@@ -525,7 +529,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dv-bd-I7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209" y="1505"/>
+            <point key="canvasLocation" x="306" y="1518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zcy-Wu-yAS">
@@ -579,7 +583,7 @@
         <image name="Welcome View " width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hjW-aq-90n"/>
+        <segue reference="e5R-19-Byv"/>
         <segue reference="MeC-6T-Py4"/>
     </inferredMetricsTieBreakers>
 </document>

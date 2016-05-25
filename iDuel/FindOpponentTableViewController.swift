@@ -26,7 +26,6 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         tableView.keyboardDismissMode = .Interactive
         
         fetchAllDuels()
-        //        fetchAllUsers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,7 +47,6 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         DuelController.fetchAllDuels { (duels) in
             guard let duels = duels else { completion(duels: nil); return }
             for duel in duels {
-                //                guard let duelID = duel.id else { return }
                 if duel.timestamp.timeIntervalSinceNow > 30 * 60 {
                     DuelController.deleteDuel(duel, completion: { (success) in
                         if success == true {
@@ -121,12 +119,12 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
             self.selectedDuel = filteredDuels[indexPath.row]
             self.selectedDuel?.opponentID = UserController.sharedController.currentUser.id
             self.selectedDuel?.save()
-//            self.performSegueWithIdentifier("toDuelSetup", sender: self)
+            self.performSegueWithIdentifier("toDuelSetup", sender: self)
         } else {
             self.selectedDuel = allDuels[indexPath.row]
             self.selectedDuel?.opponentID = UserController.sharedController.currentUser.id
             self.selectedDuel?.save()
-//            self.performSegueWithIdentifier("toDuelSetup", sender: self)
+            self.performSegueWithIdentifier("toDuelSetup", sender: self)
         }
     }
     
