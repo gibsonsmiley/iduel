@@ -159,14 +159,14 @@
                         <viewControllerLayoutGuide type="bottom" id="0N3-el-oSV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ne4-xs-p7s">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DuelViewMen" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-Ro-meo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcV-7M-eBb">
-                                <rect key="frame" x="275" y="319" width="84" height="21"/>
+                                <rect key="frame" x="240" y="319" width="84" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="Q9c-fl-MSc"/>
                                 </constraints>
@@ -175,11 +175,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-rd-1j4">
-                                <rect key="frame" x="24" y="637" width="379" height="74"/>
+                                <rect key="frame" x="20" y="568" width="348" height="74"/>
                                 <state key="normal" title="DuelButton" image="DuelButton"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-l3-x0F">
-                                <rect key="frame" x="58" y="319" width="67" height="21"/>
+                                <rect key="frame" x="54" y="319" width="67" height="21"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -200,7 +200,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hcV-7M-eBb" secondAttribute="trailing" constant="35" id="sb2-hI-VaH"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="challengerLabel" destination="hNk-l3-x0F" id="g8J-IA-cWj"/>
                         <outlet property="opponentLabel" destination="hcV-7M-eBb" id="AQk-4N-z8w"/>
@@ -262,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRl-Vz-nbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250.5" y="615.5"/>
+            <point key="canvasLocation" x="1226.5" y="650.5"/>
         </scene>
         <!--Victory View Controller-->
         <scene sceneID="qc5-1D-PaR">
@@ -276,7 +276,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-hS-jkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760.5" y="615.5"/>
+            <point key="canvasLocation" x="1752.5" y="650.5"/>
         </scene>
         <!--Find Opponent Table View Controller-->
         <scene sceneID="b7N-cv-zv5">
@@ -389,7 +389,7 @@
                             <tableViewSection headerTitle="Sound and Vibration" id="dZx-Js-cRH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jNT-SJ-UgF">
-                                        <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -417,7 +417,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0rc-pt-sw0">
-                                        <rect key="frame" x="0.0" y="157.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="158" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rc-pt-sw0" id="y5N-Aa-IT1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -449,7 +449,7 @@
                             <tableViewSection headerTitle="Left-Handed" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="251.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="252" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -481,7 +481,7 @@
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="345.5" width="375" height="227"/>
+                                        <rect key="frame" x="0.0" y="346" width="375" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
@@ -490,7 +490,11 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
                                                     <rect key="frame" x="8" y="8" width="359" height="211"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or linaccessibility or use of the elements of this game application. Music track: Kenny MacConnachie aka "Evony". For more information please visit, www.duellum.com</string>
+                                                    <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or linaccessibility or use of the elements of this game application. For more information please visit, www.duellum.com
+
+
+
+Music track: Kenny MacConnachie aka "Evony".</string>
                                                     <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
