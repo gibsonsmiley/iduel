@@ -15,8 +15,9 @@ class SetUpDuelViewController: UIViewController {
     @IBOutlet weak var challengerLabel: UILabel!
     @IBOutlet weak var beginDuelButton: UIButton!
     
-    var opponent: User?
     var duel: Duel?
+    var challenger: User?
+    var opponent: User?
     
     // MARK: - View
     
@@ -24,11 +25,11 @@ class SetUpDuelViewController: UIViewController {
         super.viewDidLoad()
         
         updateViewWithInfo()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        watchForPlayers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,50 +39,51 @@ class SetUpDuelViewController: UIViewController {
     
     // MARK: - Methods
     
-    
-    
-    
     func watchForPlayers() {
         guard let duel = self.duel else { return }
-        FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("duelIDs").queryEqualToValue("\(duel.id)").observeEventType(.Value, withBlock: { (snapshot) in
-            if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {
-                let users = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)})
-                guard let duelID = duel.id else { return }
-                for user in users where ((user.duelIDs?.contains(duelID)) != nil) {
-                    if self.duel?.opponentID == nil {
-                        //user = self.duel?.player2
-                    }
-                }
-                //                guard let duelID = duel.id else { return }
-                //                guard let duel = Duel(json: jsonDictionary, id: duelID) else { return }
-                
-            } else {
-                // No data returned?
+        DuelController2.observePlayers(duel) { (challenger, opponent) in
+            if let challenger = challenger {
+                self.challenger = challenger
             }
-        })
-        // DuelController.observePlayersForDuel(self.duel)
+            if let opponent = opponent {
+                self.opponent = opponent
+            }
+        }
     }
     
     func updateViewWithInfo() {
         guard let challengerID = self.duel?.challengerID else { return }
         UserController.fetchUserForIdentifier(challengerID) { (user) in
             guard let user = user else { return }
+            //            self.challenger = user
             self.challengerLabel.text = user.nickname
         }
         guard let opponentID = self.duel?.opponentID else { return }
         UserController.fetchUserForIdentifier(opponentID) { (user) in
+            //            self.opponent = user
             self.opponentLabel.text = user?.nickname
         }
     }
     
     func updateWithDuel(duel: Duel) {
         self.duel = duel
+        UserController.fetchUserForIdentifier(duel.challengerID) { (user) in
+            self.challenger = user
+        }
+        guard let opponentID = duel.opponentID else { return }
+        UserController.fetchUserForIdentifier(opponentID) { (user) in
+            self.opponent = user
+        }
     }
     
     // MARK: - Actions
     
     @IBAction func beginDuelButton(sender: AnyObject) {
         // If both players are present
+        guard let duel = duel,
+            challenger = challenger,
+            opponent = opponent else { return }
+        performSegueWithIdentifier("toDuelCustom", sender: self)
     }
     
     // MARK: - Navigation

@@ -11,6 +11,7 @@ import UIKit
 class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var joinDuelButton: UIButton!
     @IBOutlet weak var createDuelButton: UIButton!
@@ -54,7 +55,8 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     func titleState() {
         if UserController.sharedController.currentUser == nil {
         } else {
-            nicknameTextField.placeholder = "Change your nickname"
+            titleLabel.text = "Welcome back, \(UserController.sharedController.currentUser.nickname)"
+            nicknameTextField.placeholder = "Change your nickname?"
         }
     }
     
