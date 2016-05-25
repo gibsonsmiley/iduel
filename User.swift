@@ -14,29 +14,23 @@ class User: Equatable, FirebaseType {
     
     
     private let kNickname = "nickname"
-    private let kCurrentPosition = "currentPosition"
-    private let kCalibrationLowered = "calibrationLowered"
-    private let kCalibrationRaised = "calibrationRaised"
     private let kDuelIDs = "duelIDs"
     private let kTimestamp = "timestamp"
     
-    
     var nickname: String
-    var currentPosition: Calibration?
-    var calibrationLowered: Calibration?
-    var calibrationRaised: Calibration?
-    var duelIDs: [String]?
+    var duelIDs: [String]? = [] {
+        didSet {
+            UserController.sharedController.currentUser.save()
+        }
+    }
     var timestamp: NSDate 
     var id: String?
     var endpoint: String {
         return "users"
     }
     
-    init(nickname: String, currentPosition: Calibration? = nil, calibrationLowered: Calibration? = nil, calibrationRaised: Calibration? = nil,  duelIDs: [String]?, timestamp: NSDate = NSDate()) {
+    init(nickname: String, duelIDs: [String]? = [], timestamp: NSDate = NSDate()) {
         self.nickname = nickname
-        self.currentPosition = currentPosition
-        self.calibrationLowered = calibrationLowered
-        self.calibrationRaised = calibrationRaised
         self.duelIDs = duelIDs
         self.timestamp = timestamp
     }
@@ -45,7 +39,6 @@ class User: Equatable, FirebaseType {
         var json: [String: AnyObject] = [kNickname: nickname, kTimestamp: timestamp.timeIntervalSince1970]
         if let duelIDs = duelIDs {
             json.updateValue(duelIDs, forKey: kDuelIDs)
-            
         }
         return json
     }

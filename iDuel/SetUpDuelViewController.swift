@@ -25,9 +25,7 @@ class SetUpDuelViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        displayWithInfo()
+        super.viewWillAppear(animated)        
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,13 +35,6 @@ class SetUpDuelViewController: UIViewController {
     
     // MARK: - Methods
     
-    func displayWithInfo() {
-        if self.opponent == nil {
-            self.beginDuelButton.enabled = false
-        } else {
-            self.beginDuelButton.enabled = true
-        }
-    }
     
     func watchForPlayers() {
         guard let duel = self.duel else { return }
@@ -52,7 +43,7 @@ class SetUpDuelViewController: UIViewController {
                 let users = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)})
                 guard let duelID = duel.id else { return }
                 for user in users where ((user.duelIDs?.contains(duelID)) != nil) {
-                    if self.duel?.player2 == nil {
+                    if self.duel?.opponentID == nil {
                         //user = self.duel?.player2
                     }
                 }

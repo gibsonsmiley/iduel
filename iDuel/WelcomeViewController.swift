@@ -52,7 +52,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func titleState() {
-        if UserController.currentUser == nil {
+        if UserController.sharedController.currentUser == nil {
         } else {
             nicknameTextField.placeholder = "Change your nickname"
         }
@@ -67,7 +67,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func joinDuelButtonTapped(sender: AnyObject) {
         errorLabel.hidden = true
-        if UserController.currentUser == nil {
+        if UserController.sharedController.currentUser == nil {
             if nicknameTextField.text != "" {
                 guard let nickname = nicknameTextField.text else { return }
                 UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
@@ -89,7 +89,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
                 // Field is empty - move to next view
                 self.performSegueWithIdentifier("toDuels", sender: self)
             } else {
-                if nicknameTextField.text != UserController.currentUser.nickname {
+                if nicknameTextField.text != UserController.sharedController.currentUser.nickname {
                     // User wants to change nickname
                     guard let nickname = nicknameTextField.text else { return }
                     UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
@@ -110,13 +110,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func createDuelButtonTapped(sender: AnyObject) {
         errorLabel.hidden = true
-        if UserController.currentUser == nil {
+        if UserController.sharedController.currentUser == nil {
             if nicknameTextField.text != "" {
                 guard let nickname = nicknameTextField.text else { return }
                 UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                     if success == true {
-                        guard let currentUser = UserController.currentUser else { return }
-                        DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                        guard let currentUserID = UserController.sharedController.currentUser.id else { return }
+                        DuelController.createDuel(currentUserID, opponentID: nil, completion: { (success, duel) in
                             if success == true {
                                 self.duel = duel
                                 self.performSegueWithIdentifier("toSetUpDuel", sender: self)
@@ -139,8 +139,8 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
             // There is a current user
             if nicknameTextField.text == "" {
                 // Field is empty - move to next view
-                guard let currentUser = UserController.currentUser else { return }
-                DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                guard let currentUserID = UserController.sharedController.currentUser.id else { return }
+                DuelController.createDuel(currentUserID, opponentID: nil, completion: { (success, duel) in
                     if success == true {
                         self.duel = duel
                         self.performSegueWithIdentifier("toSetUpDuel", sender: self)
@@ -150,13 +150,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
                     }
                 })
             } else {
-                if nicknameTextField.text != UserController.currentUser.nickname {
+                if nicknameTextField.text != UserController.sharedController.currentUser.nickname {
                     // User wants to change nickname
                     guard let nickname = nicknameTextField.text else { return }
                     UserController.checkNicknameAvailability(nickname, completion: { (success, error) in
                         if success == true {
-                            guard let currentUser = UserController.currentUser else { return }
-                            DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                            guard let currentUserID = UserController.sharedController.currentUser.id else { return }
+                            DuelController.createDuel(currentUserID, opponentID: nil, completion: { (success, duel) in
                                 if success == true {
                                     self.duel = duel
                                     self.performSegueWithIdentifier("toSetUpDuel", sender: self)
@@ -172,8 +172,8 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
                         }
                     })
                 } else {
-                    guard let currentUser = UserController.currentUser else { return }
-                    DuelController.createDuel(currentUser, player2: nil, completion: { (success, duel) in
+                    guard let currentUserID = UserController.sharedController.currentUser.id else { return }
+                    DuelController.createDuel(currentUserID, opponentID: nil, completion: { (success, duel) in
                         if success == true {
                             self.duel = duel
                             self.performSegueWithIdentifier("toSetUpDuel", sender: self)

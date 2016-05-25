@@ -13,17 +13,18 @@ import AudioToolbox
 class DuelController {
     
     // Self explanitory
-    static func createDuel(player1: User?, player2: User?, completion: (success: Bool, duel: Duel?) -> Void) {
-        guard let currentUser = UserController.currentUser else { completion(success: false, duel: nil); return }
-        guard let player1 = player1 else { return }
-        var duel = Duel(player1: player1, player2: player2, ready: nil, shotsFired: nil)
-        guard let duelID = duel.id else { completion(success: false, duel: nil); return }
+    static func createDuel(challengerID: String = UserController.sharedController.currentUser.id!, opponentID: String?, completion: (success: Bool, duel: Duel?) -> Void) {
+//        guard let currentUser = UserController.currentUser else { completion(success: false, duel: nil); return }
+        var duel = Duel(challengerID: challengerID, opponentID: opponentID, statuses: nil, shotsFired: nil)
+        duel.challengerID = challengerID
         duel.save()
+        guard let duelID = duel.id else { completion(success: false, duel: nil); return }
+        UserController.sharedController.currentUser.duelIDs?.append(duelID)
         completion(success: true, duel: duel)
-        currentUser.duelIDs?.append(duelID)
-        //        currentUser.save()
-//        player2.duelIDs?.append(duelID)
-        //        player2.save()
+    }
+    
+    static func joinDuel(duel: Duel, opponentID: String = UserController.sharedController.currentUser.id!, completion: (success: Bool) -> Void) {
+        
     }
     
     static func deleteDuel(duel: Duel, completion: (success: Bool) -> Void) {
@@ -90,7 +91,7 @@ class DuelController {
     // This method should only be called if the checkReadyStatus returns two "true" bools
     // Calls the wait for countdown method, then the check fire method, then the victory method
     static func startDuel(duel: Duel) {
-//        guard let duelID = duel.id else { return }
+        //        guard let duelID = duel.id else { return }
         countdown(duel, completion: { (countdown) in
             waitForCountdown(duel)
         })

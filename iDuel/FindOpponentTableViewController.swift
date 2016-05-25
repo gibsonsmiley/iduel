@@ -69,9 +69,11 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredDuels = allDuels.filter({
-            ($0.player1?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
-        })
+        // Need to capture the user that is associated with the nickname being typed in
+        
+//        filteredDuels = allDuels.filter({
+//            ($0.challengerID?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
+//        })
         tableView.reloadData()
     }
     
@@ -102,7 +104,9 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         if filteredDuels.count > 0 {
             duel = filteredDuels[indexPath.row]
         }
-        cell.textLabel?.text = duel.player1?.nickname
+        // Need to get the user associated with the challengerID of the duel
+        
+//        cell.textLabel?.text = duel.chan?.nickname
         return cell
     }
     
@@ -110,7 +114,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
 //        guard let destinationVCNavController = presentingViewController as? UINavigationController,
 //            destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
 //        destinationViewController.duel = allDuels[indexPath.row]
-        guard let currentUser = UserController.currentUser else { return }
+        guard let currentUser = UserController.sharedController.currentUser else { return }
         guard let selectedDuelID = allDuels[indexPath.row].id else { return }
         currentUser.duelIDs?.append(selectedDuelID)
         if filteredDuels.count > 0 {
