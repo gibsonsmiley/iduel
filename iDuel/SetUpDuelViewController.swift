@@ -47,6 +47,22 @@ class SetUpDuelViewController: UIViewController {
     
     func watchForPlayers() {
         guard let duel = self.duel else { return }
+        FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("duelIDs").queryEqualToValue("\(duel.id)").observeEventType(.Value, withBlock: { (snapshot) in
+            if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {
+                let users = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)})
+                guard let duelID = duel.id else { return }
+                for user in users where ((user.duelIDs?.contains(duelID)) != nil) {
+                    if self.duel?.player2 == nil {
+                        //user = self.duel?.player2
+                    }
+                }
+//                guard let duelID = duel.id else { return }
+//                guard let duel = Duel(json: jsonDictionary, id: duelID) else { return }
+                
+            } else {
+                // No data returned?
+            }
+        })
         // DuelController.observePlayersForDuel(self.duel)
     }
     

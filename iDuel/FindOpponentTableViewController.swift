@@ -107,13 +107,19 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let destinationVCNavController = presentingViewController as? UINavigationController,
-            destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-        destinationViewController.duel = allDuels[indexPath.row]
+//        guard let destinationVCNavController = presentingViewController as? UINavigationController,
+//            destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
+//        destinationViewController.duel = allDuels[indexPath.row]
+        guard let currentUser = UserController.currentUser else { return }
+        guard let selectedDuelID = allDuels[indexPath.row].id else { return }
+        currentUser.duelIDs?.append(selectedDuelID)
         if filteredDuels.count > 0 {
-            destinationViewController.duel = filteredDuels[indexPath.row]
+            guard let filteredDuelID = filteredDuels[indexPath.row].id else { return }
+            currentUser.duelIDs?.append(filteredDuelID)
+//            destinationViewController.duel = filteredDuels[indexPath.row]
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("toDuelSetup", sender: self)
+//        dismissViewControllerAnimated(true, completion: nil)
     }
     
     /*

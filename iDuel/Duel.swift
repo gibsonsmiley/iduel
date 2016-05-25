@@ -12,8 +12,8 @@ class Duel: Equatable, FirebaseType {
     
     // MARK: - "ready" and "shotsFired" properties aren't going to work
     
-    let player1: User?
-    let player2: User?
+    var player1: User?
+    var player2: User?
     let ready: NSDate?
     let shotsFired: NSTimeInterval?
     var id: String?

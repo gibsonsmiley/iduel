@@ -44,8 +44,7 @@ class DuelViewController: UIViewController {
                 MotionController.sharedController.checkFlick({ (success) in
                     if success {
                         if let duel = self.duel {
-                            DuelController.playerReady(UserController.currentUser, duel: duel)
-                            DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: <#T##(player1Ready: Bool, player2Ready: Bool) -> Void#>)
+                            
                         }
                         
                     }
