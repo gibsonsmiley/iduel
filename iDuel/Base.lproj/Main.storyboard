@@ -72,15 +72,6 @@
                                     <segue destination="LpM-aX-e9z" kind="presentation" identifier="toSettings" id="Hg1-eX-bYb"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
-                                <rect key="frame" x="33" y="284" width="309" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PHY-gb-eHM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="26"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvE-u2-jVd">
                                 <rect key="frame" x="123" y="354" width="129" height="31"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
@@ -100,6 +91,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-uf-J5t">
+                                <rect key="frame" x="33" y="284" width="309" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PHY-gb-eHM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -276,6 +276,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
                                 <rect key="frame" x="-1" y="571" width="194" height="44"/>
                                 <state key="normal" image="RematchButton">
@@ -296,9 +299,6 @@
                                     <segue destination="OKq-eY-Neg" kind="custom" identifier="toSetUpCustom" id="yDl-X2-uXZ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -581,7 +581,7 @@
         <image name="Welcome View " width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hjW-aq-90n"/>
-        <segue reference="MeC-6T-Py4"/>
+        <segue reference="7eV-OX-TqF"/>
+        <segue reference="yDl-X2-uXZ"/>
     </inferredMetricsTieBreakers>
 </document>
