@@ -13,7 +13,7 @@ import AVFoundation
 extension SystemSoundID {
     
     static func playGunShot1(fileName: String, withExtenstion fileExtenstion: String? = "mp3") {
-        var gun1: SystemSoundID = 0
+        var gun1: SystemSoundID = 12
         if let gun1SoundUrl = NSBundle.mainBundle().URLForResource("1gunshot", withExtension: "mp3") {
             AudioServicesCreateSystemSoundID(gun1SoundUrl, &gun1)
             AudioServicesPlaySystemSound(gun1)

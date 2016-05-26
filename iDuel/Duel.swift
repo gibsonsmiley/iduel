@@ -67,6 +67,11 @@ class Duel: Equatable, FirebaseType {
         self.shotsFired = json[kShotsFired] as? NSTimeInterval
         self.timestamp = NSDate(timeIntervalSince1970: timestamp)
     }
+    
+    static func volumeChanged(notification: NSNotification) {
+        
+     
+    }
 }
 
 func == (lhs: Duel, rhs: Duel) -> Bool {
