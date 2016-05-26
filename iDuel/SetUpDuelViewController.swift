@@ -26,7 +26,7 @@ class SetUpDuelViewController: UIViewController {
         super.viewDidLoad()
         
         updateViewWithInfo()
-        buttonManager()
+//        buttonManager()
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -21,7 +21,7 @@ class MotionController {
     }
     
     func checkFlick(completion:(success: Bool) -> Void) {
-        motionManager = CMMotionManager()
+//        motionManager = CMMotionManager()
         if self.motionManager.deviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 0.25
             motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (motion, error) in

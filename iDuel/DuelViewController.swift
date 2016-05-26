@@ -53,6 +53,7 @@ class DuelViewController: UIViewController {
         guard let duel = self.duel else { return }
         MotionController.sharedController.beginMotionTracking { (currentPosition, raised, lowered) in
             if lowered == true {
+                print("In lowered position")
                 MotionController.sharedController.checkFlick({ (success) in // Does this function continue looking?
                     if success == true {
                         // Play "gun cocked" noise
