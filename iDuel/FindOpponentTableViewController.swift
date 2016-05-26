@@ -13,11 +13,11 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var allUsers: [User] = []
-    var filteredUsers: [User] = []
-    
     var allDuels: [Duel] = []
     var filteredDuels: [Duel] = []
+    var selectedDuel: Duel?
+    var challengers: [User] = []
+    var filteredChallengers: [User] = []
     
     // MARK: - View
     
@@ -28,7 +28,6 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         tableView.keyboardDismissMode = .Interactive
         
         fetchAllDuels()
-        //        fetchAllUsers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +49,6 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         DuelController.fetchAllDuels { (duels) in
             guard let duels = duels else { completion(duels: nil); return }
             for duel in duels {
-                //                guard let duelID = duel.id else { return }
                 if duel.timestamp.timeIntervalSinceNow > 30 * 60 {
                     DuelController.deleteDuel(duel, completion: { (success) in
                         if success == true {
@@ -61,6 +59,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
                     })
                 } else {
                     // Duel isn't older than a half hour - keep it
+                    
                     self.allDuels.append(duel)
                 }
             }
@@ -69,9 +68,20 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredDuels = allDuels.filter({
-            ($0.player1?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
+        // Need to capture the user that is associated with the nickname being typed in
+        var challenger: User?
+        guard let challengerID = challenger?.id else { return }
+        FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(searchText)").observeEventType(.Value, withBlock: { (snapshot) in
+            if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {
+                guard let user = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)}).first else { return }
+                challenger = user
+            }
         })
+        for duel in allDuels {
+            if duel.challengerID == challengerID {
+                self.filteredDuels = [duel]
+            }
+        }
         tableView.reloadData()
     }
     
@@ -102,36 +112,43 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         if filteredDuels.count > 0 {
             duel = filteredDuels[indexPath.row]
         }
-        cell.textLabel?.text = duel.player1?.nickname
+        if let duelID = duel.id {
+            DuelController.fetchDuelForID(duelID, completion: { (duel) in
+                if let challengerID = duel?.challengerID {
+                    UserController.fetchUserForIdentifier(challengerID, completion: { (user) in
+                        if user != UserController.sharedController.currentUser {
+                            cell.textLabel?.text = user?.nickname
+                        }
+                    })
+                }
+            })
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        guard let destinationVCNavController = presentingViewController as? UINavigationController,
-//            destinationViewController = destinationVCNavController.childViewControllers[1] as? SetUpDuelViewController else { return }
-//        destinationViewController.duel = allDuels[indexPath.row]
-        guard let currentUser = UserController.currentUser else { return }
-        guard let selectedDuelID = allDuels[indexPath.row].id else { return }
-        currentUser.duelIDs?.append(selectedDuelID)
         if filteredDuels.count > 0 {
-            guard let filteredDuelID = filteredDuels[indexPath.row].id else { return }
-            currentUser.duelIDs?.append(filteredDuelID)
-//            destinationViewController.duel = filteredDuels[indexPath.row]
+            self.selectedDuel = filteredDuels[indexPath.row]
+            self.selectedDuel?.opponentID = UserController.sharedController.currentUser.id
+            self.selectedDuel?.save()
+            self.performSegueWithIdentifier("toDuelSetup", sender: self)
+        } else {
+            self.selectedDuel = allDuels[indexPath.row]
+            self.selectedDuel?.opponentID = UserController.sharedController.currentUser.id
+            self.selectedDuel?.save()
+            self.performSegueWithIdentifier("toDuelSetup", sender: self)
         }
-        self.performSegueWithIdentifier("toDuelSetup", sender: self)
-//        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDuelSetup" {
+            guard let destinationViewController = segue.destinationViewController as? SetUpDuelViewController else { return }
+            guard let duel = self.selectedDuel else { return }
+            destinationViewController.updateWithDuel(duel)
+        }
+    }
 }
 
 

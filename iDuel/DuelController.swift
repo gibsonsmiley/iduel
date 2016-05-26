@@ -12,17 +12,19 @@ import AudioToolbox
 
 class DuelController {
     
+    static let sharedController = DuelController()
+    
     // Self explanitory
     static func createDuel(player1: User?, player2: User?, completion: (success: Bool, duel: Duel?) -> Void) {
-        guard let currentUser = UserController.currentUser else { completion(success: false, duel: nil); return }
+        guard let currentUser = UserController.sharedController.currentUser else { completion(success: false, duel: nil); return }
         guard let player1 = player1 else { return }
-        var duel = Duel(player1: player1, player2: player2, ready: nil, shotsFired: nil)
+        var duel = Duel(challengerID: player1.id!, opponentID: player2!.id!, statuses: nil, shotsFired: nil)
         guard let duelID = duel.id else { completion(success: false, duel: nil); return }
         duel.save()
         completion(success: true, duel: duel)
         currentUser.duelIDs?.append(duelID)
         //        currentUser.save()
-//        player2.duelIDs?.append(duelID)
+        //        player2.duelIDs?.append(duelID)
         //        player2.save()
     }
     
@@ -56,7 +58,7 @@ class DuelController {
     
     // Method to add player to duel's ready array, this is the gun cock
     // This is appending data to the firebase ready array under the user's id
-    static func playerReady(user: User, duel: Duel) {
+    static func playerReady(user: User, duel: Duel, completion:(success: Bool) -> Void) {
         guard let userID = user.id else { return }
         guard let duelID = duel.id else { return }
         FirebaseController.base.childByAppendingPath("duels/\(duelID)/status").setValue("\(userID)")
@@ -89,8 +91,8 @@ class DuelController {
     
     // This method should only be called if the checkReadyStatus returns two "true" bools
     // Calls the wait for countdown method, then the check fire method, then the victory method
-    static func startDuel(duel: Duel) {
-//        guard let duelID = duel.id else { return }
+    static func startDuel(duel: Duel, completion:(success: Bool) -> Void) {
+        //        guard let duelID = duel.id else { return }
         countdown(duel, completion: { (countdown) in
             waitForCountdown(duel)
         })
@@ -144,6 +146,50 @@ class DuelController {
             dispatch_after(time, dispatch_get_main_queue(), {
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate)) // May need to exit or invalidate this: http://stackoverflow.com/a/25120393/3681880
             })
+        }
+    }
+    
+    var player1: User?
+    var player2: User?
+    
+    static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
+        MotionController.sharedController.checkRange(false) { (success) in
+            if success {
+                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                MotionController.sharedController.checkFlick({ (success) in
+                    if success {
+                        if let duel = duel {
+                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+                                if success {
+                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
+                                        guard let user = user else { return }
+                                        sharedController.player1 = user
+                                    })
+                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
+                                        guard let user = user else { return }
+                                        sharedController.player2 = user
+                                    })
+                                    
+                                    DuelController.checkReadyStatus(duel, player1: sharedController.player1!, player2: sharedController.player2!, completion: { (player1Ready, player2Ready) in
+                                        if player1Ready && player2Ready {
+                                            DuelController.startDuel(duel, completion: { (success) in
+                                                if success {
+                                                    MotionController.sharedController.checkRange(true, completion: { (success) in
+                                                        if success {
+                                                            
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                                
+                            })
+                        }
+                    }
+                })
+            }
         }
     }
 }

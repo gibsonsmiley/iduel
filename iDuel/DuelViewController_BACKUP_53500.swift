@@ -9,13 +9,17 @@
 import UIKit
 import CoreMotion
 import AudioToolbox
+<<<<<<< HEAD
+=======
 import AVFoundation
 import MediaPlayer
+>>>>>>> 7affbb1b9cc8df3e54ae501739d5107f7f195e94
 
 class DuelViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
+    @IBOutlet weak var gunImageView: UIButton!
     
     var duel: Duel?
     var winner: User?
@@ -26,6 +30,10 @@ class DuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
+        handPosition()
+        duelStart()
+=======
         DuelController.duelStart(duel) { (success) in
             if success {
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
@@ -35,6 +43,7 @@ class DuelViewController: UIViewController {
                 UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
             }
         }
+>>>>>>> 7affbb1b9cc8df3e54ae501739d5107f7f195e94
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,10 +52,93 @@ class DuelViewController: UIViewController {
     
     // MARK: Methods
     
+    func handPosition() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("leftHand") == true {
+            gunImageView.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
+        } else {
+            gunImageView.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
+        }
+    }
+    
     func updateWithDuel(duel: Duel) {
         self.duel = duel
     }
     
+<<<<<<< HEAD
+    func duelStart() {
+        guard let currentUser = UserController.sharedController.currentUser else { return }
+        guard let duel = self.duel else { return }
+        MotionController.sharedController.beginMotionTracking { (currentPosition, raised, lowered) in
+            if lowered == true {
+                print("In lowered position")
+                MotionController.sharedController.checkFlick({ (success) in // Does this function continue looking?
+                    if success == true {
+                        // Play "gun cocked" noise
+                        DuelController2.sendStatusToDuel(currentUser, duel: duel, completion: { (success) in
+                            if success == true {
+                                DuelController2.sendCountdownToDuel(duel, completion: { (success) in
+                                    if success == true {
+                                        self.duelMid()
+                                    } else {
+                                        print("Couldn't send countdown to firebase")
+                                    }
+                                })
+                            } else {
+                                print("Couldn't send status to duel")
+                            }
+                        })
+                    } else {
+                        print("'Flick' not detected")
+                    }
+                })
+            } else {
+                print("Not in lowered position")
+            }
+        }
+    }
+    
+    func duelMid() {
+        guard let duel = duel else { return }
+        DuelController2.observeCountdown(duel, completion: { (countdown) in
+            if let countdown = countdown {
+                let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
+                dispatch_after(time, dispatch_get_main_queue(), {
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    MotionController.sharedController.beginMotionTracking { (currentPosition, raised, lowered) in
+                        if raised == true {
+                            self.fireButton.enabled = true
+                        } else {
+                            print("Not in raised position")
+                        }
+                    }
+                })
+            } else {
+                print("Couldn't get countdown")
+            }
+        })
+        
+    }
+    
+    func duelEnd() {
+        guard let duel = self.duel else { return }
+        guard let currentUser = UserController.sharedController.currentUser else { return }
+        DuelController2.observeShotsFired(duel) { (winner, loser) in
+            if currentUser == winner {
+                self.winner = currentUser
+            } else {
+                self.loser = currentUser
+            }
+            self.performSegueWithIdentifier("toVictory", sender: self)
+            DuelController2.deleteDuel(duel, completion: { (success) in
+                if success == true {
+                    
+                } else {
+                    print("Couldn't delete duel")
+                }
+            })
+        }
+    }
+=======
 //    func duelStart() {
 //        MotionController.sharedController.checkRange(false) { (success) in
 //            if success {
@@ -107,17 +199,32 @@ class DuelViewController: UIViewController {
         //        })
         //       }
     
+>>>>>>> 7affbb1b9cc8df3e54ae501739d5107f7f195e94
     
     // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-        // Stop duel and move back to set up view
-        // Possibly alert opponent that duel was cancelled
+        guard let duel = self.duel else { return }
+        DuelController2.deleteDuel(duel) { (success) in
+            if success == true {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                print("Couldn't delete duel")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
     
     @IBAction func fireButtonTapped(sender: AnyObject) {
         // FIRE!
+        guard let duel = self.duel else { return }
+        DuelController2.sendShotToDuel(duel, user: UserController.sharedController.currentUser) { (success) in
+            if success == true {
+                self.duelEnd()
+            } else {
+                print("Couldn't send shot to firebase")
+            }
+        }
     }
     
     func volumeChanged(notification: NSNotification) {

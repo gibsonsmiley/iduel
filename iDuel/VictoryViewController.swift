@@ -47,13 +47,7 @@ class VictoryViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
-        // Need to delete the current duel somehow
-        guard let duel = duel else { return }
-        DuelController.createDuel(duel.player1, player2: duel.player2) { (success, duel) in
-            guard let duel = duel else { return }
-            let destinationViewController = self.presentingViewController as? DuelViewController
-            destinationViewController?.updateWithDuel(duel)
-        }
+        
     }
     
     @IBAction func exitGameButtonTapped(sender: AnyObject) {

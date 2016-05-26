@@ -12,8 +12,9 @@ import CoreData
 
 class UserController {
     
-    static let kUser = "user"
-    static var currentUser: User! {
+    static let sharedController = UserController()
+    private let kUser = "user"
+    var currentUser: User! {
         get {
             guard let uid = FirebaseController.base.authData?.uid, let userDictionary = NSUserDefaults.standardUserDefaults().valueForKey(kUser) as? [String: AnyObject] else { return nil }
             return User(json: userDictionary, id: uid)
@@ -28,9 +29,11 @@ class UserController {
             }
         }
     }
-
     
     static func createUser(nickname: String, completion: (success: Bool, user: User?) -> Void) {
+        if self.sharedController.currentUser != nil {
+            FirebaseController.base.unauth()
+        }
         FirebaseController.base.authAnonymouslyWithCompletionBlock { (error, authData) in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -41,7 +44,7 @@ class UserController {
                     user.id = uid
                     user.save()
                     completion(success: true, user: user)
-                    self.currentUser = user
+                    self.sharedController.currentUser = user
                 }
             }
         }
@@ -104,7 +107,7 @@ class UserController {
                         if success == true {
                             UserController.createUser(nickname, completion: { (success, user) in
                                 if success == true {
-                                    UserController.currentUser = user
+                                    UserController.sharedController.currentUser = user
                                     completion(success: true, error: "")
                                 } else {
                                     completion(success: false, error: "Couldn't create new user. Try again.")
@@ -123,7 +126,7 @@ class UserController {
                 // Nickname does not exist - create new user
                 UserController.createUser(nickname, completion: { (success, user) in
                     if success == true {
-                        UserController.currentUser = user
+                        UserController.sharedController.currentUser = user
                         completion(success: success, error: "")
                     } else {
                         completion(success: false, error: "Couldn't create new user. Try again.")
