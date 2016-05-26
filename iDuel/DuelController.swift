@@ -59,9 +59,10 @@ class DuelController {
     // Method to add player to duel's ready array, this is the gun cock
     // This is appending data to the firebase ready array under the user's id
     static func playerReady(user: User, duel: Duel, completion:(success: Bool) -> Void) {
-        guard let userID = user.id else { return }
-        guard let duelID = duel.id else { return }
+        guard let userID = user.id else { completion(success: false); return }
+        guard let duelID = duel.id else { completion(success: false); return }
         FirebaseController.base.childByAppendingPath("duels/\(duelID)/status").setValue("\(userID)")
+        completion(success: true)
     }
     
     // Checks to see if both players are ready. If so, call start duel method
@@ -95,7 +96,9 @@ class DuelController {
         //        guard let duelID = duel.id else { return }
         countdown(duel, completion: { (countdown) in
             waitForCountdown(duel)
+            completion(success: true)
         })
+        
     }
     
     // recognizes user's button tap and sends a value to Firebase
@@ -158,37 +161,53 @@ class DuelController {
                 MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
                 MotionController.sharedController.checkFlick({ (success) in
                     if success {
+                        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
                         if let duel = duel {
                             DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
                                 if success {
-                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
-                                        guard let user = user else { return }
-                                        sharedController.player1 = user
-                                    })
-                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
-                                        guard let user = user else { return }
-                                        sharedController.player2 = user
-                                    })
+//                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
+//                                        guard let user = user else { return }
+//                                        sharedController.player1 = user
+//                                    })
+//                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
+//                                        guard let user = user else { return }
+//                                        sharedController.player2 = user
+//                                    })
                                     
-                                    DuelController.checkReadyStatus(duel, player1: sharedController.player1!, player2: sharedController.player2!, completion: { (player1Ready, player2Ready) in
-                                        if player1Ready && player2Ready {
+//                                    DuelController.checkReadyStatus(duel, player1: duel.c, player2: duel.player2, completion: { (player1Ready, player2Ready) in
+//                                        if player1Ready && player2Ready {
                                             DuelController.startDuel(duel, completion: { (success) in
                                                 if success {
                                                     MotionController.sharedController.checkRange(true, completion: { (success) in
                                                         if success {
-                                                            
+                                                            MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                                                            completion(success: true)
+                                                        } else {
+                                                            print("gun not in range to shoot")
                                                         }
                                                     })
+                                                } else {
+                                                    print("duel not started")
                                                 }
                                             })
-                                        }
-                                    })
+//                                            { else {
+//                                            print("player 1 and player 2 not ready")
+//                                        }
+//                                    })
+                                } else {
+                                    print("player not ready")
                                 }
                                 
                             })
+                        } else {
+                            print("duel not ready")
                         }
+                    } else {
+                        print("flick no successful")
                     }
                 })
+            } else {
+                print("device is not in range")
             }
         }
     }

@@ -33,6 +33,8 @@ class DuelViewController: UIViewController {
                 let volumeView = MPVolumeView(frame: frame)
                 volumeView.sizeToFit()
                 UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
+            } else {
+                print("not shooting for some reason")
             }
         }
     }
@@ -125,13 +127,8 @@ class DuelViewController: UIViewController {
         if let userInfo = notification.userInfo {
             if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
                 if volumeChangeType == "ExplicitVolumeChange" {
-                    
-                    self.view.backgroundColor = .redColor()
-                    //let systemSoundID: SystemSoundID = SystemSoundID.playGunShot1("1gunshot")
-                    let systemSoundID: SystemSoundID = 12
-                    AudioServicesPlaySystemSound(systemSoundID)
+                    SystemSoundID.playGunShot1("1gunshot", withExtenstion: "mp3")
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    
                 }
             }
         }
