@@ -40,7 +40,7 @@ class MotionController {
             })
         }
     }
-
+    
     func checkRange(raised: Bool, completion:(success: Bool) -> Void) {
         motionManager = CMMotionManager()
         if self.motionManager.deviceMotionAvailable {
@@ -68,5 +68,4 @@ class MotionController {
             })
         }
     }
-
-    }
+}

@@ -14,6 +14,7 @@ class SetUpDuelViewController: UIViewController {
     @IBOutlet weak var opponentLabel: UILabel!
     @IBOutlet weak var challengerLabel: UILabel!
     @IBOutlet weak var beginDuelButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var duel: Duel?
     var challenger: User?
@@ -25,6 +26,7 @@ class SetUpDuelViewController: UIViewController {
         super.viewDidLoad()
         
         updateViewWithInfo()
+        buttonManager()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,11 +70,25 @@ class SetUpDuelViewController: UIViewController {
     func updateWithDuel(duel: Duel) {
         self.duel = duel
         UserController.fetchUserForIdentifier(duel.challengerID) { (user) in
+            guard let user = user else { return }
+            print("user: \(user.nickname)")
             self.challenger = user
+            print("challenger: \(self.challenger?.nickname)")
         }
         guard let opponentID = duel.opponentID else { return }
         UserController.fetchUserForIdentifier(opponentID) { (user) in
+            guard let user = user else { return }
+            print("user: \(user.nickname)")
             self.opponent = user
+            print("opponent: \(self.opponent?.nickname)")
+        }
+    }
+    
+    func buttonManager() {
+        if self.challenger == nil || self.opponent == nil {
+            self.beginDuelButton.enabled = false
+        } else {
+            self.beginDuelButton.enabled = true
         }
     }
     
@@ -80,10 +96,10 @@ class SetUpDuelViewController: UIViewController {
     
     @IBAction func beginDuelButton(sender: AnyObject) {
         // If both players are present
-//        guard let duel = duel,
-//            challenger = challenger,
-//            opponent = opponent else { return }
         performSegueWithIdentifier("toDuelCustom", sender: self)
+    }
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Navigation

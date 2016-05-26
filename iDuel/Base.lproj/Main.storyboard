@@ -21,6 +21,7 @@
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -129,8 +130,8 @@
                         <outlet property="settingsButton" destination="b6Z-00-AMk" id="WAd-ii-NZr"/>
                         <outlet property="tapGesture" destination="HHS-Fl-hid" id="am0-tO-A5L"/>
                         <outlet property="titleLabel" destination="cb3-2h-pjr" id="ihx-p4-25b"/>
-                        <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="hjW-aq-90n"/>
                         <segue destination="FXw-fO-elf" kind="presentation" identifier="toDuels" id="xY1-xS-O0k"/>
+                        <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="lxW-kK-E9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,10 +177,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8p-w6-yKG">
+                                <rect key="frame" x="15" y="30" width="32" height="33"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="35i-Bz-gDg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0N3-el-oSV" firstAttribute="top" secondItem="k8h-rd-1j4" secondAttribute="bottom" constant="25" id="Aav-hs-6rz"/>
+                            <constraint firstItem="B8p-w6-yKG" firstAttribute="top" secondItem="Ne4-xs-p7s" secondAttribute="top" constant="30" id="DaQ-aW-SeN"/>
                             <constraint firstItem="hNk-l3-x0F" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leading" constant="69" id="FmW-rC-Sna"/>
                             <constraint firstItem="hNk-l3-x0F" firstAttribute="baseline" secondItem="hcV-7M-eBb" secondAttribute="baseline" id="RNW-UK-FO7"/>
                             <constraint firstItem="hNk-l3-x0F" firstAttribute="top" secondItem="fxP-CQ-g3j" secondAttribute="bottom" constant="291" id="V4K-Zq-WW8"/>
@@ -190,6 +202,7 @@
                             <constraint firstItem="0N3-el-oSV" firstAttribute="top" secondItem="QNd-Ro-meo" secondAttribute="bottom" id="tAc-Qz-jX2"/>
                             <constraint firstItem="hcV-7M-eBb" firstAttribute="centerX" secondItem="hNk-l3-x0F" secondAttribute="centerX" id="tnC-qd-vhy"/>
                             <constraint firstAttribute="trailing" secondItem="QNd-Ro-meo" secondAttribute="trailing" id="vpw-fl-jOI"/>
+                            <constraint firstItem="B8p-w6-yKG" firstAttribute="leading" secondItem="Ne4-xs-p7s" secondAttribute="leading" constant="15" id="vv6-lR-vk1"/>
                             <constraint firstItem="k8h-rd-1j4" firstAttribute="centerX" secondItem="QNd-Ro-meo" secondAttribute="centerX" id="w5Z-GR-GUy"/>
                         </constraints>
                         <variation key="default">
@@ -201,10 +214,11 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="backButton" destination="B8p-w6-yKG" id="9mx-zS-uVy"/>
                         <outlet property="beginDuelButton" destination="k8h-rd-1j4" id="9Fu-26-ztd"/>
                         <outlet property="challengerLabel" destination="hNk-l3-x0F" id="g8J-IA-cWj"/>
                         <outlet property="opponentLabel" destination="hcV-7M-eBb" id="AQk-4N-z8w"/>
-                        <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="toDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="MeC-6T-Py4"/>
+                        <segue destination="Ndw-Ve-2Vz" kind="presentation" identifier="toDuelCustom" id="MeC-6T-Py4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5A-SL-x7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -382,7 +396,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="1jq-kz-h8S" id="bCg-uH-hun"/>
                         <outlet property="searchBar" destination="hMp-Au-kGz" id="szQ-ij-YgP"/>
-                        <segue destination="OKq-eY-Neg" kind="presentation" identifier="toDuelSetup" modalTransitionStyle="flipHorizontal" id="e5R-19-Byv"/>
+                        <segue destination="OKq-eY-Neg" kind="presentation" identifier="toDuelSetup" modalTransitionStyle="coverVertical" id="e5R-19-Byv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZn-GZ-Xsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -401,7 +415,7 @@
                             <tableViewSection headerTitle="Sound and Vibration" id="dZx-Js-cRH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jNT-SJ-UgF">
-                                        <rect key="frame" x="0.0" y="113.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -429,7 +443,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0rc-pt-sw0">
-                                        <rect key="frame" x="0.0" y="157.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="158" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rc-pt-sw0" id="y5N-Aa-IT1">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -461,7 +475,7 @@
                             <tableViewSection headerTitle="Left-Handed" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="251.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="253" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -493,7 +507,7 @@
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="345.5" width="414" height="227"/>
+                                        <rect key="frame" x="0.0" y="348" width="414" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
@@ -550,7 +564,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -593,7 +606,7 @@
         <image name="Welcome View " width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yDl-X2-uXZ"/>
-        <segue reference="7eV-OX-TqF"/>
+        <segue reference="lxW-kK-E9O"/>
+        <segue reference="MeC-6T-Py4"/>
     </inferredMetricsTieBreakers>
 </document>
