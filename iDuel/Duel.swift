@@ -60,6 +60,11 @@ class Duel: Equatable, FirebaseType {
         self.ready = ready
         self.shotsFired = shotsFired
     }
+    
+    static func volumeChanged(notification: NSNotification) {
+        
+     
+    }
 }
 
 func == (lhs: Duel, rhs: Duel) -> Bool {

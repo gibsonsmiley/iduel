@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreMotion
+import AudioToolbox
+import AVFoundation
+import MediaPlayer
 
 class DuelViewController: UIViewController {
     
@@ -23,8 +26,14 @@ class DuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DuelController.duelStart(duel) { 
-            
+        DuelController.duelStart(duel) { (success) in
+            if success {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
+                let frame = CGRect(x: 0, y: -100, width: 10, height: 0)
+                let volumeView = MPVolumeView(frame: frame)
+                volumeView.sizeToFit()
+                UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
+            }
         }
     }
     
@@ -109,6 +118,23 @@ class DuelViewController: UIViewController {
     
     @IBAction func fireButtonTapped(sender: AnyObject) {
         // FIRE!
+    }
+    
+    func volumeChanged(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
+                if volumeChangeType == "ExplicitVolumeChange" {
+                    
+                    self.view.backgroundColor = .redColor()
+                    //let systemSoundID: SystemSoundID = SystemSoundID.playGunShot1("1gunshot")
+                    let systemSoundID: SystemSoundID = 12
+                    AudioServicesPlaySystemSound(systemSoundID)
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    
+                }
+            }
+        }
     }
     
     // MARK: - Navigation
