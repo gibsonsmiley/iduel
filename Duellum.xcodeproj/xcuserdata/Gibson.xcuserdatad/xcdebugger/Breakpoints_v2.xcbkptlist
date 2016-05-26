@@ -81,36 +81,52 @@
             endingLineNumber = "85"
             landmarkName = "DuelViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iDuel/DuelViewController.swift"
+            timestampString = "485991824.954885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Duellum.DuelViewController.duelMid () -&gt; ()"
+                  symbolName = "Duellum.DuelViewController.viewDidLoad () -&gt; ()"
                   moduleName = "Duellum"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gibson/Desktop/Develop/iDuel/iDuel/DuelViewController.swift"
-                  timestampString = "485990096.012856"
+                  timestampString = "485991824.969986"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "72">
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "84">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Duellum.DuelViewController.(duelMid () -&gt; ()).(closure #1)"
+                  symbolName = "Duellum.DuelViewController.(viewDidLoad () -&gt; ()).(closure #1)"
                   moduleName = "Duellum"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gibson/Desktop/Develop/iDuel/iDuel/DuelViewController.swift"
-                  timestampString = "485990096.012971"
+                  timestampString = "485991824.970142"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>

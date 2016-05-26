@@ -12,17 +12,19 @@ import AudioToolbox
 
 class DuelController {
     
+    static let sharedController = DuelController()
+    
     // Self explanitory
     static func createDuel(player1: User?, player2: User?, completion: (success: Bool, duel: Duel?) -> Void) {
-        guard let currentUser = UserController.currentUser else { completion(success: false, duel: nil); return }
+        guard let currentUser = UserController.sharedController.currentUser else { completion(success: false, duel: nil); return }
         guard let player1 = player1 else { return }
-        var duel = Duel(player1: player1, player2: player2, ready: nil, shotsFired: nil)
+        var duel = Duel(challengerID: player1.id!, opponentID: player2!.id!, statuses: nil, shotsFired: nil)
         guard let duelID = duel.id else { completion(success: false, duel: nil); return }
         duel.save()
         completion(success: true, duel: duel)
         currentUser.duelIDs?.append(duelID)
         //        currentUser.save()
-//        player2.duelIDs?.append(duelID)
+        //        player2.duelIDs?.append(duelID)
         //        player2.save()
     }
     
@@ -90,7 +92,7 @@ class DuelController {
     // This method should only be called if the checkReadyStatus returns two "true" bools
     // Calls the wait for countdown method, then the check fire method, then the victory method
     static func startDuel(duel: Duel, completion:(success: Bool) -> Void) {
-//        guard let duelID = duel.id else { return }
+        //        guard let duelID = duel.id else { return }
         countdown(duel, completion: { (countdown) in
             waitForCountdown(duel)
         })
@@ -147,6 +149,9 @@ class DuelController {
         }
     }
     
+    var player1: User?
+    var player2: User?
+    
     static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
         MotionController.sharedController.checkRange(false) { (success) in
             if success {
@@ -154,15 +159,24 @@ class DuelController {
                 MotionController.sharedController.checkFlick({ (success) in
                     if success {
                         if let duel = duel {
-                            DuelController.playerReady(UserController.currentUser, duel: duel, completion: { (success) in
+                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
                                 if success {
-                                    DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: { (player1Ready, player2Ready) in
+                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
+                                        guard let user = user else { return }
+                                        sharedController.player1 = user
+                                    })
+                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
+                                        guard let user = user else { return }
+                                        sharedController.player2 = user
+                                    })
+                                    
+                                    DuelController.checkReadyStatus(duel, player1: sharedController.player1!, player2: sharedController.player2!, completion: { (player1Ready, player2Ready) in
                                         if player1Ready && player2Ready {
                                             DuelController.startDuel(duel, completion: { (success) in
                                                 if success {
                                                     MotionController.sharedController.checkRange(true, completion: { (success) in
                                                         if success {
-                                                           
+                                                            
                                                         }
                                                     })
                                                 }
@@ -170,6 +184,7 @@ class DuelController {
                                         }
                                     })
                                 }
+                                
                             })
                         }
                     }

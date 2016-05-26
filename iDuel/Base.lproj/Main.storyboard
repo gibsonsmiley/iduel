@@ -277,7 +277,6 @@
                     <connections>
                         <outlet property="cancelButton" destination="aJN-Tn-h4M" id="ENJ-yJ-38c"/>
                         <outlet property="fireButton" destination="Ya5-Yp-mid" id="4j0-C4-DHA"/>
-                        <outlet property="gunImageView" destination="Ya5-Yp-mid" id="5y3-TQ-uNM"/>
                         <segue destination="QlS-8e-AiX" kind="presentation" identifier="toVictory" id="0xL-sG-Fbo"/>
                     </connections>
                 </viewController>
