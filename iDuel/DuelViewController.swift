@@ -13,6 +13,7 @@ class DuelViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
+    @IBOutlet weak var gunImageView: UIButton!
     
     var duel: Duel?
     var winner: User?
@@ -23,7 +24,7 @@ class DuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        duelStart()
+        handPosition()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,6 +33,15 @@ class DuelViewController: UIViewController {
     }
     
     // MARK: Methods
+    
+    func handPosition() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("leftHand") == true {
+            gunImageView.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
+        } else {
+            gunImageView.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
+        }
+
+    }
     
     func updateWithDuel(duel: Duel) {
         self.duel = duel

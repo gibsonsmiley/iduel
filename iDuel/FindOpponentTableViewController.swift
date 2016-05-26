@@ -16,6 +16,8 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     var allDuels: [Duel] = []
     var filteredDuels: [Duel] = []
     var selectedDuel: Duel?
+    var challengers: [User] = []
+    var filteredChallengers: [User] = []
     
     // MARK: - View
     
@@ -57,6 +59,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
                     })
                 } else {
                     // Duel isn't older than a half hour - keep it
+                    
                     self.allDuels.append(duel)
                 }
             }
@@ -66,10 +69,19 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         // Need to capture the user that is associated with the nickname being typed in
-        
-        //        filteredDuels = allDuels.filter({
-        //            ($0.challengerID?.nickname.lowercaseString.containsString(searchText.lowercaseString))! // This force unwrap may be a problem
-        //        })
+        var challenger: User?
+        guard let challengerID = challenger?.id else { return }
+        FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(searchText)").observeEventType(.Value, withBlock: { (snapshot) in
+            if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {
+                guard let user = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)}).first else { return }
+                challenger = user
+            }
+        })
+        for duel in allDuels {
+            if duel.challengerID == challengerID {
+                self.filteredDuels = [duel]
+            }
+        }
         tableView.reloadData()
     }
     
@@ -105,7 +117,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
                 if let challengerID = duel?.challengerID {
                     UserController.fetchUserForIdentifier(challengerID, completion: { (user) in
                         if user != UserController.sharedController.currentUser {
-                        cell.textLabel?.text = user?.nickname
+                            cell.textLabel?.text = user?.nickname
                         }
                     })
                 }

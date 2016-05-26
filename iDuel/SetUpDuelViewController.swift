@@ -80,9 +80,9 @@ class SetUpDuelViewController: UIViewController {
     
     @IBAction func beginDuelButton(sender: AnyObject) {
         // If both players are present
-        guard let duel = duel,
-            challenger = challenger,
-            opponent = opponent else { return }
+//        guard let duel = duel,
+//            challenger = challenger,
+//            opponent = opponent else { return }
         performSegueWithIdentifier("toDuelCustom", sender: self)
     }
     

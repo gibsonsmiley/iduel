@@ -65,7 +65,8 @@ class DuelController2 {
         FirebaseController.dataAtEndpoint("duels") { (data) in
             guard let json = data as? [String: AnyObject] else { completion(duels: nil); return }
             let duels = json.flatMap({Duel(json: $0.1 as! [String: AnyObject], id: $0.0)})
-            completion(duels: duels)
+            let orderedDuels = orderDuels(duels)
+            completion(duels: orderedDuels)
         }
     }
     
@@ -128,5 +129,9 @@ class DuelController2 {
                 completion(winner: winner, loser: loser)
             }
         })
+    }
+    
+    static func orderDuels(duels: [Duel]) -> [Duel] {
+        return duels.sort({$0.0.timestamp.timeIntervalSince1970.hashValue >   $0.1.timestamp.timeIntervalSince1970.hashValue})
     }
 }
