@@ -10,6 +10,11 @@ import Foundation
 
 class DuelController2 {
     
+    static let sharedController = DuelController2()
+    
+    var challenger: User?
+    var opponent: User?
+
     static func createDuel(challengerID: String = UserController.sharedController.currentUser.id!, opponentID: String?, completion: (success: Bool, duel: Duel?) -> Void) {
         var duel = Duel(challengerID: challengerID, opponentID: opponentID, statuses: nil, shotsFired: nil)
         duel.challengerID = challengerID
@@ -25,24 +30,14 @@ class DuelController2 {
     }
     
     static func observePlayers(duel: Duel, completion: (challenger: User?, opponent: User?) -> Void) {
-        var challenger: User?
-        var opponent: User?
         guard let duelID = duel.id else { completion(challenger: nil, opponent: nil); return }
-        FirebaseController.dataAtEndpoint("duels/\(duelID)/challengerID") { (data) in
-            guard let challengerID = data as? String else { completion(challenger: nil, opponent: nil); return }
-            UserController.fetchUserForIdentifier(challengerID, completion: { (user) in
-                challenger = user
-            })
-            
-        }
-        FirebaseController.dataAtEndpoint("duels/\(duelID)/opponentID") { (data) in
+        FirebaseController.observeDataAtEndpoint("duels/\(duelID)/opponentID") { (data) in
             guard let opponentID = data as? String else { completion(challenger: nil, opponent: nil); return }
             UserController.fetchUserForIdentifier(opponentID, completion: { (user) in
-                opponent = user
+                sharedController.opponent = user
+                NSNotificationCenter.defaultCenter().postNotificationName("opponentJoined", object: self)
             })
         }
-        print("challenger: \(challenger), opponent: \(opponent)")
-        completion(challenger: challenger, opponent: opponent)
     }
     
     static func deleteDuel(duel: Duel, completion: (success: Bool) -> Void) {

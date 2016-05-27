@@ -25,8 +25,8 @@ class SetUpDuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateViewWithInfo()
-//        buttonManager()
+        buttonManager()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateViewWithInfo), name: "opponentJoined", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,17 +54,9 @@ class SetUpDuelViewController: UIViewController {
     }
     
     func updateViewWithInfo() {
-        guard let challengerID = self.duel?.challengerID else { return }
-        UserController.fetchUserForIdentifier(challengerID) { (user) in
-            guard let user = user else { return }
-            //            self.challenger = user
-            self.challengerLabel.text = user.nickname
-        }
-        guard let opponentID = self.duel?.opponentID else { return }
-        UserController.fetchUserForIdentifier(opponentID) { (user) in
-            //            self.opponent = user
-            self.opponentLabel.text = user?.nickname
-        }
+        guard let opponent = DuelController2.sharedController.opponent else { return }
+        self.opponentLabel.text = opponent.nickname
+        self.beginDuelButton.enabled = true
     }
     
     func updateWithDuel(duel: Duel) {
@@ -73,6 +65,7 @@ class SetUpDuelViewController: UIViewController {
             guard let user = user else { return }
             print("user: \(user.nickname)")
             self.challenger = user
+            self.challengerLabel.text = self.challenger!.nickname
             print("challenger: \(self.challenger?.nickname)")
         }
         guard let opponentID = duel.opponentID else { return }

@@ -49,67 +49,6 @@ class DuelViewController: UIViewController {
         self.duel = duel
     }
     
-//    func duelStart() {
-//        MotionController.sharedController.checkRange(false) { (success) in
-//            if success {
-//                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-//                MotionController.sharedController.checkFlick({ (success) in
-//                    if success {
-//                        if let duel = self.duel {
-//                            DuelController.playerReady(UserController.currentUser, duel: duel, completion: { (success) in
-//                                if success {
-//                                    DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: { (player1Ready, player2Ready) in
-//                                        if player1Ready && player2Ready {
-//                                            DuelController.startDuel(duel)
-//                                        }
-//                                    })
-//                                }
-//                            })
-//                        }
-//                    }
-//                })
-//            }
-//        }
-//  }
-        
-        //        MotionController.sharedController.trackMotionForDuel { (currentPosition) in
-        //            guard let currentPosition = currentPosition else { return }
-        //           MotionController.sharedController.loadCalibration("lowered", completion: { (calibration) in
-        //              guard let loweredPosition = calibration else { return }
-        //            MotionController.sharedController.checkCalibration(loweredPosition, currentMeasurements: currentPosition, completion: { (success) in
-        //            if success {
-        //                  guard let duel = self.duel else { return }
-        //              MotionController.sharedController.playerReady(UserController.currentUser, duel: duel, currentPosition: currentPosition, savedCalibration: loweredPosition, completion: { (success) in
-        //                if success {
-        // Play gun cock sound
-        //                  DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: { (player1Ready, player2Ready) in
-        //                  if player1Ready == true && player2Ready == true {
-        //                        DuelController.startDuel(duel)
-        //                    DuelController.victory(duel, completion: { (winner, loser) in
-        //                      if winner == UserController.currentUser {
-        //                            self.winner = UserController.currentUser
-        //                        self.performSegueWithIdentifier("toVictory", sender: self)
-        //                  } else if loser == UserController.currentUser {
-        //                    self.loser = UserController.currentUser
-        //                  self.performSegueWithIdentifier("toVictory", sender: self)
-        //            }
-        //      })
-        //                  } else {
-        //Both players are not ready
-        //                    }
-        //                  })
-        //                } else {
-        //                      // No "gun cock" detected
-        //                    }
-        //                 })
-        //               } else {
-        // Current position is not aligned with calibrated average
-        //                 }
-        //              })
-        //        })
-        //       }
-    
-    
     // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
