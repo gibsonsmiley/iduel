@@ -21,7 +21,6 @@ class MotionController {
     }
     
     func checkFlick(completion:(success: Bool) -> Void) {
-//        motionManager = CMMotionManager()
         if self.motionManager.deviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 0.25
             motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (motion, error) in
@@ -41,7 +40,6 @@ class MotionController {
     }
     
     func checkRange(raised: Bool, completion:(success: Bool) -> Void) {
-//        motionManager = CMMotionManager() // This isn't necessary because the view's initilizer creates an instance of CMMotionManager
         if self.motionManager.deviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 0.10
             motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (motion, error) in
