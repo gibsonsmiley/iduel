@@ -414,6 +414,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iDuel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gibsonsmiley.Duellum;
 				PRODUCT_NAME = Duellum;
@@ -430,6 +431,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iDuel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gibsonsmiley.Duellum;
 				PRODUCT_NAME = Duellum;
