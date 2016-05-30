@@ -24,12 +24,13 @@ class MotionController {
 //        motionManager = CMMotionManager()
         if self.motionManager.deviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 0.25
+            
             motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (motion, error) in
                 if error != nil {
                     completion(success: false)
                 } else {
                     if let motion = motion {
-                        if motion.userAcceleration.x > 0.069 {
+                        if motion.userAcceleration.x > 0.09 {
                             completion(success: true)
                         } else {
                             completion(success: false)
@@ -56,7 +57,7 @@ class MotionController {
                                 completion(success: false)
                             }
                         } else {
-                            if motion.attitude.pitch < -0.80 {
+                            if motion.attitude.pitch < -0.90 {
                                 completion(success: true)
                             } else {
                                 completion(success: false)
