@@ -92,17 +92,24 @@ class SetUpDuelViewController: UIViewController {
         performSegueWithIdentifier("toDuelCustom", sender: self)
     }
     @IBAction func backButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toDuelCustom" {
-            guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
-            guard let duel = self.duel else { return }
-            destinationViewController.updateWithDuel(duel)
-            _ = destinationViewController.view // Don't know why this is needed
+        guard let duel = duel else { return }
+        DuelController2.deleteDuel(duel) { (success) in
+            if success == true {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                print("Couldn't delete duel")
+            }
         }
     }
+    
+        // MARK: - Navigation
+        
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            if segue.identifier == "toDuelCustom" {
+                guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
+                guard let duel = self.duel else { return }
+                destinationViewController.updateWithDuel(duel)
+                _ = destinationViewController.view // Don't know why this is needed
+            }
+        }
 }
