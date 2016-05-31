@@ -137,12 +137,18 @@ class DuelController {
     static func waitForCountdown(duel: Duel, completion:(success: Bool) -> Void) {
         guard let duelID = duel.id else { completion(success: false); return }
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/countdown") { (data) in
-            guard let countdown = data as? Int64 else { completion(success: false); return }
-            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
-            dispatch_after(time, dispatch_get_main_queue(), {
-                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate)) // May need to exit or invalidate this: http://stackoverflow.com/a/25120393/3681880
-                completion(success: true)
-            })
+            if let countdown = data as? Int64 {
+                
+                //else { completion(success: false); return }
+                let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
+                dispatch_after(time, dispatch_get_main_queue(), {
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate)) // May need to exit or invalidate this: http://stackoverflow.com/a/25120393/3681880
+                    completion(success: true)
+                })
+            } else {
+                completion(success: false)
+                return
+            }
         }
     }
     
@@ -189,7 +195,13 @@ class DuelController {
                                                 if success {
                                                     
                                                     // Countdown starts
-                                                    DuelController.waitForCountdown(duel, completion: { (success) in
+                                                    DuelController2.observeCountdown(duel, completion: { (countdown) in
+                                                        if let countdown = countdown {
+                                                            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
+                                                            dispatch_after(time, dispatch_get_main_queue(), {
+                                                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                                    
+                                                        
                                                         if success {
                                                             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                                                             
@@ -208,6 +220,8 @@ class DuelController {
                                                             
                                                         }
                                                     })
+                                                } else {
+                                                    print("countdown not sent")
                                                 }
                                             })
                                         } else {
