@@ -27,14 +27,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         nicknameTextField.delegate = self
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         print("Has tutorial been displayed? \(NSUserDefaults.standardUserDefaults().boolForKey("tutorial"))")
-        displayTutorial()
+        displayTutorial() // This is here because won't work in any other stage of the view creation/display
     }
     
     override func viewWillAppear(animated: Bool) {
