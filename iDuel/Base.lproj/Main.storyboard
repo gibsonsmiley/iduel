@@ -181,7 +181,7 @@
                                 <rect key="frame" x="15" y="30" width="32" height="33"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
                                 <state key="normal" title="Back">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backButtonTapped:" destination="OKq-eY-Neg" eventType="touchUpInside" id="35i-Bz-gDg"/>

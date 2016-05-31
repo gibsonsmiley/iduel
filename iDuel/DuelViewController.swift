@@ -16,7 +16,6 @@ class DuelViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
-//    @IBOutlet weak var gunImageView: UIImageView!
     
     var duel: Duel?
     var winner: User?
@@ -27,7 +26,7 @@ class DuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        leftHandGun()
+        leftHandGun()
         
         DuelController.duelStart(duel) { (success) in
             if success {
@@ -52,14 +51,14 @@ class DuelViewController: UIViewController {
         self.duel = duel
     }
     
-//    func leftHandGun() {
-//        let leftHand = NSUserDefaults.standardUserDefaults().boolForKey("leftHand")
-//        if leftHand == true {
-//            self.gunImageView.image = UIImage(named: "LH Duel View")
-//        } else {
-//            self.gunImageView.image = UIImage(named: "RH Duel View")
-//        }
-//    }
+    func leftHandGun() {
+        let leftHand = NSUserDefaults.standardUserDefaults().boolForKey("leftHand")
+        if leftHand == true {
+            self.fireButton.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
+        } else {
+            self.fireButton.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
+        }
+    }
     
     // MARK: - Actions
     
