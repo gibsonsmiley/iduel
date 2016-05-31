@@ -154,99 +154,99 @@ class DuelController {
     
     
     
-    static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
-       // User points phone down by waist, checks to see if the device is in range
-        MotionController.sharedController.checkRange(false) { (success) in
-            if success {
-                print("device at waist")
-                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                NSThread.sleepForTimeInterval(0.5)
-                
-                //User flicks phone to show they are ready for the duel to begin
-                MotionController.sharedController.checkFlick({ (success) in
-                    if success {
-                        print("flick successful")
-                        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                        SystemSoundID.playGunCocking("GunCocking", withExtenstion: "mp3")
-                        
-                        // check to see if there is a duel
-                        if let duel = duel {
-                            
-                            // check to see if the players are ready
-                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
-                                if success {
-                                    //                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
-                                    //                                        guard let user = user else { return }
-                                    //                                        sharedController.player1 = user
-                                    //                                    })
-                                    //                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
-                                    //                                        guard let user = user else { return }
-                                    //                                        sharedController.player2 = user
-                                    //                                    })
-                                    //                                    guard let player1 = sharedController.player1,
-                                    //                                        player2 = sharedController.player2 else {return}
-                                    
-                                    // Send ready status up to firebase
-                                    DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
-                                        if success {
-                                            
-                                            // Send time between 2 and 4 seconds up to firebase
-                                            DuelController2.sendCountdownToDuel(duel, completion: { (success) in
-                                                if success {
-                                                    
-                                                    // Countdown starts
-                                                    DuelController2.observeCountdown(duel, completion: { (countdown) in
-                                                        if let countdown = countdown {
-                                                            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
-                                                            dispatch_after(time, dispatch_get_main_queue(), {
-                                                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                                                    
-                                                        
-                                                        if success {
-                                                            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                                                            
-                                                            // User raises device, checks to see if in the correct range
-                                                            MotionController.sharedController.checkRange(true, completion: { (success) in
-                                                                if success {
-                                                                    MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                                                                    completion(success: true)
-                                                                } else {
-                                                                    print("gun not in range to shoot")
-                                                                    
-                                                                }
-                                                            })
-                                                        } else {
-                                                            print("duel not started")
-                                                            
-                                                        }
-                                                    })
-                                                } else {
-                                                    print("countdown not sent")
-                                                }
-                                            })
-                                        } else {
-                                            print("player 1 and player 2 not ready")
-                                            
-                                        }
-                                    })
-                                } else {
-                                    print("player not ready")
-                                    
-                                }
-                                
-                            })
-                        } else {
-                            print("duel not ready")
-                            
-                        }
-                    } else {
-                        print("flick no successful")
-                        
-                    }
-                })
-            } else {
-                print("device is not in range")
-            }
-        }
-    }
+//    static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
+//       // User points phone down by waist, checks to see if the device is in range
+//        MotionController.sharedController.checkRange(false) { (success) in
+//            if success {
+//                print("device at waist")
+//                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+//                NSThread.sleepForTimeInterval(0.5)
+//                
+//                //User flicks phone to show they are ready for the duel to begin
+//                MotionController.sharedController.checkFlick({ (success) in
+//                    if success {
+//                        print("flick successful")
+//                        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+//                        SystemSoundID.playGunCocking("GunCocking", withExtenstion: "mp3")
+//                        
+//                        // check to see if there is a duel
+//                        if let duel = duel {
+//                            
+//                            // check to see if the players are ready
+//                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+//                                if success {
+//                                    //                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
+//                                    //                                        guard let user = user else { return }
+//                                    //                                        sharedController.player1 = user
+//                                    //                                    })
+//                                    //                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
+//                                    //                                        guard let user = user else { return }
+//                                    //                                        sharedController.player2 = user
+//                                    //                                    })
+//                                    //                                    guard let player1 = sharedController.player1,
+//                                    //                                        player2 = sharedController.player2 else {return}
+//                                    
+//                                    // Send ready status up to firebase
+//                                    DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+//                                        if success {
+//                                            
+//                                            // Send time between 2 and 4 seconds up to firebase
+//                                            DuelController2.sendCountdownToDuel(duel, completion: { (success) in
+//                                                if success {
+//                                                    
+//                                                    // Countdown starts
+//                                                    DuelController2.observeCountdown(duel, completion: { (countdown) in
+//                                                        if let countdown = countdown {
+//                                                            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
+//                                                            dispatch_after(time, dispatch_get_main_queue(), {
+//                                                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+//                                                    
+//                                                        
+//                                                        if success {
+//                                                            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//                                                            
+//                                                            // User raises device, checks to see if in the correct range
+//                                                            MotionController.sharedController.checkRange(true, completion: { (success) in
+//                                                                if success {
+//                                                                    MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+//                                                                    completion(success: true)
+//                                                                } else {
+//                                                                    print("gun not in range to shoot")
+//                                                                    
+//                                                                }
+//                                                            })
+//                                                        } else {
+//                                                            print("duel not started")
+//                                                            
+//                                                        }
+//                                                    })
+//                                                } else {
+//                                                    print("countdown not sent")
+//                                                }
+//                                            })
+//                                        } else {
+//                                            print("player 1 and player 2 not ready")
+//                                            
+//                                        }
+//                                    })
+//                                } else {
+//                                    print("player not ready")
+//                                    
+//                                }
+//                                
+//                            })
+//                        } else {
+//                            print("duel not ready")
+//                            
+//                        }
+//                    } else {
+//                        print("flick no successful")
+//                        
+//                    }
+//                })
+//            } else {
+//                print("device is not in range")
+//            }
+//        }
+//    }
 }

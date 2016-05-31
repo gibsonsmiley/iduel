@@ -9,7 +9,7 @@
 import UIKit
 
 class VictoryViewController: UIViewController {
-
+    
     @IBOutlet weak var victoryLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var exitGameButton: UIButton!
@@ -26,7 +26,7 @@ class VictoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("Memory warning on \(self)")
@@ -36,7 +36,7 @@ class VictoryViewController: UIViewController {
     
     func updateWithDuel(duel: Duel, victory: String) {
         self.duel = duel
-    
+        
         if victory == "winner" {
             self.victoryLabel.text = "You Won!"
         } else if victory == "loser" {
@@ -54,15 +54,15 @@ class VictoryViewController: UIViewController {
         // Delete current duel
         // Move back to set up duel view
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
