@@ -155,7 +155,7 @@ class DuelController {
     
     
     static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
-       // User points phone down by waist, checks to see if the device is in range
+        // User points phone down by waist, checks to see if the device is in range
         MotionController.sharedController.checkRange(false) { (success) in
             if success {
                 print("device at waist")
@@ -200,24 +200,19 @@ class DuelController {
                                                             let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
                                                             dispatch_after(time, dispatch_get_main_queue(), {
                                                                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                                                    
-                                                        
-                                                        if success {
-                                                            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                                                            
-                                                            // User raises device, checks to see if in the correct range
-                                                            MotionController.sharedController.checkRange(true, completion: { (success) in
-                                                                if success {
-                                                                    MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                                                                    completion(success: true)
-                                                                } else {
-                                                                    print("gun not in range to shoot")
-                                                                    
-                                                                }
+                                                                
+                                                                // User raises device, checks to see if in the correct range
+                                                                MotionController.sharedController.checkRange(true, completion: { (success) in
+                                                                    if success {
+                                                                        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                                                                        completion(success: true)
+                                                                    } else {
+                                                                        print("gun not in range to shoot")
+                                                                    }
+                                                                })
                                                             })
                                                         } else {
-                                                            print("duel not started")
-                                                            
+                                                            print("countdown nil")
                                                         }
                                                     })
                                                 } else {
