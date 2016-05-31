@@ -27,6 +27,14 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         nicknameTextField.delegate = self
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("Has tutorial been displayed? \(NSUserDefaults.standardUserDefaults().boolForKey("tutorial"))")
+        displayTutorial()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -63,6 +71,14 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     func errorManager(errorText: String) {
         self.errorLabel.hidden = false
         self.errorLabel.text = errorText
+    }
+    
+    func displayTutorial() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("tutorial") == false {
+            performSegueWithIdentifier("toTutorial", sender: self)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
     
     // MARK: - Actions

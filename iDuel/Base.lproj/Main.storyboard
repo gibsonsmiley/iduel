@@ -22,6 +22,12 @@
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
+            <string>TradeGothicLT-BoldCondTwenty</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -132,6 +138,7 @@
                         <outlet property="titleLabel" destination="cb3-2h-pjr" id="ihx-p4-25b"/>
                         <segue destination="FXw-fO-elf" kind="presentation" identifier="toDuels" id="xY1-xS-O0k"/>
                         <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="lxW-kK-E9O"/>
+                        <segue destination="5Jj-xf-7tB" kind="presentation" identifier="toTutorial" id="oWP-EP-9Lc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -411,17 +418,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Sound and Vibration" id="dZx-Js-cRH">
+                            <tableViewSection headerTitle="Effects" id="dZx-Js-cRH">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jNT-SJ-UgF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="jNT-SJ-UgF">
                                         <rect key="frame" x="0.0" y="114" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-HI-iKA">
-                                                    <rect key="frame" x="8" y="11" width="85" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-HI-iKA">
+                                                    <rect key="frame" x="8" y="11" width="38" height="21"/>
                                                     <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -441,7 +448,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0rc-pt-sw0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="0rc-pt-sw0">
                                         <rect key="frame" x="0.0" y="158" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rc-pt-sw0" id="y5N-Aa-IT1">
@@ -471,9 +478,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Left-Handed" id="OK3-rV-Pah">
+                            <tableViewSection headerTitle="Gun Orientation" id="OK3-rV-Pah">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gab-FX-UOT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Gab-FX-UOT">
                                         <rect key="frame" x="0.0" y="253" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
@@ -486,8 +493,8 @@
                                                         <action selector="leftHandedSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="bIs-Hf-4HV"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left-Handed Gun" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1U-Cv-pan">
-                                                    <rect key="frame" x="8" y="11" width="103" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left-Handed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1U-Cv-pan">
+                                                    <rect key="frame" x="8" y="11" width="76" height="21"/>
                                                     <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -505,21 +512,18 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="348" width="414" height="227"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="115" id="OFC-PJ-BwF">
+                                        <rect key="frame" x="0.0" y="348" width="414" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
-                                                    <rect key="frame" x="8" y="8" width="398" height="211"/>
+                                                    <rect key="frame" x="8" y="8" width="398" height="99"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Pull your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or inaccessibility or use of the elements of this game application. 
-
-
-
-Music track: Kenny MacConnachie aka "Evony". </string>
+                                                    <string key="text">Play with your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or inaccessibility or use of the elements of this game application. 
+</string>
                                                     <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -534,6 +538,34 @@ Music track: Kenny MacConnachie aka "Evony". </string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Credit" id="fnz-vd-Ako">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="98" id="6bA-V9-MGF">
+                                        <rect key="frame" x="0.0" y="514" width="414" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bA-V9-MGF" id="st4-ue-dHw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KgE-aH-9I9">
+                                                    <rect key="frame" x="8" y="8" width="398" height="82"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">
+Music track by Kenny MacConnachie aka "Evony". </string>
+                                                    <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="KgE-aH-9I9" secondAttribute="trailing" constant="8" id="1Fx-le-PcL"/>
+                                                <constraint firstAttribute="bottom" secondItem="KgE-aH-9I9" secondAttribute="bottom" constant="8" id="9dw-xs-Z62"/>
+                                                <constraint firstItem="KgE-aH-9I9" firstAttribute="top" secondItem="st4-ue-dHw" secondAttribute="top" constant="8" id="JWE-om-jOf"/>
+                                                <constraint firstItem="KgE-aH-9I9" firstAttribute="leading" secondItem="st4-ue-dHw" secondAttribute="leading" constant="8" id="woY-D7-7h4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="CAv-is-Xnq" id="HNP-PU-EoL"/>
@@ -541,6 +573,11 @@ Music track: Kenny MacConnachie aka "Evony". </string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="Ba7-Fj-OeY">
+                        <barButtonItem key="leftBarButtonItem" title="Tutorial" id="RXG-O6-dtx">
+                            <connections>
+                                <segue destination="5Jj-xf-7tB" kind="presentation" id="5CV-gH-QCM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="hYU-ee-nxw">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="CAv-is-Xnq" id="CrS-2d-vKj"/>
@@ -557,6 +594,112 @@ Music track: Kenny MacConnachie aka "Evony". </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dv-bd-I7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="306" y="1518"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="htx-Pt-yC2">
+            <objects>
+                <viewController id="5Jj-xf-7tB" customClass="TutorialViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Qz-n3-q4v"/>
+                        <viewControllerLayoutGuide type="bottom" id="kCU-Hn-bP4"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="CV8-KO-Ptr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-xw-cE4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once the duel has begun, you need to lower your phone by your waist, as if it's holstered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hot-HG-CA1">
+                                <rect key="frame" x="20" y="310" width="374" height="116"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-ul-0HU">
+                                <rect key="frame" x="284" y="635" width="52" height="51"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="7jq-jV-tXT"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cof-qa-Ezt">
+                                <rect key="frame" x="284" y="635" width="52" height="51"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="CPK-H6-fLn"/>
+                                    <action selector="secondButtonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="jgl-Vz-rIt"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPN-5u-w7w">
+                                <rect key="frame" x="281" y="635" width="59" height="51"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="jSm-mV-7qO"/>
+                                    <action selector="doneButtonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="fOP-Fk-DUv"/>
+                                    <action selector="secondButtonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="net-FL-cMg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duellum Tutorial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecr-N7-Vaw">
+                                <rect key="frame" x="118" y="28" width="178" height="36"/>
+                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7AC-ul-0HU" firstAttribute="centerX" secondItem="wPN-5u-w7w" secondAttribute="centerX" id="0Xd-dv-ULo"/>
+                            <constraint firstAttribute="trailing" secondItem="wcl-xw-cE4" secondAttribute="trailing" id="3Oi-34-jV4"/>
+                            <constraint firstItem="wPN-5u-w7w" firstAttribute="baseline" secondItem="7AC-ul-0HU" secondAttribute="baseline" id="3Yh-WA-kNA"/>
+                            <constraint firstItem="wcl-xw-cE4" firstAttribute="top" secondItem="CV8-KO-Ptr" secondAttribute="topMargin" id="3mo-98-BnG"/>
+                            <constraint firstItem="cof-qa-Ezt" firstAttribute="centerX" secondItem="wPN-5u-w7w" secondAttribute="centerX" id="9ED-d8-PMq"/>
+                            <constraint firstItem="hot-HG-CA1" firstAttribute="leading" secondItem="CV8-KO-Ptr" secondAttribute="leadingMargin" id="CnI-bF-ePj"/>
+                            <constraint firstItem="wPN-5u-w7w" firstAttribute="centerX" secondItem="CV8-KO-Ptr" secondAttribute="centerX" multiplier="1.5" id="Czm-p4-d8t"/>
+                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="leading" secondItem="wcl-xw-cE4" secondAttribute="leading" id="JQl-yV-vzu"/>
+                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="top" secondItem="8Qz-n3-q4v" secondAttribute="bottom" constant="8" id="Muc-D1-vb3"/>
+                            <constraint firstItem="cof-qa-Ezt" firstAttribute="centerX" secondItem="wcl-xw-cE4" secondAttribute="centerX" id="UOb-mo-QmU"/>
+                            <constraint firstItem="hot-HG-CA1" firstAttribute="trailing" secondItem="CV8-KO-Ptr" secondAttribute="trailingMargin" id="Ur9-yj-PjX"/>
+                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="centerX" secondItem="wcl-xw-cE4" secondAttribute="centerX" id="Y70-Nq-IEs"/>
+                            <constraint firstItem="wcl-xw-cE4" firstAttribute="leading" secondItem="CV8-KO-Ptr" secondAttribute="leading" id="dWd-XN-zYl"/>
+                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="top" secondItem="wcl-xw-cE4" secondAttribute="top" id="f50-Eq-cKO"/>
+                            <constraint firstItem="hot-HG-CA1" firstAttribute="centerX" secondItem="CV8-KO-Ptr" secondAttribute="centerX" id="fBa-tQ-WqD"/>
+                            <constraint firstItem="kCU-Hn-bP4" firstAttribute="top" secondItem="wPN-5u-w7w" secondAttribute="bottom" constant="50" id="jMP-oc-mSd"/>
+                            <constraint firstItem="hot-HG-CA1" firstAttribute="centerY" secondItem="CV8-KO-Ptr" secondAttribute="centerY" id="oUv-mn-3kM"/>
+                            <constraint firstItem="7AC-ul-0HU" firstAttribute="centerX" secondItem="wcl-xw-cE4" secondAttribute="centerX" id="oXG-DF-DG6"/>
+                            <constraint firstItem="7AC-ul-0HU" firstAttribute="baseline" secondItem="cof-qa-Ezt" secondAttribute="baseline" id="tNO-7R-OJ1"/>
+                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="trailing" secondItem="wcl-xw-cE4" secondAttribute="trailing" id="teo-j0-Dcz"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="wcl-xw-cE4" secondAttribute="bottom" id="yAX-AE-hHm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JQl-yV-vzu"/>
+                                <exclude reference="f50-Eq-cKO"/>
+                                <exclude reference="teo-j0-Dcz"/>
+                                <exclude reference="oXG-DF-DG6"/>
+                                <exclude reference="UOb-mo-QmU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="wPN-5u-w7w" id="fJc-Mi-r6F"/>
+                        <outlet property="secondButton" destination="cof-qa-Ezt" id="EXk-cx-bNd"/>
+                        <outlet property="secondLabel" destination="hot-HG-CA1" id="uEi-Xj-cdQ"/>
+                        <outlet property="transitionButton" destination="7AC-ul-0HU" id="CPh-v8-FdY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZl-r7-4LY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855" y="1518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zcy-Wu-yAS">
@@ -607,8 +750,10 @@ Music track: Kenny MacConnachie aka "Evony". </string>
         <image name="SettingsButton" width="51" height="50"/>
         <image name="VICTORYViewScreen" width="414" height="736"/>
         <image name="Welcome View " width="414" height="736"/>
+        <image name="tutorial" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="oWP-EP-9Lc"/>
         <segue reference="lxW-kK-E9O"/>
         <segue reference="MeC-6T-Py4"/>
     </inferredMetricsTieBreakers>
