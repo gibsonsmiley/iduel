@@ -24,22 +24,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iDuel/DuelController.swift"
-            timestampString = "486410778.377501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "duelStart(_:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iDuel/DuelController.swift"
             timestampString = "486410754.584552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

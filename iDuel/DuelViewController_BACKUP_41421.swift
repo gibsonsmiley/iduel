@@ -26,9 +26,16 @@ class DuelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         self.fireButton.enabled = false
         DuelController.duelStart(duel) { (duel, success) in
             guard let duel = duel else { return }
+=======
+        
+        leftHandGun()
+        
+        DuelController.duelStart(duel) { (success) in
+>>>>>>> origin/develop
             if success {
                 // Countdown starts
                 DuelController2.observeCountdown(duel, completion: { (countdown) in
@@ -68,6 +75,7 @@ class DuelViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("Memory warning on \(self)")
     }
     
     // MARK: Methods
@@ -76,10 +84,22 @@ class DuelViewController: UIViewController {
         self.duel = duel
     }
     
+<<<<<<< HEAD
+=======
+    func leftHandGun() {
+        let leftHand = NSUserDefaults.standardUserDefaults().boolForKey("leftHand")
+        if leftHand == true {
+            self.fireButton.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
+        } else {
+            self.fireButton.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
+        }
+    }
+    
+>>>>>>> origin/develop
     // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
         // Stop duel and move back to set up view
         // Possibly alert opponent that duel was cancelled
     }
