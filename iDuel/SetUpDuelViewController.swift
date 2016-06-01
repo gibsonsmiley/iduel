@@ -25,8 +25,8 @@ class SetUpDuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateViewWithInfo()
-//        buttonManager()
+        buttonManager()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateViewWithInfo), name: "opponentJoined", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,17 +54,9 @@ class SetUpDuelViewController: UIViewController {
     }
     
     func updateViewWithInfo() {
-        guard let challengerID = self.duel?.challengerID else { return }
-        UserController.fetchUserForIdentifier(challengerID) { (user) in
-            guard let user = user else { return }
-            //            self.challenger = user
-            self.challengerLabel.text = user.nickname
-        }
-        guard let opponentID = self.duel?.opponentID else { return }
-        UserController.fetchUserForIdentifier(opponentID) { (user) in
-            //            self.opponent = user
-            self.opponentLabel.text = user?.nickname
-        }
+        guard let opponent = DuelController2.sharedController.opponent else { return }
+        self.opponentLabel.text = opponent.nickname
+        self.beginDuelButton.enabled = true
     }
     
     func updateWithDuel(duel: Duel) {
@@ -73,6 +65,7 @@ class SetUpDuelViewController: UIViewController {
             guard let user = user else { return }
             print("user: \(user.nickname)")
             self.challenger = user
+            self.challengerLabel.text = self.challenger!.nickname
             print("challenger: \(self.challenger?.nickname)")
         }
         guard let opponentID = duel.opponentID else { return }
@@ -99,17 +92,24 @@ class SetUpDuelViewController: UIViewController {
         performSegueWithIdentifier("toDuelCustom", sender: self)
     }
     @IBAction func backButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toDuelCustom" {
-            guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
-            guard let duel = self.duel else { return }
-            destinationViewController.updateWithDuel(duel)
-            _ = destinationViewController.view // Don't know why this is needed
+        guard let duel = duel else { return }
+        DuelController2.deleteDuel(duel) { (success) in
+            if success == true {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                print("Couldn't delete duel")
+            }
         }
     }
+    
+        // MARK: - Navigation
+        
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            if segue.identifier == "toDuelCustom" {
+                guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
+                guard let duel = self.duel else { return }
+                destinationViewController.updateWithDuel(duel)
+                _ = destinationViewController.view // Don't know why this is needed
+            }
+        }
 }
