@@ -27,7 +27,6 @@
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
-            <string>TradeGothicLT-BoldCondTwenty</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -47,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-JD-uDV">
-                                <rect key="frame" x="104" y="357" width="207" height="22"/>
+                                <rect key="frame" x="20" y="357" width="374" height="22"/>
                                 <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -110,15 +109,18 @@
                             <constraint firstItem="cb3-2h-pjr" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="gZg-KE-dPf"/>
                             <constraint firstItem="Dv9-IT-e7B" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="inV-Ko-xHJ"/>
                             <constraint firstItem="VUB-uf-J5t" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="jE7-qE-Hpw"/>
+                            <constraint firstItem="7p8-JD-uDV" firstAttribute="leading" secondItem="fDG-0o-Xoa" secondAttribute="leading" constant="20" id="oI9-ed-Ss7"/>
                             <constraint firstAttribute="trailing" secondItem="b6Z-00-AMk" secondAttribute="trailing" constant="29" id="qQz-RU-Dev"/>
                             <constraint firstItem="KCh-F4-RX1" firstAttribute="top" secondItem="3XD-KE-1rd" secondAttribute="bottom" id="qds-yB-zoI"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="centerY" secondItem="3XD-KE-1rd" secondAttribute="centerY" id="si1-VM-1KO"/>
+                            <constraint firstAttribute="trailing" secondItem="7p8-JD-uDV" secondAttribute="trailing" constant="20" id="swW-oS-CW4"/>
                             <constraint firstItem="VUB-uf-J5t" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="vIP-Nb-sac"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="top" secondItem="VUB-uf-J5t" secondAttribute="bottom" constant="8" id="yaR-oa-Flx"/>
                             <constraint firstItem="7p8-JD-uDV" firstAttribute="centerX" secondItem="3XD-KE-1rd" secondAttribute="centerX" id="zgv-X5-Hlh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="DGA-rv-N25"/>
                                 <exclude reference="McT-bm-sHW"/>
                             </mask>
                         </variation>
@@ -148,7 +150,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="209.5" y="650.5"/>
+            <point key="canvasLocation" x="209" y="650"/>
         </scene>
         <!--Set Up Duel View Controller-->
         <scene sceneID="q2w-Su-dPb">
@@ -448,40 +450,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="0rc-pt-sw0">
-                                        <rect key="frame" x="0.0" y="158" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0rc-pt-sw0" id="y5N-Aa-IT1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h89-mh-kNA">
-                                                    <rect key="frame" x="8" y="11" width="56" height="21"/>
-                                                    <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-Fe-tOq">
-                                                    <rect key="frame" x="357" y="6" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="vibrationSwitched:" destination="CAv-is-Xnq" eventType="valueChanged" id="dQS-hl-1ai"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="GfM-Fe-tOq" firstAttribute="trailing" secondItem="y5N-Aa-IT1" secondAttribute="trailingMargin" id="YPc-ri-Ejc"/>
-                                                <constraint firstItem="h89-mh-kNA" firstAttribute="leading" secondItem="y5N-Aa-IT1" secondAttribute="leadingMargin" id="a9Y-iT-oMc"/>
-                                                <constraint firstItem="h89-mh-kNA" firstAttribute="centerY" secondItem="y5N-Aa-IT1" secondAttribute="centerY" id="bfM-lw-75G"/>
-                                                <constraint firstItem="h89-mh-kNA" firstAttribute="centerY" secondItem="GfM-Fe-tOq" secondAttribute="centerY" id="m87-RM-lK7"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Gun Orientation" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="253" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="209" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -512,15 +486,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="115" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="348" width="414" height="115"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="140" id="OFC-PJ-BwF">
+                                        <rect key="frame" x="0.0" y="304" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M5L-cV-46M">
-                                                    <rect key="frame" x="8" y="8" width="398" height="99"/>
+                                                    <rect key="frame" x="8" y="8" width="398" height="124"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Play with your iPhone at your own risk. The creators of Duellum app are not responsible for any damages on iPhones caused by fast movements. This game application is not liable for any damages or consequential damages caused by the access or inaccessibility or use of the elements of this game application. 
 </string>
@@ -538,20 +512,18 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Credit" id="fnz-vd-Ako">
+                            <tableViewSection headerTitle="Credits" id="fnz-vd-Ako">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="98" id="6bA-V9-MGF">
-                                        <rect key="frame" x="0.0" y="514" width="414" height="98"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="61" id="6bA-V9-MGF">
+                                        <rect key="frame" x="0.0" y="495" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bA-V9-MGF" id="st4-ue-dHw">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KgE-aH-9I9">
-                                                    <rect key="frame" x="8" y="8" width="398" height="82"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Music track by Kenny MacConnachie aka &quot;Evony&quot;. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KgE-aH-9I9">
+                                                    <rect key="frame" x="8" y="8" width="398" height="45"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">
-Music track by Kenny MacConnachie aka "Evony". </string>
                                                     <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -588,7 +560,6 @@ Music track by Kenny MacConnachie aka "Evony". </string>
                         <outlet property="doneButton" destination="hYU-ee-nxw" id="Sfb-ZM-29v"/>
                         <outlet property="leftHandedSwitch" destination="keN-MZ-DOJ" id="DT0-IS-EcK"/>
                         <outlet property="soundEffectSwitch" destination="HPs-g1-FuE" id="5jZ-rY-ef4"/>
-                        <outlet property="vibrationSwitch" destination="GfM-Fe-tOq" id="4FT-hB-NHz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dv-bd-I7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,8 +724,8 @@ Music track by Kenny MacConnachie aka "Evony". </string>
         <image name="tutorial" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7eV-OX-TqF"/>
+        <segue reference="yDl-X2-uXZ"/>
         <segue reference="oWP-EP-9Lc"/>
-        <segue reference="lxW-kK-E9O"/>
-        <segue reference="MeC-6T-Py4"/>
     </inferredMetricsTieBreakers>
 </document>

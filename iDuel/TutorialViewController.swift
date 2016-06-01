@@ -42,13 +42,13 @@ class TutorialViewController: UIViewController {
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-            self.secondLabel.slideLeft()
-            self.secondLabel.text = "When the countdown ends your phone will vibrate and the first to raise their gun and fire wins!"
-            self.secondButton.setTitle("Done", forState: .Normal)
-            self.secondButton.hidden = true
-            self.doneButton.hidden = false
+        self.secondLabel.slideLeft()
+        self.secondLabel.text = "When the countdown ends your phone will vibrate and the first to raise their gun and fire wins! \n\nYou can fire your gun by tapping the screen or pressing a volume button."
+        self.secondButton.setTitle("Done", forState: .Normal)
+        self.secondButton.hidden = true
+        self.doneButton.hidden = false
     }
-
+    
     @IBAction func doneButtonTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
