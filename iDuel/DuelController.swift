@@ -154,7 +154,7 @@ class DuelController {
     
     
     
-    static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
+    static func duelStart(duel: Duel?, completion:(duel: Duel?, success: Bool) -> Void) {
         // User points phone down by waist, checks to see if the device is in range
         MotionController.sharedController.checkRange(false) { (success) in
             if success {
@@ -175,46 +175,15 @@ class DuelController {
                             // check to see if the players are ready
                             DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
                                 if success {
-                                    //                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
-                                    //                                        guard let user = user else { return }
-                                    //                                        sharedController.player1 = user
-                                    //                                    })
-                                    //                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
-                                    //                                        guard let user = user else { return }
-                                    //                                        sharedController.player2 = user
-                                    //                                    })
-                                    //                                    guard let player1 = sharedController.player1,
-                                    //                                        player2 = sharedController.player2 else {return}
                                     
-                                    // Send ready status up to firebase
                                     DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
                                         if success {
                                             
                                             // Send time between 2 and 4 seconds up to firebase
                                             DuelController2.sendCountdownToDuel(duel, completion: { (success) in
                                                 if success {
+                                                    completion(duel: duel, success: true)
                                                     
-                                                    // Countdown starts
-                                                    DuelController2.observeCountdown(duel, completion: { (countdown) in
-                                                        if let countdown = countdown {
-                                                            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
-                                                            dispatch_after(time, dispatch_get_main_queue(), {
-                                                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                                                                
-                                                                // User raises device, checks to see if in the correct range
-                                                                MotionController.sharedController.checkRange(true, completion: { (success) in
-                                                                    if success {
-                                                                        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                                                                        completion(success: true)
-                                                                    } else {
-                                                                        print("gun not in range to shoot")
-                                                                    }
-                                                                })
-                                                            })
-                                                        } else {
-                                                            print("countdown nil")
-                                                        }
-                                                    })
                                                 } else {
                                                     print("countdown not sent")
                                                 }
@@ -244,4 +213,7 @@ class DuelController {
             }
         }
     }
+    
+    func check
+    
 }

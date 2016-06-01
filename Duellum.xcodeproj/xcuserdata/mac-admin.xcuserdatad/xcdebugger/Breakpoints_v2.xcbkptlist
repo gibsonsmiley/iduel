@@ -24,22 +24,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iDuel/DuelController.swift"
-            timestampString = "486410778.377501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "duelStart(_:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iDuel/DuelController.swift"
             timestampString = "486410754.584552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -79,54 +63,6 @@
             endingLineNumber = "149"
             landmarkName = "waitForCountdown(_:completion:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iDuel/DuelController.swift"
-            timestampString = "486420200.560422"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "duelStart(_:completion:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Duellum.DuelController.(duelStart (Swift.Optional&lt;Duellum.Duel&gt;, completion : (success : Swift.Bool) -&gt; ()) -&gt; ()).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "Duellum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac-admin/Documents/Group%20Project/iduel/iDuel/DuelController.swift"
-                  timestampString = "486420340.611436"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Duellum.DuelController.(duelStart (Swift.Optional&lt;Duellum.Duel&gt;, completion : (success : Swift.Bool) -&gt; ()) -&gt; ()).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "Duellum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac-admin/Documents/Group%20Project/iduel/iDuel/DuelController.swift"
-                  timestampString = "486420340.611614"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "206"
-                  endingLineNumber = "206"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
