@@ -173,9 +173,9 @@ class DuelController {
                         if let duel = duel {
                             
                             // check to see if the players are ready
-                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
-                                if success {
-                                    
+//                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+//                                if success {
+                            
                                     DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
                                         if success {
                                             
@@ -192,10 +192,10 @@ class DuelController {
                                             print("player 1 and player 2 not ready")
                                         }
                                     })
-                                } else {
-                                    print("player not ready")
-                                }
-                            })
+//                                } else {
+//                                    print("player not ready")
+//                                }
+//                            })
                         } else {
                             print("duel not ready")
                             
