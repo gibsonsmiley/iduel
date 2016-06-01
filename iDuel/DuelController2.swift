@@ -68,7 +68,7 @@ class DuelController2 {
     static func sendStatusToDuel(user: User, duel: Duel, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").childByAppendingPath("\(userID)")
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").childByAppendingPath("\(userID)").setValue("userReady")
         completion(success: true)
     }
     
@@ -103,7 +103,7 @@ class DuelController2 {
     static func sendShotToDuel(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").setValue("\(userID)")
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("shotFired!")
         completion(success: true)
     }
     
@@ -131,4 +131,5 @@ class DuelController2 {
     static func orderDuels(duels: [Duel]) -> [Duel] {
         return duels.sort({$0.0.timestamp.timeIntervalSince1970.hashValue >   $0.1.timestamp.timeIntervalSince1970.hashValue})
     }
+    
 }
