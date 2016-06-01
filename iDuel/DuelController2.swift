@@ -108,7 +108,7 @@ class DuelController2 {
     static func sendShotToDuel(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)")
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").setValue("\(userID)")
         completion(success: true)
     }
     

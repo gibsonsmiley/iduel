@@ -26,13 +26,14 @@ class DuelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.fireButton.enabled = false
         DuelController.duelStart(duel) { (duel, success) in
             guard let duel = duel else { return }
             if success {
                 // Countdown starts
                 DuelController2.observeCountdown(duel, completion: { (countdown) in
                     if let countdown = countdown {
+                        self.duel = duel
                         print(countdown)
                         sleep(UInt32(countdown))
                         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -48,7 +49,7 @@ class DuelViewController: UIViewController {
                                 volumeView.sizeToFit()
                                 UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
                                 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
-                                self.duel = duel
+                                print("\(duel.id) in function")
                             } else {
                                 print("gun not in range to shoot")
                             }
@@ -96,10 +97,25 @@ class DuelViewController: UIViewController {
                 if volumeChangeType == "ExplicitVolumeChange" {
                     SystemSoundID.playGunShot1("1gunshot", withExtenstion: "mp3")
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    if let duel = self.duel {
-                        
-                        
-                    }
+                    guard let duel = self.duel else { return }
+                    guard let currentUser = UserController.sharedController.currentUser else { return }
+                    DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
+                        print(duel.id)
+                        if success {
+                            DuelController2.observeShotsFired(duel, completion: { (winner, loser) in
+                                guard let winner = winner, loser = loser else {
+                                    print("winner not determined")
+                                    return
+                                }
+                                
+                                self.winner = winner
+                                self.loser = loser
+                                print("\(winner.nickname) is the winner, \(loser.nickname) is the loser")
+                            })
+                        } else {
+                            print("shot not sent to duel")
+                        }
+                    })
                 }
             }
         }

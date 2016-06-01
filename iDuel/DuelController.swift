@@ -190,14 +190,11 @@ class DuelController {
                                             })
                                         } else {
                                             print("player 1 and player 2 not ready")
-                                            
                                         }
                                     })
                                 } else {
                                     print("player not ready")
-                                    
                                 }
-                                
                             })
                         } else {
                             print("duel not ready")
@@ -205,7 +202,6 @@ class DuelController {
                         }
                     } else {
                         print("flick no successful")
-                        
                     }
                 })
             } else {
@@ -213,7 +209,4 @@ class DuelController {
             }
         }
     }
-    
-    func check
-    
 }
