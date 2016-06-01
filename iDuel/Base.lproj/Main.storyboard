@@ -167,7 +167,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DuelViewMen" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-Ro-meo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-rd-1j4">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-rd-1j4">
                                 <rect key="frame" x="34" y="637" width="346" height="74"/>
                                 <state key="normal" image="DuelButton"/>
                                 <connections>
@@ -309,7 +309,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
-                                <rect key="frame" x="212" y="548" width="155" height="44"/>
+                                <rect key="frame" x="211" y="548" width="156" height="44"/>
                                 <state key="normal" image="NewDuelButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -318,8 +318,8 @@
                                     <segue destination="OKq-eY-Neg" kind="custom" identifier="toSetUpCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="yDl-X2-uXZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
-                                <rect key="frame" x="8" y="548" width="129" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
+                                <rect key="frame" x="8" y="548" width="156" height="44"/>
                                 <state key="normal" image="RematchButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -724,8 +724,8 @@
         <image name="tutorial" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MeC-6T-Py4"/>
-        <segue reference="lxW-kK-E9O"/>
+        <segue reference="7eV-OX-TqF"/>
+        <segue reference="yDl-X2-uXZ"/>
         <segue reference="oWP-EP-9Lc"/>
     </inferredMetricsTieBreakers>
 </document>
