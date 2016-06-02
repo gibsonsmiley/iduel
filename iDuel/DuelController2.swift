@@ -74,12 +74,18 @@ class DuelController2 {
     
     static func observeReadyStatuses(duel: Duel, completion: (playersReady: Bool) -> Void) {
         guard let duelID = duel.id else { completion(playersReady: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").observeEventType(.Value, withBlock: { (snapshot) in
-            guard let statuses = snapshot.value as? [String] else { completion(playersReady: false); return }
+        FirebaseController.observeDataAtEndpoint("duels/\(duelID)/statuses") { (data) in
+            guard let statuses = data as? [String] else { completion(playersReady: false); return }
             if statuses.count == 2 {
                 completion(playersReady: true)
             }
-        })
+        }
+//        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").observeEventType(.Value, withBlock: { (snapshot) in
+//            guard let statuses = snapshot.value as? [String] else { completion(playersReady: false); return }
+//            if statuses.count == 2 {
+//                completion(playersReady: true)
+//            }
+//        })
     }
     
     static func sendCountdownToDuel(duel: Duel, completion: (success: Bool) -> Void) {
@@ -104,7 +110,7 @@ class DuelController2 {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
         FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("\(NSDate().timeIntervalSince1970)")
-        sleep(3)
+        sleep(10)
         completion(success: true)
     }
     
