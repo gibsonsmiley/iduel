@@ -34,7 +34,7 @@ class DuelViewController: UIViewController {
                 DuelController2.observeCountdown(duel, completion: { (countdown) in
                     if let countdown = countdown {
                         self.duel = duel
-                        print(countdown)
+                        print("Countdown: \(countdown) seconds")
                         sleep(UInt32(countdown))
                         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                         
@@ -49,7 +49,6 @@ class DuelViewController: UIViewController {
                                 volumeView.sizeToFit()
                                 UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
                                 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
-                                print("\(duel.id) in function")
                             } else {
                                 print("gun not in range to shoot")
                             }
@@ -90,7 +89,6 @@ class DuelViewController: UIViewController {
         guard let duel = self.duel else { return }
         guard let currentUser = UserController.sharedController.currentUser else { return }
         DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
-            print(duel.id)
             if success {
                 
                 DuelController2.observeShotsFired(duel, completion: { (winner, loser) in
@@ -120,7 +118,6 @@ class DuelViewController: UIViewController {
                     guard let duel = self.duel else { return }
                     guard let currentUser = UserController.sharedController.currentUser else { return }
                     DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
-                        print(duel.id)
                         if success {
                             
                             DuelController2.observeShotsFired(duel, completion: { (winner, loser) in

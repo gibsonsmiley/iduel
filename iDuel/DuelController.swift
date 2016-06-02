@@ -158,14 +158,14 @@ class DuelController {
         // User points phone down by waist, checks to see if the device is in range
         MotionController.sharedController.checkRange(false) { (success) in
             if success {
-                print("device at waist")
+                print("Device at waist")
                 MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
                 NSThread.sleepForTimeInterval(0.5)
                 
                 //User flicks phone to show they are ready for the duel to begin
                 MotionController.sharedController.checkFlick({ (success) in
                     if success {
-                        print("flick successful")
+                        print("Flick successful")
                         MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
                         SystemSoundID.playGunCocking("GunCocking", withExtenstion: "mp3")
                         
@@ -201,11 +201,11 @@ class DuelController {
                             
                         }
                     } else {
-                        print("flick no successful")
+                        print("No flick detected")
                     }
                 })
             } else {
-                print("device is not in range")
+                print("Device is not in range")
             }
         }
     }
