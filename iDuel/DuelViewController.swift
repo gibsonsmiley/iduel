@@ -82,44 +82,6 @@ class DuelViewController: UIViewController {
         self.duel = duel
     }
     
-    // MARK: - Actions
-    
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-        // Stop duel and move back to set up view
-        // Possibly alert opponent that duel was cancelled
-    }
-    
-    @IBAction func fireButtonTapped(sender: AnyObject) {
-        finishDuel()
-    }
-    
-    func volumeChanged(notification: NSNotification) {
-        
-        if let userInfo = notification.userInfo {
-            if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
-                if volumeChangeType == "ExplicitVolumeChange" {
-                    finishDuel()
-                }
-            }
-        }
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toVictory" {
-            guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
-            guard let duel = duel else { return }
-            if winner != nil {
-                destinationViewController.updateWithDuel(duel, victory: "winner")
-            } else if loser != nil {
-                destinationViewController.updateWithDuel(duel, victory: "loser")
-            }
-            _ = destinationViewController.view
-        }
-    }
-    
     func finishDuel() {
         SystemSoundID.playGunShot1("1gunshot", withExtenstion: "mp3")
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -135,10 +97,52 @@ class DuelViewController: UIViewController {
                     self.winner = winner
                     self.loser = loser
                     print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
+                    self.performSegueWithIdentifier("toVictory", sender: self)
                 })
             } else {
                 print("shot not sent to duel")
             }
         })
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
+    }
+    
+    @IBAction func fireButtonTapped(sender: AnyObject) {
+        finishDuel()
+    }
+    
+    func volumeChanged(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
+                if volumeChangeType == "ExplicitVolumeChange" {
+                    finishDuel()
+                }
+            }
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toVictory" {
+            guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
+            guard let duel = self.duel,
+            winner = self.winner,
+            loser = self.loser else { return }
+            destinationViewController.updateWithDuel(duel, winner: winner, loser: loser)
+//            if winner != nil {
+//                destinationViewController.updateWithDuel(duel, victory: "winner")
+//            } else if loser != nil {
+//                destinationViewController.updateWithDuel(duel, victory: "loser")
+//            }
+            _ = destinationViewController.view
+        }
+    }
+    
 }

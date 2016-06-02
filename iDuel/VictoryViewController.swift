@@ -13,8 +13,11 @@ class VictoryViewController: UIViewController {
     @IBOutlet weak var victoryLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var exitGameButton: UIButton!
+    @IBOutlet weak var victoryImageView: UIImageView!
     
     var duel: Duel?
+    var winner: User?
+    var loser: User?
     
     enum victory {
         case Winner
@@ -22,6 +25,16 @@ class VictoryViewController: UIViewController {
     }
     
     // MARK: - View
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let currentUser = UserController.sharedController.currentUser else { return }
+        if currentUser == self.winner {
+            self.victoryImageView.image = UIImage(named: "VICTORYViewScreen")
+        } else if currentUser == self.loser {
+            self.victoryImageView.image = UIImage(named: "DEADViewScreen")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +47,10 @@ class VictoryViewController: UIViewController {
     
     // MARK: - Methods
     
-    func updateWithDuel(duel: Duel, victory: String) {
+    func updateWithDuel(duel: Duel, winner: User, loser: User) {
         self.duel = duel
-        
-        if victory == "winner" {
-            self.victoryLabel.text = "You Won!"
-        } else if victory == "loser" {
-            self.victoryLabel.text = "You Lost!"
-        }
+        self.winner = winner
+        self.loser = loser
     }
     
     // MARK: - Actions

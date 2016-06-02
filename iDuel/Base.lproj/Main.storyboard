@@ -347,6 +347,7 @@
                     <connections>
                         <outlet property="exitGameButton" destination="jfq-WW-CfD" id="VMb-bu-HUS"/>
                         <outlet property="playAgainButton" destination="dtw-22-XRa" id="Mqz-Il-3wp"/>
+                        <outlet property="victoryImageView" destination="Yaj-Gn-GiT" id="Kbd-fh-OIl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-hS-jkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -725,7 +726,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oWP-EP-9Lc"/>
-        <segue reference="e5R-19-Byv"/>
-        <segue reference="MeC-6T-Py4"/>
+        <segue reference="7eV-OX-TqF"/>
+        <segue reference="yDl-X2-uXZ"/>
     </inferredMetricsTieBreakers>
 </document>
