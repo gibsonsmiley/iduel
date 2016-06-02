@@ -48,7 +48,7 @@ class DuelViewController: UIViewController {
                                 let volumeView = MPVolumeView(frame: frame)
                                 volumeView.sizeToFit()
                                 UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
-                                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:completion:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
+                                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
                                 print("\(duel.id) in function")
                             } else {
                                 print("gun not in range to shoot")
@@ -87,10 +87,30 @@ class DuelViewController: UIViewController {
     @IBAction func fireButtonTapped(sender: AnyObject) {
         SystemSoundID.playGunShot1("1gunshot", withExtenstion: "mp3")
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        
+        guard let duel = self.duel else { return }
+        guard let currentUser = UserController.sharedController.currentUser else { return }
+        DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
+            print(duel.id)
+            if success {
+                
+                DuelController2.observeShotsFired(duel, completion: { (winner, loser) in
+                    guard let winner = winner, loser = loser else {
+                        print("winner not determined")
+                        return
+                    }
+                    
+                    self.winner = winner
+                    self.loser = loser
+                    print("\(winner.nickname) is the winner, \(loser.nickname) is the loser")
+                    //                                completion(success: true)
+                })
+            } else {
+                print("shot not sent to duel")
+            }
+        })
     }
     
-    func volumeChanged(notification: NSNotification, completion:(success: Bool) -> Void) {
+    func volumeChanged(notification: NSNotification) {
         
         if let userInfo = notification.userInfo {
             if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
@@ -102,6 +122,7 @@ class DuelViewController: UIViewController {
                     DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
                         print(duel.id)
                         if success {
+                            
                             DuelController2.observeShotsFired(duel, completion: { (winner, loser) in
                                 guard let winner = winner, loser = loser else {
                                     print("winner not determined")
@@ -111,7 +132,7 @@ class DuelViewController: UIViewController {
                                 self.winner = winner
                                 self.loser = loser
                                 print("\(winner.nickname) is the winner, \(loser.nickname) is the loser")
-                                completion(success: true)
+                                //                                completion(success: true)
                             })
                         } else {
                             print("shot not sent to duel")

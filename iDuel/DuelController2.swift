@@ -14,7 +14,7 @@ class DuelController2 {
     
     var challenger: User?
     var opponent: User?
-
+    
     static func createDuel(challengerID: String = UserController.sharedController.currentUser.id!, opponentID: String?, completion: (success: Bool, duel: Duel?) -> Void) {
         var duel = Duel(challengerID: challengerID, opponentID: opponentID, statuses: nil, shotsFired: nil)
         duel.challengerID = challengerID
@@ -103,29 +103,41 @@ class DuelController2 {
     static func sendShotToDuel(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("shotFired!")
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("\(NSDate().timeIntervalSince1970)")
         completion(success: true)
     }
     
     static func observeShotsFired(duel: Duel, completion: (winner: User?, loser: User?) -> Void) {
         guard let duelID = duel.id else { completion(winner: nil, loser: nil); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").observeEventType(.Value, withBlock: { (snapshot) in
-            guard let shots = snapshot.value as? [String] else { completion(winner: nil, loser: nil); return }
-            if shots.count == 2 {
-                var winner: User?
-                var loser: User?
-                guard let winnerID = shots.first else { completion(winner: nil, loser: nil); return }
-                UserController.fetchUserForIdentifier(winnerID, completion: { (user) in
-                    winner = user
+        FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired") { (data) in
+            guard let shotsDictionary = data as? [String: String] else { return }
+            var usersArray: [User] = []
+            var timestamps: [NSDate] = []
+            for userID in shotsDictionary.keys {
+                UserController.fetchUserForIdentifier(userID, completion: { (user) in
+                    guard let user = user else { return }
+                    usersArray.append(user)
                 })
-                guard let loserID = shots.last else { completion(winner: nil, loser: nil); return }
-                UserController.fetchUserForIdentifier(loserID, completion: { (user) in
-                    loser = user
-                })
-                print("winner: \(winner), loser: \(loser)")
-                completion(winner: winner, loser: loser)
             }
-        })
+            for interval in shotsDictionary.values {
+                if let timeInterval = NSTimeInterval(interval) {
+                    let timestamp = NSDate(timeIntervalSince1970: timeInterval)
+                    timestamps.append(timestamp)
+                }
+            }
+            var winner: User?
+            var loser: User?
+            guard let first = timestamps[0],
+                last = timestamps[1] else { print("One or neither shot(s) detetected"); return }
+            if first.isGreaterThanDate(last) {
+                winner = usersArray[0]
+                loser = usersArray[1]
+            } else {
+                winner = usersArray[1]
+                loser = usersArray[0]
+            }
+            completion(winner: winner, loser: loser)
+        }
     }
     
     static func orderDuels(duels: [Duel]) -> [Duel] {
