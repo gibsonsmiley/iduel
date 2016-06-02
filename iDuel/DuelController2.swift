@@ -128,7 +128,7 @@ class DuelController2 {
                             var loser: User?
                             print("Users Array: \(usersArray)")
                             print("Timestamps: \(timestamps)")
-                            if usersArray != [] {
+                            if usersArray.count == 2 {
                                 print("First: \(usersArray[0]) Last: \(usersArray[1])")
                                 guard let first = timestamps.first,
                                     last = timestamps.last else { print("One or neither shot(s) detetected"); return }
