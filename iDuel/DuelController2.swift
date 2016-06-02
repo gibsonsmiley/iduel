@@ -92,12 +92,15 @@ class DuelController2 {
         let randomNumber = arc4random_uniform(3) + 3 // Gives random number between 2 and 4
         let countdown = NSNumber(unsignedInt: randomNumber)
         guard let duelID = duel.id else { completion(success: false); return}
-        let fbCountdown = FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown")
-        if fbCountdown == nil {
+//        let fbCountdown = FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown")
+//        print("Countdown in Firebase: \(fbCountdown)")
+        if FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").isEqual(NSNull)  {
+//        if fbCountdown == nil {
+            print("Creating new countdown: \(countdown)")
             FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
             completion(success: true)
         } else {
-            print("Other player's countdown detected")
+            print("Other player's countdown detected: \(countdown)")
             completion(success: true)
         }
     }
