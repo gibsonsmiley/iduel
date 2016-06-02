@@ -76,4 +76,11 @@ extension NSDate {
         return isGreater
     }
     
+    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+        var isLess = false
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+            isLess = true
+        }
+        return isLess
+    }
 }

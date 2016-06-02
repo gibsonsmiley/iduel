@@ -114,39 +114,36 @@ class DuelController2 {
             var usersArray: [User] = []
             var timestamps: [NSDate] = []
             for userID in shotsDictionary.keys {
-                print("User ID: \(userID)")
                 UserController.fetchUserForIdentifier(userID, completion: { (user) in
-                    print("User object fetched. \(user?.nickname) (\(user))")
                     guard let user = user else { return }
-                    print("User object unwrapped. \(user.nickname) (\(user))")
                     usersArray.append(user)
                     for interval in shotsDictionary.values {
                         if let timeInterval = NSTimeInterval(interval) {
                             let timestamp = NSDate(timeIntervalSince1970: timeInterval)
                             timestamps.append(timestamp)
-                            var winner: User?
-                            var loser: User?
-                            print("Users Array: \(usersArray)")
-                            print("Timestamps: \(timestamps)")
+                            var winner: User? = nil
+                            var loser: User? = nil
                             if usersArray.count == 2 {
-                                print("First: \(usersArray[0]) Last: \(usersArray[1])")
                                 guard let first = timestamps.first,
                                     last = timestamps.last else { print("One or neither shot(s) detetected"); return }
                                 if first.isGreaterThanDate(last) {
-                                    winner = usersArray[0]
-                                    loser = usersArray[1]
-                                } else {
                                     winner = usersArray[1]
                                     loser = usersArray[0]
+                                    print("Winner: \(winner?.nickname) Loser: \(loser?.nickname) on Controller")
+                                    completion(winner: winner, loser: loser)
+                                } else {
+                                    winner = usersArray[0]
+                                    loser = usersArray[1]
+                                    print("Winner: \(winner?.nickname) Loser: \(loser?.nickname) on Controller")
+                                    completion(winner: winner, loser: loser)
                                 }
-                                completion(winner: winner, loser: loser)
+                            } else {
+                                print("User array not at 2")
                             }
                         }
                     }
-                    
                 })
             }
-            
         }
     }
     

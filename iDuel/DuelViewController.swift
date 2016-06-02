@@ -119,17 +119,14 @@ class DuelViewController: UIViewController {
                     guard let currentUser = UserController.sharedController.currentUser else { return }
                     DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
                         if success {
-                            
                             DuelController2.observeShotsFired(duel, completion: { (winner, loser) in
                                 guard let winner = winner, loser = loser else {
                                     print("winner not determined")
                                     return
                                 }
-                                
                                 self.winner = winner
                                 self.loser = loser
-                                print("\(winner.nickname) is the winner, \(loser.nickname) is the loser")
-                                //                                completion(success: true)
+                                print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
                             })
                         } else {
                             print("shot not sent to duel")
