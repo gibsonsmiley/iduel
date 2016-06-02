@@ -80,20 +80,26 @@ class DuelController2 {
                 completion(playersReady: true)
             }
         }
-//        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").observeEventType(.Value, withBlock: { (snapshot) in
-//            guard let statuses = snapshot.value as? [String] else { completion(playersReady: false); return }
-//            if statuses.count == 2 {
-//                completion(playersReady: true)
-//            }
-//        })
+        //        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").observeEventType(.Value, withBlock: { (snapshot) in
+        //            guard let statuses = snapshot.value as? [String] else { completion(playersReady: false); return }
+        //            if statuses.count == 2 {
+        //                completion(playersReady: true)
+        //            }
+        //        })
     }
     
     static func sendCountdownToDuel(duel: Duel, completion: (success: Bool) -> Void) {
         let randomNumber = arc4random_uniform(3) + 3 // Gives random number between 2 and 4
         let countdown = NSNumber(unsignedInt: randomNumber)
         guard let duelID = duel.id else { completion(success: false); return}
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
-        completion(success: true)
+        let fbCountdown = FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown")
+        if fbCountdown == nil {
+            FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
+            completion(success: true)
+        } else {
+            print("Other player's countdown detected")
+            completion(success: true)
+        }
     }
     
     static func observeCountdown(duel: Duel, completion: (countdown: Int64?) -> Void) {
@@ -110,7 +116,6 @@ class DuelController2 {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
         FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("\(NSDate().timeIntervalSince1970)")
-        sleep(10)
         completion(success: true)
     }
     
