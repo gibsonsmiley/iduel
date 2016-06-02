@@ -178,16 +178,16 @@ class DuelController {
                             
                                     DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
                                         if success {
-                                            
+                                            completion(duel: duel, success: true)
                                             // Send time between 2 and 4 seconds up to firebase
-                                            DuelController2.sendCountdownToDuel(duel, completion: { (success) in
-                                                if success {
-                                                    completion(duel: duel, success: true)
-                                                    
-                                                } else {
-                                                    print("countdown not sent")
-                                                }
-                                            })
+//                                            DuelController2.sendCountdownToDuel(duel, completion: { (success) in
+//                                                if success {
+//                                                    completion(duel: duel, success: true)
+//                                                    
+//                                                } else {
+//                                                    print("countdown not sent")
+//                                                }
+//                                            })
                                         } else {
                                             print("player 1 and player 2 not ready")
                                         }

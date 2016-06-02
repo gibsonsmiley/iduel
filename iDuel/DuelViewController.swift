@@ -31,38 +31,40 @@ class DuelViewController: UIViewController {
             guard let duel = duel else { return }
             if success {
                 DuelController2.observeReadyStatuses(duel, completion: { (playersReady) in
-                    if success == true {
+                    print("Players ready: \(playersReady)")
+                    if playersReady == true {
                         // Countdown starts
-                        DuelController2.observeCountdown(duel, completion: { (countdown) in
-                            if let countdown = countdown {
-                                self.duel = duel
-                                print("Countdown: \(countdown) seconds")
-                                sleep(UInt32(countdown))
-                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        //                        DuelController2.observeCountdown(duel, completion: { (countdown) in
+                        //                            if let countdown = countdown {
+                        self.duel = duel
+                        //                                print("Countdown: \(countdown) seconds")
+                        print("Countdown initiated \(NSDate())")
+                        sleep(UInt32(4))
+                        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        
+                        // User raises device, checks to see if in the correct range
+                        MotionController.sharedController.checkRange(true, completion: { (success) in
+                            if success {
                                 
-                                // User raises device, checks to see if in the correct range
-                                MotionController.sharedController.checkRange(true, completion: { (success) in
-                                    if success {
-                                        
-                                        MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                                        self.fireButton.enabled = true
-                                        let frame = CGRect(x: 0, y: -100, width: 10, height: 0)
-                                        let volumeView = MPVolumeView(frame: frame)
-                                        volumeView.sizeToFit()
-                                        UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
-                                        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
-                                    } else {
-                                        print("gun not in range to shoot")
-                                    }
-                                    
-                                })
-                                
+                                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                                self.fireButton.enabled = true
+                                let frame = CGRect(x: 0, y: -100, width: 10, height: 0)
+                                let volumeView = MPVolumeView(frame: frame)
+                                volumeView.sizeToFit()
+                                UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
+                                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
                             } else {
-                                print("countdown nil")
+                                print("gun not in range to shoot")
                             }
                             
                         })
+                        
+                    } else {
+                        print("countdown nil")
                     }
+                    
+                    //                        })
+                    //                    }
                 })
             } else {
                 print("not shooting for some reason")

@@ -75,7 +75,8 @@ class DuelController2 {
     static func observeReadyStatuses(duel: Duel, completion: (playersReady: Bool) -> Void) {
         guard let duelID = duel.id else { completion(playersReady: false); return }
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/statuses") { (data) in
-            guard let statuses = data as? [String] else { completion(playersReady: false); return }
+            guard let statuses = data as? [String: String] else { completion(playersReady: false); return }
+            print("Statuses count: \(statuses.count)")
             if statuses.count == 2 {
                 completion(playersReady: true)
             }
@@ -100,7 +101,7 @@ class DuelController2 {
             FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
             completion(success: true)
         } else {
-            print("Other player's countdown detected: \(countdown)")
+//            print("Other player's countdown detected: \(countdown)")
             completion(success: true)
         }
     }
