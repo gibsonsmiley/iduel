@@ -99,7 +99,7 @@ class DuelViewController: UIViewController {
                     
                     self.winner = winner
                     self.loser = loser
-                    print("\(winner.nickname) is the winner, \(loser.nickname) is the loser")
+                    print(" Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
                     //                                completion(success: true)
                 })
             } else {
@@ -109,7 +109,6 @@ class DuelViewController: UIViewController {
     }
     
     func volumeChanged(notification: NSNotification) {
-        
         if let userInfo = notification.userInfo {
             if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
                 if volumeChangeType == "ExplicitVolumeChange" {
