@@ -28,11 +28,15 @@ class VictoryViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        guard let currentUser = UserController.sharedController.currentUser else { return }
-        if currentUser == self.winner {
+        guard let currentUser = UserController.sharedController.currentUser,
+            winner = self.winner,
+            loser = self.loser else { return }
+        if currentUser.nickname == winner.nickname {
             self.victoryImageView.image = UIImage(named: "VICTORYViewScreen")
-        } else if currentUser == self.loser {
+        } else if currentUser.nickname == loser.nickname {
             self.victoryImageView.image = UIImage(named: "DEADViewScreen")
+        } else {
+            self.victoryImageView.image = UIImage(named: "tutorial")
         }
     }
     
