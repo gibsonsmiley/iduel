@@ -429,7 +429,7 @@
                             <tableViewSection headerTitle="Effects" id="dZx-Js-cRH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="jNT-SJ-UgF">
-                                        <rect key="frame" x="0.0" y="114" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -461,7 +461,7 @@
                             <tableViewSection headerTitle="Gun Orientation" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="209" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="207.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -493,7 +493,7 @@
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="140" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="304" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="301.5" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
@@ -521,7 +521,7 @@
                             <tableViewSection headerTitle="Credits" id="fnz-vd-Ako">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="61" id="6bA-V9-MGF">
-                                        <rect key="frame" x="0.0" y="495" width="414" height="61"/>
+                                        <rect key="frame" x="0.0" y="491.5" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bA-V9-MGF" id="st4-ue-dHw">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -730,7 +730,7 @@
         <image name="tutorial" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e5R-19-Byv"/>
+        <segue reference="tpf-uc-Vug"/>
         <segue reference="5CV-gH-QCM"/>
     </inferredMetricsTieBreakers>
 </document>
