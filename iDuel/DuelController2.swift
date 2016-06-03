@@ -119,7 +119,7 @@ class DuelController2 {
     static func sendShotToDuel(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("\(NSDate().timeIntervalSince1970)")
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(NSDate().timeIntervalSince1970)").setValue("\(userID)")
         completion(success: true)
     }
     
@@ -146,21 +146,23 @@ class DuelController2 {
                                     winner = usersArray[0]
                                     loser = usersArray[1]
                                     print("First in array is winner | Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
-                                    completion(winner: winner, loser: loser)
+//                                    completion(winner: winner, loser: loser)
                                 } else {
                                     winner = usersArray[0]
                                     loser = usersArray[1]
                                     print("Last in array is winner | Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
-                                    completion(winner: winner, loser: loser)
+//                                    completion(winner: winner, loser: loser)
                                 }
                             } else {
                                 print("User array not at 2")
                             }
+                            completion(winner: winner, loser: loser)
                         }
                     }
                 })
             }
         }
+        
     }
     
     static func orderDuels(duels: [Duel]) -> [Duel] {
