@@ -9,24 +9,43 @@
 import UIKit
 
 class VictoryViewController: UIViewController {
-
+    
     @IBOutlet weak var victoryLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var exitGameButton: UIButton!
+    @IBOutlet weak var victoryImageView: UIImageView!
     
     var duel: Duel?
-    
-    enum victory {
-        case Winner
-        case Loser
-    }
+    var winner: User?
+    var loser: User?
     
     // MARK: - View
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let currentUser = UserController.sharedController.currentUser,
+            winner = self.winner,
+            loser = self.loser else { return }
+        if currentUser.nickname == winner.nickname {
+            self.victoryImageView.image = UIImage(named: "VICTORYViewScreen")
+        } else if currentUser.nickname == loser.nickname {
+            self.victoryImageView.image = UIImage(named: "DEADViewScreen")
+        } else {
+            self.victoryImageView.image = UIImage(named: "tutorial")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let duel = self.duel else { return }
+        DuelController2.deleteDuel(duel) { (success) in
+            if success == true {
+                print("Duel successfully deleted")
+            }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("Memory warning on \(self)")
@@ -34,14 +53,10 @@ class VictoryViewController: UIViewController {
     
     // MARK: - Methods
     
-    func updateWithDuel(duel: Duel, victory: String) {
+    func updateWithDuel(duel: Duel, winner: User, loser: User) {
         self.duel = duel
-    
-        if victory == "winner" {
-            self.victoryLabel.text = "You Won!"
-        } else if victory == "loser" {
-            self.victoryLabel.text = "You Lost!"
-        }
+        self.winner = winner
+        self.loser = loser
     }
     
     // MARK: - Actions
@@ -54,15 +69,15 @@ class VictoryViewController: UIViewController {
         // Delete current duel
         // Move back to set up duel view
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

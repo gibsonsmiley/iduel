@@ -13,6 +13,8 @@ import AudioToolbox
 class DuelController {
     
     static let sharedController = DuelController()
+    var player1: User?
+    var player2: User?
     
     // Self explanitory
     static func createDuel(player1: User?, player2: User?, completion: (success: Bool, duel: Duel?) -> Void) {
@@ -90,16 +92,7 @@ class DuelController {
         })
     }
     
-    // This method should only be called if the checkReadyStatus returns two "true" bools
-    // Calls the wait for countdown method, then the check fire method, then the victory method
-    static func startDuel(duel: Duel, completion:(success: Bool) -> Void) {
-        //        guard let duelID = duel.id else { return }
-        countdown(duel, completion: { (countdown) in
-            waitForCountdown(duel)
-            completion(success: true)
-        })
-        
-    }
+    
     
     // recognizes user's button tap and sends a value to Firebase
     static func fire(duel: Duel, user: User) {
@@ -141,73 +134,78 @@ class DuelController {
     }
     
     // Observes countdown and holds all methods for that time, then vibrates player's phones
-    static func waitForCountdown(duel: Duel) {
-        guard let duelID = duel.id else { return }
+    static func waitForCountdown(duel: Duel, completion:(success: Bool) -> Void) {
+        guard let duelID = duel.id else { completion(success: false); return }
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/countdown") { (data) in
-            guard let countdown = data as? Int64 else { return }
-            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
-            dispatch_after(time, dispatch_get_main_queue(), {
-                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate)) // May need to exit or invalidate this: http://stackoverflow.com/a/25120393/3681880
-            })
+            if let countdown = data as? Int64 {
+                
+                //else { completion(success: false); return }
+                let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), countdown)
+                dispatch_after(time, dispatch_get_main_queue(), {
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate)) // May need to exit or invalidate this: http://stackoverflow.com/a/25120393/3681880
+                    completion(success: true)
+                })
+            } else {
+                completion(success: false)
+                return
+            }
         }
     }
     
-    var player1: User?
-    var player2: User?
     
-    static func duelStart(duel: Duel?, completion:(success: Bool) -> Void) {
+    
+    static func duelStart(duel: Duel?, completion:(duel: Duel?, success: Bool) -> Void) {
+        // User points phone down by waist, checks to see if the device is in range
         MotionController.sharedController.checkRange(false) { (success) in
             if success {
+                print("Device at waist")
                 MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                NSThread.sleepForTimeInterval(0.5)
+                
+                //User flicks phone to show they are ready for the duel to begin
                 MotionController.sharedController.checkFlick({ (success) in
                     if success {
+                        print("Flick successful")
                         MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+                        SystemSoundID.playGunCocking("GunCocking", withExtenstion: "mp3")
+                        
+                        // check to see if there is a duel
                         if let duel = duel {
-                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
-                                if success {
-//                                    UserController.fetchUserForIdentifier(duel.challengerID, completion: { (user) in
-//                                        guard let user = user else { return }
-//                                        sharedController.player1 = user
-//                                    })
-//                                    UserController.fetchUserForIdentifier(duel.opponentID!, completion: { (user) in
-//                                        guard let user = user else { return }
-//                                        sharedController.player2 = user
-//                                    })
-                                    
-//                                    DuelController.checkReadyStatus(duel, player1: duel.c, player2: duel.player2, completion: { (player1Ready, player2Ready) in
-//                                        if player1Ready && player2Ready {
-                                            DuelController.startDuel(duel, completion: { (success) in
-                                                if success {
-                                                    MotionController.sharedController.checkRange(true, completion: { (success) in
-                                                        if success {
-                                                            MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                                                            completion(success: true)
-                                                        } else {
-                                                            print("gun not in range to shoot")
-                                                        }
-                                                    })
-                                                } else {
-                                                    print("duel not started")
-                                                }
-                                            })
-//                                            { else {
-//                                            print("player 1 and player 2 not ready")
-//                                        }
-//                                    })
-                                } else {
-                                    print("player not ready")
-                                }
-                                
-                            })
+                            
+                            // check to see if the players are ready
+//                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+//                                if success {
+                            
+                                    DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+                                        if success {
+                                            completion(duel: duel, success: true)
+                                            // Send time between 2 and 4 seconds up to firebase
+//                                            DuelController2.sendCountdownToDuel(duel, completion: { (success) in
+//                                                if success {
+//                                                    completion(duel: duel, success: true)
+//                                                    
+//                                                } else {
+//                                                    print("countdown not sent")
+//                                                }
+//                                            })
+                                        } else {
+                                            print("player 1 and player 2 not ready")
+                                        }
+                                    })
+//                                } else {
+//                                    print("player not ready")
+//                                }
+//                            })
                         } else {
                             print("duel not ready")
+                            
                         }
                     } else {
-                        print("flick no successful")
+                        print("No flick detected")
                     }
                 })
             } else {
-                print("device is not in range")
+                print("Device is not in range")
             }
         }
     }

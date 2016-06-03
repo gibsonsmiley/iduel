@@ -23,7 +23,7 @@ class User: Equatable, FirebaseType {
             UserController.sharedController.currentUser.save()
         }
     }
-    var timestamp: NSDate 
+    var timestamp: NSDate
     var id: String?
     var endpoint: String {
         return "users"
@@ -34,7 +34,7 @@ class User: Equatable, FirebaseType {
         self.duelIDs = duelIDs
         self.timestamp = timestamp
     }
-        
+    
     var jsonValue: [String : AnyObject] {
         var json: [String: AnyObject] = [kNickname: nickname, kTimestamp: timestamp.timeIntervalSince1970]
         if let duelIDs = duelIDs {
@@ -57,4 +57,30 @@ class User: Equatable, FirebaseType {
 
 func == (lhs: User, rhs: User) -> Bool {
     return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+}
+
+extension NSDate {
+    func equalToDate(dateToCompare: NSDate) -> Bool {
+        var isEqualTo = false
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
+            isEqualTo = true
+        }
+        return isEqualTo
+    }
+    
+    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+        var isGreater = false
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+            isGreater = true
+        }
+        return isGreater
+    }
+    
+    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+        var isLess = false
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+            isLess = true
+        }
+        return isLess
+    }
 }

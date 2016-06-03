@@ -49,18 +49,21 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         DuelController.fetchAllDuels { (duels) in
             guard let duels = duels else { completion(duels: nil); return }
             for duel in duels {
-                if duel.timestamp.timeIntervalSinceNow > 30 * 60 {
+                if duel.timestamp.timeIntervalSinceNow > 2 * 60 {
                     DuelController.deleteDuel(duel, completion: { (success) in
                         if success == true {
                             // Successful deletion
+                            self.refreshControl?.endRefreshing()
                         } else {
                             // Deletion failed
+                            self.refreshControl?.endRefreshing()
                         }
                     })
                 } else {
                     // Duel isn't older than a half hour - keep it
                     
                     self.allDuels.append(duel)
+                    self.refreshControl?.endRefreshing()
                 }
             }
             completion(duels: self.allDuels)
@@ -93,6 +96,12 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func userRefreshedTable(sender: AnyObject) {
+        fetchAllDuels()
+        self.tableView.reloadData()
+        
     }
     
     // MARK: - Table view data source
@@ -150,42 +159,3 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         }
     }
 }
-
-
-
-
-
-
-//    func fetchAllUsers() {
-//        manageAllUsers({ (users) in
-//            guard let users = users else { return }
-//            self.allUsers = users
-//            self.tableView.reloadData()
-//        })
-//    }
-
-//    func manageAllUsers(completion: (users:[User]?) -> Void) {
-//        UserController.fetchAllUsers { (users) in
-//            guard let users = users else { completion(users: nil); return }
-//            for user in users {
-//                guard let userID = user.id else { return }
-//                guard let currentUser = UserController.currentUser else { return }
-//                if userID == currentUser.id {
-//                } else {
-//                    if user.timestamp.timeIntervalSinceNow > 24 * 60 * 60 {
-//                        UserController.deleteUser(user, completion: { (success) in
-//                            if success {
-//                                // Successful deletion
-//                            } else {
-//                                // Deletion failed
-//                            }
-//                        })
-//                    } else {
-//                        // User is younger than 24 hours, keep them and return them in the completion
-//                        self.allUsers.append(user)
-//                    }
-//                }
-//            }
-//            completion(users: self.allUsers)
-//        }
-//    }

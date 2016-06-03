@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreMotion
+import AudioToolbox
+import AVFoundation
+import MediaPlayer
 
 class DuelViewController: UIViewController {
     
@@ -23,7 +26,17 @@ class DuelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        duelStart()
+        DuelController.duelStart(duel) { (success) in
+            if success {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.volumeChanged(_:)), name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
+                let frame = CGRect(x: 0, y: -100, width: 10, height: 0)
+                let volumeView = MPVolumeView(frame: frame)
+                volumeView.sizeToFit()
+                UIApplication.sharedApplication().windows.first?.addSubview(volumeView)
+            } else {
+                print("not shooting for some reason")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,22 +49,28 @@ class DuelViewController: UIViewController {
         self.duel = duel
     }
     
-    func duelStart() {
-        MotionController.sharedController.checkRange(false) { (success) in
-            if success {
-                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
-                MotionController.sharedController.checkFlick({ (success) in
-                    if success {
-                        if let duel = self.duel {
-                            DuelController.playerReady(UserController.currentUser, duel: duel)
-                            DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: <#T##(player1Ready: Bool, player2Ready: Bool) -> Void#>)
-                        }
-                        
-                    }
-                })
-            }
-        }
-        
+//    func duelStart() {
+//        MotionController.sharedController.checkRange(false) { (success) in
+//            if success {
+//                MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
+//                MotionController.sharedController.checkFlick({ (success) in
+//                    if success {
+//                        if let duel = self.duel {
+//                            DuelController.playerReady(UserController.currentUser, duel: duel, completion: { (success) in
+//                                if success {
+//                                    DuelController.checkReadyStatus(duel, player1: duel.player1, player2: duel.player2, completion: { (player1Ready, player2Ready) in
+//                                        if player1Ready && player2Ready {
+//                                            DuelController.startDuel(duel)
+//                                        }
+//                                    })
+//                                }
+//                            })
+//                        }
+//                    }
+//                })
+//            }
+//        }
+//  }
         
         //        MotionController.sharedController.trackMotionForDuel { (currentPosition) in
         //            guard let currentPosition = currentPosition else { return }
@@ -89,7 +108,7 @@ class DuelViewController: UIViewController {
         //              })
         //        })
         //       }
-    }
+    
     
     // MARK: - Actions
     
@@ -101,6 +120,18 @@ class DuelViewController: UIViewController {
     
     @IBAction func fireButtonTapped(sender: AnyObject) {
         // FIRE!
+    }
+    
+    func volumeChanged(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            if let volumeChangeType = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String {
+                if volumeChangeType == "ExplicitVolumeChange" {
+                    SystemSoundID.playGunShot1("1gunshot", withExtenstion: "mp3")
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                }
+            }
+        }
     }
     
     // MARK: - Navigation

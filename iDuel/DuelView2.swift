@@ -1,51 +1,33 @@
 //
-//  DuelViewController.swift
-//  iDuel
+//  DuelView2.swift
+//  Duellum
 //
-//  Created by Gibson Smiley on 5/16/16.
+//  Created by Gibson Smiley on 5/30/16.
 //  Copyright © 2016 Gibson Smiley. All rights reserved.
 //
 
 import UIKit
 import CoreMotion
 import AudioToolbox
+import AVFoundation
+import MediaPlayer
 
-class DuelViewController: UIViewController {
+class DuelView2: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var fireButton: UIButton!
-    @IBOutlet weak var gunImageView: UIButton!
     
     var duel: Duel?
     var winner: User?
     var loser: User?
     
-    // MARK: - View
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        handPosition()
-        duelStart()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("Memory warning on \(self)")
-    }
-    
-    // MARK: Methods
-    
-    func handPosition() {
-        if NSUserDefaults.standardUserDefaults().boolForKey("leftHand") == true {
-            gunImageView.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
+        let leftHand = NSUserDefaults.standardUserDefaults().boolForKey("leftHand")
+        if leftHand == true {
+            self.fireButton.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
         } else {
-            gunImageView.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
+            self.fireButton.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
         }
-    }
-    
-    func updateWithDuel(duel: Duel) {
-        self.duel = duel
     }
     
     func duelStart() {
@@ -53,7 +35,6 @@ class DuelViewController: UIViewController {
         guard let duel = self.duel else { return }
         MotionController.sharedController.beginMotionTracking { (currentPosition, raised, lowered) in
             if lowered == true {
-                print("In lowered position")
                 MotionController.sharedController.checkFlick({ (success) in // Does this function continue looking?
                     if success == true {
                         // Play "gun cocked" noise
@@ -122,20 +103,6 @@ class DuelViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
-        guard let duel = self.duel else { return }
-        DuelController2.deleteDuel(duel) { (success) in
-            if success == true {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            } else {
-                print("Couldn't delete duel")
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        }
-    }
-    
     @IBAction func fireButtonTapped(sender: AnyObject) {
         // FIRE!
         guard let duel = self.duel else { return }
@@ -143,23 +110,8 @@ class DuelViewController: UIViewController {
             if success == true {
                 self.duelEnd()
             } else {
-                print("Couldn't send shot to firebase")
+                // Couldn't send shot to firebase
             }
-        }
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toVictory" {
-            guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
-            guard let duel = duel else { return }
-            if winner != nil {
-                destinationViewController.updateWithDuel(duel, victory: "winner")
-            } else if loser != nil {
-                destinationViewController.updateWithDuel(duel, victory: "loser")
-            }
-            _ = destinationViewController.view
         }
     }
 }
