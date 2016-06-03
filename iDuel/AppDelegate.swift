@@ -4,7 +4,7 @@
 //  iDuel
 //
 //  Created by Gibson Smiley on 5/16/16.
-//  Copyright © 2016 Gibson Smiley. All rights reserved.
+//  Copyright © 2016 Gibson Smiley. All rights reserved.it
 //
 
 import UIKit
