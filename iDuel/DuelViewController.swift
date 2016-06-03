@@ -104,6 +104,12 @@ class DuelViewController: UIViewController {
                     self.winner = winner
                     self.loser = loser
                     print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
+                    guard let duel = self.duel else { return }
+                    DuelController2.deleteDuel(duel) { (success) in
+                        if success == true {
+                            print("Duel successfully deleted")
+                        }
+                    }
                     self.performSegueWithIdentifier("toVictory", sender: self)
                 })
             } else {

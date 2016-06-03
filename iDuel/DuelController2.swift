@@ -143,13 +143,13 @@ class DuelController2 {
                                 guard let first = timestamps.first,
                                     last = timestamps.last else { print("One or neither shot(s) detetected"); return }
                                 if first.isGreaterThanDate(last) {
-                                    winner = usersArray[1]
-                                    loser = usersArray[0]
+                                    winner = usersArray[0]
+                                    loser = usersArray[1]
                                     print("0>1 Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
                                     completion(winner: winner, loser: loser)
                                 } else {
-                                    winner = usersArray[0]
-                                    loser = usersArray[1]
+                                    winner = usersArray[1]
+                                    loser = usersArray[0]
                                     print("0<1 Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
                                     completion(winner: winner, loser: loser)
                                 }

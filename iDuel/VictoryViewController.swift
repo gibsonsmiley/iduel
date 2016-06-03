@@ -37,13 +37,7 @@ class VictoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let duel = self.duel else { return }
-        DuelController2.deleteDuel(duel) { (success) in
-            if success == true {
-                print("Duel successfully deleted")
             }
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,15 +54,6 @@ class VictoryViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
-        guard let winner = winner,
-            loser = loser,
-            winnerID = winner.id,
-            loserID = loser.id else { return }
-        DuelController2.createDuel(loserID, opponentID: winnerID) { (success, duel) in
-            if success == true {
-                self.duel = duel
-            }
-        }
     }
     
     @IBAction func exitGameButtonTapped(sender: AnyObject) {
@@ -81,8 +66,16 @@ class VictoryViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toRematch" {
             guard let destinationViewController = segue.destinationViewController as? SetUpDuelViewController else { return }
-            guard let duel = self.duel else { return }
-            destinationViewController.updateWithDuel(duel)
+            guard let winner = winner,
+                loser = loser,
+                winnerID = winner.id,
+                loserID = loser.id else { return }
+            DuelController2.createDuel(loserID, opponentID: winnerID) { (success, duel) in
+                if success == true {
+                    guard let duel = duel else { return }
+                    destinationViewController.updateWithDuel(duel)
+                }
+            }
         }
     }
 }
