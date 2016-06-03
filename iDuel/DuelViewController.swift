@@ -139,15 +139,9 @@ class DuelViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toVictory" {
             guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
-            guard let duel = self.duel,
-            winner = self.winner,
+            guard let winner = self.winner,
             loser = self.loser else { return }
-            destinationViewController.updateWithDuel(duel, winner: winner, loser: loser)
-//            if winner != nil {
-//                destinationViewController.updateWithDuel(duel, victory: "winner")
-//            } else if loser != nil {
-//                destinationViewController.updateWithDuel(duel, victory: "loser")
-//            }
+            destinationViewController.updateWithDuel(winner, loser: loser)
             _ = destinationViewController.view
         }
     }

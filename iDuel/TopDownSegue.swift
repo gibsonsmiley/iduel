@@ -10,6 +10,8 @@ import UIKit
 
 class TopDownSegue: UIStoryboardSegue {
     override func perform() {
+        super.perform()
+        
         let vc1 = self.sourceViewController.view as UIView
         let vc2 = self.destinationViewController.view as UIView
         
@@ -27,5 +29,4 @@ class TopDownSegue: UIStoryboardSegue {
             self.sourceViewController.navigationController?.navigationBarHidden = false
         }
     }
-
 }

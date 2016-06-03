@@ -291,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRl-Vz-nbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250.5" y="615.5"/>
+            <point key="canvasLocation" x="1252.5" y="649.5"/>
         </scene>
         <!--Victory View Controller-->
         <scene sceneID="qc5-1D-PaR">
@@ -315,6 +315,7 @@
                                 </state>
                                 <connections>
                                     <action selector="exitGameButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="YWn-cx-5wI"/>
+                                    <segue destination="jhe-fb-eAy" kind="presentation" identifier="toHome" modalTransitionStyle="flipHorizontal" id="Ik8-U5-otr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
@@ -324,7 +325,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="OKq-eY-Neg" kind="custom" customClass="TopDownSegue" id="tpf-uc-Vug"/>
+                                    <segue destination="OKq-eY-Neg" kind="presentation" identifier="toRematch" modalTransitionStyle="flipHorizontal" id="tpf-uc-Vug"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -351,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-hS-jkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760.5" y="615.5"/>
+            <point key="canvasLocation" x="1759.5" y="649.5"/>
         </scene>
         <!--Find Opponent Table View Controller-->
         <scene sceneID="b7N-cv-zv5">
@@ -730,7 +731,7 @@
         <image name="tutorial" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e5R-19-Byv"/>
-        <segue reference="5CV-gH-QCM"/>
+        <segue reference="tpf-uc-Vug"/>
+        <segue reference="oWP-EP-9Lc"/>
     </inferredMetricsTieBreakers>
 </document>

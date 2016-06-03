@@ -10,7 +10,6 @@ import UIKit
 
 class VictoryViewController: UIViewController {
     
-    @IBOutlet weak var victoryLabel: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var exitGameButton: UIButton!
     @IBOutlet weak var victoryImageView: UIImageView!
@@ -53,8 +52,7 @@ class VictoryViewController: UIViewController {
     
     // MARK: - Methods
     
-    func updateWithDuel(duel: Duel, winner: User, loser: User) {
-        self.duel = duel
+    func updateWithDuel(winner: User, loser: User) {
         self.winner = winner
         self.loser = loser
     }
@@ -62,7 +60,15 @@ class VictoryViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func playAgainButtonTapped(sender: AnyObject) {
-        
+        guard let winner = winner,
+            loser = loser,
+            winnerID = winner.id,
+            loserID = loser.id else { return }
+        DuelController2.createDuel(loserID, opponentID: winnerID) { (success, duel) in
+            if success == true {
+                self.duel = duel
+            }
+        }
     }
     
     @IBAction func exitGameButtonTapped(sender: AnyObject) {
@@ -70,14 +76,13 @@ class VictoryViewController: UIViewController {
         // Move back to set up duel view
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toRematch" {
+            guard let destinationViewController = segue.destinationViewController as? SetUpDuelViewController else { return }
+            guard let duel = self.duel else { return }
+            destinationViewController.updateWithDuel(duel)
+        }
+    }
 }
