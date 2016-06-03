@@ -19,11 +19,6 @@ class VictoryViewController: UIViewController {
     var winner: User?
     var loser: User?
     
-    enum victory {
-        case Winner
-        case Loser
-    }
-    
     // MARK: - View
     
     override func viewWillAppear(animated: Bool) {
@@ -42,6 +37,13 @@ class VictoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let duel = self.duel else { return }
+        DuelController2.deleteDuel(duel) { (success) in
+            if success == true {
+                print("Duel successfully deleted")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

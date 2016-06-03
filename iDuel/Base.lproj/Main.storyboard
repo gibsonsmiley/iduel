@@ -315,7 +315,6 @@
                                 </state>
                                 <connections>
                                     <action selector="exitGameButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="YWn-cx-5wI"/>
-                                    <segue destination="OKq-eY-Neg" kind="custom" identifier="toSetUpCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="yDl-X2-uXZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
@@ -325,7 +324,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="Ndw-Ve-2Vz" kind="custom" identifier="victoryToDuelCustom" customClass="TopDownSegue" customModule="Duellum" customModuleProvider="target" id="7eV-OX-TqF"/>
+                                    <segue destination="OKq-eY-Neg" kind="custom" customClass="TopDownSegue" id="tpf-uc-Vug"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -358,7 +357,7 @@
         <scene sceneID="b7N-cv-zv5">
             <objects>
                 <tableViewController id="E7c-NL-zWA" customClass="FindOpponentTableViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkE-Wj-WOF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="QkE-Wj-WOF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -402,6 +401,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="IYd-Ft-mTE">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="userRefreshedTable:" destination="E7c-NL-zWA" eventType="valueChanged" id="2Kf-pc-PlG"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="cancelButton" destination="1jq-kz-h8S" id="bCg-uH-hun"/>
                         <outlet property="searchBar" destination="hMp-Au-kGz" id="szQ-ij-YgP"/>
@@ -725,8 +730,7 @@
         <image name="tutorial" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="e5R-19-Byv"/>
         <segue reference="5CV-gH-QCM"/>
-        <segue reference="7eV-OX-TqF"/>
-        <segue reference="yDl-X2-uXZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -70,6 +70,13 @@ class DuelViewController: UIViewController {
                 print("not shooting for some reason")
             }
         }
+        
+        let leftHanded = NSUserDefaults.standardUserDefaults().boolForKey("leftHand")
+        if leftHanded == true {
+            self.fireButton.setImage(UIImage(named: "LH Duel View"), forState: .Normal)
+        } else {
+            self.fireButton.setImage(UIImage(named: "RH Duel View"), forState: .Normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {

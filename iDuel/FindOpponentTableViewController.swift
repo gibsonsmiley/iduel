@@ -49,18 +49,21 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         DuelController.fetchAllDuels { (duels) in
             guard let duels = duels else { completion(duels: nil); return }
             for duel in duels {
-                if duel.timestamp.timeIntervalSinceNow > 30 * 60 {
+                if duel.timestamp.timeIntervalSinceNow > 2 * 60 {
                     DuelController.deleteDuel(duel, completion: { (success) in
                         if success == true {
                             // Successful deletion
+                            self.refreshControl?.endRefreshing()
                         } else {
                             // Deletion failed
+                            self.refreshControl?.endRefreshing()
                         }
                     })
                 } else {
                     // Duel isn't older than a half hour - keep it
                     
                     self.allDuels.append(duel)
+                    self.refreshControl?.endRefreshing()
                 }
             }
             completion(duels: self.allDuels)
@@ -93,6 +96,12 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func userRefreshedTable(sender: AnyObject) {
+        fetchAllDuels()
+        self.tableView.reloadData()
+        
     }
     
     // MARK: - Table view data source
