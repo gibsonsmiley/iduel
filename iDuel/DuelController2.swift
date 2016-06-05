@@ -79,6 +79,9 @@ class DuelController2 {
             print("Statuses count: \(statuses.count)")
             if statuses.count == 2 {
                 completion(playersReady: true)
+            } else {
+                print("Status count not equal to 2")
+                completion(playersReady: false)
             }
         }
         //        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").observeEventType(.Value, withBlock: { (snapshot) in
@@ -93,15 +96,11 @@ class DuelController2 {
         let randomNumber = arc4random_uniform(3) + 3 // Gives random number between 2 and 4
         let countdown = NSNumber(unsignedInt: randomNumber)
         guard let duelID = duel.id else { completion(success: false); return}
-//        let fbCountdown = FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown")
-//        print("Countdown in Firebase: \(fbCountdown)")
         if FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").isEqual(NSNull)  {
-//        if fbCountdown == nil {
             print("Creating new countdown: \(countdown)")
             FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
             completion(success: true)
         } else {
-//            print("Other player's countdown detected: \(countdown)")
             completion(success: true)
         }
     }
@@ -133,6 +132,10 @@ class DuelController2 {
                 UserController.fetchUserForIdentifier(userID, completion: { (user) in
                     guard let user = user else { return }
                     usersArray.append(user)
+                    print("First in array:\(usersArray[0].nickname)")
+                    if usersArray.count == 2 {
+                        print("Second in array \(usersArray[1].nickname)")
+                    }
 //                    for interval in shotsDictionary.values {
 //                        if let timeInterval = NSTimeInterval(interval) {
 //                            let timestamp = NSDate(timeIntervalSince1970: timeInterval)
@@ -146,6 +149,8 @@ class DuelController2 {
                                     winner = usersArray[0]
                                     loser = usersArray[1]
                                     print("First in array is winner | Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
+                                completion(winner: winner, loser: loser)
+
 //                                    completion(winner: winner, loser: loser)
 //                                } else {
 //                                    winner = usersArray[0]
@@ -156,7 +161,6 @@ class DuelController2 {
                             } else {
                                 print("User array not at 2")
                             }
-                            completion(winner: winner, loser: loser)
 //                        }
 //                    }
                 })
