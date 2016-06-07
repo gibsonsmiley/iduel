@@ -16,14 +16,7 @@ class DuelController {
     var player1: User?
     var player2: User?
     
-       
-    static func deleteDuel(duel: Duel, completion: (success: Bool) -> Void) {
-        duel.delete()
-        guard let duelID = duel.id else { completion(success: false); return }
-        fetchDuelForID(duelID) { (duel) in
-            completion(success: true)
-        }
-    }
+    
     
     static func fetchDuelForID(id: String, completion: (duel: Duel?) -> Void) {
         FirebaseController.dataAtEndpoint("duels/\(id)") { (data) in
