@@ -86,29 +86,6 @@ class DuelController2 {
         }
     }
     
-    static func sendCountdownToDuel(duel: Duel, completion: (success: Bool) -> Void) {
-        let randomNumber = arc4random_uniform(3) + 3 // Gives random number between 2 and 4
-        let countdown = NSNumber(unsignedInt: randomNumber)
-        guard let duelID = duel.id else { completion(success: false); return}
-        if FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").isEqual(NSNull)  {
-            print("Creating new countdown: \(countdown)")
-            FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
-            completion(success: true)
-        } else {
-            completion(success: true)
-        }
-    }
-    
-    static func observeCountdown(duel: Duel, completion: (countdown: Int64?) -> Void) {
-        guard let duelID = duel.id else { completion(countdown: nil); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").observeEventType(.Value, withBlock: { (snapshot) in
-            guard let countdown = snapshot.value as? NSNumber else { completion(countdown: nil); return }
-            let countdownInt = countdown.integerValue
-            let countdownInt64 = Int64(countdownInt)
-            completion(countdown: countdownInt64)
-        })
-    }
-    
     static func sendShotToDuel(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
