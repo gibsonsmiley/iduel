@@ -60,9 +60,7 @@ class DuelViewController: UIViewController {
                     } else {
                         print("one players not ready")
                     }
-                    
-                    //                        })
-                    //                    }
+
                 })
             } else {
                 print("not shooting for some reason")
