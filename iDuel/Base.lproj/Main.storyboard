@@ -304,7 +304,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
                                 <rect key="frame" x="211" y="548" width="156" height="44"/>
-                                <state key="normal" image="NewDuelButton">
+                                <state key="normal" image="HomeButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -318,7 +318,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="OKq-eY-Neg" kind="custom" customClass="TopDownSegue" id="tpf-uc-Vug"/>
+                                    <segue destination="OKq-eY-Neg" kind="presentation" identifier="toRematch" modalTransitionStyle="flipHorizontal" id="tpf-uc-Vug"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -423,7 +423,7 @@
                             <tableViewSection headerTitle="Effects" id="dZx-Js-cRH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="jNT-SJ-UgF">
-                                        <rect key="frame" x="0.0" y="113.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNT-SJ-UgF" id="gL3-WE-ERt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -455,7 +455,7 @@
                             <tableViewSection headerTitle="Gun Orientation" id="OK3-rV-Pah">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Gab-FX-UOT">
-                                        <rect key="frame" x="0.0" y="207.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="209" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gab-FX-UOT" id="j0n-oF-UBc">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -487,7 +487,7 @@
                             <tableViewSection headerTitle="Disclaimer" id="MEG-Vx-eWF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="140" id="OFC-PJ-BwF">
-                                        <rect key="frame" x="0.0" y="301.5" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="304" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFC-PJ-BwF" id="FCW-b0-UXy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
@@ -515,7 +515,7 @@
                             <tableViewSection headerTitle="Credits" id="fnz-vd-Ako">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="61" id="6bA-V9-MGF">
-                                        <rect key="frame" x="0.0" y="491.5" width="414" height="61"/>
+                                        <rect key="frame" x="0.0" y="495" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bA-V9-MGF" id="st4-ue-dHw">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -697,7 +697,7 @@
         <image name="DuelButton" width="346" height="74"/>
         <image name="DuelViewMen" width="414" height="736"/>
         <image name="EnterAppButton" width="188" height="44"/>
-        <image name="NewDuelButton" width="188" height="44"/>
+        <image name="HomeButton" width="188" height="44"/>
         <image name="RH Duel View" width="414" height="736"/>
         <image name="RematchButton" width="188" height="44"/>
         <image name="SettingsButton" width="51" height="50"/>
