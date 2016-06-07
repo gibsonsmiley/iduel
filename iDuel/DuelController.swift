@@ -170,6 +170,51 @@ class DuelController {
         }
     }
     
+    static func shoot(duel: Duel, user: User, completion: (success: Bool) -> Void) {
+        guard let userID = user.id,
+            duelID = duel.id else { completion(success: false); return }
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired2/\(userID)").setValue(NSDate().timeIntervalSince1970)
+        completion(success: true)
+    }
+    
+    static func watchShots(duel: Duel, completion: (winner: User?, loser: User?) -> Void) {
+        guard let duelID = duel.id else { completion(winner: nil, loser: nil); return }
+        FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired2") { (data) in
+            guard let shotsDictionary = data as? [String: Double] else { completion(winner: nil, loser: nil); return }
+            print("Keys returned: \(shotsDictionary.keys)")
+            print("Values returned: \(shotsDictionary.values)")
+            var usersArray: [User] = []
+            var timestampArray: [NSDate] = []
+            for interval in shotsDictionary.values {
+                let timestamp = NSDate(timeIntervalSince1970: interval)
+                timestampArray.append(timestamp)
+                for userID in shotsDictionary.keys {
+                    print("Users array: \(usersArray)")
+                    UserController.fetchUserForIdentifier(userID, completion: { (user) in
+                        guard let user = user else { completion(winner: nil, loser: nil); return }
+                        usersArray.append(user)
+                    })
+                }
+                if timestampArray.count == 2 {
+                    var winner: User? = nil
+                    var loser: User? = nil
+                    if timestampArray[0].isGreaterThanDate(timestampArray[1]) {
+                        winner = usersArray[0]
+                        loser = usersArray[1]
+                        completion(winner: winner, loser: loser)
+                    } else {
+                        winner = usersArray[1]
+                        loser = usersArray[0]
+                        completion(winner: winner, loser: loser)
+                    }
+                } else {
+                    print("timestamp array is not equal to 2")
+                }
+                
+            }
+        }
+    }
+    
     static func orderDuels(duels: [Duel]) -> [Duel] {
         return duels.sort({$0.0.timestamp.timeIntervalSince1970.hashValue >   $0.1.timestamp.timeIntervalSince1970.hashValue})
     }
