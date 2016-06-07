@@ -34,11 +34,7 @@ class DuelViewController: UIViewController {
                 DuelController2.observeReadyStatuses(duel, completion: { (playersReady) in
                     print("Players ready: \(playersReady)")
                     if playersReady == true {
-                        // Countdown starts
-                        //                        DuelController2.observeCountdown(duel, completion: { (countdown) in
-                        //                            if let countdown = countdown {
                         self.duel = duel
-                        //                                print("Countdown: \(countdown) seconds")
                         print("Countdown initiated \(NSDate())")
                         sleep(UInt32(4))
                         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -63,9 +59,6 @@ class DuelViewController: UIViewController {
                     } else {
                         print("countdown nil")
                     }
-                    
-                    //                        })
-                    //                    }
                 })
             } else {
                 print("not shooting for some reason")
@@ -105,6 +98,12 @@ class DuelViewController: UIViewController {
                     self.winner = winner
                     self.loser = loser
                     print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
+                    guard let duel = self.duel else { return }
+                    DuelController2.deleteDuel(duel) { (success) in
+                        if success == true {
+                            print("Duel successfully deleted")
+                        }
+                    }
                     self.performSegueWithIdentifier("toVictory", sender: self)
                 })
             } else {
@@ -140,15 +139,9 @@ class DuelViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toVictory" {
             guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
-            guard let duel = self.duel,
-            winner = self.winner,
-            loser = self.loser else { return }
-            destinationViewController.updateWithDuel(duel, winner: winner, loser: loser)
-//            if winner != nil {
-//                destinationViewController.updateWithDuel(duel, victory: "winner")
-//            } else if loser != nil {
-//                destinationViewController.updateWithDuel(duel, victory: "loser")
-//            }
+            guard let winner = self.winner,
+                loser = self.loser else { return }
+            destinationViewController.updateWithDuel(winner, loser: loser)
             _ = destinationViewController.view
         }
     }

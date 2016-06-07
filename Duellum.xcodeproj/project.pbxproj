@@ -25,9 +25,9 @@
 		C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349C3971CEA5D5200F3DCA7 /* MotionController.swift */; };
 		C3E6311F1CEBB4420042441F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6311E1CEBB4420042441F /* Stack.swift */; };
 		F061E01E1CFCBC11003C8F81 /* DuelView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F061E01D1CFCBC11003C8F81 /* DuelView2.swift */; };
+		F06DF2DE1D02322B00AE3012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0641CEA328C00AD16A3 /* Main.storyboard */; };
 		F0AEE50D1CF606A1005B4691 /* DuelController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AEE50C1CF606A1005B4691 /* DuelController2.swift */; };
 		F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0601CEA328C00AD16A3 /* AppDelegate.swift */; };
-		F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0641CEA328C00AD16A3 /* Main.storyboard */; };
 		F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0671CEA328C00AD16A3 /* Assets.xcassets */; };
 		F0BBA06B1CEA328C00AD16A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BBA0691CEA328C00AD16A3 /* LaunchScreen.storyboard */; };
 		F0BBA0731CEA32D400AD16A3 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BBA0721CEA32D400AD16A3 /* Firebase.framework */; };
@@ -277,7 +277,7 @@
 				F0BBA0681CEA328C00AD16A3 /* Assets.xcassets in Resources */,
 				515E5C961CF378B20030335E /* DuelMenuTrack.mp3 in Resources */,
 				51F4BFDB1CEF788E00B05D35 /* 2gunshot.mp3 in Resources */,
-				F0BBA0661CEA328C00AD16A3 /* Main.storyboard in Resources */,
+				F06DF2DE1D02322B00AE3012 /* Main.storyboard in Resources */,
 				51F4BFDC1CEF788E00B05D35 /* GunCocking.mp3 in Resources */,
 				51F4BFDA1CEF788E00B05D35 /* 1gunshot.mp3 in Resources */,
 			);

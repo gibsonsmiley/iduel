@@ -79,6 +79,9 @@ class DuelController2 {
             print("Statuses count: \(statuses.count)")
             if statuses.count == 2 {
                 completion(playersReady: true)
+            } else {
+                print("Status count not equal to 2")
+                completion(playersReady: false)
             }
         }
         //        FirebaseController.base.childByAppendingPath("duels/\(duelID)/statuses").observeEventType(.Value, withBlock: { (snapshot) in
@@ -93,15 +96,11 @@ class DuelController2 {
         let randomNumber = arc4random_uniform(3) + 3 // Gives random number between 2 and 4
         let countdown = NSNumber(unsignedInt: randomNumber)
         guard let duelID = duel.id else { completion(success: false); return}
-//        let fbCountdown = FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown")
-//        print("Countdown in Firebase: \(fbCountdown)")
         if FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").isEqual(NSNull)  {
-//        if fbCountdown == nil {
             print("Creating new countdown: \(countdown)")
             FirebaseController.base.childByAppendingPath("duels/\(duelID)/countdown").setValue(countdown)
             completion(success: true)
         } else {
-//            print("Other player's countdown detected: \(countdown)")
             completion(success: true)
         }
     }
@@ -119,7 +118,7 @@ class DuelController2 {
     static func sendShotToDuel(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id else { completion(success: false); return }
         guard let duelID = duel.id else { completion(success: false); return }
-        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAppendingPath("\(userID)").setValue("\(NSDate().timeIntervalSince1970)")
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired").childByAutoId()/*childByAppendingPath("\(userID)")*/.setValue("\(userID)")
         completion(success: true)
     }
     
@@ -128,39 +127,46 @@ class DuelController2 {
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired") { (data) in
             guard let shotsDictionary = data as? [String: String] else { return }
             var usersArray: [User] = []
-            var timestamps: [NSDate] = []
-            for userID in shotsDictionary.keys {
+//            var timestamps: [NSDate] = []
+            for userID in shotsDictionary.values {
                 UserController.fetchUserForIdentifier(userID, completion: { (user) in
                     guard let user = user else { return }
                     usersArray.append(user)
-                    for interval in shotsDictionary.values {
-                        if let timeInterval = NSTimeInterval(interval) {
-                            let timestamp = NSDate(timeIntervalSince1970: timeInterval)
-                            timestamps.append(timestamp)
+                    print("First in array:\(usersArray[0].nickname)")
+                    if usersArray.count == 2 {
+                        print("Second in array \(usersArray[1].nickname)")
+                    }
+//                    for interval in shotsDictionary.values {
+//                        if let timeInterval = NSTimeInterval(interval) {
+//                            let timestamp = NSDate(timeIntervalSince1970: timeInterval)
+//                            timestamps.append(timestamp)
                             var winner: User? = nil
                             var loser: User? = nil
                             if usersArray.count == 2 {
-                                guard let first = timestamps.first,
-                                    last = timestamps.last else { print("One or neither shot(s) detetected"); return }
-                                if first.isGreaterThanDate(last) {
-                                    winner = usersArray[1]
-                                    loser = usersArray[0]
-                                    print("0>1 Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
-                                    completion(winner: winner, loser: loser)
-                                } else {
+//                                guard let first = timestamps.first,
+//                                    last = timestamps.last else { print("One or neither shot(s) detetected"); return }
+//                                if first.isGreaterThanDate(last) {
                                     winner = usersArray[0]
                                     loser = usersArray[1]
-                                    print("0<1 Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
-                                    completion(winner: winner, loser: loser)
-                                }
+                                    print("First in array is winner | Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
+                                completion(winner: winner, loser: loser)
+
+//                                    completion(winner: winner, loser: loser)
+//                                } else {
+//                                    winner = usersArray[0]
+//                                    loser = usersArray[1]
+//                                    print("Last in array is winner | Winner: \(winner!.nickname) Loser: \(loser!.nickname) on Controller")
+////                                    completion(winner: winner, loser: loser)
+//                                }
                             } else {
                                 print("User array not at 2")
                             }
-                        }
-                    }
+//                        }
+//                    }
                 })
             }
         }
+        
     }
     
     static func orderDuels(duels: [Duel]) -> [Duel] {
