@@ -33,8 +33,11 @@ class DuelViewController: UIViewController {
                 DuelController2.observeReadyStatuses(duel, completion: { (playersReady) in
                     print("Players ready: \(playersReady)")
                     if playersReady == true {
-                        
+                        // Countdown starts
+                        //                        DuelController2.observeCountdown(duel, completion: { (countdown) in
+                        //                            if let countdown = countdown {
                         self.duel = duel
+                        //                                print("Countdown: \(countdown) seconds")
                         print("Countdown initiated \(NSDate())")
                         sleep(UInt32(4))
                         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -57,7 +60,7 @@ class DuelViewController: UIViewController {
                         })
                         
                     } else {
-                        print("one players not ready")
+                        print("countdown nil")
                     }
                     
                     //                        })

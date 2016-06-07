@@ -33,7 +33,6 @@ class DuelViewController: UIViewController {
                 DuelController2.observeReadyStatuses(duel, completion: { (playersReady) in
                     print("Players ready: \(playersReady)")
                     if playersReady == true {
-                        
                         self.duel = duel
                         print("Countdown initiated \(NSDate())")
                         sleep(UInt32(4))
@@ -57,11 +56,8 @@ class DuelViewController: UIViewController {
                         })
                         
                     } else {
-                        print("one players not ready")
+                        print("countdown nil")
                     }
-                    
-                    //                        })
-                    //                    }
                 })
             } else {
                 print("not shooting for some reason")
@@ -143,7 +139,7 @@ class DuelViewController: UIViewController {
         if segue.identifier == "toVictory" {
             guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
             guard let winner = self.winner,
-            loser = self.loser else { return }
+                loser = self.loser else { return }
             destinationViewController.updateWithDuel(winner, loser: loser)
             _ = destinationViewController.view
         }
