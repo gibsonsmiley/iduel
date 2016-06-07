@@ -66,27 +66,4 @@ class MotionController {
             })
         }
     }
-    
-    func beginMotionTracking(completion: (currentPosition: CMDeviceMotion?, raised: Bool, lowered: Bool) -> Void) {
-        if motionManager.deviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 0.1
-            motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (motion, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    completion(currentPosition: nil, raised: false, lowered: false)
-                } else {
-                    guard let motion = motion else { completion(currentPosition: nil, raised: false, lowered: false); return }
-                    if motion.attitude.pitch < 0.38 && motion.attitude.pitch > -0.3 {
-                        completion(currentPosition: motion, raised: true, lowered: false)
-                    } else if motion.attitude.pitch < -0.8 {
-                        completion(currentPosition: motion, raised: false, lowered: true)
-                    } else {
-                        completion(currentPosition: motion, raised: false, lowered: false)
-                    }
-                }
-            })
-        } else {
-            // device motion is unavailable
-        }
-    }
 }
