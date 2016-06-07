@@ -49,8 +49,8 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
         DuelController.fetchAllDuels { (duels) in
             guard let duels = duels else { completion(duels: nil); return }
             for duel in duels {
-                if duel.timestamp.timeIntervalSinceNow < 2 * 60 {
-                    DuelController2.deleteDuel(duel, completion: { (success) in
+                if duel.timestamp.timeIntervalSinceNow > 2 * 60 {
+                    DuelController.deleteDuel(duel, completion: { (success) in
                         if success == true {
                             // Successful deletion
                             self.refreshControl?.endRefreshing()
