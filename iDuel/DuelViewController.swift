@@ -99,6 +99,7 @@ class DuelViewController: UIViewController {
                     }
                     self.winner = winner
                     self.loser = loser
+                    self.duel = duel
                     print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
                     guard let duel = self.duel else { return }
                     DuelController2.deleteDuel(duel) { (success) in
@@ -142,8 +143,9 @@ class DuelViewController: UIViewController {
         if segue.identifier == "toVictory" {
             guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
             guard let winner = self.winner,
-            loser = self.loser else { return }
-            destinationViewController.updateWithDuel(winner, loser: loser)
+            loser = self.loser,
+            duel = self.duel else { return }
+            destinationViewController.updateWithDuel(duel, winner: winner, loser: loser)
             _ = destinationViewController.view
         }
     }

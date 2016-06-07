@@ -34,6 +34,15 @@ class VictoryViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        guard let duel = self.duel else { return }
+        DuelController2.deleteDuel(duel) { (success) in
+            if success == true {
+                print("Duel successfully deleted")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,9 +55,10 @@ class VictoryViewController: UIViewController {
     
     // MARK: - Methods
     
-    func updateWithDuel(winner: User, loser: User) {
+    func updateWithDuel(duel: Duel, winner: User, loser: User) {
         self.winner = winner
         self.loser = loser
+        self.duel = duel
     }
     
     // MARK: - Actions
