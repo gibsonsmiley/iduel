@@ -16,24 +16,6 @@ class DuelController {
     var player1: User?
     var player2: User?
     
-    
-    
-    static func fetchDuelForID(id: String, completion: (duel: Duel?) -> Void) {
-        FirebaseController.dataAtEndpoint("duels/\(id)") { (data) in
-            guard let json = data as? [String: AnyObject] else { completion(duel: nil); return }
-            let duel = Duel(json: json, id: id)
-            completion(duel: duel)
-        }
-    }
-    
-    static func fetchAllDuels(completion: (duels: [Duel]?) -> Void) {
-        FirebaseController.dataAtEndpoint("duels") { (data) in
-            guard let json = data as? [String: AnyObject] else { completion(duels: nil); return }
-            let duels = json.flatMap({Duel(json: $0.1 as! [String: AnyObject], id: $0.0)})
-            completion(duels: duels)
-        }
-    }
-    
     // Method to add player to duel's ready array, this is the gun cock
     // This is appending data to the firebase ready array under the user's id
     static func playerReady(user: User, duel: Duel, completion:(success: Bool) -> Void) {
