@@ -170,6 +170,10 @@ class DuelController {
         }
     }
     
+    // MARK: - These are an attempt to use timestamp to determine winner
+    
+    /*
+    
     static func shoot(duel: Duel, user: User, completion: (success: Bool) -> Void) {
         guard let userID = user.id,
             duelID = duel.id else { completion(success: false); return }
@@ -215,6 +219,7 @@ class DuelController {
             }
         }
     }
+ */
     
     static func orderDuels(duels: [Duel]) -> [Duel] {
         return duels.sort({$0.0.timestamp.timeIntervalSince1970.hashValue >   $0.1.timestamp.timeIntervalSince1970.hashValue})
