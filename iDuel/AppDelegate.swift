@@ -4,7 +4,7 @@
 //  iDuel
 //
 //  Created by Gibson Smiley on 5/16/16.
-//  Copyright © 2016 Gibson Smiley. All rights reserved.
+//  Copyright © 2016 Gibson Smiley. All rights reserved.it
 //
 
 import UIKit
@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        if NSUserDefaults.standardUserDefaults().boolForKey("firstRun") == false {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let pageViewController = storyboard.instantiateViewControllerWithIdentifier("InstructionViewController")
+            self.window?.rootViewController = pageViewController
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
 
