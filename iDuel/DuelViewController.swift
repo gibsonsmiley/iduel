@@ -34,7 +34,7 @@ class DuelViewController: UIViewController {
                 DuelController2.observeReadyStatuses(duel, completion: { (playersReady) in
                     print("Players ready: \(playersReady)")
                     if playersReady == true {
-                        
+                     duelBackGroundMusic.stop()
                         self.duel = duel
                         print("Countdown initiated \(NSDate())")
                         sleep(UInt32(4))
