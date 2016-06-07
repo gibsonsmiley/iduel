@@ -43,7 +43,7 @@ class SetUpDuelViewController: UIViewController {
     
     func watchForPlayers() {
         guard let duel = self.duel else { return }
-        DuelController2.observePlayers(duel) { (challenger, opponent) in
+        DuelController.observePlayers(duel) { (challenger, opponent) in
             if let challenger = challenger {
                 self.challenger = challenger
             }
@@ -54,7 +54,7 @@ class SetUpDuelViewController: UIViewController {
     }
     
     func updateViewWithInfo() {
-        guard let opponent = DuelController2.sharedController.opponent else { return }
+        guard let opponent = DuelController.sharedController.opponent else { return }
         self.opponentLabel.text = opponent.nickname
         self.beginDuelButton.enabled = true
     }
@@ -93,7 +93,7 @@ class SetUpDuelViewController: UIViewController {
     }
     @IBAction func backButtonTapped(sender: AnyObject) {
         guard let duel = duel else { return }
-        DuelController2.deleteDuel(duel) { (success) in
+        DuelController.deleteDuel(duel) { (success) in
             if success == true {
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {

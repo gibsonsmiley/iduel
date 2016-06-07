@@ -68,33 +68,7 @@ class UserController {
             }
         }
     }
-    
-    static func fetchAllUsers(completion: (users: [User]?) -> Void) {
-        FirebaseController.dataAtEndpoint("users") { (data) in
-            if let json = data as? [String: AnyObject] {
-                let users = json.flatMap({User(json: $0.1 as! [String: AnyObject], id: $0.0)})
-                completion(users: users)
-            } else {
-                completion(users: nil)
-            }
-        }
-    }
-    
-    static func observeDuelsForUser(user: User, completion: (duels: [Duel]?) -> Void) {
-        guard let userID = user.id else { completion(duels: nil); return }
-        FirebaseController.base.childByAppendingPath("users/\(userID)/duelIDs").observeEventType(.Value, withBlock: { (snapshot) in
-            guard let duelIDsArray = snapshot.value as? [String] else { return }
-            var duels: [Duel] = []
-            for duelID in duelIDsArray {
-                DuelController2.fetchDuelForID(duelID, completion: { (duel) in
-                    guard let duel = duel else { return }
-                    duels.append(duel)
-                })
-            }
-            completion(duels: duels)
-        })
-    }
-    
+
     static func checkNicknameAvailability(nickname: String, completion: (success: Bool, error: String?) -> Void) {
         FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(nickname)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {

@@ -36,7 +36,7 @@ class VictoryViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         guard let duel = self.duel else { return }
-        DuelController2.deleteDuel(duel) { (success) in
+        DuelController.deleteDuel(duel) { (success) in
             if success == true {
                 print("Duel successfully deleted")
             }
@@ -80,7 +80,7 @@ class VictoryViewController: UIViewController {
                 loser = loser,
                 winnerID = winner.id,
                 loserID = loser.id else { return }
-            DuelController2.createDuel(loserID, opponentID: winnerID) { (success, duel) in
+            DuelController.createDuel(loserID, opponentID: winnerID) { (success, duel) in
                 if success == true {
                     guard let duel = duel else { return }
                     destinationViewController.updateWithDuel(duel)

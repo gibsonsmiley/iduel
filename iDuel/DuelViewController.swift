@@ -31,7 +31,7 @@ class DuelViewController: UIViewController {
         DuelController.duelStart(duel) { (duel, success) in
             guard let duel = duel else { return }
             if success {
-                DuelController2.observeReadyStatuses(duel, completion: { (playersReady) in
+                DuelController.observeReadyStatuses(duel, completion: { (playersReady) in
                     print("Players ready: \(playersReady)")
                     if playersReady == true {
                         
@@ -90,9 +90,9 @@ class DuelViewController: UIViewController {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         guard let duel = self.duel else { return }
         guard let currentUser = UserController.sharedController.currentUser else { return }
-        DuelController2.sendShotToDuel(duel, user: currentUser, completion: { (success) in
+        DuelController.sendShotToDuel(duel, user: currentUser, completion: { (success) in
             if success {
-                DuelController2.observeShotsFired(duel, completion: { (winner, loser) in
+                DuelController.observeShotsFired(duel, completion: { (winner, loser) in
                     guard let winner = winner, loser = loser else {
                         print("winner not determined")
                         return
@@ -102,7 +102,7 @@ class DuelViewController: UIViewController {
                     self.duel = duel
                     print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
                     guard let duel = self.duel else { return }
-                    DuelController2.deleteDuel(duel) { (success) in
+                    DuelController.deleteDuel(duel) { (success) in
                         if success == true {
                             print("Duel successfully deleted")
                         }
