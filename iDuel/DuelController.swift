@@ -171,31 +171,13 @@ class DuelController {
                         
                         // check to see if there is a duel
                         if let duel = duel {
-                            
-                            // check to see if the players are ready
-//                            DuelController.playerReady(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
-//                                if success {
-                            
-                                    DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
-                                        if success {
-                                            completion(duel: duel, success: true)
-                                            // Send time between 2 and 4 seconds up to firebase
-//                                            DuelController2.sendCountdownToDuel(duel, completion: { (success) in
-//                                                if success {
-//                                                    completion(duel: duel, success: true)
-//                                                    
-//                                                } else {
-//                                                    print("countdown not sent")
-//                                                }
-//                                            })
-                                        } else {
-                                            print("player 1 and player 2 not ready")
-                                        }
-                                    })
-//                                } else {
-//                                    print("player not ready")
-//                                }
-//                            })
+                            DuelController2.sendStatusToDuel(UserController.sharedController.currentUser, duel: duel, completion: { (success) in
+                                if success {
+                                    completion(duel: duel, success: true)
+                                } else {
+                                    print("player 1 and player 2 not ready")
+                                }
+                            })
                         } else {
                             print("duel not ready")
                             
