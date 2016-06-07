@@ -86,7 +86,7 @@ class UserController {
             guard let duelIDsArray = snapshot.value as? [String] else { return }
             var duels: [Duel] = []
             for duelID in duelIDsArray {
-                DuelController.fetchDuelForID(duelID, completion: { (duel) in
+                DuelController2.fetchDuelForID(duelID, completion: { (duel) in
                     guard let duel = duel else { return }
                     duels.append(duel)
                 })

@@ -46,7 +46,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     func manageAllDuels(completion: (duels:[Duel]?) -> Void) {
-        DuelController.fetchAllDuels { (duels) in
+        DuelController2.fetchAllDuels { (duels) in
             guard let duels = duels else { completion(duels: nil); return }
             for duel in duels {
                 if duel.timestamp.timeIntervalSinceNow > 2 * 60 {
@@ -122,7 +122,7 @@ class FindOpponentTableViewController: UITableViewController, UISearchBarDelegat
             duel = filteredDuels[indexPath.row]
         }
         if let duelID = duel.id {
-            DuelController.fetchDuelForID(duelID, completion: { (duel) in
+            DuelController2.fetchDuelForID(duelID, completion: { (duel) in
                 if let challengerID = duel?.challengerID {
                     UserController.fetchUserForIdentifier(challengerID, completion: { (user) in
                         if user != UserController.sharedController.currentUser {
