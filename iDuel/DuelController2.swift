@@ -93,6 +93,33 @@ class DuelController2 {
         completion(success: true)
     }
     
+    static func shoot(duel: Duel, user: User, completion: (success: Bool) -> Void) {
+        guard let userID = user.id,
+        duelID = duel.id else { completion(success: false); return }
+        FirebaseController.base.childByAppendingPath("duels/\(duelID)/shotsFired/\(userID)").setValue(NSDate().timeIntervalSince1970)
+        completion(success: true)
+    }
+    
+    static func watchShots(duel: Duel, completion: (winner: User?, loser: User?) -> Void) {
+        guard let duelID = duel.id else { completion(winner: nil, loser: nil); return }
+        FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired") { (data) in
+            guard let shotsDictionary = data as? [String: Double] else { completion(winner: nil, loser: nil); return }
+            var usersArray: [User] = []
+            var timestampArray: [NSDate] = []
+            for interval in shotsDictionary.values {
+                let timestamp = NSDate(timeIntervalSince1970: interval)
+                timestampArray.append(timestamp)
+                
+            }
+            for userID in shotsDictionary.keys {
+                UserController.fetchUserForIdentifier(userID, completion: { (user) in
+                    guard let user = user else { completion(winner: nil, loser: nil); return }
+                    usersArray.append(user)
+                })
+            }
+        }
+    }
+    
     static func observeShotsFired(duel: Duel, completion: (winner: User?, loser: User?) -> Void) {
         guard let duelID = duel.id else { completion(winner: nil, loser: nil); return }
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired") { (data) in
