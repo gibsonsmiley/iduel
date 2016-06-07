@@ -16,20 +16,7 @@ class DuelController {
     var player1: User?
     var player2: User?
     
-    // Self explanitory
-    static func createDuel(player1: User?, player2: User?, completion: (success: Bool, duel: Duel?) -> Void) {
-        guard let currentUser = UserController.sharedController.currentUser else { completion(success: false, duel: nil); return }
-        guard let player1 = player1 else { return }
-        var duel = Duel(challengerID: player1.id!, opponentID: player2!.id!, statuses: nil, shotsFired: nil)
-        guard let duelID = duel.id else { completion(success: false, duel: nil); return }
-        duel.save()
-        completion(success: true, duel: duel)
-        currentUser.duelIDs?.append(duelID)
-        //        currentUser.save()
-        //        player2.duelIDs?.append(duelID)
-        //        player2.save()
-    }
-    
+       
     static func deleteDuel(duel: Duel, completion: (success: Bool) -> Void) {
         duel.delete()
         guard let duelID = duel.id else { completion(success: false); return }
@@ -52,10 +39,6 @@ class DuelController {
             let duels = json.flatMap({Duel(json: $0.1 as! [String: AnyObject], id: $0.0)})
             completion(duels: duels)
         }
-    }
-    
-    static func observePlayersForDuel(duel: Duel, completion: (players: [User]?) -> Void) {
-        // May use this
     }
     
     // Method to add player to duel's ready array, this is the gun cock
@@ -117,11 +100,6 @@ class DuelController {
                 })
             }
         }
-    }
-    
-    // Observes firebase as the duel/\(id)/shotsFired, to observe who shot first // victory function seems to cover anything this function would need to do
-    static func checkFire(completion: (firstShot: User) -> Void) {
-        
     }
     
     // Randomally generates a waiting period
