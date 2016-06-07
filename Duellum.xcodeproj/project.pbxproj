@@ -10,6 +10,9 @@
 		515E5C941CF378A80030335E /* DuelTrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5C931CF378A80030335E /* DuelTrack.mp3 */; };
 		515E5C961CF378B20030335E /* DuelMenuTrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5C951CF378B20030335E /* DuelMenuTrack.mp3 */; };
 		515E5C9A1CF4FE760030335E /* Trade Gothic LT Bold Condensed No. 20.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 515E5C991CF4FE680030335E /* Trade Gothic LT Bold Condensed No. 20.ttf */; };
+		517ACBDE1D074E5D004B36FB /* InstructionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517ACBDD1D074E5D004B36FB /* InstructionPageViewController.swift */; };
+		517ACBE01D075AEC004B36FB /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517ACBDF1D075AEC004B36FB /* RuleViewController.swift */; };
+		517ACBE21D075B06004B36FB /* DisclaimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517ACBE11D075B06004B36FB /* DisclaimerViewController.swift */; };
 		51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */; };
 		51F4BFD61CEF77C600B05D35 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4BFD51CEF77C600B05D35 /* SoundController.swift */; };
 		51F4BFDA1CEF788E00B05D35 /* 1gunshot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */; };
@@ -40,13 +43,15 @@
 		F0BBA08B1CEA665A00AD16A3 /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA08A1CEA665A00AD16A3 /* VictoryViewController.swift */; };
 		F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */; };
 		F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */; };
-		F0DD4FB61CFE031F00778AB4 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD4FB51CFE031F00778AB4 /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		515E5C931CF378A80030335E /* DuelTrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DuelTrack.mp3; sourceTree = "<group>"; };
 		515E5C951CF378B20030335E /* DuelMenuTrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DuelMenuTrack.mp3; sourceTree = "<group>"; };
 		515E5C991CF4FE680030335E /* Trade Gothic LT Bold Condensed No. 20.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trade Gothic LT Bold Condensed No. 20.ttf"; sourceTree = "<group>"; };
+		517ACBDD1D074E5D004B36FB /* InstructionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstructionPageViewController.swift; path = ../InstructionPageViewController.swift; sourceTree = "<group>"; };
+		517ACBDF1D075AEC004B36FB /* RuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
+		517ACBE11D075B06004B36FB /* DisclaimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerViewController.swift; sourceTree = "<group>"; };
 		51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		51F4BFD51CEF77C600B05D35 /* SoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
 		51F4BFD71CEF788E00B05D35 /* 1gunshot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 1gunshot.mp3; path = ../1gunshot.mp3; sourceTree = "<group>"; };
@@ -80,7 +85,6 @@
 		F0BBA08A1CEA665A00AD16A3 /* VictoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VictoryViewController.swift; sourceTree = "<group>"; };
 		F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindOpponentTableViewController.swift; sourceTree = "<group>"; };
 		F0CC6AE91CEA994800F41B26 /* TopDownSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopDownSegue.swift; sourceTree = "<group>"; };
-		F0DD4FB51CFE031F00778AB4 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,13 +200,15 @@
 		F0BBA0851CEA663700AD16A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				517ACBDD1D074E5D004B36FB /* InstructionPageViewController.swift */,
+				517ACBDF1D075AEC004B36FB /* RuleViewController.swift */,
+				517ACBE11D075B06004B36FB /* DisclaimerViewController.swift */,
 				F0BBA0831CEA663200AD16A3 /* WelcomeViewController.swift */,
 				F0BBA0861CEA664800AD16A3 /* SetUpDuelViewController.swift */,
 				F0BBA0881CEA665300AD16A3 /* DuelViewController.swift */,
 				F0BBA08A1CEA665A00AD16A3 /* VictoryViewController.swift */,
 				F0BBA0921CEA669D00AD16A3 /* FindOpponentTableViewController.swift */,
 				51BCEE5C1CECCFFF00EA879F /* SettingsTableViewController.swift */,
-				F0DD4FB51CFE031F00778AB4 /* TutorialViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -284,7 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				517ACBDE1D074E5D004B36FB /* InstructionPageViewController.swift in Sources */,
 				F0AEE50D1CF606A1005B4691 /* DuelController2.swift in Sources */,
+				517ACBE21D075B06004B36FB /* DisclaimerViewController.swift in Sources */,
 				F0BBA0841CEA663200AD16A3 /* WelcomeViewController.swift in Sources */,
 				F0BBA08B1CEA665A00AD16A3 /* VictoryViewController.swift in Sources */,
 				C349C3901CEA5D0800F3DCA7 /* User.swift in Sources */,
@@ -292,12 +300,12 @@
 				F0CC6AEA1CEA994800F41B26 /* TopDownSegue.swift in Sources */,
 				F0BBA0821CEA338F00AD16A3 /* FirebaseController.swift in Sources */,
 				C349C3921CEA5D1800F3DCA7 /* UserController.swift in Sources */,
-				F0DD4FB61CFE031F00778AB4 /* TutorialViewController.swift in Sources */,
 				C349C3981CEA5D5200F3DCA7 /* MotionController.swift in Sources */,
 				F0BBA0891CEA665300AD16A3 /* DuelViewController.swift in Sources */,
 				F0BBA0611CEA328C00AD16A3 /* AppDelegate.swift in Sources */,
 				C349C3941CEA5D2800F3DCA7 /* Duel.swift in Sources */,
 				F0BBA0931CEA669D00AD16A3 /* FindOpponentTableViewController.swift in Sources */,
+				517ACBE01D075AEC004B36FB /* RuleViewController.swift in Sources */,
 				F0BBA0871CEA664800AD16A3 /* SetUpDuelViewController.swift in Sources */,
 				C3E6311F1CEBB4420042441F /* Stack.swift in Sources */,
 				51BCEE5D1CECCFFF00EA879F /* SettingsTableViewController.swift in Sources */,

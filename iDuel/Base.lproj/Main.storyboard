@@ -22,11 +22,6 @@
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
             <string>TradeGothicLT-BoldCondTwenty</string>
-            <string>TradeGothicLT-BoldCondTwenty</string>
-            <string>TradeGothicLT-BoldCondTwenty</string>
-            <string>TradeGothicLT-BoldCondTwenty</string>
-            <string>TradeGothicLT-BoldCondTwenty</string>
-            <string>TradeGothicLT-BoldCondTwenty</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -140,7 +135,6 @@
                         <outlet property="titleLabel" destination="cb3-2h-pjr" id="ihx-p4-25b"/>
                         <segue destination="FXw-fO-elf" kind="presentation" identifier="toDuels" id="xY1-xS-O0k"/>
                         <segue destination="OKq-eY-Neg" kind="show" identifier="toSetUpDuel" id="lxW-kK-E9O"/>
-                        <segue destination="5Jj-xf-7tB" kind="presentation" identifier="toTutorial" id="oWP-EP-9Lc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5w-mM-uRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -553,7 +547,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="Ba7-Fj-OeY">
                         <barButtonItem key="leftBarButtonItem" title="Tutorial" id="RXG-O6-dtx">
                             <connections>
-                                <segue destination="5Jj-xf-7tB" kind="presentation" id="5CV-gH-QCM"/>
+                                <segue destination="h3V-7o-nB0" kind="presentation" id="cVE-DO-X7t"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="hYU-ee-nxw">
@@ -572,111 +566,92 @@
             </objects>
             <point key="canvasLocation" x="306" y="1518"/>
         </scene>
-        <!--Tutorial View Controller-->
-        <scene sceneID="htx-Pt-yC2">
+        <!--Instruction Page View Controller-->
+        <scene sceneID="cLP-f6-iRj">
             <objects>
-                <viewController id="5Jj-xf-7tB" customClass="TutorialViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="InstructionViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="h3V-7o-nB0" customClass="InstructionPageViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUQ-rx-3Dv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="1505"/>
+        </scene>
+        <!--Rule View Controller-->
+        <scene sceneID="xyK-tJ-XVE">
+            <objects>
+                <viewController storyboardIdentifier="RuleViewController" id="RrE-ki-gDB" customClass="RuleViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Qz-n3-q4v"/>
-                        <viewControllerLayoutGuide type="bottom" id="kCU-Hn-bP4"/>
+                        <viewControllerLayoutGuide type="top" id="Bg3-V8-Clx"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Iv-w3-fcz"/>
                     </layoutGuides>
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="CV8-KO-Ptr">
+                    <view key="view" contentMode="scaleToFill" id="R4n-oN-Fyl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-xw-cE4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finalInstruction1" translatesAutoresizingMaskIntoConstraints="NO" id="SgR-NU-Htq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once the duel has begun, you need to lower your phone by your waist, as if it's holstered." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hot-HG-CA1">
-                                <rect key="frame" x="20" y="310" width="374" height="116"/>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7AC-ul-0HU">
-                                <rect key="frame" x="284" y="635" width="52" height="51"/>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="7jq-jV-tXT"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cof-qa-Ezt">
-                                <rect key="frame" x="284" y="635" width="52" height="51"/>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="CPK-H6-fLn"/>
-                                    <action selector="secondButtonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="jgl-Vz-rIt"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPN-5u-w7w">
-                                <rect key="frame" x="281" y="635" width="59" height="51"/>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="32"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="jSm-mV-7qO"/>
-                                    <action selector="doneButtonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="fOP-Fk-DUv"/>
-                                    <action selector="secondButtonTapped:" destination="5Jj-xf-7tB" eventType="touchUpInside" id="net-FL-cMg"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duellum Tutorial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecr-N7-Vaw">
-                                <rect key="frame" x="118" y="28" width="178" height="36"/>
-                                <fontDescription key="fontDescription" name="TradeGothicLT-BoldCondTwenty" family="TradeGothic LT CondEighteen" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7AC-ul-0HU" firstAttribute="centerX" secondItem="wPN-5u-w7w" secondAttribute="centerX" id="0Xd-dv-ULo"/>
-                            <constraint firstAttribute="trailing" secondItem="wcl-xw-cE4" secondAttribute="trailing" id="3Oi-34-jV4"/>
-                            <constraint firstItem="wPN-5u-w7w" firstAttribute="baseline" secondItem="7AC-ul-0HU" secondAttribute="baseline" id="3Yh-WA-kNA"/>
-                            <constraint firstItem="wcl-xw-cE4" firstAttribute="top" secondItem="CV8-KO-Ptr" secondAttribute="topMargin" id="3mo-98-BnG"/>
-                            <constraint firstItem="cof-qa-Ezt" firstAttribute="centerX" secondItem="wPN-5u-w7w" secondAttribute="centerX" id="9ED-d8-PMq"/>
-                            <constraint firstItem="hot-HG-CA1" firstAttribute="leading" secondItem="CV8-KO-Ptr" secondAttribute="leadingMargin" id="CnI-bF-ePj"/>
-                            <constraint firstItem="wPN-5u-w7w" firstAttribute="centerX" secondItem="CV8-KO-Ptr" secondAttribute="centerX" multiplier="1.5" id="Czm-p4-d8t"/>
-                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="leading" secondItem="wcl-xw-cE4" secondAttribute="leading" id="JQl-yV-vzu"/>
-                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="top" secondItem="8Qz-n3-q4v" secondAttribute="bottom" constant="8" id="Muc-D1-vb3"/>
-                            <constraint firstItem="cof-qa-Ezt" firstAttribute="centerX" secondItem="wcl-xw-cE4" secondAttribute="centerX" id="UOb-mo-QmU"/>
-                            <constraint firstItem="hot-HG-CA1" firstAttribute="trailing" secondItem="CV8-KO-Ptr" secondAttribute="trailingMargin" id="Ur9-yj-PjX"/>
-                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="centerX" secondItem="wcl-xw-cE4" secondAttribute="centerX" id="Y70-Nq-IEs"/>
-                            <constraint firstItem="wcl-xw-cE4" firstAttribute="leading" secondItem="CV8-KO-Ptr" secondAttribute="leading" id="dWd-XN-zYl"/>
-                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="top" secondItem="wcl-xw-cE4" secondAttribute="top" id="f50-Eq-cKO"/>
-                            <constraint firstItem="hot-HG-CA1" firstAttribute="centerX" secondItem="CV8-KO-Ptr" secondAttribute="centerX" id="fBa-tQ-WqD"/>
-                            <constraint firstItem="kCU-Hn-bP4" firstAttribute="top" secondItem="wPN-5u-w7w" secondAttribute="bottom" constant="50" id="jMP-oc-mSd"/>
-                            <constraint firstItem="hot-HG-CA1" firstAttribute="centerY" secondItem="CV8-KO-Ptr" secondAttribute="centerY" id="oUv-mn-3kM"/>
-                            <constraint firstItem="7AC-ul-0HU" firstAttribute="centerX" secondItem="wcl-xw-cE4" secondAttribute="centerX" id="oXG-DF-DG6"/>
-                            <constraint firstItem="7AC-ul-0HU" firstAttribute="baseline" secondItem="cof-qa-Ezt" secondAttribute="baseline" id="tNO-7R-OJ1"/>
-                            <constraint firstItem="ecr-N7-Vaw" firstAttribute="trailing" secondItem="wcl-xw-cE4" secondAttribute="trailing" id="teo-j0-Dcz"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="wcl-xw-cE4" secondAttribute="bottom" id="yAX-AE-hHm"/>
+                            <constraint firstAttribute="trailing" secondItem="SgR-NU-Htq" secondAttribute="trailing" id="BIo-lA-UW4"/>
+                            <constraint firstItem="2Iv-w3-fcz" firstAttribute="top" secondItem="SgR-NU-Htq" secondAttribute="bottom" id="EBn-Jo-7wB"/>
+                            <constraint firstItem="SgR-NU-Htq" firstAttribute="leading" secondItem="R4n-oN-Fyl" secondAttribute="leading" id="NZc-u7-MOm"/>
+                            <constraint firstItem="SgR-NU-Htq" firstAttribute="top" secondItem="R4n-oN-Fyl" secondAttribute="top" id="zQt-Uw-UWE"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="JQl-yV-vzu"/>
-                                <exclude reference="f50-Eq-cKO"/>
-                                <exclude reference="teo-j0-Dcz"/>
-                                <exclude reference="oXG-DF-DG6"/>
-                                <exclude reference="UOb-mo-QmU"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="doneButton" destination="wPN-5u-w7w" id="fJc-Mi-r6F"/>
-                        <outlet property="secondButton" destination="cof-qa-Ezt" id="EXk-cx-bNd"/>
-                        <outlet property="secondLabel" destination="hot-HG-CA1" id="uEi-Xj-cdQ"/>
-                        <outlet property="transitionButton" destination="7AC-ul-0HU" id="CPh-v8-FdY"/>
+                        <outlet property="welcomeScreen" destination="SgR-NU-Htq" id="3Ml-Uo-hQC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lZl-r7-4LY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGc-wh-jP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855" y="1518"/>
+            <point key="canvasLocation" x="1263" y="1505"/>
+        </scene>
+        <!--Disclaimer View Controller-->
+        <scene sceneID="EKJ-5u-oql">
+            <objects>
+                <viewController storyboardIdentifier="DisclaimerViewController" id="CLE-M1-Vd5" customClass="DisclaimerViewController" customModule="Duellum" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f2e-CL-k71"/>
+                        <viewControllerLayoutGuide type="bottom" id="CPF-Ak-W5d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jas-ne-EFO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finalInstruction2" translatesAutoresizingMaskIntoConstraints="NO" id="ttI-Xg-9dF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcG-9E-DgU">
+                                <rect key="frame" x="108" y="541" width="198" height="44"/>
+                                <state key="normal" image="EnterAppButton"/>
+                                <connections>
+                                    <action selector="beginButtonTapped:" destination="CLE-M1-Vd5" eventType="touchUpInside" id="Xrl-f9-C6Q"/>
+                                    <segue destination="jhe-fb-eAy" kind="presentation" id="0an-yY-SBZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ttI-Xg-9dF" firstAttribute="leading" secondItem="jas-ne-EFO" secondAttribute="leading" id="0du-8k-auJ"/>
+                            <constraint firstItem="CPF-Ak-W5d" firstAttribute="top" secondItem="UcG-9E-DgU" secondAttribute="bottom" constant="151" id="IEo-qD-3ym"/>
+                            <constraint firstItem="ttI-Xg-9dF" firstAttribute="top" secondItem="jas-ne-EFO" secondAttribute="top" id="Nn4-gM-MT8"/>
+                            <constraint firstAttribute="trailing" secondItem="ttI-Xg-9dF" secondAttribute="trailing" id="Pu5-CJ-Xv9"/>
+                            <constraint firstItem="UcG-9E-DgU" firstAttribute="leading" secondItem="jas-ne-EFO" secondAttribute="leadingMargin" constant="88" id="WFU-XJ-JFw"/>
+                            <constraint firstItem="UcG-9E-DgU" firstAttribute="centerX" secondItem="ttI-Xg-9dF" secondAttribute="centerX" id="gBT-TE-kM0"/>
+                            <constraint firstAttribute="trailing" secondItem="ttI-Xg-9dF" secondAttribute="trailing" id="nme-aT-7rV"/>
+                            <constraint firstItem="CPF-Ak-W5d" firstAttribute="top" secondItem="ttI-Xg-9dF" secondAttribute="bottom" id="qgA-N7-VJw"/>
+                            <constraint firstItem="CPF-Ak-W5d" firstAttribute="top" secondItem="ttI-Xg-9dF" secondAttribute="bottom" id="xT7-zd-aYk"/>
+                            <constraint firstItem="ttI-Xg-9dF" firstAttribute="leading" secondItem="jas-ne-EFO" secondAttribute="leading" id="yEo-Ut-9or"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBJ-kL-2zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="1505"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zcy-Wu-yAS">
@@ -721,16 +696,17 @@
     <resources>
         <image name="DuelButton" width="346" height="74"/>
         <image name="DuelViewMen" width="414" height="736"/>
+        <image name="EnterAppButton" width="188" height="44"/>
         <image name="NewDuelButton" width="188" height="44"/>
         <image name="RH Duel View" width="414" height="736"/>
         <image name="RematchButton" width="188" height="44"/>
         <image name="SettingsButton" width="51" height="50"/>
         <image name="VICTORYViewScreen" width="414" height="736"/>
         <image name="Welcome View " width="414" height="736"/>
-        <image name="tutorial" width="414" height="736"/>
+        <image name="finalInstruction1" width="414" height="736"/>
+        <image name="finalInstruction2" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tpf-uc-Vug"/>
-        <segue reference="5CV-gH-QCM"/>
     </inferredMetricsTieBreakers>
 </document>

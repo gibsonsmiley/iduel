@@ -26,6 +26,7 @@ class DuelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playDuelBackGroundMusic("DuelTrack")
         self.fireButton.enabled = false
         DuelController.duelStart(duel) { (duel, success) in
             guard let duel = duel else { return }
