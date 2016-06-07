@@ -318,7 +318,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="OKq-eY-Neg" kind="presentation" identifier="toRematch" customClass="TopDownSegue" modalTransitionStyle="flipHorizontal" id="tpf-uc-Vug"/>
+                                    <segue destination="OKq-eY-Neg" kind="presentation" identifier="toRematch" modalTransitionStyle="flipHorizontal" id="tpf-uc-Vug"/>
                                 </connections>
                             </button>
                         </subviews>
