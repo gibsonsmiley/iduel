@@ -180,13 +180,14 @@ class DuelController {
     static func watchShots(duel: Duel, completion: (winner: User?, loser: User?) -> Void) {
         guard let duelID = duel.id else { completion(winner: nil, loser: nil); return }
         FirebaseController.observeDataAtEndpoint("duels/\(duelID)/shotsFired2") { (data) in
-            guard let shotsDictionary = data as? [String: Double] else { completion(winner: nil, loser: nil); return }
+            guard let shotsDictionary = data as? [String: String] else { completion(winner: nil, loser: nil); return }
             print("Keys returned: \(shotsDictionary.keys)")
             print("Values returned: \(shotsDictionary.values)")
             var usersArray: [User] = []
             var timestampArray: [NSDate] = []
-            for interval in shotsDictionary.values {
-                let timestamp = NSDate(timeIntervalSince1970: interval)
+            for intervalString in shotsDictionary.values {
+                let interval = NSTimeInterval(intervalString)
+                let timestamp = NSDate(timeIntervalSince1970: interval!)
                 timestampArray.append(timestamp)
                 for userID in shotsDictionary.keys {
                     print("Users array: \(usersArray)")
