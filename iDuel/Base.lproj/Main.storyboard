@@ -304,7 +304,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
                                 <rect key="frame" x="211" y="548" width="156" height="44"/>
-                                <state key="normal" image="NewDuelButton">
+                                <state key="normal" image="HomeButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -697,7 +697,7 @@
         <image name="DuelButton" width="346" height="74"/>
         <image name="DuelViewMen" width="414" height="736"/>
         <image name="EnterAppButton" width="188" height="44"/>
-        <image name="NewDuelButton" width="188" height="44"/>
+        <image name="HomeButton" width="188" height="44"/>
         <image name="RH Duel View" width="414" height="736"/>
         <image name="RematchButton" width="188" height="44"/>
         <image name="SettingsButton" width="51" height="50"/>
