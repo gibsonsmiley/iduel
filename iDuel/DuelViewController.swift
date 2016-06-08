@@ -60,7 +60,7 @@ class DuelViewController: UIViewController {
                     } else {
                         print("one players not ready")
                     }
-
+                    
                 })
             } else {
                 print("not shooting for some reason")
@@ -90,6 +90,18 @@ class DuelViewController: UIViewController {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         guard let duel = self.duel else { return }
         guard let currentUser = UserController.sharedController.currentUser else { return }
+        //        DuelController.shoot(duel, user: currentUser) { (success) in
+        //            if success == true {
+        //                DuelController.watchShots(duel, completion: { (winner, loser) in
+        //                    guard let winner = winner,
+        //                        loser = loser else { return }
+        //                    self.winner = winner
+        //                    self.loser = loser
+        //                    print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
+        //                    self.performSegueWithIdentifier("toVictory", sender: self)
+        //                })
+        //            }
+        //        }
         DuelController.sendShotToDuel(duel, user: currentUser, completion: { (success) in
             if success {
                 DuelController.observeShotsFired(duel, completion: { (winner, loser) in
@@ -99,14 +111,7 @@ class DuelViewController: UIViewController {
                     }
                     self.winner = winner
                     self.loser = loser
-                    self.duel = duel
                     print("Winner: \(winner.nickname) Loser: \(loser.nickname) on View")
-                    guard let duel = self.duel else { return }
-                    DuelController.deleteDuel(duel) { (success) in
-                        if success == true {
-                            print("Duel successfully deleted")
-                        }
-                    }
                     self.performSegueWithIdentifier("toVictory", sender: self)
                 })
             } else {
@@ -118,7 +123,7 @@ class DuelViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("backToSetup", sender: self)
         MotionController.sharedController.motionManager.stopDeviceMotionUpdates()
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "AVSystemController_SystemVolumeDidChangeNotification", object: nil)
     }
@@ -143,8 +148,8 @@ class DuelViewController: UIViewController {
         if segue.identifier == "toVictory" {
             guard let destinationViewController = segue.destinationViewController as?  VictoryViewController else { return }
             guard let winner = self.winner,
-            loser = self.loser,
-            duel = self.duel else { return }
+                loser = self.loser,
+                duel = self.duel else { return }
             destinationViewController.updateWithDuel(duel, winner: winner, loser: loser)
             _ = destinationViewController.view
         }

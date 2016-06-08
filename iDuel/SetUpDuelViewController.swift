@@ -95,21 +95,21 @@ class SetUpDuelViewController: UIViewController {
         guard let duel = duel else { return }
         DuelController.deleteDuel(duel) { (success) in
             if success == true {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("backToHome", sender: self)
             } else {
                 print("Couldn't delete duel")
             }
         }
     }
     
-        // MARK: - Navigation
-        
-        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            if segue.identifier == "toDuelCustom" {
-                guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
-                guard let duel = self.duel else { return }
-                destinationViewController.updateWithDuel(duel)
-                _ = destinationViewController.view // Don't know why this is needed
-            }
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDuelCustom" {
+            guard let destinationViewController = segue.destinationViewController as? DuelViewController else { return }
+            guard let duel = self.duel else { return }
+            destinationViewController.updateWithDuel(duel)
+            _ = destinationViewController.view // Don't know why this is needed
         }
+    }
 }
