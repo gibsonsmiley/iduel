@@ -298,13 +298,13 @@
                         <viewControllerLayoutGuide type="bottom" id="TiS-Gr-jtO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fWh-Lf-WEg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VICTORYViewScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Yaj-Gn-GiT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-WW-CfD">
                                 <rect key="frame" x="211" y="548" width="156" height="44"/>
                                 <state key="normal" image="HomeButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -314,14 +314,13 @@
                                     <segue destination="jhe-fb-eAy" kind="presentation" modalTransitionStyle="flipHorizontal" id="7HW-xL-Czv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-22-XRa">
                                 <rect key="frame" x="8" y="548" width="156" height="44"/>
                                 <state key="normal" image="RematchButton">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="playAgainButtonTapped:" destination="QlS-8e-AiX" eventType="touchUpInside" id="xKx-Xy-G4l"/>
-                                    <segue destination="OKq-eY-Neg" kind="presentation" identifier="toRematch" modalTransitionStyle="flipHorizontal" id="tpf-uc-Vug"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -344,6 +343,7 @@
                         <outlet property="exitGameButton" destination="jfq-WW-CfD" id="VMb-bu-HUS"/>
                         <outlet property="playAgainButton" destination="dtw-22-XRa" id="Mqz-Il-3wp"/>
                         <outlet property="victoryImageView" destination="Yaj-Gn-GiT" id="Kbd-fh-OIl"/>
+                        <segue destination="OKq-eY-Neg" kind="presentation" identifier="toRematch" modalTransitionStyle="flipHorizontal" id="ZVg-gr-aQz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7T-hS-jkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -710,7 +710,7 @@
         <image name="finalInstruction2" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oE1-9f-QWa"/>
-        <segue reference="PPg-Fl-EMd"/>
+        <segue reference="ZVg-gr-aQz"/>
+        <segue reference="7HW-xL-Czv"/>
     </inferredMetricsTieBreakers>
 </document>
