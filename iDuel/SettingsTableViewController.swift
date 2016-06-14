@@ -53,6 +53,7 @@ class SettingsTableViewController: UITableViewController {
         } else {
             defaults.setBool(true, forKey: "sounds")
             defaults.synchronize()
+            duelBackGroundMusic.stop()
         }
     }
     
