@@ -72,6 +72,7 @@ class UserController {
     static func checkNicknameAvailability(nickname: String, completion: (success: Bool, error: String?) -> Void) {
         FirebaseController.base.childByAppendingPath("users").queryOrderedByChild("nickname").queryEqualToValue("\(nickname)").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] {
+                print(snapshot.value)
                 // Nickname does exist - check timestamp
                 guard let user = jsonDictionary.flatMap({User(json: $0.1, id: $0.0)}).first else { return }
                 let timestamp = user.timestamp
