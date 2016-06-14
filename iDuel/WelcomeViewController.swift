@@ -31,11 +31,10 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        playMainThemeBackGroundMusic("DuelMenuTrack")
         
         
-//        print("Has tutorial been displayed? \(NSUserDefaults.standardUserDefaults().boolForKey("tutorial"))")
-//        displayTutorial() // This is here because won't work in any other stage of the view creation/display
+        //        print("Has tutorial been displayed? \(NSUserDefaults.standardUserDefaults().boolForKey("tutorial"))")
+        //        displayTutorial() // This is here because won't work in any other stage of the view creation/display
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +42,12 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
         
         titleState()
         self.errorLabel.hidden = true
+        let sounds = NSUserDefaults.standardUserDefaults().boolForKey("sounds")
+        if sounds == false {
+            playMainThemeBackGroundMusic("DuelMenuTrack")
+        } else {
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,13 +79,13 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
         self.errorLabel.text = errorText
     }
     
-//    func displayTutorial() {
-//        if NSUserDefaults.standardUserDefaults().boolForKey("tutorial") == false {
-//            performSegueWithIdentifier("toTutorial", sender: self)
-//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
-//            NSUserDefaults.standardUserDefaults().synchronize()
-//        }
-//    }
+    //    func displayTutorial() {
+    //        if NSUserDefaults.standardUserDefaults().boolForKey("tutorial") == false {
+    //            performSegueWithIdentifier("toTutorial", sender: self)
+    //            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
+    //            NSUserDefaults.standardUserDefaults().synchronize()
+    //        }
+    //    }
     
     // MARK: - Actions
     

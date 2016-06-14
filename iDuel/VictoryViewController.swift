@@ -23,13 +23,20 @@ class VictoryViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        watchForRematch()
+        
+        guard let duel = self.duel else { return }
+        DuelController.deleteDuel(duel) { (success) in
+            if success == true {
+                print("Duel successfully deleted")
+            }
+        }
+
         guard let currentUser = UserController.sharedController.currentUser,
             winner = self.winner,
             loser = self.loser else { return }
         if currentUser.nickname == winner.nickname {
             self.victoryImageView.image = UIImage(named: "VICTORYViewScreen")
-            self.playAgainButton.enabled = false
+//            self.playAgainButton.enabled = false
         } else if currentUser.nickname == loser.nickname {
             self.victoryImageView.image = UIImage(named: "DEADViewScreen")
         } else {
@@ -38,17 +45,12 @@ class VictoryViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        guard let duel = self.duel else { return }
-        DuelController.deleteDuel(duel) { (success) in
-            if success == true {
-                print("Duel successfully deleted")
-            }
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        watchForRematch()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(rematch), name: "rematchFound", object: nil)
     }
     
@@ -82,11 +84,14 @@ class VictoryViewController: UIViewController {
             opponentID = winnerID
         }
         if FirebaseController.base.childByAppendingPath("duels").queryOrderedByChild("challengerID").queryEqualToValue("\(opponentID)") != nil {
+
             FirebaseController.base.childByAppendingPath("duels").queryOrderedByChild("challengerID").queryEqualToValue("\(opponentID)").observeEventType(.Value, withBlock: { (snapshot) in
-                guard let jsonDictionary = snapshot.value as? [String: [String: AnyObject]] else { print("Cast probably failed"); return }
+                print(snapshot)
+                guard let jsonDictionary = snapshot.value as? [String:[String: AnyObject]] else { print("Cast probably failed"); return }
+                print("Snapshot value: \(snapshot.value)")
                 guard let duel = jsonDictionary.flatMap({Duel(json: $0.1, id: $0.0)}).first else { print("Couldn't create duel from info received"); return }
-                
                 self.duel = duel
+                print(duel.id)
                 NSNotificationCenter.defaultCenter().postNotificationName("rematchFound", object: nil)
             })
         } else {
@@ -111,6 +116,7 @@ class VictoryViewController: UIViewController {
             self.duel?.save()
             self.performSegueWithIdentifier("toRematch", sender: self)
         } else {
+            print("Something went wrong", #file, #line)
             self.playAgainButton.enabled = false
         }
     }
